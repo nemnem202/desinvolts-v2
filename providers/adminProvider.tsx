@@ -1,10 +1,7 @@
+import { logger } from "@/lib/logger";
 import { createContext, ReactNode, useContext, useEffect, useState } from "react";
 import { usePageContext } from "vike-react/usePageContext";
 import { PageContextClient } from "vike/types";
-
-interface AdminPageContext extends PageContextClient {
-  isAdminDisplay: boolean;
-}
 
 interface AdminContextValue {
   isAdminDisplay: boolean;
@@ -13,10 +10,18 @@ interface AdminContextValue {
 
 const AdminContext = createContext<AdminContextValue | undefined>(undefined);
 
-export default function AdminProvider({ children }: { children: ReactNode }) {
-  const pageContext = usePageContext() as AdminPageContext;
+export default function AdminProvider({
+  children,
+  currentUser,
+}: {
+  children: ReactNode;
+  currentUser: { username: string } | null;
+}) {
+  const [isAdminDisplay, setisAdminDisplay] = useState(!!currentUser);
 
-  const [isAdminDisplay, setisAdminDisplay] = useState(pageContext.isAdminDisplay);
+  useEffect(() => {
+    logger.info("Current user: ", currentUser);
+  }, []);
 
   const toggleAdmin = () => setisAdminDisplay((value: boolean) => !value);
 

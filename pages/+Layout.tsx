@@ -17,7 +17,7 @@ import { contexts } from "@/types/contexts";
 import DevToolsWindow from "@/components/windows/devToolsWindow";
 
 export default function Layout({ children }: { children: React.ReactNode }) {
-  const { stateKey, page } = useData<Data>();
+  const { stateKey, page, currentUser } = useData<Data>();
   const stateContext = contexts[stateKey];
 
   if (!page) return <Spinner />;
@@ -31,7 +31,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
       key={stateKey}
     >
       <ScreenSizeProvider>
-        <AdminProvider>
+        <AdminProvider currentUser={currentUser}>
           <MouseProvider>
             <Toaster />
             <Content context={stateContext}>{children}</Content>
@@ -50,6 +50,7 @@ function Content({
   context: Context<StateContent<any> | null>;
 }) {
   const { setIsDown, setPosition } = useMouse();
+  const { currentUser } = useData<Data>();
   return (
     <div
       id="page-container"
@@ -58,7 +59,7 @@ function Content({
       onMouseUpCapture={() => setIsDown(false)}
       onMouseMoveCapture={(e) => setPosition(e.clientX, e.clientY)}
     >
-      <DevToolsWindow context={context} />
+      {currentUser && <DevToolsWindow context={context} />}
       <Header context={context} />
       <div id="page-content" className="min-h-screen w-screen">
         {children}
