@@ -1,19 +1,10 @@
 import { PageContext } from "vike/types";
 import { UAParser } from "ua-parser-js";
 import { ScreenSizeType } from "@/providers/screenSizeProvider";
-import {
-  BasePageContent,
-  ConnexionPageContent,
-  ContactPageContent,
-  DatesPageContent,
-  GroupePageContent,
-  HomePageContent,
-  MediasPageContent,
-  NousEcouterPageContent,
-} from "@/types/page-contents";
-import ApiHandler from "@/lib/apiHandler";
+import { BasePageContent } from "@/types/page-contents";
 import { logger } from "@/lib/logger";
 import { PageStateKey } from "@/types/contexts";
+import PageController from "@/server/controller/get-page-controller";
 
 async function getScreen(pageContext: PageContext): Promise<ScreenSizeType> {
   const ua = pageContext.headers ? (pageContext.headers["user-agent"] ?? "") : "";
@@ -30,14 +21,6 @@ async function getScreen(pageContext: PageContext): Promise<ScreenSizeType> {
   }
 }
 
-async function getPage<T>(path: string): Promise<T | null> {
-  const page = await ApiHandler.get<T>(`http://backend:${process.env.BACKEND_PORT}/${path}`);
-  if (page.success) {
-    return page.body;
-  }
-  return null;
-}
-
 function convertToDates<T extends { date: Date }>(elements: T[]) {
   elements.forEach((e) => {
     e.date = new Date(e.date);
@@ -47,37 +30,37 @@ function convertToDates<T extends { date: Date }>(elements: T[]) {
 export async function data(pageContext: PageContext): Promise<{
   screen: ScreenSizeType;
   stateKey: (typeof PageStateKey)[number];
-  page: BasePageContent | null;
+  page: BasePageContent | undefined;
   updatePath: string;
 }> {
   const screen = await getScreen(pageContext);
   let stateKey: (typeof PageStateKey)[number];
-  let page: BasePageContent | null;
+  let page: BasePageContent | undefined;
   let updatePath: string;
 
   switch (pageContext.urlPathname) {
     case "/":
       stateKey = "home";
-      const homeContent = await getPage<HomePageContent>("home");
+      const homeContent = await PageController.getHome();
       if (homeContent) convertToDates(homeContent.posts);
       page = homeContent;
       updatePath = "home";
       break;
     case "/connexion":
       stateKey = "connexion";
-      page = await getPage<ConnexionPageContent>("connexion");
+      page = await PageController.getConnexion();
       updatePath = "connexion-page";
       break;
     case "/contact":
       stateKey = "contact";
-      const contactContent = await getPage<ContactPageContent>("contact");
+      const contactContent = await PageController.getContact();
       if (contactContent) convertToDates(contactContent.files);
       page = contactContent;
       updatePath = "contact";
       break;
     case "/dates":
       stateKey = "dates";
-      const datesContent = await getPage<DatesPageContent>("dates");
+      const datesContent = await PageController.getDates();
       if (datesContent) convertToDates(datesContent.dates);
       page = datesContent;
       updatePath = "dates";
@@ -85,24 +68,24 @@ export async function data(pageContext: PageContext): Promise<{
     case "/groupe":
       // @ts-ignore
       stateKey = "groupe";
-      page = await getPage<GroupePageContent>("group");
+      page = await PageController.getGroupe();
       updatePath = "group";
       break;
     case "/médias":
     case "/medias":
       stateKey = "medias";
-      page = await getPage<MediasPageContent>("medias");
+      page = await PageController.getMedias();
       updatePath = "medias";
       break;
     case "/nous-écouter":
     case "/son":
       stateKey = "son";
-      page = await getPage<NousEcouterPageContent>("son");
+      page = await PageController.getNousEcouter();
       updatePath = "son";
       break;
     default:
       stateKey = "default";
-      page = await getPage<BasePageContent>("default");
+      page = await PageController.getDefault();
       updatePath = "default";
   }
   return { screen, stateKey, page, updatePath };

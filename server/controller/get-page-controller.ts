@@ -11,34 +11,6 @@ import {
   NousEcouterPageContent,
 } from "@/types/page-contents";
 import { prisma } from "@/lib/prisma-client";
-import { DateEvent } from "@/types/db";
-import { ApiResponse } from "@/types/server";
-
-interface HomePageRoute extends RouteGenericInterface {
-  Reply: ApiResponse<HomePageContent>;
-}
-interface ConnexionPageRoute extends RouteGenericInterface {
-  Reply: ApiResponse<ConnexionPageContent>;
-}
-interface ContactPageRoute extends RouteGenericInterface {
-  Reply: ApiResponse<ContactPageContent>;
-}
-interface DatesPageRoute extends RouteGenericInterface {
-  Reply: ApiResponse<DatesPageContent>;
-}
-interface GroupePageRoute extends RouteGenericInterface {
-  Reply: ApiResponse<GroupePageContent>;
-}
-interface NousEcouterPageRoute extends RouteGenericInterface {
-  Reply: ApiResponse<NousEcouterPageContent>;
-}
-interface MediasPageRoute extends RouteGenericInterface {
-  Reply: ApiResponse<MediasPageContent>;
-}
-
-interface DefaultPageRoute extends RouteGenericInterface {
-  Reply: ApiResponse<BasePageContent>;
-}
 
 const GET_TEXT = { include: { hyperlinks: true } };
 
@@ -120,7 +92,7 @@ const GET_ALBUMS = {
 };
 
 export default class PageController extends Controller {
-  static async getHome(_: FastifyRequest, rep: FastifyReply<HomePageRoute>) {
+  static async getHome() {
     const content = await prisma.homePage.findFirst({
       include: {
         title: GET_TEXT,
@@ -147,10 +119,10 @@ export default class PageController extends Controller {
       presentationImage: content.pres_image,
     };
 
-    return rep.send({ success: true, body: page });
+    return page;
   }
 
-  static async getConnexion(_: FastifyRequest, rep: FastifyReply<ConnexionPageRoute>) {
+  static async getConnexion() {
     const content = await prisma.connexionPage.findFirst({
       include: {
         title: GET_TEXT,
@@ -166,10 +138,10 @@ export default class PageController extends Controller {
       navlinks,
       ...content,
     };
-    rep.send({ success: true, body: page });
+    return page;
   }
 
-  static async getContact(_: FastifyRequest, rep: FastifyReply<ContactPageRoute>) {
+  static async getContact() {
     const content = await prisma.contactPage.findFirst({
       include: {
         paragraph: GET_TEXT,
@@ -188,9 +160,9 @@ export default class PageController extends Controller {
       ...content,
     };
 
-    rep.send({ success: true, body: page });
+    return page;
   }
-  static async getDates(_: FastifyRequest, rep: FastifyReply<DatesPageRoute>) {
+  static async getDates() {
     const content = await prisma.datesPage.findFirst({
       omit: {
         id: true,
@@ -232,9 +204,9 @@ export default class PageController extends Controller {
       ...content,
     };
 
-    rep.send({ success: true, body: page });
+    return page;
   }
-  static async getGroupe(_: FastifyRequest, rep: FastifyReply<GroupePageRoute>) {
+  static async getGroupe() {
     const content = await prisma.groupPage.findFirst({
       include: {
         firstSectionParagraphs: GET_PARAGRAPHS,
@@ -265,9 +237,9 @@ export default class PageController extends Controller {
       trombinoscope: content.trombinoscropeItems,
     };
 
-    rep.send({ success: true, body: page });
+    return page;
   }
-  static async getNousEcouter(_: FastifyRequest, rep: FastifyReply<NousEcouterPageRoute>) {
+  static async getNousEcouter() {
     console.log("Nous écouter");
     const content = await prisma.sonPage.findFirst({
       include: {
@@ -301,9 +273,9 @@ export default class PageController extends Controller {
 
     console.log(page);
 
-    rep.send({ success: true, body: page });
+    return page;
   }
-  static async getMedias(_: FastifyRequest, rep: FastifyReply<MediasPageRoute>) {
+  static async getMedias() {
     const content = await prisma.mediasPage.findFirst({
       omit: {
         titleId: true,
@@ -338,10 +310,10 @@ export default class PageController extends Controller {
       videos: content.videos,
     };
 
-    rep.send({ success: true, body: page });
+    return page;
   }
 
-  static async getDefault(_: FastifyRequest, rep: FastifyReply<DefaultPageRoute>) {
+  static async getDefault() {
     const navlinks = await prisma.navLink.findMany();
     const config = await prisma.configuration.findFirst();
 
@@ -352,6 +324,6 @@ export default class PageController extends Controller {
       navlinks,
     };
 
-    rep.send({ success: true, body: page });
+    return page;
   }
 }
