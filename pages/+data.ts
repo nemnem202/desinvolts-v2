@@ -31,12 +31,10 @@ export async function data(pageContext: PageContext): Promise<{
   screen: ScreenSizeType;
   stateKey: (typeof PageStateKey)[number];
   page: BasePageContent | undefined;
-  updatePath: string;
 }> {
   const screen = await getScreen(pageContext);
   let stateKey: (typeof PageStateKey)[number];
   let page: BasePageContent | undefined;
-  let updatePath: string;
 
   switch (pageContext.urlPathname) {
     case "/":
@@ -44,50 +42,43 @@ export async function data(pageContext: PageContext): Promise<{
       const homeContent = await PageController.getHome();
       if (homeContent) convertToDates(homeContent.posts);
       page = homeContent;
-      updatePath = "home";
+
       break;
     case "/connexion":
       stateKey = "connexion";
       page = await PageController.getConnexion();
-      updatePath = "connexion-page";
       break;
     case "/contact":
       stateKey = "contact";
       const contactContent = await PageController.getContact();
       if (contactContent) convertToDates(contactContent.files);
       page = contactContent;
-      updatePath = "contact";
       break;
     case "/dates":
       stateKey = "dates";
       const datesContent = await PageController.getDates();
       if (datesContent) convertToDates(datesContent.dates);
       page = datesContent;
-      updatePath = "dates";
       break;
     case "/groupe":
       // @ts-ignore
       stateKey = "groupe";
       page = await PageController.getGroupe();
-      updatePath = "group";
       break;
     case "/médias":
     case "/medias":
       stateKey = "medias";
       page = await PageController.getMedias();
-      updatePath = "medias";
       break;
     case "/nous-écouter":
     case "/son":
       stateKey = "son";
       page = await PageController.getNousEcouter();
-      updatePath = "son";
       break;
     default:
       stateKey = "default";
       page = await PageController.getDefault();
-      updatePath = "default";
   }
-  return { screen, stateKey, page, updatePath };
+  return { screen, stateKey, page };
 }
 export type Data = Awaited<ReturnType<typeof data>>;

@@ -5,32 +5,30 @@ import "../styleSheets/typography.css";
 
 import Header from "@/components/layout/header";
 import MouseProvider, { useMouse } from "@/providers/mouseProvider";
-import WindowsProvider from "@/providers/windowsProvider";
-import React, { Context, useMemo } from "react";
-import ScreenSizeProvider, { useSize } from "@/providers/screenSizeProvider";
+import React, { Context } from "react";
+import ScreenSizeProvider from "@/providers/screenSizeProvider";
 import StateProvider, { StateContent } from "@/providers/stateProvider";
 import { Toaster } from "@/components/ui/sonner";
-import PLAHECOLDERS from "@/config/placeholders";
 import { BasePageContent } from "@/types/page-contents";
 import { useData } from "vike-react/useData";
 import { Data } from "./+data";
 import { Spinner } from "@/components/ui/spinner";
 import { contexts } from "@/types/contexts";
-import { WindowProps } from "@/types/db";
 import DevToolsWindow from "@/components/windows/devToolsWindow";
 
 export default function Layout({ children }: { children: React.ReactNode }) {
-  const { stateKey, page, updatePath } = useData<Data>();
+  const { stateKey, page } = useData<Data>();
   const stateContext = contexts[stateKey];
 
   if (!page) return <Spinner />;
 
   return (
     <StateProvider<BasePageContent>
+      // @ts-ignore
       context={stateContext}
       initialState={page}
+      stateKey={stateKey}
       key={stateKey}
-      updatePath={updatePath}
     >
       <ScreenSizeProvider>
         <AdminProvider>

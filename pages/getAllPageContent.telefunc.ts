@@ -1,9 +1,9 @@
 import { logger } from "@/lib/logger";
 import PageController from "@/server/controller/get-page-controller";
-import { BasePageContent } from "@/types/page-contents";
+import { PageContentMap } from "@/types/contexts";
 
-export const getAllPageStates = async (): Promise<(BasePageContent | undefined)[]> => {
-  const data = await Promise.all([
+export const getAllPageStates = async (): Promise<PageContentMap> => {
+  const [home, connexion, contact, dates, def, groupe, medias, son] = await Promise.all([
     PageController.getHome(),
     PageController.getConnexion(),
     PageController.getContact(),
@@ -13,6 +13,17 @@ export const getAllPageStates = async (): Promise<(BasePageContent | undefined)[
     PageController.getMedias(),
     PageController.getNousEcouter(),
   ]);
+
   logger.info("All pages requested");
-  return data;
+
+  return {
+    home,
+    connexion,
+    contact,
+    dates,
+    default: def,
+    groupe,
+    medias,
+    son,
+  };
 };

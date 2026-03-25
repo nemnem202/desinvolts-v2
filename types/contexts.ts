@@ -1,5 +1,6 @@
 import { Context, createContext } from "react";
 import {
+  BasePageContent,
   ConnexionPageContent,
   ContactPageContent,
   DatesPageContent,
@@ -19,7 +20,33 @@ export const GroupePageContext = createContext<StateContent<GroupePageContent> |
 export const MediasPageContext = createContext<StateContent<MediasPageContent> | null>(null);
 export const SonPageContext = createContext<StateContent<NousEcouterPageContent> | null>(null);
 
-export const contexts: Record<string, Context<StateContent<any> | null>> = {
+export const PageStateKey = [
+  "home",
+  "connexion",
+  "contact",
+  "dates",
+  "groupe",
+  "medias",
+  "son",
+  "default",
+] as const;
+
+export type PageRegistry = {
+  home: HomePageContent;
+  connexion: ConnexionPageContent;
+  contact: ContactPageContent;
+  dates: DatesPageContent;
+  groupe: GroupePageContent;
+  medias: MediasPageContent;
+  son: NousEcouterPageContent;
+  default: BasePageContent;
+};
+
+export type PageKey = keyof PageRegistry;
+
+export const contexts: {
+  [K in PageKey]: Context<StateContent<PageRegistry[K]> | null>;
+} = {
   home: HomePageContext,
   connexion: ConnexionPageContext,
   contact: ContactPageContext,
@@ -30,26 +57,13 @@ export const contexts: Record<string, Context<StateContent<any> | null>> = {
   default: DefaultStateContext,
 };
 
-export const PageStateKey = [
-  "home",
-  "connexion",
-  "contact",
-  "dates",
-  "group",
-  "medias",
-  "son",
-  "default",
-] as const;
-
-type ExtractContent<C> = C extends Context<StateContent<infer T> | null> ? T : never;
-
 export type PageContentMap = {
-  [K in keyof typeof contexts]: ExtractContent<(typeof contexts)[K]>;
+  [K in PageKey]: PageRegistry[K] | undefined;
 };
 
 export type AbstractPageState = {
-  [K in keyof PageContentMap]: {
+  [K in PageKey]: {
     page: K;
-    content: PageContentMap[K];
+    content: PageRegistry[K];
   };
-}[keyof PageContentMap];
+}[PageKey];

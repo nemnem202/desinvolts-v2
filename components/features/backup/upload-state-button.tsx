@@ -1,8 +1,10 @@
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { logger } from "@/lib/logger";
+import { errorToast } from "@/lib/utils";
 import { setAllPages } from "@/pages/setAllPageContent.telefunc";
-import { ChangeEvent, useRef } from "react";
+import { PageContentMap } from "@/types/contexts";
+import { useRef } from "react";
 
 export default function UploadStateButton() {
   const fileInputRef = useRef<HTMLInputElement>(null);
@@ -17,10 +19,11 @@ export default function UploadStateButton() {
 
     try {
       const text = await file.text();
-      const json = JSON.parse(text);
-      console.info(json);
+      const json = JSON.parse(text) as PageContentMap;
+      logger.info("Upload: ", json);
 
       const res = await setAllPages(json);
+
       window.location.reload();
     } catch (err) {
       logger.error("Erreur lecture JSON :", err);

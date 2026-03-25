@@ -23,7 +23,7 @@ export default function DevToolsWindow({
   const [currentTheme, setCurrentTheme] = useState<boolean>(true);
   const [borders, setBorders] = useState(false);
   const { pageContext } = usePageState(context);
-  const { state, updatePath } = pageContext;
+  const { state, stateKey } = pageContext;
   const [loading, setLoading] = useState(false);
   useEffect(() => {
     setCurrentTheme(document.documentElement.classList.contains("dark"));
@@ -32,7 +32,7 @@ export default function DevToolsWindow({
   const syncState = async () => {
     setLoading(true);
     logger.info("State update request", state);
-    await handleStateChange(state, updatePath);
+    await handleStateChange(state, stateKey);
     successToast("Page synchronisée !");
     setLoading(false);
   };

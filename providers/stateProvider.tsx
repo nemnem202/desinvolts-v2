@@ -5,10 +5,11 @@ import ApiHandler from "../lib/apiHandler";
 import { handleStateChange } from "@/pages/handleStateChange.telefunc";
 import useStateProvider from "@/hooks/useStateProvider";
 import { logger } from "@/lib/logger";
+import { PageStateKey } from "@/types/contexts";
 
 export type StateContent<S> = {
   state: S;
-  updatePath: string;
+  stateKey: (typeof PageStateKey)[number];
   set: (newPresent: S) => void;
   undo: () => void;
   redo: () => void;
@@ -20,17 +21,15 @@ export interface StateProviderProps<S extends BasePageContent> {
   children: React.ReactNode;
   context: Context<StateContent<S> | null>;
   initialState: S;
-  updatePath: string;
+  stateKey: (typeof PageStateKey)[number];
 }
 
 export default function StateProvider<S extends BasePageContent>(props: StateProviderProps<S>) {
-  const { children, context } = props;
+  const { children, context, stateKey } = props;
   const { state, set, undo, redo, canUndo, canRedo } = useStateProvider(props);
 
   return (
-    <context.Provider
-      value={{ state, set, undo, redo, canUndo, canRedo, updatePath: props.updatePath }}
-    >
+    <context.Provider value={{ state, set, undo, redo, canUndo, canRedo, stateKey }}>
       {children}
     </context.Provider>
   );
