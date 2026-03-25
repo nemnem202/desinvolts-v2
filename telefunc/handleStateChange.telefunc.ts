@@ -10,7 +10,6 @@ export const onHandleStateChange = async (state: any, path: PageKey) => {
     const { isAuthenticated } = await authenticateUser();
 
     if (!isAuthenticated) throw new Error();
-
     switch (path) {
       case "home":
         return SetPageController.setHome(state);

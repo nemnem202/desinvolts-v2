@@ -11,6 +11,7 @@ import {
   MediasPageContent,
   NousEcouterPageContent,
 } from "@/types/page-contents";
+import { setBackupSeed } from "../config/seed";
 type ServiceResult = { success: true } | { success: false; error: unknown };
 
 export default class SetPageController {
@@ -58,6 +59,7 @@ export default class SetPageController {
   private static async execute(fn: () => Promise<void>): Promise<ServiceResult> {
     try {
       await fn();
+
       return { success: true };
     } catch (error) {
       logger.error("Service error", error);
