@@ -8,10 +8,10 @@ import UploadStateButton from "../features/backup/upload-state-button";
 import { Rnd } from "react-rnd";
 import { StateContent, usePageState } from "@/providers/stateProvider";
 import { logger } from "@/lib/logger";
-import { handleStateChange } from "@/telefunc/handleStateChange.telefunc";
 import { Button } from "../ui/button";
 import { Spinner } from "../ui/spinner";
-import { successToast } from "@/lib/utils";
+import { errorToast, successToast } from "@/lib/utils";
+import { onHandleStateChange } from "@/telefunc/handleStateChange.telefunc";
 
 export default function DevToolsWindow({
   context,
@@ -32,8 +32,12 @@ export default function DevToolsWindow({
   const syncState = async () => {
     setLoading(true);
     logger.info("State update request", state);
-    await handleStateChange(state, stateKey);
-    successToast("Page synchronisée !");
+    const res = await onHandleStateChange(state, stateKey);
+    if (!res) {
+      errorToast("Echec de la synchronisation.", "Êtes vous connecté ?");
+    } else {
+      successToast("Page synchronisée !");
+    }
     setLoading(false);
   };
 

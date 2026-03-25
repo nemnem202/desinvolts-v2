@@ -31,7 +31,7 @@ export default class ConnexionController extends Controller {
 
       const secret = new TextEncoder().encode(process.env.SECRET_KEY);
 
-      const jwt = await new SignJWT({ userId: "123" })
+      const jwt = await new SignJWT({ username: admin.username })
         .setProtectedHeader({ alg: "HS256" })
         .setIssuedAt()
         .setExpirationTime(remember ? "3w" : "1h")
