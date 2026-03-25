@@ -46,7 +46,7 @@ services:
     volumes:
       - ./:/app
       - /app/node_modules
-    command: ["sh", "-c", "pnpm prisma migrate dev --name auto && pnpm dev"]
+    command: ["sh", "-c", "pnpm prisma generate && pnpm prisma migrate dev --name auto && pnpm dev"]
     restart: unless-stopped
 
 volumes:

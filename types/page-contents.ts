@@ -1,10 +1,4 @@
-import {
-  Configuration,
-  Image,
-  NavLink,
-  TrombinoscopeItem,
-  Video,
-} from "@/prisma/generated/prisma/client";
+import { Configuration, Image, NavLink, Video } from "@/prisma/generated/prisma/client";
 import {
   Album,
   Carousel,
@@ -17,7 +11,6 @@ import {
   TrombinoscopeElement,
   WindowProps,
 } from "./db";
-import { FloatingWindow } from "@/prisma/generated/prisma/browser";
 
 type JsonObject = Record<string, unknown>;
 

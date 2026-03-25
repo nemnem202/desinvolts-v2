@@ -1,6 +1,0 @@
-[submodule "frontend"]
-	path = frontend
-	url = https://github.com/nemnem202/desinvolts-frontend.git
-[submodule "backend"]
-	path = backend
-	url = https://github.com/nemnem202/desinvolts-backend.git

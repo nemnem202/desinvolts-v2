@@ -148,7 +148,7 @@ dist
 .cdk.staging
 cdk.out
 
-/lib/generated/prisma
+prisma/generated/
 
 .env.dev
 .env.prod
