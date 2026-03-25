@@ -7,27 +7,26 @@ services:
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
       POSTGRES_DB: ${POSTGRES_DB}
     volumes:
-      - desinvolt-data-dev:/var/lib/postgresql/data
+      - desinvolt-data-prod:/var/lib/postgresql/data
     restart: unless-stopped
     healthcheck:
       test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER} -d ${POSTGRES_DB}"]
       interval: 5s
       retries: 5
 
-  frontend:
+  app:
     build:
-      context: ./frontend
+      context: .
       dockerfile: dockerfile.prod
-    image: desinvolt-frontend-prod
-    container_name: desinvolt-frontend-prod
+    image: desinvolt-app-prod
+    container_name: desinvolt-app-prod
     depends_on:
-      - backend
+      db:
+        condition: service_healthy
     environment:
-      PORT: 3000
-      BACKEND_PORT: ${BACKEND_PORT}
       COOKIE_SECRET: ${COOKIE_SECRET}
-      OS_AUTH_URL: https://api.pub1.infomaniak.cloud/identity
-      OS_CONTAINER_URL: https://s3.pub2.infomaniak.cloud/object/v1/AUTH_EXAMPLE
+      OS_AUTH_URL: ${OS_AUTH_URL}
+      OS_CONTAINER_URL: ${OS_CONTAINER_URL}
       OS_USERNAME: ${OS_USERNAME}
       OS_PASSWORD: ${OS_PASSWORD}
       OS_DOMAIN_NAME: ${OS_DOMAIN_NAME}
@@ -37,30 +36,14 @@ services:
       OS_REGION: ${OS_REGION}
       OS_SECRET: ${OS_SECRET}
       OS_IMAGES_CONTAINER_NAME: ${OS_IMAGES_CONTAINER_NAME}
-    ports:
-      - "${FRONTEND_PORT}:3000"
-    command: ["pnpm", "prod"]
-    restart: unless-stopped
-
-  backend:
-    restart: unless-stopped
-    build:
-      context: ./backend
-      dockerfile: dockerfile.prod
-    image: desinvolt-backend-prod
-    container_name: desinvolt-backend-prod
-    depends_on:
-      db:
-        condition: service_healthy
-    environment:
-      HOST: 0.0.0.0
       DATABASE_URL: ${DATABASE_URL}
-      PORT: 6000
       ADMIN_USERNAME: ${ADMIN_USERNAME}
       ADMIN_PASSWORD: ${ADMIN_PASSWORD}
       SECRET_KEY: ${TOKEN_SECRET_KEY}
-      COOKIE_SECRET: ${COOKIE_SECRET}
-    command: ["sh", "-c", "ls -R dist && pnpm prisma migrate deploy && node dist/index.js"]
+    ports:
+      - "${PORT}:3000"
+    command: ["pnpm", "prod"]
+    restart: unless-stopped
 
 volumes:
-  desinvolt-data-dev:
+  desinvolt-data-prod:

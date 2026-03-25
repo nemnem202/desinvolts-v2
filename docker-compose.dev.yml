@@ -26,8 +26,8 @@ services:
     environment:
       CHOKIDAR_USEPOLLING: "true"
       COOKIE_SECRET: ${COOKIE_SECRET}
-      OS_AUTH_URL: https://api.pub1.infomaniak.cloud/identity
-      OS_CONTAINER_URL: https://s3.pub2.infomaniak.cloud/object/v1/AUTH_EXAMPLE
+      OS_AUTH_URL: ${OS_AUTH_URL}
+      OS_CONTAINER_URL: ${OS_CONTAINER_URL}
       OS_USERNAME: ${OS_USERNAME}
       OS_PASSWORD: ${OS_PASSWORD}
       OS_DOMAIN_NAME: ${OS_DOMAIN_NAME}

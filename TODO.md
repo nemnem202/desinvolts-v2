@@ -3,7 +3,7 @@
 
 - mise en production
 
-- faire en sorte que le chargement des images puisse se faire via le cache pour optimiser car la par défaut ca fait appel à l'api
+<!-- - faire en sorte que le chargement des images puisse se faire via le cache pour optimiser car la par défaut ca fait appel à l'api -->
 
 - corriger les formulaires
 
@@ -15,3 +15,5 @@
 - ajouter un gestionnaire d'images
 - ajouter la possibilité de mettre des liens dans les textes
 - permettre de changer les couleurs de la charte graphique
+
+- améliorer le carousel d'images

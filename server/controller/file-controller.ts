@@ -20,6 +20,7 @@ export default class FileController extends Controller {
       const [fileName] = await fileManager.uploadImage(openStack.IMAGES_CONTAINER_NAME);
       return rep.send({ success: true, body: { fileName } });
     } catch (err) {
+      logger.error("Uploard image failed");
       console.trace(err);
       return FileController.sendError(rep as any, {
         message: "Réessayez plus tard.",
@@ -30,9 +31,8 @@ export default class FileController extends Controller {
 
   static async get(req: FastifyRequest<{ Params: { filePath: string } }>, rep: FastifyReply) {
     try {
-      console.log("GET IMAGE REQUESTED");
+      logger.info("GET IMAGE REQUESTED");
       const imageRequested = req.params.filePath;
-
       if (!imageRequested) throw new Error("Pas de nom d'image dans les paramètres.");
       const fileManager = new File(req);
       const image = await fileManager.getImage(openStack.IMAGES_CONTAINER_NAME);
@@ -40,6 +40,7 @@ export default class FileController extends Controller {
       logger.info("Cache-Control header:", rep.getHeader("Cache-Control"));
       return rep.type("image/webp").send(image);
     } catch (err) {
+      logger.error("GET IMAGE FAILED");
       console.trace(err);
       return FileController.sendError(rep as any, {
         message: "Réessayez plus tard.",

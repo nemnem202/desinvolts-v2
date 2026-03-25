@@ -1,4 +1,5 @@
 const IS_DEV = process.env.NODE_ENV === "development" || import.meta.env?.DEV;
+const IS_BROWSER = typeof window !== "undefined";
 
 type LogLevel = "info" | "success" | "warn" | "error";
 
@@ -19,17 +20,21 @@ const formatLog = (level: LogLevel, message: string) => {
   ];
 };
 
+const shouldLog = () => {
+  return IS_DEV || !IS_BROWSER;
+};
+
 export const logger = {
   info: (msg: string, ...args: any[]) => {
-    if (IS_DEV) console.log(...formatLog("info", msg), ...args);
+    if (shouldLog()) console.log(...formatLog("info", msg), ...args);
   },
   success: (msg: string, ...args: any[]) => {
-    if (IS_DEV) console.log(...formatLog("success", msg), ...args);
+    if (shouldLog()) console.log(...formatLog("success", msg), ...args);
   },
   warn: (msg: string, ...args: any[]) => {
-    console.warn(...formatLog("warn", msg), ...args);
+    if (shouldLog()) console.warn(...formatLog("warn", msg), ...args);
   },
   error: (msg: string, ...args: any[]) => {
-    console.error(...formatLog("error", msg), ...args);
+    if (shouldLog()) console.error(...formatLog("error", msg), ...args);
   },
 };
