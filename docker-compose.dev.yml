@@ -1,0 +1,53 @@
+services:
+  db:
+    image: postgres:16-alpine
+    container_name: desinvolt-db-dev
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: ${POSTGRES_DB}
+    volumes:
+      - desinvolt-data-dev:/var/lib/postgresql/data
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER} -d ${POSTGRES_DB}"]
+      interval: 5s
+      retries: 5
+
+  app:
+    build:
+      context: .
+      dockerfile: dockerfile.dev
+    image: desinvolt-app-dev
+    container_name: desinvolt-app-dev
+    depends_on:
+      db:
+        condition: service_healthy
+    environment:
+      CHOKIDAR_USEPOLLING: "true"
+      COOKIE_SECRET: ${COOKIE_SECRET}
+      OS_AUTH_URL: https://api.pub1.infomaniak.cloud/identity
+      OS_CONTAINER_URL: https://s3.pub2.infomaniak.cloud/object/v1/AUTH_EXAMPLE
+      OS_USERNAME: ${OS_USERNAME}
+      OS_PASSWORD: ${OS_PASSWORD}
+      OS_DOMAIN_NAME: ${OS_DOMAIN_NAME}
+      OS_DOMAIN_ID: ${OS_DOMAIN_ID}
+      OS_SCOPE_ID: ${OS_SCOPE_ID}
+      OS_TENANT_ID: ${OS_TENANT_ID}
+      OS_REGION: ${OS_REGION}
+      OS_SECRET: ${OS_SECRET}
+      OS_IMAGES_CONTAINER_NAME: ${OS_IMAGES_CONTAINER_NAME}
+      DATABASE_URL: ${DATABASE_URL}
+      ADMIN_USERNAME: ${ADMIN_USERNAME}
+      ADMIN_PASSWORD: ${ADMIN_PASSWORD}
+      SECRET_KEY: ${TOKEN_SECRET_KEY}
+    ports:
+      - "${PORT}:3000"
+    volumes:
+      - ./:/app
+      - /app/node_modules
+    command: ["sh", "-c", "pnpm prisma migrate dev --name auto && pnpm dev"]
+    restart: unless-stopped
+
+volumes:
+  desinvolt-data-dev:

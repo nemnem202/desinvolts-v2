@@ -1,0 +1,42 @@
+@startuml 
+title diagramme de cas d'utilisation
+
+left to right direction
+
+actor visiteur
+actor administrateur
+
+rectangle "Site web de Desinvolts" {
+    usecase UC3 as "S'identifier en tant qu'administrateur"
+    usecase UC10 as "sauvegarder la session sur une longue durée"
+    usecase UC2 as "modifier l'actualité du groupe"
+    usecase UC4 as "Voir les posts du groupe"
+    usecase UC5 as "Voir les prochaines dates du groupe"
+    usecase UC6 as "Voir les contacts du groupe"
+    usecase UC7 as "Modifier les posts du groupe"
+    usecase UC8 as "Modifier les prochaines dates du groupe"
+    usecase UC9 as "Modifier les contacts du groupe"
+    usecase UC11 as "Modifier les objets de présentation"
+    usecase UC12 as "Se déconnecter"
+    usecase UC13 as "Envoyer un message"
+}
+
+administrateur -|> visiteur 
+
+administrateur -- UC2
+UC2 .> UC3 : <<include>>
+UC3 <. UC10 : <<extends>>
+UC3 <-. UC12 : <<extends>>
+
+visiteur -- UC4 
+visiteur -- UC5 
+visiteur -- UC6
+
+
+UC2<-. UC7 :<<extends>>
+UC2<-. UC8 :<<extends>>
+UC2<-. UC9 :<<extends>>
+UC2<-. UC11 : <<extends>>
+UC6 <-. UC13 :<<extends>>
+
+@enduml
