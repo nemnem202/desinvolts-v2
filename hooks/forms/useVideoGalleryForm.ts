@@ -1,7 +1,7 @@
 import { VideoGalleryProps } from "@/components/features/media/videoGalleryForm";
 import { videoSchema } from "@/config/frontendFormSchemas";
 import { logger } from "@/lib/logger";
-import getVideoData from "@/pages/médias/getVideo.elefunc";
+import getVideoData from "@/telefunc/getVideo.telefunc";
 import { VideoData } from "@/types/db";
 import getRandomId from "@giapspzoo/get-random-id";
 import { zodResolver } from "@hookform/resolvers/zod";

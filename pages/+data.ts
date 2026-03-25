@@ -1,12 +1,13 @@
-import { PageContext } from "vike/types";
+import { PageContextServer } from "vike/types";
 import { UAParser } from "ua-parser-js";
 import { ScreenSizeType } from "@/providers/screenSizeProvider";
 import { BasePageContent } from "@/types/page-contents";
 import { logger } from "@/lib/logger";
 import { PageStateKey } from "@/types/contexts";
 import PageController from "@/server/controller/get-page-controller";
+import getCurrentUserFromCookie from "@/server/middlewares/getCurrentUser";
 
-async function getScreen(pageContext: PageContext): Promise<ScreenSizeType> {
+async function getScreen(pageContext: PageContextServer): Promise<ScreenSizeType> {
   const ua = pageContext.headers ? (pageContext.headers["user-agent"] ?? "") : "";
   logger.info("User agent: ", ua);
   const parser = new UAParser(ua);
@@ -27,15 +28,30 @@ function convertToDates<T extends { date: Date }>(elements: T[]) {
   });
 }
 
-export async function data(pageContext: PageContext): Promise<{
+async function getCurrentUser(pageContext: PageContextServer): Promise<{
+  username: string;
+} | null> {
+  const cookie = pageContext.headers ? pageContext.headers.cookie : null;
+  let currentUser: { username: string } | null = null;
+  if (cookie) {
+    logger.info("Page context cookie: ", cookie.slice(0, 15) + "...");
+    currentUser = await getCurrentUserFromCookie(cookie);
+  }
+  return currentUser;
+}
+
+export async function data(pageContext: PageContextServer): Promise<{
   screen: ScreenSizeType;
   stateKey: (typeof PageStateKey)[number];
   page: BasePageContent | undefined;
+  currentUser: {
+    username: string;
+  } | null;
 }> {
   const screen = await getScreen(pageContext);
   let stateKey: (typeof PageStateKey)[number];
   let page: BasePageContent | undefined;
-
+  const currentUser = await getCurrentUser(pageContext);
   switch (pageContext.urlPathname) {
     case "/":
       stateKey = "home";
@@ -79,6 +95,6 @@ export async function data(pageContext: PageContext): Promise<{
       stateKey = "default";
       page = await PageController.getDefault();
   }
-  return { screen, stateKey, page };
+  return { screen, stateKey, page, currentUser };
 }
 export type Data = Awaited<ReturnType<typeof data>>;

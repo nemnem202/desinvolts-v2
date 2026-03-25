@@ -6,9 +6,9 @@ import TextareaAutosize from "react-textarea-autosize";
 
 export default function EditableTextarea(props: EditableTextAreaProps) {
   const { className = "", content, setContent, as: Tag = "span" } = props;
-  const { isAdmin, isHyperlink, convertToString, parsed } = useEditableTextArea(props);
+  const { isAdminDisplay, isHyperlink, convertToString, parsed } = useEditableTextArea(props);
 
-  if (isAdmin) {
+  if (isAdminDisplay) {
     return (
       <TextareaAutosize
         value={convertToString(parsed)}

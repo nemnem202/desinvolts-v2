@@ -13,7 +13,7 @@ export default function Page() {
   const { pageContext, update } = usePageState(SonPageContext);
   const { state } = pageContext;
   const [dialogOpen, setOpen] = useState<boolean>(false);
-  const { isAdmin } = useAdmin();
+  const { isAdminDisplay } = useAdmin();
   return (
     <>
       <ClassicPageLayout>
@@ -33,9 +33,9 @@ export default function Page() {
           />
         ))}
 
-        {isAdmin && <ButtonPlus onClick={() => setOpen(true)} />}
+        {isAdminDisplay && <ButtonPlus onClick={() => setOpen(true)} />}
       </ClassicPageLayout>
-      {isAdmin && (
+      {isAdminDisplay && (
         <Dialog open={dialogOpen} onOpenChange={setOpen}>
           <AlbumForm setOpen={setOpen} />
         </Dialog>

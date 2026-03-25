@@ -18,12 +18,12 @@ export interface ParagraphGroupProps {
 
 export default function ParagraphGroup(props: ParagraphGroupProps) {
   const { className = "", classNameForEachParagraph = "", content, as: Tag = "span" } = props;
-  const { isAdmin } = useAdmin();
+  const { isAdminDisplay } = useAdmin();
 
   const { addParagraph, changeParagraph, handleReorder, removeParagraph } =
     useParagraphGroup(props);
 
-  if (isAdmin) {
+  if (isAdminDisplay) {
     return (
       <div className={`flex flex-col gap-2 w-full ${className}`}>
         <ReorderList
@@ -35,7 +35,7 @@ export default function ParagraphGroup(props: ParagraphGroupProps) {
             .sort((a, b) => a.position - b.position)
             .map((content) => (
               <div
-                className={`relative ${isAdmin && "pl-5"}`}
+                className={`relative ${isAdminDisplay && "pl-5"}`}
                 key={content.position}
                 id={`${content.paragraph.id}`}
               >
@@ -45,7 +45,7 @@ export default function ParagraphGroup(props: ParagraphGroupProps) {
                   content={content.paragraph}
                   setContent={(newParagraph) => changeParagraph(newParagraph)}
                 />
-                {isAdmin && (
+                {isAdminDisplay && (
                   <div className="absolute left-0  h-full flex items-center justify-center inset-y-0">
                     <ButtonMinus onClick={() => removeParagraph(content.position)} />
                   </div>

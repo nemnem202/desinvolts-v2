@@ -2,7 +2,7 @@ import { logger } from "@/lib/logger";
 import PageController from "@/server/controller/get-page-controller";
 import { PageContentMap } from "@/types/contexts";
 
-export const getAllPageStates = async (): Promise<PageContentMap> => {
+export const onGetAllPageStates = async (): Promise<PageContentMap> => {
   const [home, connexion, contact, dates, def, groupe, medias, son] = await Promise.all([
     PageController.getHome(),
     PageController.getConnexion(),

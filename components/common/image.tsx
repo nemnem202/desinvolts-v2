@@ -19,7 +19,7 @@ export interface ImageProps {
 
 export default function Image(props: ImageProps) {
   const { imageProps, onChange, onRemove, changeButtonSideY = "top" } = props;
-  const { isAdmin } = useAdmin();
+  const { isAdminDisplay } = useAdmin();
   const [loadingState, setLoadingState] = useState<boolean>(true);
   const imgRef = useRef<HTMLImageElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
@@ -40,7 +40,7 @@ export default function Image(props: ImageProps) {
     setLoadingState(true);
   }, [imageProps.source]);
 
-  if (isAdmin) {
+  if (isAdminDisplay) {
     return (
       <div className="w-full h-full relative" ref={containerRef}>
         <div

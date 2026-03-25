@@ -16,14 +16,14 @@ export default function DatePicker({
   as?: React.ElementType;
   onValueChange: (date: Date) => void;
 }) {
-  const { isAdmin } = useAdmin();
+  const { isAdminDisplay } = useAdmin();
 
   const handleDayChange = (date: Date | undefined) => {
     if (!date) return;
     onValueChange(date);
   };
 
-  if (isAdmin) {
+  if (isAdminDisplay) {
     return (
       <ClientOnly>
         <Dialog>

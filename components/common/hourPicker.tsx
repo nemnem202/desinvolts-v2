@@ -16,11 +16,11 @@ export default function HourPicker({
   as?: React.ElementType;
   onValueChange: (date: Date) => void;
 }) {
-  const { isAdmin } = useAdmin();
+  const { isAdminDisplay } = useAdmin();
 
   const { updateHour, updateMinutes } = useTime(date, onValueChange);
 
-  if (isAdmin) {
+  if (isAdminDisplay) {
     return (
       <ClientOnly>
         <Dialog>

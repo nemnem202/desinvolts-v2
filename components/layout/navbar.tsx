@@ -18,7 +18,7 @@ export default function Navbar({
   links: NavlinkDb[];
   setLinks: (newLinks: NavlinkDb[]) => void;
 }) {
-  const { isAdmin } = useAdmin();
+  const { isAdminDisplay } = useAdmin();
   const [anotherLinkIsHover, setAnotherLinkIsHover] = useState<boolean>(false);
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
@@ -40,7 +40,7 @@ export default function Navbar({
   };
   return (
     <nav className="flex items-center">
-      {isAdmin && (
+      {isAdminDisplay && (
         <Dialog>
           <DialogTrigger asChild>
             <ButtonPlus onClick={() => {}} size="1rem" />
@@ -111,7 +111,7 @@ export interface NavlinkProps {
 
 function NavLink(props: NavlinkProps) {
   const { link, anotherLinkIsHover, setHover, className = "", onClick = () => {} } = props;
-  const { isAdmin } = useAdmin();
+  const { isAdminDisplay } = useAdmin();
   const pageContext = usePageContext();
   const isSelected = pageContext.urlPathname === "/" + link.link;
   const { reorderItem, removeItem } = useReorderLink(props);
@@ -122,7 +122,7 @@ function NavLink(props: NavlinkProps) {
       onMouseEnter={() => setHover(!isSelected)}
       onMouseLeave={() => setHover(false)}
     >
-      {isAdmin && (
+      {isAdminDisplay && (
         <button
           type="button"
           className="cursor-pointer hover:bg-muted rounded-full h-min aspect-square"
@@ -138,7 +138,7 @@ function NavLink(props: NavlinkProps) {
       >
         {link.text.charAt(0).toUpperCase() + link.text.slice(1)}
       </a>
-      {isAdmin && (
+      {isAdminDisplay && (
         <button
           type="button"
           className="cursor-pointer hover:bg-muted rounded-full h-min aspect-square"
@@ -147,7 +147,7 @@ function NavLink(props: NavlinkProps) {
           <ChevronRight />
         </button>
       )}
-      {isAdmin && (
+      {isAdminDisplay && (
         <div className="absolute w-full bottom-[-2rem] h-[2rem] flex justify-center px-1">
           <button
             type="button"

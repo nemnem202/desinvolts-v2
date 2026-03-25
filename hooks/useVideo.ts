@@ -7,7 +7,7 @@ export default function useVideo(props: VideoProps) {
     url = "https://www.youtube.com/watch?v=xvFZjo5PgG0&list=RDxvFZjo5PgG0&start_radio=1",
     onClose = () => {},
   } = props;
-  const { isAdmin } = useAdmin();
+  const { isAdminDisplay } = useAdmin();
 
   const getVideoID = (url: string): string | null => {
     const regex = /(?:youtube\.com\/.*v=|youtu\.be\/)([^&?]+)/;
@@ -30,5 +30,5 @@ export default function useVideo(props: VideoProps) {
     }
   }, [videoId]);
 
-  return { isAdmin, loadingState, getVideoThumbnail, videoId, setLoadingState, imgRef };
+  return { isAdminDisplay, loadingState, getVideoThumbnail, videoId, setLoadingState, imgRef };
 }

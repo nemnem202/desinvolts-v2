@@ -24,7 +24,7 @@ import { Image } from "@/prisma/generated/prisma/browser";
 export default function PicturesGallery() {
   const { pageContext, update } = usePageState(MediasPageContext);
   const { state } = pageContext;
-  const { isAdmin } = useAdmin();
+  const { isAdminDisplay } = useAdmin();
   const [showDots, setShowDots] = useState(true);
   const [videoDialogOpen, setVideoDialogOpen] = useState(false);
   const addImageTriggerRef = useRef<() => void>(() => {});
@@ -39,7 +39,7 @@ export default function PicturesGallery() {
       <ContextMenu>
         <ContextMenuTrigger className="flex w-full">
           <PicturesContainer showDots={showDots}>
-            {isAdmin && (
+            {isAdminDisplay && (
               <>
                 <VideoWindowForm setOpen={setVideoDialogOpen} isOpen={videoDialogOpen} />
                 <AddImageDialog triggerRef={addImageTriggerRef} />
@@ -47,7 +47,7 @@ export default function PicturesGallery() {
             )}
           </PicturesContainer>
         </ContextMenuTrigger>
-        {isAdmin && (
+        {isAdminDisplay && (
           <ContextMenuContent className="w-52 overflow-hidden">
             <ContextMenuItem inset onClick={() => setShowDots(!showDots)}>
               {showDots ? "Masquer le cadrillage" : "Afficher le cadrillage"}

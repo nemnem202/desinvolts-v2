@@ -20,7 +20,7 @@ import { ConnexionPageContent } from "@/types/page-contents";
 import { useConnectionForm } from "@/hooks/forms/useConnexionForm";
 
 export default function Page() {
-  const { isAdmin } = useAdmin();
+  const { isAdminDisplay } = useAdmin();
   const { pageContext, update } = usePageState<ConnexionPageContent>(ConnexionPageContext);
   const { state } = pageContext;
   return (

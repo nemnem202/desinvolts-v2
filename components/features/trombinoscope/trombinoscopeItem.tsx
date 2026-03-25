@@ -15,7 +15,7 @@ export interface TrombinoscopeItemProps {
 }
 
 export default function TrombinoscopeItem(props: TrombinoscopeItemProps) {
-  const { isAdmin, handleIsHovered, reorderItem, hovered, element, setElement } =
+  const { isAdminDisplay, handleIsHovered, reorderItem, hovered, element, setElement } =
     useTrombinoscopeItem(props);
 
   return (
@@ -26,7 +26,7 @@ export default function TrombinoscopeItem(props: TrombinoscopeItemProps) {
       onTouchStart={() => handleIsHovered(true)}
       onTouchEnd={() => handleIsHovered(false)}
     >
-      {isAdmin && (
+      {isAdminDisplay && (
         <div className="absolute top-0 absolute top-0 flex w-full p-2 z-5 justify-between items-center">
           <button
             className="cursor-pointer hover:bg-muted rounded-full h-min aspect-square"
@@ -101,7 +101,7 @@ export default function TrombinoscopeItem(props: TrombinoscopeItemProps) {
             as={"p"}
           ></ParagraphGroup>
         </div>
-        {isAdmin && (
+        {isAdminDisplay && (
           <div className="h-fit w-full flex justify-center p-2">
             <AddImageButton onImage={(newImage) => setElement({ ...element, image: newImage })}>
               <ArrowDownUp className="hover:stroke-primary" />

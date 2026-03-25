@@ -14,7 +14,7 @@ export default function Video(props: VideoProps) {
     onClose = () => {},
   } = props;
 
-  const { getVideoThumbnail, isAdmin, loadingState, videoId, setLoadingState, imgRef } =
+  const { getVideoThumbnail, isAdminDisplay, loadingState, videoId, setLoadingState, imgRef } =
     useVideo(props);
 
   if (videoId) {
@@ -34,7 +34,7 @@ export default function Video(props: VideoProps) {
               onLoad={() => setLoadingState(false)}
             />
           </div>
-          {isAdmin && (
+          {isAdminDisplay && (
             <div className="absolute right-2 top-2 flex gap-2 z-50">
               <button
                 type="button"

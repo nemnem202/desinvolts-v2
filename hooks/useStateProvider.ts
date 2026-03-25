@@ -1,12 +1,11 @@
 import { logger } from "@/lib/logger";
-import { handleStateChange } from "@/pages/handleStateChange.telefunc";
 import { StateProviderProps } from "@/providers/stateProvider";
 import { BasePageContent } from "@/types/page-contents";
 import { useHistoryState } from "@uidotdev/usehooks";
 import { useCallback, useEffect } from "react";
 
 export default function useStateProvider<S extends BasePageContent>(props: StateProviderProps<S>) {
-  const { initialState, updatePath } = props;
+  const { initialState, stateKey } = props;
   const { state, set, undo, redo, canUndo, canRedo } = useHistoryState<S>(initialState);
 
   const handleKeyPress = useCallback(
@@ -39,5 +38,5 @@ export default function useStateProvider<S extends BasePageContent>(props: State
     logger.info("Init state: ", props.initialState);
   }, []);
 
-  return { state, set, undo, redo, canUndo, canRedo, updatePath };
+  return { state, set, undo, redo, canUndo, canRedo, stateKey };
 }

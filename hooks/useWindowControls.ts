@@ -10,7 +10,7 @@ import { useEffect, useMemo, useRef, useState } from "react";
 export default function useWindowControls(props: WindowProps) {
   const { x, y, width, height, id } = props;
 
-  const { isAdmin } = useAdmin();
+  const { isAdminDisplay } = useAdmin();
 
   const { isDown, position } = useMouse();
   const { windows, setWindows, bringToFront } = useWindows();
@@ -79,7 +79,7 @@ export default function useWindowControls(props: WindowProps) {
   // };
 
   const handleMouseDownForDrag = (e: React.MouseEvent<HTMLDivElement>) => {
-    if (!isAdmin) return;
+    if (!isAdminDisplay) return;
     const interactiveTags = ["BUTTON", "INPUT", "SELECT", "TEXTAREA", "A"];
     const target = e.target as HTMLElement;
     if (interactiveTags.includes(target.tagName)) return;

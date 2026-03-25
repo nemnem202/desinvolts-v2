@@ -58,20 +58,17 @@ export default function AddImageButton({
         onChange={handleImageLoad}
         accept="image/*"
       />
-      {createPortal(
-        <Dialog open={dialogOpen} onOpenChange={setDialogOpen}>
-          {imageFile && (
-            <ImageForm
-              image={imageFile}
-              onImage={onImage}
-              loadImage={loadImage}
-              setImage={setImage}
-              setDialogOpen={setDialogOpen}
-            />
-          )}
-        </Dialog>,
-        document.body,
-      )}
+      <Dialog open={dialogOpen} onOpenChange={setDialogOpen}>
+        {imageFile && (
+          <ImageForm
+            image={imageFile}
+            onImage={onImage}
+            loadImage={loadImage}
+            setImage={setImage}
+            setDialogOpen={setDialogOpen}
+          />
+        )}
+      </Dialog>
     </>
   );
 }

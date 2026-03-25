@@ -2,7 +2,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { logger } from "@/lib/logger";
 import { errorToast } from "@/lib/utils";
-import { setAllPages } from "@/pages/setAllPageContent.telefunc";
+import { setAllPages } from "@/telefunc/setAllPageContent.telefunc";
 import { PageContentMap } from "@/types/contexts";
 import { useRef } from "react";
 

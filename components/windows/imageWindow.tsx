@@ -8,7 +8,7 @@ import { WindowProps } from "@/types/db";
 import { Image as ImageDb } from "@/prisma/generated/prisma/browser";
 
 export default function ImageWindow({ image, window }: { image: ImageDb; window: WindowProps }) {
-  const { isAdmin } = useAdmin();
+  const { isAdminDisplay } = useAdmin();
   const { removeWindow, setWindows, windows } = useWindows();
 
   return (

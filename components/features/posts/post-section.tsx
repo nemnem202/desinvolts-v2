@@ -12,7 +12,7 @@ import Post from "./post";
 export default function PostsSection() {
   const { pageContext, update } = usePageState(HomePageContext);
   const [dialogOpen, setDialogOpen] = useState<boolean>(false);
-  const { isAdmin } = useAdmin();
+  const { isAdminDisplay } = useAdmin();
 
   const handlePostsChange = (newPost: PostData) => {
     const newPosts = pageContext.state.posts.map((post) => {
@@ -42,7 +42,7 @@ export default function PostsSection() {
                 onChange={(e) => handlePostsChange(e)}
                 borderBottom={index !== pageContext.state.posts.length - 1}
               />
-              {isAdmin && (
+              {isAdminDisplay && (
                 <div className="absolute flex items-center -right-8 top-4">
                   <ButtonMinus
                     onClick={() =>
@@ -53,7 +53,7 @@ export default function PostsSection() {
               )}
             </div>
           ))}
-        {isAdmin && (
+        {isAdminDisplay && (
           <div className="mx-auto w-min">
             <ButtonPlus onClick={() => setDialogOpen(true)} />
           </div>

@@ -1,8 +1,13 @@
 import { enhance, type UniversalHandler } from "@universal-middleware/core";
 import { telefunc } from "telefunc";
+import getCurrentUserFromCookie from "./middlewares/getCurrentUser";
 
 export const telefuncHandler: UniversalHandler = enhance(
   async (request, context, runtime) => {
+    const cookieHeader = request.headers.get("cookie") ?? "";
+
+    const currentUser = await getCurrentUserFromCookie(cookieHeader);
+
     const httpResponse = await telefunc({
       url: new URL(request.url.toString()).pathname,
       method: request.method,
@@ -10,6 +15,7 @@ export const telefuncHandler: UniversalHandler = enhance(
       context: {
         ...context,
         ...runtime,
+        currentUser,
       },
     });
     const { body, statusCode, contentType } = httpResponse;

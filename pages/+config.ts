@@ -39,5 +39,5 @@ export default {
         </filter>
       </svg>`,
 
-  passToClient: ["isAdmin", "stateKey", "stateInitProps"],
+  passToClient: ["currentUser", "stateKey", "stateInitProps"],
 } satisfies Config;

@@ -19,7 +19,7 @@ export default function PicturesContainer({
 }) {
   const { pageContext, update } = usePageState<MediasPageContent>(MediasPageContext);
   const { state } = pageContext;
-  const { isAdmin } = useAdmin();
+  const { isAdminDisplay } = useAdmin();
   const size = useSize();
 
   const updateChanges = (e: FocusEvent<HTMLInputElement, Element>) => {
@@ -76,7 +76,7 @@ export default function PicturesContainer({
         >
           {children}
         </WindowsProvider>
-        {isAdmin && (
+        {isAdminDisplay && (
           <div className="absolute right-[-5rem]">
             <Label htmlFor="size" className="subtitle">
               Hauteur
