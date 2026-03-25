@@ -8,7 +8,7 @@ import UploadStateButton from "../features/backup/upload-state-button";
 import { Rnd } from "react-rnd";
 import { StateContent, usePageState } from "@/providers/stateProvider";
 import { logger } from "@/lib/logger";
-import { handleStateChange } from "@/pages/handleStateChange.telefunc";
+import { handleStateChange } from "@/telefunc/handleStateChange.telefunc";
 import { Button } from "../ui/button";
 import { Spinner } from "../ui/spinner";
 import { successToast } from "@/lib/utils";

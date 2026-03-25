@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { logger } from "@/lib/logger";
-import { getAllPageStates } from "@/pages/getAllPageContent.telefunc";
+import { getAllPageStates } from "@/telefunc/getAllPageContent.telefunc";
 
 export default function DonwloadStateButton() {
   const handleDownload = async () => {

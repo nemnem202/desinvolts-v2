@@ -2,7 +2,7 @@ import { Context, useCallback, useContext, useEffect, useMemo, useState } from "
 import { useHistoryState } from "@uidotdev/usehooks";
 import { BasePageContent } from "@/types/page-contents";
 import ApiHandler from "../lib/apiHandler";
-import { handleStateChange } from "@/pages/handleStateChange.telefunc";
+import { handleStateChange } from "@/telefunc/handleStateChange.telefunc";
 import useStateProvider from "@/hooks/useStateProvider";
 import { logger } from "@/lib/logger";
 import { PageStateKey } from "@/types/contexts";

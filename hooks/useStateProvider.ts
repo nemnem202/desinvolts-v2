@@ -1,5 +1,5 @@
 import { logger } from "@/lib/logger";
-import { handleStateChange } from "@/pages/handleStateChange.telefunc";
+import { handleStateChange } from "@/telefunc/handleStateChange.telefunc";
 import { StateProviderProps } from "@/providers/stateProvider";
 import { BasePageContent } from "@/types/page-contents";
 import { useHistoryState } from "@uidotdev/usehooks";
