@@ -11,5 +11,5 @@ free-space:
 	docker image prune -a -f
 	docker container prune -f
 update-prod:
-	docker build -t ghcr.io/nemnem202/desinvolt:prod -f frontend/dockerfile.prod .
+	docker build -t ghcr.io/nemnem202/desinvolt:prod -f dockerfile.prod .
 	docker push ghcr.io/nemnem202/desinvolt:prod
