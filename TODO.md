@@ -1,8 +1,4 @@
-- protéger les routes de mise a jour des pages
-- rendre la connexion effective
-
 - pipeline- ci/cd
-
 - corriger les formulaires
 
 - ajouter la possibilité d'envoyer un email
@@ -16,4 +12,4 @@
 
 - améliorer le carousel d'images (et empecher que les images se repetent en admin)
 
-- ameliorer les fenetrs video
+- corriger les fenetrs video
