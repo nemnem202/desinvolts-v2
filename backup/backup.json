@@ -1,0 +1,1465 @@
+{
+  "home": {
+    "navlinks": [
+      {
+        "id": 187,
+        "text": "accueil",
+        "link": "",
+        "position": 1
+      },
+      {
+        "id": 188,
+        "text": "contact",
+        "link": "contact",
+        "position": 3
+      },
+      {
+        "id": 189,
+        "text": "dates",
+        "link": "dates",
+        "position": 4
+      },
+      {
+        "id": 190,
+        "text": "groupe",
+        "link": "groupe",
+        "position": 5
+      },
+      {
+        "id": 191,
+        "text": "médias",
+        "link": "médias",
+        "position": 6
+      },
+      {
+        "id": 192,
+        "text": "nous-écouter",
+        "link": "nous-écouter",
+        "position": 7
+      }
+    ],
+    "config": {
+      "id": 1,
+      "showActualityPanel": true,
+      "mediaImagesContainerHeight": 50
+    },
+    "id": 1,
+    "carouselId": 33,
+    "actualityTitleId": 752,
+    "paragraphId": 1031,
+    "bannerId": 36,
+    "subtitleId": 753,
+    "titleId": 754,
+    "presentationImageId": 35,
+    "title": {
+      "id": 754,
+      "content": "Desinvolts",
+      "hyperlinks": []
+    },
+    "subtitle": {
+      "id": 753,
+      "content": "Groupe de rock français",
+      "hyperlinks": []
+    },
+    "actualityTitle": {
+      "id": 752,
+      "content": "Actualité",
+      "hyperlinks": []
+    },
+    "paragraph": {
+      "id": 1031,
+      "content": "Desinvolts est un cocktail de rock, de dynamisme et de joie. Plus qu'un groupe, c'est une bande d'amis qui se donnent sur scène et qui impliquent le public.",
+      "hyperlinks": []
+    },
+    "banner": {
+      "id": 36,
+      "alt": "La photo du groupe Désinvolts",
+      "source": "kCfbrcycrgjBLaYpK1JF.webp"
+    },
+    "pres_image": {
+      "id": 35,
+      "alt": "La photo du groupe Désinvolts",
+      "source": "jMNy7HgJP2QqQPc38Gf0.webp"
+    },
+    "posts": [
+      {
+        "id": 33,
+        "date": "2026-03-24T14:06:13.671Z",
+        "titleId": 755,
+        "title": {
+          "id": 755,
+          "content": "Sortie de l'album Volt Face"
+        },
+        "images": [
+          {
+            "imageId": 44,
+            "postId": 33,
+            "position": 0,
+            "image": {
+              "id": 44,
+              "alt": "La photo du groupe Désinvolts",
+              "source": "DN5bCnxQVsrwir74D4wZ.webp"
+            }
+          }
+        ],
+        "videos": [],
+        "paragraphs": [
+          {
+            "paragraphId": 1033,
+            "position": 0,
+            "eventId": null,
+            "albumId": null,
+            "postId": 33,
+            "trombinoscopeItemId": null,
+            "groupPageFirstId": null,
+            "groupPageSecondId": null,
+            "dateId": null,
+            "paragraph": {
+              "id": 1033,
+              "content": "Yo ! ",
+              "hyperlinks": []
+            }
+          },
+          {
+            "paragraphId": 1035,
+            "position": 1,
+            "eventId": null,
+            "albumId": null,
+            "postId": 33,
+            "trombinoscopeItemId": null,
+            "groupPageFirstId": null,
+            "groupPageSecondId": null,
+            "dateId": null,
+            "paragraph": {
+              "id": 1035,
+              "content": "Avec l'équipe, on est super heureux de vous annoncer la sortie de notre nouvel album Volt Face, disponible sur toutes les plateformes. ",
+              "hyperlinks": []
+            }
+          },
+          {
+            "paragraphId": 1037,
+            "position": 2,
+            "eventId": null,
+            "albumId": null,
+            "postId": 33,
+            "trombinoscopeItemId": null,
+            "groupPageFirstId": null,
+            "groupPageSecondId": null,
+            "dateId": null,
+            "paragraph": {
+              "id": 1037,
+              "content": "",
+              "hyperlinks": []
+            }
+          },
+          {
+            "paragraphId": 1039,
+            "position": 3,
+            "eventId": null,
+            "albumId": null,
+            "postId": 33,
+            "trombinoscopeItemId": null,
+            "groupPageFirstId": null,
+            "groupPageSecondId": null,
+            "dateId": null,
+            "paragraph": {
+              "id": 1039,
+              "content": "On organise une release party samedi à 20h à l'Ampérage. ",
+              "hyperlinks": []
+            }
+          },
+          {
+            "paragraphId": 1040,
+            "position": 4,
+            "eventId": null,
+            "albumId": null,
+            "postId": 33,
+            "trombinoscopeItemId": null,
+            "groupPageFirstId": null,
+            "groupPageSecondId": null,
+            "dateId": null,
+            "paragraph": {
+              "id": 1040,
+              "content": "",
+              "hyperlinks": []
+            }
+          },
+          {
+            "paragraphId": 1044,
+            "position": 5,
+            "eventId": null,
+            "albumId": null,
+            "postId": 33,
+            "trombinoscopeItemId": null,
+            "groupPageFirstId": null,
+            "groupPageSecondId": null,
+            "dateId": null,
+            "paragraph": {
+              "id": 1044,
+              "content": "Soyez nombreux, chousssss !",
+              "hyperlinks": []
+            }
+          }
+        ]
+      }
+    ],
+    "carousel": {
+      "id": 33,
+      "images": [
+        {
+          "carouselId": 33,
+          "imageId": 26,
+          "position": 0,
+          "image": {
+            "id": 26,
+            "alt": "La photo du groupe Désinvolts",
+            "source": "cxqVCoqIzswN8e8vEJLm.webp"
+          }
+        },
+        {
+          "carouselId": 33,
+          "imageId": 28,
+          "position": 1,
+          "image": {
+            "id": 28,
+            "alt": "La photo du groupe Désinvolts",
+            "source": "4YZaI9y4HR7l7lx1iVYI.webp"
+          }
+        },
+        {
+          "carouselId": 33,
+          "imageId": 30,
+          "position": 2,
+          "image": {
+            "id": 30,
+            "alt": "La photo du groupe Désinvolts",
+            "source": "MXpdDqF3TB30TLy03RF4.webp"
+          }
+        },
+        {
+          "carouselId": 33,
+          "imageId": 32,
+          "position": 3,
+          "image": {
+            "id": 32,
+            "alt": "La photo du groupe Désinvolts",
+            "source": "unrRl3oD9VsQ9jjWTVyy.webp"
+          }
+        },
+        {
+          "carouselId": 33,
+          "imageId": 34,
+          "position": 4,
+          "image": {
+            "id": 34,
+            "alt": "La photo du groupe Désinvolts",
+            "source": "E0E6kNcrj9JXKOwIKpOP.webp"
+          }
+        }
+      ],
+      "videos": []
+    },
+    "presentationParagraph": {
+      "id": 1031,
+      "content": "Desinvolts est un cocktail de rock, de dynamisme et de joie. Plus qu'un groupe, c'est une bande d'amis qui se donnent sur scène et qui impliquent le public.",
+      "hyperlinks": []
+    },
+    "presentationImage": {
+      "id": 35,
+      "alt": "La photo du groupe Désinvolts",
+      "source": "jMNy7HgJP2QqQPc38Gf0.webp"
+    }
+  },
+  "connexion": {
+    "config": {
+      "id": 1,
+      "showActualityPanel": true,
+      "mediaImagesContainerHeight": 50
+    },
+    "navlinks": [
+      {
+        "id": 187,
+        "text": "accueil",
+        "link": "",
+        "position": 1
+      },
+      {
+        "id": 188,
+        "text": "contact",
+        "link": "contact",
+        "position": 3
+      },
+      {
+        "id": 189,
+        "text": "dates",
+        "link": "dates",
+        "position": 4
+      },
+      {
+        "id": 190,
+        "text": "groupe",
+        "link": "groupe",
+        "position": 5
+      },
+      {
+        "id": 191,
+        "text": "médias",
+        "link": "médias",
+        "position": 6
+      },
+      {
+        "id": 192,
+        "text": "nous-écouter",
+        "link": "nous-écouter",
+        "position": 7
+      }
+    ],
+    "id": 1,
+    "titleId": 751,
+    "title": {
+      "id": 751,
+      "content": "Connexion",
+      "hyperlinks": []
+    }
+  },
+  "contact": {
+    "config": {
+      "id": 1,
+      "showActualityPanel": true,
+      "mediaImagesContainerHeight": 50
+    },
+    "navlinks": [
+      {
+        "id": 187,
+        "text": "accueil",
+        "link": "",
+        "position": 1
+      },
+      {
+        "id": 188,
+        "text": "contact",
+        "link": "contact",
+        "position": 3
+      },
+      {
+        "id": 189,
+        "text": "dates",
+        "link": "dates",
+        "position": 4
+      },
+      {
+        "id": 190,
+        "text": "groupe",
+        "link": "groupe",
+        "position": 5
+      },
+      {
+        "id": 191,
+        "text": "médias",
+        "link": "médias",
+        "position": 6
+      },
+      {
+        "id": 192,
+        "text": "nous-écouter",
+        "link": "nous-écouter",
+        "position": 7
+      }
+    ],
+    "id": 1,
+    "subtitleId": 759,
+    "paragraphId": 1032,
+    "titleId": 764,
+    "paragraph": {
+      "id": 1032,
+      "content": "Vous pouvez directement nous joindre par mail à groupe.desinvolts@gmail.com ou alors remplir ce formulaire qui nous sera directement adressé.",
+      "hyperlinks": [
+        {
+          "id": 32,
+          "text": "groupe.desinvolts@gmail.com",
+          "link": "mailto:groupe.desinvolts@gmail.com",
+          "textLineId": null,
+          "paragraphId": 1032
+        }
+      ]
+    },
+    "subtitle": {
+      "id": 759,
+      "content": "Informations complémentaires",
+      "hyperlinks": []
+    },
+    "title": {
+      "id": 764,
+      "content": "Des questions ?",
+      "hyperlinks": []
+    },
+    "files": [
+      {
+        "id": 63,
+        "downloadUrl": "/home",
+        "filename": "convention-chart.pdf",
+        "date": "2024-01-02T00:00:00.000Z"
+      },
+      {
+        "id": 64,
+        "downloadUrl": "/home",
+        "filename": "convention-chart-2.pdf",
+        "date": "2024-01-03T00:00:00.000Z"
+      }
+    ]
+  },
+  "dates": {
+    "config": {
+      "id": 1,
+      "showActualityPanel": true,
+      "mediaImagesContainerHeight": 50
+    },
+    "navlinks": [
+      {
+        "id": 187,
+        "text": "accueil",
+        "link": "",
+        "position": 1
+      },
+      {
+        "id": 188,
+        "text": "contact",
+        "link": "contact",
+        "position": 3
+      },
+      {
+        "id": 189,
+        "text": "dates",
+        "link": "dates",
+        "position": 4
+      },
+      {
+        "id": 190,
+        "text": "groupe",
+        "link": "groupe",
+        "position": 5
+      },
+      {
+        "id": 191,
+        "text": "médias",
+        "link": "médias",
+        "position": 6
+      },
+      {
+        "id": 192,
+        "text": "nous-écouter",
+        "link": "nous-écouter",
+        "position": 7
+      }
+    ],
+    "dates": [
+      {
+        "id": 32,
+        "date": "2026-03-28T19:00:00.000Z",
+        "adress": {
+          "id": 770,
+          "content": "153 cours berriat",
+          "hyperlinks": []
+        },
+        "city": {
+          "id": 769,
+          "content": "Grenoble",
+          "hyperlinks": []
+        },
+        "image": {
+          "id": 29,
+          "alt": "La photo du groupe Désinvolts",
+          "source": "b2Fw654f8ujc8e2mHEte.webp"
+        },
+        "title": {
+          "id": 767,
+          "content": "Release party",
+          "hyperlinks": []
+        },
+        "paragraphs": [
+          {
+            "paragraphId": 1041,
+            "position": 0,
+            "eventId": null,
+            "albumId": null,
+            "postId": null,
+            "trombinoscopeItemId": null,
+            "groupPageFirstId": null,
+            "groupPageSecondId": null,
+            "dateId": 32,
+            "paragraph": {
+              "id": 1041,
+              "content": "On organise la release party de note album Volte face samedi à 20h, on éspère que ça vous plaira. ",
+              "hyperlinks": []
+            }
+          }
+        ]
+      }
+    ],
+    "title": {
+      "id": 765,
+      "content": "C'est quand déja ?",
+      "hyperlinks": []
+    },
+    "nextTitle": {
+      "id": 758,
+      "content": "Prochaines dates",
+      "hyperlinks": []
+    },
+    "prevTitle": {
+      "id": 761,
+      "content": "Dates passées",
+      "hyperlinks": []
+    }
+  },
+  "default": {
+    "config": {
+      "id": 1,
+      "showActualityPanel": true,
+      "mediaImagesContainerHeight": 50
+    },
+    "navlinks": [
+      {
+        "id": 187,
+        "text": "accueil",
+        "link": "",
+        "position": 1
+      },
+      {
+        "id": 188,
+        "text": "contact",
+        "link": "contact",
+        "position": 3
+      },
+      {
+        "id": 189,
+        "text": "dates",
+        "link": "dates",
+        "position": 4
+      },
+      {
+        "id": 190,
+        "text": "groupe",
+        "link": "groupe",
+        "position": 5
+      },
+      {
+        "id": 191,
+        "text": "médias",
+        "link": "médias",
+        "position": 6
+      },
+      {
+        "id": 192,
+        "text": "nous-écouter",
+        "link": "nous-écouter",
+        "position": 7
+      }
+    ]
+  },
+  "groupe": {
+    "config": {
+      "id": 1,
+      "showActualityPanel": true,
+      "mediaImagesContainerHeight": 50
+    },
+    "navlinks": [
+      {
+        "id": 187,
+        "text": "accueil",
+        "link": "",
+        "position": 1
+      },
+      {
+        "id": 188,
+        "text": "contact",
+        "link": "contact",
+        "position": 3
+      },
+      {
+        "id": 189,
+        "text": "dates",
+        "link": "dates",
+        "position": 4
+      },
+      {
+        "id": 190,
+        "text": "groupe",
+        "link": "groupe",
+        "position": 5
+      },
+      {
+        "id": 191,
+        "text": "médias",
+        "link": "médias",
+        "position": 6
+      },
+      {
+        "id": 192,
+        "text": "nous-écouter",
+        "link": "nous-écouter",
+        "position": 7
+      }
+    ],
+    "first_section_paragraphs": [
+      {
+        "paragraphId": 1062,
+        "position": 0,
+        "eventId": null,
+        "albumId": null,
+        "postId": null,
+        "trombinoscopeItemId": null,
+        "groupPageFirstId": 1,
+        "groupPageSecondId": null,
+        "dateId": null,
+        "paragraph": {
+          "id": 1062,
+          "content": "Desinvolts est un groupe de rock dynamique, d'origine tourangelle, ayant vu le jour en 2020.",
+          "hyperlinks": []
+        }
+      },
+      {
+        "paragraphId": 1063,
+        "position": 1,
+        "eventId": null,
+        "albumId": null,
+        "postId": null,
+        "trombinoscopeItemId": null,
+        "groupPageFirstId": 1,
+        "groupPageSecondId": null,
+        "dateId": null,
+        "paragraph": {
+          "id": 1063,
+          "content": "Enfin... Presque...",
+          "hyperlinks": []
+        }
+      }
+    ],
+    "second_section_paragraphs": [
+      {
+        "paragraphId": 1055,
+        "position": 0,
+        "eventId": null,
+        "albumId": null,
+        "postId": null,
+        "trombinoscopeItemId": null,
+        "groupPageFirstId": null,
+        "groupPageSecondId": 1,
+        "dateId": null,
+        "paragraph": {
+          "id": 1055,
+          "content": "L’histoire se passe à Tours (37). Le groupe se forme en février 2012 sous l’impulsion de Franck, batteur. Eric à la basse, Laurent et Rui aux guitares répondent à l’appel.",
+          "hyperlinks": []
+        }
+      },
+      {
+        "paragraphId": 1056,
+        "position": 1,
+        "eventId": null,
+        "albumId": null,
+        "postId": null,
+        "trombinoscopeItemId": null,
+        "groupPageFirstId": null,
+        "groupPageSecondId": 1,
+        "dateId": null,
+        "paragraph": {
+          "id": 1056,
+          "content": "En avril 2014, Brice rejoint le groupe au chant. Les 5 membres sillonnent la région tourangelle pour mettre l’ambiance dans les bars et sur les scènes de villages.",
+          "hyperlinks": []
+        }
+      },
+      {
+        "paragraphId": 1057,
+        "position": 2,
+        "eventId": null,
+        "albumId": null,
+        "postId": null,
+        "trombinoscopeItemId": null,
+        "groupPageFirstId": null,
+        "groupPageSecondId": 1,
+        "dateId": null,
+        "paragraph": {
+          "id": 1057,
+          "content": "En 2015, un EP de 5 titres, “Switch on” sert à la promotion du groupe.",
+          "hyperlinks": []
+        }
+      },
+      {
+        "paragraphId": 1058,
+        "position": 3,
+        "eventId": null,
+        "albumId": null,
+        "postId": null,
+        "trombinoscopeItemId": null,
+        "groupPageFirstId": null,
+        "groupPageSecondId": 1,
+        "dateId": null,
+        "paragraph": {
+          "id": 1058,
+          "content": "Brice et Franck veulent écrire exclusivement des textes en français. Au fil des années, le groupe étoffe son repertoire dans un style rock dynamique.",
+          "hyperlinks": []
+        }
+      },
+      {
+        "paragraphId": 1059,
+        "position": 4,
+        "eventId": null,
+        "albumId": null,
+        "postId": null,
+        "trombinoscopeItemId": null,
+        "groupPageFirstId": null,
+        "groupPageSecondId": 1,
+        "dateId": null,
+        "paragraph": {
+          "id": 1059,
+          "content": "En 2019, le groupe décide de faire un album de leurs compositions en français. L’enregistrement met plus de temps que prévu avec les événements de 2020.",
+          "hyperlinks": []
+        }
+      },
+      {
+        "paragraphId": 1060,
+        "position": 5,
+        "eventId": null,
+        "albumId": null,
+        "postId": null,
+        "trombinoscopeItemId": null,
+        "groupPageFirstId": null,
+        "groupPageSecondId": 1,
+        "dateId": null,
+        "paragraph": {
+          "id": 1060,
+          "content": "En 2020, les amis annoncent leur nouveau nom : Desinvolts. Ce nom reprend un code plus français, une attitude rock présente dans leurs chansons.",
+          "hyperlinks": []
+        }
+      },
+      {
+        "paragraphId": 1061,
+        "position": 6,
+        "eventId": null,
+        "albumId": null,
+        "postId": null,
+        "trombinoscopeItemId": null,
+        "groupPageFirstId": null,
+        "groupPageSecondId": 1,
+        "dateId": null,
+        "paragraph": {
+          "id": 1061,
+          "content": "En mars 2021, l’album “Volt-Face” sort sur toutes les plateformes musicales avec 11 de leurs titres originaux.",
+          "hyperlinks": []
+        }
+      }
+    ],
+    "presentation_image": {
+      "id": 27,
+      "alt": "La photo du groupe Désinvolts",
+      "source": "KHLfhhHQzj99K40hpW8I.webp"
+    },
+    "title": {
+      "id": 756,
+      "content": "Il était une fois...",
+      "hyperlinks": []
+    },
+    "trombinoscope": [
+      {
+        "id": 156,
+        "position": 0,
+        "titleId": 762,
+        "imageId": 31,
+        "color": "#df6310",
+        "groupPageId": 1,
+        "image": {
+          "id": 31,
+          "alt": "La photo du groupe Désinvolts",
+          "source": "2RtSgyYzogb2u7OniLC4.webp"
+        },
+        "paragraphs": [
+          {
+            "paragraphId": 1034,
+            "position": 0,
+            "eventId": null,
+            "albumId": null,
+            "postId": null,
+            "trombinoscopeItemId": 156,
+            "groupPageFirstId": null,
+            "groupPageSecondId": null,
+            "dateId": null,
+            "paragraph": {
+              "id": 1034,
+              "content": "Batteur / Compositeur / Auteur",
+              "hyperlinks": []
+            }
+          },
+          {
+            "paragraphId": 1036,
+            "position": 1,
+            "eventId": null,
+            "albumId": null,
+            "postId": null,
+            "trombinoscopeItemId": 156,
+            "groupPageFirstId": null,
+            "groupPageSecondId": null,
+            "dateId": null,
+            "paragraph": {
+              "id": 1036,
+              "content": "Franck est un passionné : jardinage, cuisine, sport, écriture... Il est joueur !",
+              "hyperlinks": []
+            }
+          },
+          {
+            "paragraphId": 1038,
+            "position": 2,
+            "eventId": null,
+            "albumId": null,
+            "postId": null,
+            "trombinoscopeItemId": 156,
+            "groupPageFirstId": null,
+            "groupPageSecondId": null,
+            "dateId": null,
+            "paragraph": {
+              "id": 1038,
+              "content": "Artistes préférés : Ankor, Calogero, Linkin Park, Noir désir, Iron Maiden",
+              "hyperlinks": []
+            }
+          }
+        ],
+        "title": {
+          "id": 762,
+          "content": "Franck",
+          "hyperlinks": []
+        }
+      },
+      {
+        "id": 157,
+        "position": 1,
+        "titleId": 771,
+        "imageId": 39,
+        "color": "#057cc9",
+        "groupPageId": 1,
+        "image": {
+          "id": 39,
+          "alt": "La photo du groupe Désinvolts",
+          "source": "LD0nk2KAS5sLUV0ne9k0.webp"
+        },
+        "paragraphs": [
+          {
+            "paragraphId": 1043,
+            "position": 0,
+            "eventId": null,
+            "albumId": null,
+            "postId": null,
+            "trombinoscopeItemId": 157,
+            "groupPageFirstId": null,
+            "groupPageSecondId": null,
+            "dateId": null,
+            "paragraph": {
+              "id": 1043,
+              "content": "Bassiste / Compositeur",
+              "hyperlinks": []
+            }
+          },
+          {
+            "paragraphId": 1045,
+            "position": 1,
+            "eventId": null,
+            "albumId": null,
+            "postId": null,
+            "trombinoscopeItemId": 157,
+            "groupPageFirstId": null,
+            "groupPageSecondId": null,
+            "dateId": null,
+            "paragraph": {
+              "id": 1045,
+              "content": "Eric est le festivalier du groupe, il a assisté à pas moins de 12635 concerts !",
+              "hyperlinks": []
+            }
+          },
+          {
+            "paragraphId": 1047,
+            "position": 2,
+            "eventId": null,
+            "albumId": null,
+            "postId": null,
+            "trombinoscopeItemId": 157,
+            "groupPageFirstId": null,
+            "groupPageSecondId": null,
+            "dateId": null,
+            "paragraph": {
+              "id": 1047,
+              "content": "Artistes préférés : AC/DC, Téléphone, Rolling Stones",
+              "hyperlinks": []
+            }
+          }
+        ],
+        "title": {
+          "id": 771,
+          "content": "Eric",
+          "hyperlinks": []
+        }
+      },
+      {
+        "id": 158,
+        "position": 2,
+        "titleId": 772,
+        "imageId": 42,
+        "color": "#cc31b0",
+        "groupPageId": 1,
+        "image": {
+          "id": 42,
+          "alt": "La photo du groupe Désinvolts",
+          "source": "nobERZNVeQTCbdohdDnQ.webp"
+        },
+        "paragraphs": [
+          {
+            "paragraphId": 1048,
+            "position": 0,
+            "eventId": null,
+            "albumId": null,
+            "postId": null,
+            "trombinoscopeItemId": 158,
+            "groupPageFirstId": null,
+            "groupPageSecondId": null,
+            "dateId": null,
+            "paragraph": {
+              "id": 1048,
+              "content": "Guitariste Soliste / Compositeur",
+              "hyperlinks": []
+            }
+          },
+          {
+            "paragraphId": 1049,
+            "position": 1,
+            "eventId": null,
+            "albumId": null,
+            "postId": null,
+            "trombinoscopeItemId": 158,
+            "groupPageFirstId": null,
+            "groupPageSecondId": null,
+            "dateId": null,
+            "paragraph": {
+              "id": 1049,
+              "content": "Son prénom se prononce 'Rouille'. Fan du FC Porto, il espère voir son équipe en finale.",
+              "hyperlinks": []
+            }
+          },
+          {
+            "paragraphId": 1050,
+            "position": 2,
+            "eventId": null,
+            "albumId": null,
+            "postId": null,
+            "trombinoscopeItemId": 158,
+            "groupPageFirstId": null,
+            "groupPageSecondId": null,
+            "dateId": null,
+            "paragraph": {
+              "id": 1050,
+              "content": "Artistes préférés : Slash, Guns N'Roses, Metallica, Nirvana",
+              "hyperlinks": []
+            }
+          }
+        ],
+        "title": {
+          "id": 772,
+          "content": "Rui",
+          "hyperlinks": []
+        }
+      },
+      {
+        "id": 159,
+        "position": 3,
+        "titleId": 773,
+        "imageId": 47,
+        "color": "#d62f0d",
+        "groupPageId": 1,
+        "image": {
+          "id": 47,
+          "alt": "La photo du groupe Désinvolts",
+          "source": "4HRnmVwp8Ng8Ao4NxNTm.webp"
+        },
+        "paragraphs": [
+          {
+            "paragraphId": 1051,
+            "position": 0,
+            "eventId": null,
+            "albumId": null,
+            "postId": null,
+            "trombinoscopeItemId": 159,
+            "groupPageFirstId": null,
+            "groupPageSecondId": null,
+            "dateId": null,
+            "paragraph": {
+              "id": 1051,
+              "content": "Guitariste Rythmique / Choriste",
+              "hyperlinks": []
+            }
+          },
+          {
+            "paragraphId": 1052,
+            "position": 1,
+            "eventId": null,
+            "albumId": null,
+            "postId": null,
+            "trombinoscopeItemId": 159,
+            "groupPageFirstId": null,
+            "groupPageSecondId": null,
+            "dateId": null,
+            "paragraph": {
+              "id": 1052,
+              "content": "Le couteau suisse du groupe. Fin technicien, il retape ses propres guitares.",
+              "hyperlinks": []
+            }
+          }
+        ],
+        "title": {
+          "id": 773,
+          "content": "Laurent",
+          "hyperlinks": []
+        }
+      },
+      {
+        "id": 160,
+        "position": 4,
+        "titleId": 774,
+        "imageId": 50,
+        "color": "#fdaf13",
+        "groupPageId": 1,
+        "image": {
+          "id": 50,
+          "alt": "La photo du groupe Désinvolts",
+          "source": "foY44vgDAHgcDkV1GhLs.webp"
+        },
+        "paragraphs": [
+          {
+            "paragraphId": 1053,
+            "position": 0,
+            "eventId": null,
+            "albumId": null,
+            "postId": null,
+            "trombinoscopeItemId": 160,
+            "groupPageFirstId": null,
+            "groupPageSecondId": null,
+            "dateId": null,
+            "paragraph": {
+              "id": 1053,
+              "content": "Chanteur / Auteur",
+              "hyperlinks": []
+            }
+          },
+          {
+            "paragraphId": 1054,
+            "position": 1,
+            "eventId": null,
+            "albumId": null,
+            "postId": null,
+            "trombinoscopeItemId": 160,
+            "groupPageFirstId": null,
+            "groupPageSecondId": null,
+            "dateId": null,
+            "paragraph": {
+              "id": 1054,
+              "content": "Brice est la pile électrique du groupe ! Homme kangourou monté sur ressort.",
+              "hyperlinks": []
+            }
+          }
+        ],
+        "title": {
+          "id": 774,
+          "content": "Brice",
+          "hyperlinks": []
+        }
+      }
+    ]
+  },
+  "medias": {
+    "config": {
+      "id": 1,
+      "showActualityPanel": true,
+      "mediaImagesContainerHeight": 50
+    },
+    "navlinks": [
+      {
+        "id": 187,
+        "text": "accueil",
+        "link": "",
+        "position": 1
+      },
+      {
+        "id": 188,
+        "text": "contact",
+        "link": "contact",
+        "position": 3
+      },
+      {
+        "id": 189,
+        "text": "dates",
+        "link": "dates",
+        "position": 4
+      },
+      {
+        "id": 190,
+        "text": "groupe",
+        "link": "groupe",
+        "position": 5
+      },
+      {
+        "id": 191,
+        "text": "médias",
+        "link": "médias",
+        "position": 6
+      },
+      {
+        "id": 192,
+        "text": "nous-écouter",
+        "link": "nous-écouter",
+        "position": 7
+      }
+    ],
+    "title": {
+      "id": 766,
+      "content": "Ça tourne !",
+      "hyperlinks": []
+    },
+    "pictures_section_title": {
+      "id": 763,
+      "content": "Photos",
+      "hyperlinks": []
+    },
+    "video_section_title": {
+      "id": 760,
+      "content": "Vidéos",
+      "hyperlinks": []
+    },
+    "windows": [
+      {
+        "id": 284,
+        "zIndex": 0,
+        "zIndexPriorityFactor": 0,
+        "x": 51,
+        "y": 4,
+        "width": 18,
+        "height": 9,
+        "imageId": 33,
+        "videoId": null,
+        "image": {
+          "id": 33,
+          "alt": "La photo du groupe Désinvolts",
+          "source": "MhSSu8WciRzqPhSEmYhc.webp"
+        },
+        "video": null
+      },
+      {
+        "id": 285,
+        "zIndex": 1,
+        "zIndexPriorityFactor": 0,
+        "x": 3,
+        "y": 18,
+        "width": 28,
+        "height": 16,
+        "imageId": 37,
+        "videoId": null,
+        "image": {
+          "id": 37,
+          "alt": "La photo du groupe Désinvolts",
+          "source": "SxyF0SCpC3vL6HLAEQ2Y.webp"
+        },
+        "video": null
+      },
+      {
+        "id": 286,
+        "zIndex": 2,
+        "zIndexPriorityFactor": 0,
+        "x": 3,
+        "y": 28,
+        "width": 46,
+        "height": 12,
+        "imageId": 38,
+        "videoId": null,
+        "image": {
+          "id": 38,
+          "alt": "La photo du groupe Désinvolts",
+          "source": "mvnyMPMkJMHwC3oQjYov.webp"
+        },
+        "video": null
+      },
+      {
+        "id": 287,
+        "zIndex": 3,
+        "zIndexPriorityFactor": 0,
+        "x": 53,
+        "y": 28,
+        "width": 21,
+        "height": 10,
+        "imageId": 40,
+        "videoId": null,
+        "image": {
+          "id": 40,
+          "alt": "La photo du groupe Désinvolts",
+          "source": "iauBIbNA7NKf7tTjdCZq.webp"
+        },
+        "video": null
+      },
+      {
+        "id": 288,
+        "zIndex": 4,
+        "zIndexPriorityFactor": 0,
+        "x": 77,
+        "y": 14,
+        "width": 16,
+        "height": 10,
+        "imageId": 41,
+        "videoId": null,
+        "image": {
+          "id": 41,
+          "alt": "La photo du groupe Désinvolts",
+          "source": "0cHeShHncL7zF71lMQV7.webp"
+        },
+        "video": null
+      },
+      {
+        "id": 289,
+        "zIndex": 5,
+        "zIndexPriorityFactor": 0,
+        "x": 70,
+        "y": 0,
+        "width": 26,
+        "height": 16,
+        "imageId": 43,
+        "videoId": null,
+        "image": {
+          "id": 43,
+          "alt": "La photo du groupe Désinvolts",
+          "source": "ztlpNhDvAWxBtXOUmibp.webp"
+        },
+        "video": null
+      },
+      {
+        "id": 290,
+        "zIndex": 6,
+        "zIndexPriorityFactor": 0,
+        "x": 71,
+        "y": 22,
+        "width": 28,
+        "height": 18,
+        "imageId": 46,
+        "videoId": null,
+        "image": {
+          "id": 46,
+          "alt": "La photo du groupe Désinvolts",
+          "source": "HGxfbb9ErmBn1z51Li0D.webp"
+        },
+        "video": null
+      },
+      {
+        "id": 291,
+        "zIndex": 7,
+        "zIndexPriorityFactor": 0,
+        "x": 35,
+        "y": 1,
+        "width": 15,
+        "height": 10,
+        "imageId": 48,
+        "videoId": null,
+        "image": {
+          "id": 48,
+          "alt": "La photo du groupe Désinvolts",
+          "source": "IomxQxE2p8Q4HXZp9RTM.webp"
+        },
+        "video": null
+      },
+      {
+        "id": 292,
+        "zIndex": 8,
+        "zIndexPriorityFactor": 0,
+        "x": 25,
+        "y": 7,
+        "width": 45,
+        "height": 22,
+        "imageId": 49,
+        "videoId": null,
+        "image": {
+          "id": 49,
+          "alt": "La photo du groupe Désinvolts",
+          "source": "3DvyNpvueFitcG4FAm7e.webp"
+        },
+        "video": null
+      },
+      {
+        "id": 293,
+        "zIndex": 9,
+        "zIndexPriorityFactor": 0,
+        "x": 0,
+        "y": 0,
+        "width": 34,
+        "height": 16,
+        "imageId": 51,
+        "videoId": null,
+        "image": {
+          "id": 51,
+          "alt": "La photo du groupe Désinvolts",
+          "source": "QH8JbsFxcxwnFcTizcTr.webp"
+        },
+        "video": null
+      }
+    ],
+    "videos": [
+      {
+        "id": 218,
+        "url": "https://www.youtube.com/watch?v=AUIYbPbNVcA",
+        "description": "Clip 1"
+      },
+      {
+        "id": 219,
+        "url": "https://www.youtube.com/watch?v=pbWrM1iblLI",
+        "description": "Clip 2"
+      },
+      {
+        "id": 220,
+        "url": "https://www.youtube.com/watch?v=wu4S5Mjpt-U",
+        "description": "a video of [object Object]"
+      },
+      {
+        "id": 221,
+        "url": "https://www.youtube.com/watch?v=EJR9bF-3MfY",
+        "description": "a video of [object Object]"
+      },
+      {
+        "id": 222,
+        "url": "https://www.youtube.com/watch?v=PWpOPXyrX5U",
+        "description": "a video of [object Object]"
+      },
+      {
+        "id": 223,
+        "url": "https://www.youtube.com/watch?v=a7lflJVdFI4",
+        "description": "a video of [object Object]"
+      },
+      {
+        "id": 224,
+        "url": "https://www.youtube.com/watch?v=fcIxDPNk5js",
+        "description": "a video of [object Object]"
+      }
+    ]
+  },
+  "son": {
+    "config": {
+      "id": 1,
+      "showActualityPanel": true,
+      "mediaImagesContainerHeight": 50
+    },
+    "navlinks": [
+      {
+        "id": 187,
+        "text": "accueil",
+        "link": "",
+        "position": 1
+      },
+      {
+        "id": 188,
+        "text": "contact",
+        "link": "contact",
+        "position": 3
+      },
+      {
+        "id": 189,
+        "text": "dates",
+        "link": "dates",
+        "position": 4
+      },
+      {
+        "id": 190,
+        "text": "groupe",
+        "link": "groupe",
+        "position": 5
+      },
+      {
+        "id": 191,
+        "text": "médias",
+        "link": "médias",
+        "position": 6
+      },
+      {
+        "id": 192,
+        "text": "nous-écouter",
+        "link": "nous-écouter",
+        "position": 7
+      }
+    ],
+    "title": {
+      "id": 757,
+      "content": "Et ça donne quoi niveau son ?",
+      "hyperlinks": []
+    },
+    "albums": [
+      {
+        "id": 32,
+        "spotifyId": 96,
+        "deezerId": 95,
+        "appleMusicId": 94,
+        "titleId": 768,
+        "coverId": 45,
+        "sonPageId": 1,
+        "appleMusicUrl": {
+          "id": 94,
+          "text": "applemusic",
+          "link": "https://embed.music.apple.com/fr/album/volt-face/1555591254",
+          "position": 0
+        },
+        "deezerUrl": {
+          "id": 95,
+          "text": "deezer",
+          "link": "https://widget.deezer.com/widget/auto/album/210456352",
+          "position": 1
+        },
+        "spotifyUrl": {
+          "id": 96,
+          "text": "spotify",
+          "link": "https://open.spotify.com/embed/album/77vvnt1Ocjndfs647cdJgT",
+          "position": 2
+        },
+        "cover": {
+          "id": 45,
+          "alt": "La photo du groupe Désinvolts",
+          "source": "XTxCJ6LybDxolX1rQf9q.webp"
+        },
+        "paragraphs": [
+          {
+            "paragraphId": 1042,
+            "position": 0,
+            "eventId": null,
+            "albumId": 32,
+            "postId": null,
+            "trombinoscopeItemId": null,
+            "groupPageFirstId": null,
+            "groupPageSecondId": null,
+            "dateId": null,
+            "paragraph": {
+              "id": 1042,
+              "content": "L’album Volt-Face est disponible dès le 12 mars 2021 sur toutes les plateformes de téléchargement et de streaming.",
+              "hyperlinks": []
+            }
+          },
+          {
+            "paragraphId": 1046,
+            "position": 1,
+            "eventId": null,
+            "albumId": 32,
+            "postId": null,
+            "trombinoscopeItemId": null,
+            "groupPageFirstId": null,
+            "groupPageSecondId": null,
+            "dateId": null,
+            "paragraph": {
+              "id": 1046,
+              "content": "Ce 1er album est composé de 11 créations originales en français. De Avoir mal aux Vendeurs de rêves, l’album montre le dynamisme du groupe.",
+              "hyperlinks": []
+            }
+          }
+        ],
+        "title": {
+          "id": 768,
+          "content": "Volt face",
+          "hyperlinks": []
+        }
+      }
+    ]
+  }
+}

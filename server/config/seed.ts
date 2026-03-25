@@ -1,5 +1,9 @@
 import { prisma } from "@/lib/prisma-client";
 import * as argon2 from "argon2";
+import SetPageController from "../controller/set-page-controller";
+import { promises as fs } from "fs";
+import path from "path";
+import { PageContentMap } from "@/types/contexts";
 import {
   INIT_CONFIG_STATE,
   INIT_CONNEXION_STATE,
@@ -11,7 +15,37 @@ import {
   INIT_NAVLINKS_STATE,
   INIT_SON_STATE,
 } from "@/config/initialPageSeeds";
-import SetPageController from "../controller/set-page-controller";
+import { logger } from "@/lib/logger";
+import PageController from "../controller/get-page-controller";
+
+async function getBackupSeed(): Promise<PageContentMap> {
+  try {
+    const filePath = path.join(process.cwd(), "backup/backup.json");
+
+    await fs.access(filePath);
+
+    const fileContent = await fs.readFile(filePath, "utf-8");
+
+    const data: PageContentMap = JSON.parse(fileContent);
+
+    logger.success("[SEED]: backup.json loaded");
+
+    return data;
+  } catch (error) {
+    logger.warn("[SEED]: No backup.json found, using fallback seed");
+
+    return {
+      home: INIT_HOMEPAGE_STATE,
+      connexion: INIT_CONNEXION_STATE,
+      contact: INIT_CONTACT_STATE,
+      dates: INIT_DATES_STATE,
+      default: { config: INIT_CONFIG_STATE, navlinks: INIT_NAVLINKS_STATE },
+      groupe: INIT_GROUPE_STATE,
+      medias: INIT_MEDIA_STATE,
+      son: INIT_SON_STATE,
+    } as PageContentMap;
+  }
+}
 
 export async function seed() {
   const adminAccountNumber = await prisma.adminAccount.count();
@@ -24,15 +58,19 @@ export async function seed() {
   }
 
   console.log("[SEED]: STARTING PAGES GENERATION...");
-  await SetPageController.setConfig(INIT_CONFIG_STATE);
-  await SetPageController.setNavlinks(INIT_NAVLINKS_STATE);
-  await SetPageController.setHome(INIT_HOMEPAGE_STATE);
-  await SetPageController.setConnexion(INIT_CONNEXION_STATE);
-  await SetPageController.setContact(INIT_CONTACT_STATE);
-  await SetPageController.setDates(INIT_DATES_STATE);
-  await SetPageController.setGroupe(INIT_GROUPE_STATE);
-  await SetPageController.setMedias(INIT_MEDIA_STATE);
-  await SetPageController.setNousEcouter(INIT_SON_STATE);
+
+  const data = await getBackupSeed();
+
+  await Promise.all([
+    SetPageController.setHome(data.home),
+    SetPageController.setConnexion(data.connexion),
+    SetPageController.setContact(data.contact),
+    SetPageController.setDates(data.dates),
+    SetPageController.setDefault(data.default),
+    SetPageController.setGroupe(data.groupe),
+    SetPageController.setMedias(data.medias),
+    SetPageController.setNousEcouter(data.son),
+  ]);
 
   console.log("[SEED]: DATABASE FULLY SEEDED");
 }
