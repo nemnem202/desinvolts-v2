@@ -26,12 +26,6 @@ async function startApp() {
   await app.register(rawBody);
 
   await apply(app, [telefuncHandler]);
-  app.addHook("onSend", (req, rep, payload, done) => {
-    if (req.url.startsWith("/image/")) {
-      rep.header("Cache-Control", "public, max-age=31536000, immutable");
-    }
-    done();
-  });
   return serve(app, {
     port,
   });

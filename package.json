@@ -3,7 +3,7 @@
     "dev": "vike dev",
     "build": "vike build --host 0.0.0.0",
     "preview": "vike build && vike preview",
-    "prod": "node ./dist/server/index.mjs",
+    "prod": "prisma migrate deploy && node ./dist/server/index.mjs",
     "prisma:studio": "prisma studio",
     "prisma:generate": "prisma generate",
     "shadcn": "npx shadcn@latest",

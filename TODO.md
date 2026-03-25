@@ -1,9 +1,7 @@
 - protéger les routes de mise a jour des pages
 - rendre la connexion effective
 
-- mise en production
-
-- faire en sorte que le chargement des images puisse se faire via le cache pour optimiser car la par défaut ca fait appel à l'api
+- pipeline- ci/cd
 
 - corriger les formulaires
 
@@ -15,3 +13,5 @@
 - ajouter un gestionnaire d'images
 - ajouter la possibilité de mettre des liens dans les textes
 - permettre de changer les couleurs de la charte graphique
+
+- améliorer le carousel d'images (et empecher que les images se repetent en admin)
