@@ -11,7 +11,7 @@ export interface CarouselProps {
 }
 
 export default function Caroussel({ content, onChange }: CarouselProps) {
-  const { isAdmin } = useAdmin();
+  const { isAdminDisplay } = useAdmin();
 
   const {
     handleImageChange,
@@ -28,7 +28,7 @@ export default function Caroussel({ content, onChange }: CarouselProps) {
 
   const images = content.images || [];
 
-  if (!isAdmin) {
+  if (!isAdminDisplay) {
     return (
       <div
         className="w-full overflow-x-auto h-[15rem] items-center flex"

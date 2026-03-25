@@ -20,7 +20,7 @@ export default function AlbumSection({
   albums: Album[];
   setAlbums: (newAlbums: Album[]) => void;
 }) {
-  const { isAdmin } = useAdmin();
+  const { isAdminDisplay } = useAdmin();
   const [dialogOpen, setDialogOpen] = useState(false);
 
   const availableUrls = [album.spotifyUrl, album.appleMusicUrl, album.deezerUrl].filter(
@@ -42,7 +42,7 @@ export default function AlbumSection({
 
   return (
     <section className="pt-[2.5rem] flex flex-col gap-[3rem] min-h-0 items-center relative">
-      {isAdmin && (
+      {isAdminDisplay && (
         <div className="absolute left-[-4rem]">
           <ButtonMinus onClick={removeAlbum} />
         </div>
@@ -95,7 +95,7 @@ export default function AlbumSection({
             forceMount
             className="data-[state=inactive]:hidden relative"
           >
-            {isAdmin && (
+            {isAdminDisplay && (
               <Dialog open={dialogOpen} onOpenChange={setDialogOpen}>
                 <DialogTrigger asChild>
                   <div className="absolute right-[-3rem]">

@@ -15,10 +15,10 @@ export default function Post({
   borderBottom?: boolean;
   onChange: (newPost: PostData) => void;
 }) {
-  const { isAdmin } = useAdmin();
+  const { isAdminDisplay } = useAdmin();
   return (
     <div
-      className={`flex flex-col relative ${borderBottom && "border-border border-b"} ${isAdmin && "!border"} ${
+      className={`flex flex-col relative ${borderBottom && "border-border border-b"} ${isAdminDisplay && "!border"} ${
         props.className
       } items-start py-8`}
     >
@@ -66,7 +66,7 @@ export default function Post({
               />
             </div>
           ))}
-        {isAdmin && (
+        {isAdminDisplay && (
           <div className="my-auto">
             <AddImageButton
               onImage={(image) =>

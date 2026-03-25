@@ -3,11 +3,11 @@ import { usePageContext } from "vike-react/usePageContext";
 import { PageContextClient } from "vike/types";
 
 interface AdminPageContext extends PageContextClient {
-  isAdmin: boolean;
+  isAdminDisplay: boolean;
 }
 
 interface AdminContextValue {
-  isAdmin: boolean;
+  isAdminDisplay: boolean;
   toggleAdmin: () => void;
 }
 
@@ -16,11 +16,15 @@ const AdminContext = createContext<AdminContextValue | undefined>(undefined);
 export default function AdminProvider({ children }: { children: ReactNode }) {
   const pageContext = usePageContext() as AdminPageContext;
 
-  const [isAdmin, setIsAdmin] = useState(pageContext.isAdmin);
+  const [isAdminDisplay, setisAdminDisplay] = useState(pageContext.isAdminDisplay);
 
-  const toggleAdmin = () => setIsAdmin((value: boolean) => !value);
+  const toggleAdmin = () => setisAdminDisplay((value: boolean) => !value);
 
-  return <AdminContext.Provider value={{ isAdmin, toggleAdmin }}>{children}</AdminContext.Provider>;
+  return (
+    <AdminContext.Provider value={{ isAdminDisplay, toggleAdmin }}>
+      {children}
+    </AdminContext.Provider>
+  );
 }
 
 export function useAdmin() {

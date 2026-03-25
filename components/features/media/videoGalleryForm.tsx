@@ -13,14 +13,14 @@ export interface VideoGalleryProps {
 }
 
 export default function VideoGalleryForm(props: VideoGalleryProps) {
-  const { isAdmin } = useAdmin();
+  const { isAdminDisplay } = useAdmin();
 
   const { form, open, onSubmit, handleChange, setOpen, videoData } = useVideoGalleyProps(props);
 
   return (
     <Dialog open={open} onOpenChange={setOpen}>
       <DialogTrigger asChild>
-        {isAdmin && (
+        {isAdminDisplay && (
           <div className="w-[15rem] aspect-video flex items-center justify-center">
             <ButtonPlus onClick={() => {}} />
           </div>

@@ -4,7 +4,7 @@ import { useAdmin } from "@/providers/adminProvider";
 import { useCallback, useEffect, useRef, useState } from "react";
 
 export default function useCaroussel({ content, onChange }: CarouselProps) {
-  const { isAdmin } = useAdmin();
+  const { isAdminDisplay } = useAdmin();
   const hoverRef = useRef<boolean>(false);
   const carousselRef = useRef<HTMLDivElement>(null);
   const rafIdRef = useRef<number | null>(null);
@@ -20,7 +20,7 @@ export default function useCaroussel({ content, onChange }: CarouselProps) {
   }, []);
 
   const startScroll = useCallback(() => {
-    if (cancelAutoScrollRef.current || isAdmin) return;
+    if (cancelAutoScrollRef.current || isAdminDisplay) return;
     if (rafIdRef.current !== null) return;
 
     const loop = () => {
@@ -31,7 +31,7 @@ export default function useCaroussel({ content, onChange }: CarouselProps) {
     };
 
     rafIdRef.current = requestAnimationFrame(loop);
-  }, [isAdmin]);
+  }, [isAdminDisplay]);
 
   const handleMouseEnter = useCallback(() => {
     hoverRef.current = true;
@@ -77,9 +77,9 @@ export default function useCaroussel({ content, onChange }: CarouselProps) {
   }, [chunks]);
 
   useEffect(() => {
-    if (isAdmin) stopScroll();
+    if (isAdminDisplay) stopScroll();
     else startScroll();
-  }, [isAdmin, startScroll, stopScroll]);
+  }, [isAdminDisplay, startScroll, stopScroll]);
 
   const handleImageChange = useCallback(
     (newImage: Image) => {

@@ -27,7 +27,7 @@ export default function DatePresentation({
   setCurrentIndex: React.Dispatch<React.SetStateAction<number>>;
   setDates: (dates: DateEvent[]) => void;
 }) {
-  const { isAdmin } = useAdmin();
+  const { isAdminDisplay } = useAdmin();
   const size = useSize();
   const [calendarOpen, setCalendarOpen] = useState<boolean>(false);
 
@@ -86,7 +86,7 @@ export default function DatePresentation({
                 {size !== "sm" && size !== "md" && (
                   <div className="absolute right-[-2rem] top-0 z-10">
                     <CalendarDialogButton setOpen={setCalendarOpen} />
-                    {isAdmin && (
+                    {isAdminDisplay && (
                       <div className="w-full flex justify-center">
                         <ButtonMinus
                           onClick={() =>
@@ -156,7 +156,7 @@ export default function DatePresentation({
               />
             </div>
           </div>
-          {isAdmin && <AddDateDialog onDate={(newDate) => setDates([...dates, newDate])} />}
+          {isAdminDisplay && <AddDateDialog onDate={(newDate) => setDates([...dates, newDate])} />}
         </div>
         <CalendarDialog
           open={calendarOpen}

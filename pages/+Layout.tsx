@@ -50,20 +50,6 @@ function Content({
   context: Context<StateContent<any> | null>;
 }) {
   const { setIsDown, setPosition } = useMouse();
-
-  //   () => [
-  //     {
-  //       ...PLAHECOLDERS.defaultWindow,
-  //       image: null,
-  //       x: 20,
-  //       y: 20,
-  //       height: 250,
-  //       width: 300,
-  //     },
-  //   ],
-  //   [],
-  // );
-
   return (
     <div
       id="page-container"

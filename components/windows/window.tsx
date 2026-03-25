@@ -6,7 +6,7 @@ import { WindowProps } from "@/types/db";
 import { useEffect, useMemo } from "react";
 
 export default function Window(props: WindowProps) {
-  const { isAdmin } = useAdmin();
+  const { isAdminDisplay } = useAdmin();
   const { zIndex, zIndexPriorityFactor, children } = props;
   const {
     handleMouseDownForDrag,
@@ -21,7 +21,7 @@ export default function Window(props: WindowProps) {
   return (
     <div
       className={`absolute ${
-        isAdmin && "cursor-move"
+        isAdminDisplay && "cursor-move"
       } bg-background pointer-events-auto rounded-md overflow-hidden`}
       onMouseDown={handleMouseDownForDrag}
       ref={windowRef}
@@ -34,7 +34,7 @@ export default function Window(props: WindowProps) {
     >
       <div className="relative w-full h-full">
         <div className="absolute inset-0">{children}</div>
-        {isAdmin && (
+        {isAdminDisplay && (
           <div
             className="absolute cursor-nwse-resize absolute right-2 bottom-2 flex gap-2 border"
             onMouseDown={handleMouseDownForResize}

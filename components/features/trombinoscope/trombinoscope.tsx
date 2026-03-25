@@ -13,7 +13,7 @@ export default function Trombinoscope({
   elements: TrombinoscopeElement[];
   setElements: (newElements: TrombinoscopeElement[]) => void;
 }) {
-  const { isAdmin } = useAdmin();
+  const { isAdminDisplay } = useAdmin();
   const [dialogOpen, setDialogOpen] = useState(false);
   const onItem = (item: TrombinoscopeElement) => {
     setElements([...elements, item]);
@@ -39,7 +39,7 @@ export default function Trombinoscope({
               />
             ))}
         </div>
-        {isAdmin && (
+        {isAdminDisplay && (
           <Dialog open={dialogOpen} onOpenChange={setDialogOpen}>
             <DialogTrigger asChild>
               <ButtonPlus onClick={() => setDialogOpen(true)} />

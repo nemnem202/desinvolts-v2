@@ -3,9 +3,9 @@ import { EditableTextProps } from "@/types/general";
 
 export default function EditableText(props: EditableTextProps) {
   const { className = "", content, setContent, as: Tag = "span" } = props;
-  const { convertToString, isAdmin, isHyperlink, parsed } = UseEditableText(props);
+  const { convertToString, isAdminDisplay, isHyperlink, parsed } = UseEditableText(props);
 
-  if (isAdmin) {
+  if (isAdminDisplay) {
     return (
       <input
         type="text"

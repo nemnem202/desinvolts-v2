@@ -19,7 +19,7 @@ export default function useWindowManager({
   const [containerBounds, setContainerBounds] = useState<
     (Bounds & { top: number; left: number }) | undefined
   >(undefined);
-  const { isAdmin } = useAdmin();
+  const { isAdminDisplay } = useAdmin();
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const boundsRef = useRef<typeof containerBounds>(undefined);
 
@@ -41,7 +41,7 @@ export default function useWindowManager({
     const ctx = canvas.getContext("2d");
     if (!ctx) return;
 
-    if (!isAdmin || !showDots) return ctx.reset();
+    if (!isAdminDisplay || !showDots) return ctx.reset();
 
     ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
     ctx.clearRect(0, 0, width, height);
@@ -135,7 +135,7 @@ export default function useWindowManager({
 
   useEffect(() => {
     drawGrid();
-  }, [isAdmin, showDots, containerBounds]);
+  }, [isAdminDisplay, showDots, containerBounds]);
 
   return { containerRef, containerBounds, canvasRef, boundsRef, drawGrid };
 }

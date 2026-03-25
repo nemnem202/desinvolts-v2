@@ -15,3 +15,5 @@
 - permettre de changer les couleurs de la charte graphique
 
 - améliorer le carousel d'images (et empecher que les images se repetent en admin)
+
+- ameliorer les fenetrs video

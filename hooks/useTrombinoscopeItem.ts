@@ -3,17 +3,17 @@ import { useAdmin } from "@/providers/adminProvider";
 import { useEffect, useState } from "react";
 
 export default function useTrombinoscopeItem(props: TrombinoscopeItemProps) {
-  const { isAdmin } = useAdmin();
+  const { isAdminDisplay } = useAdmin();
   const { element, elements, setElement, setElements } = props;
   const [hovered, setHovered] = useState(false);
 
   const handleIsHovered = (isHovered: boolean) => {
-    if (!isAdmin) setHovered(isHovered);
+    if (!isAdminDisplay) setHovered(isHovered);
   };
 
   useEffect(() => {
-    setHovered(isAdmin);
-  }, [isAdmin]);
+    setHovered(isAdminDisplay);
+  }, [isAdminDisplay]);
 
   const reorderItem = (delta: 1 | -1) => {
     const newIndex = Math.min(Math.max(element.position + delta, 0), elements.length - 1);
@@ -27,5 +27,5 @@ export default function useTrombinoscopeItem(props: TrombinoscopeItemProps) {
     setElements(newElements);
   };
 
-  return { handleIsHovered, reorderItem, isAdmin, hovered, element, setElement };
+  return { handleIsHovered, reorderItem, isAdminDisplay, hovered, element, setElement };
 }

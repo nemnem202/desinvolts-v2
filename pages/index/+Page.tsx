@@ -34,11 +34,11 @@ function FirstSection() {
   const { pageContext, update } = usePageState(HomePageContext);
   const { state } = pageContext;
   const { bannerTextRef, bannerImageRef } = useBannerScroll();
-  const { isAdmin } = useAdmin();
+  const { isAdminDisplay } = useAdmin();
   return (
     <>
       <div
-        className={`fixed inset-0 z-0 ${isAdmin ? "pointer-events-auto" : "pointer-events-none"}`}
+        className={`fixed inset-0 z-0 ${isAdminDisplay ? "pointer-events-auto" : "pointer-events-none"}`}
         ref={bannerImageRef}
       >
         <Image
@@ -72,7 +72,7 @@ function FirstSection() {
 function SecondSection() {
   const { pageContext, update } = usePageState(HomePageContext);
   const { state } = pageContext;
-  const { isAdmin } = useAdmin();
+  const { isAdminDisplay } = useAdmin();
 
   return (
     <div className="h-full overflow-y-auto">
@@ -92,7 +92,7 @@ function SecondSection() {
 
         {state.config.showActualityPanel ? (
           <div className="relative">
-            {isAdmin && (
+            {isAdminDisplay && (
               <div className="absolute left-[-2rem]">
                 <ButtonMinus
                   onClick={() => update("config", { ...state.config, showActualityPanel: false })}
@@ -108,7 +108,7 @@ function SecondSection() {
             <PostsSection />
           </div>
         ) : (
-          isAdmin && (
+          isAdminDisplay && (
             <div className="flex mx-auto w-min">
               <ButtonPlus
                 onClick={() => update("config", { ...state.config, showActualityPanel: true })}

@@ -6,7 +6,7 @@ import { useMemo } from "react";
 
 export default function UseEditableText(props: EditableTextProps) {
   const { content } = props;
-  const { isAdmin } = useAdmin();
+  const { isAdminDisplay } = useAdmin();
   const isHyperlink = (val: string | Hyperlink): val is Hyperlink => {
     return typeof val === "object" && val !== null && "text" in val && "link" in val;
   };
@@ -50,5 +50,5 @@ export default function UseEditableText(props: EditableTextProps) {
     [content.content, content.hyperlinks],
   );
 
-  return { parsed, convertToString, isAdmin, isHyperlink };
+  return { parsed, convertToString, isAdminDisplay, isHyperlink };
 }

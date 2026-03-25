@@ -19,7 +19,7 @@ export default function DevToolsWindow({
   context: Context<StateContent<any> | null>;
 }) {
   const nodeRef = useRef(null);
-  const { isAdmin, toggleAdmin } = useAdmin();
+  const { isAdminDisplay, toggleAdmin } = useAdmin();
   const [currentTheme, setCurrentTheme] = useState<boolean>(true);
   const [borders, setBorders] = useState(false);
   const { pageContext } = usePageState(context);

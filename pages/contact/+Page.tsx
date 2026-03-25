@@ -15,7 +15,7 @@ import { CirclePlus, File } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 
 export default function Page() {
-  const { isAdmin } = useAdmin();
+  const { isAdminDisplay } = useAdmin();
   const { pageContext, update } = usePageState<ContactPageContent>(ContactPageContext);
   const { state } = pageContext;
   return (
@@ -53,7 +53,7 @@ export default function Page() {
                 onChange={(newFiles: DownloadableFile[]) => update("files", newFiles)}
               />
             ))}
-          {isAdmin && <MoreFileComponent />}
+          {isAdminDisplay && <MoreFileComponent />}
         </div>
       </section>
     </ClassicPageLayout>

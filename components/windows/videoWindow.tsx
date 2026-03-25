@@ -7,7 +7,7 @@ import { DialogTitle } from "@radix-ui/react-dialog";
 import { Video } from "@/prisma/generated/prisma/browser";
 
 export default function VideoWindow({ video }: { video: Video }) {
-  const { isAdmin } = useAdmin();
+  const { isAdminDisplay } = useAdmin();
   const { windows, setWindows } = useWindows();
 
   const getVideoID = (url: string | null): string | null => {
@@ -35,7 +35,7 @@ export default function VideoWindow({ video }: { video: Video }) {
             src={getVideoThumbnail(videoId)}
             className="w-full h-full object-cover pointer-events-none"
           />
-          {isAdmin && (
+          {isAdminDisplay && (
             <div className="absolute right-2 top-2 flex gap-2 z-50">
               <button
                 type="button"
