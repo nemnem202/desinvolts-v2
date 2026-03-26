@@ -7,19 +7,16 @@ import NavButton from "@/components/ui/navButton";
 import { useSize } from "@/providers/screenSizeProvider";
 import { DateEvent } from "@/types/db";
 import { ChevronLeft, ChevronRight } from "lucide-react";
-import { useEffect, useState } from "react";
+import { useMemo, useState } from "react";
 import { CalendarDialog, CalendarDialogButton } from "./calendarDialog";
 import { useAdmin } from "@/providers/adminProvider";
 import AddDateDialog from "./addDateDialog";
-import { usePageState } from "@/providers/stateProvider";
-import { DatesPageContext } from "@/types/contexts";
 import ButtonMinus from "@/components/ui/buttonMinus";
 
 export default function DatePresentation({
   dates,
   currentIndex,
   setCurrentIndex,
-
   setDates,
 }: {
   currentIndex: number;
@@ -31,67 +28,86 @@ export default function DatePresentation({
   const size = useSize();
   const [calendarOpen, setCalendarOpen] = useState<boolean>(false);
 
-  const goPrev = () => currentIndex > 0 && setCurrentIndex(currentIndex - 1);
-  const goNext = () => currentIndex < dates.length - 1 && setCurrentIndex(currentIndex + 1);
+  const sortedDates = useMemo(() => {
+    return [...dates].sort((a, b) => a.date.getTime() - b.date.getTime());
+  }, [dates]);
 
   const currentDate = dates[currentIndex];
 
-  if (!currentDate) return null;
+  const currentSortedIndex = sortedDates.findIndex((d) => d.id === currentDate?.id);
 
-  if (currentDate) {
-    return (
-      <>
-        <div className="flex flex-col w-full items-center gap-4 p-4" key={currentIndex}>
-          <div className="flex w-full justify-between items-center">
-            <NavButton disabled={currentIndex === 0} onClick={goPrev}>
-              <ChevronLeft />
-              précédent
-            </NavButton>
-            <NavButton disabled={currentIndex === dates.length - 1} onClick={goNext}>
-              suivant
-              <ChevronRight />
-            </NavButton>
+  const goPrev = () => {
+    if (currentSortedIndex > 0) {
+      const prevId = sortedDates[currentSortedIndex - 1].id;
+      const originalIndex = dates.findIndex((d) => d.id === prevId);
+      setCurrentIndex(originalIndex);
+    }
+  };
+
+  const goNext = () => {
+    if (currentSortedIndex < sortedDates.length - 1) {
+      const nextId = sortedDates[currentSortedIndex + 1].id;
+      const originalIndex = dates.findIndex((d) => d.id === nextId);
+      setCurrentIndex(originalIndex);
+    }
+  };
+
+  if (!currentDate) return <AddDateDialog onDate={(newDate) => setDates([...dates, newDate])} />;
+
+  const isPast = currentDate.date.getTime() < Date.now();
+
+  return (
+    <>
+      <div className="flex flex-col w-full items-center gap-4 p-4 relative">
+        {isPast && (
+          <div className="absolute top-1/2 z-20 text-destructive title !text-7xl -rotate-45 pointer-events-none select-none opacity-50">
+            <p>Date passée</p>
           </div>
-
+        )}
+        <div className="flex w-full justify-between items-center">
+          <NavButton disabled={currentSortedIndex <= 0} onClick={goPrev}>
+            <ChevronLeft /> précédent
+          </NavButton>
+          <NavButton disabled={currentSortedIndex >= sortedDates.length - 1} onClick={goNext}>
+            suivant <ChevronRight />
+          </NavButton>
+        </div>
+        <div className={`w-full flex flex-col items-center ${isPast && "opacity-40"}`}>
           <EditableText
             as="h2"
             content={currentDate.title}
             setContent={(newText) => {
-              setDates(dates.map((d, i) => (i === currentIndex ? { ...d, title: newText } : d)));
+              setDates(dates.map((d) => (d.id === currentDate.id ? { ...d, title: newText } : d)));
             }}
             className="title"
           />
+
           <div className="flex flex-col items-center md:items-start md:flex-row md:justify-center w-full max-w-[50rem] gap-4">
-            <div className="w-[15rem] md:w-[20rem] aspect-2/3 overflow-hidden rounded-md">
+            <div className="w-[15rem] md:w-[20rem] aspect-2/3 overflow-hidden rounded-md shrink-0">
               <Image
-                key={currentDate.id}
                 width={320}
                 height={480}
                 imageProps={currentDate.image}
                 onChange={(newImage) => {
                   setDates(
-                    dates.map((d, i) => (i === currentIndex ? { ...d, image: newImage } : d)),
+                    dates.map((d) => (d.id === currentDate.id ? { ...d, image: newImage } : d)),
                   );
                 }}
               />
             </div>
 
             <div
-              className={`flex flex-1 flex-col gap-3 cursor-pointer`}
-              onClick={() => {
-                if (size === "sm" || size === "md") setCalendarOpen(true);
-              }}
+              className="flex flex-1 flex-col gap-3 cursor-pointer w-full"
+              onClick={() => (size === "sm" || size === "md") && setCalendarOpen(true)}
             >
               <div className="w-full border rounded-lg px-4 py-2 flex relative gap-4">
                 {size !== "sm" && size !== "md" && (
                   <div className="absolute right-[-2rem] top-0 z-10">
                     <CalendarDialogButton setOpen={setCalendarOpen} />
                     {isAdminDisplay && (
-                      <div className="w-full flex justify-center">
+                      <div className="w-full flex justify-center mt-2">
                         <ButtonMinus
-                          onClick={() =>
-                            setDates([...dates.filter((date) => date.id !== currentDate.id)])
-                          }
+                          onClick={() => setDates(dates.filter((d) => d.id !== currentDate.id))}
                         />
                       </div>
                     )}
@@ -104,7 +120,7 @@ export default function DatePresentation({
                     date={currentDate.date}
                     onValueChange={(newDate) => {
                       setDates(
-                        dates.map((d, i) => (i === currentIndex ? { ...d, date: newDate } : d)),
+                        dates.map((d) => (d.id === currentDate.id ? { ...d, date: newDate } : d)),
                       );
                     }}
                   />
@@ -114,7 +130,7 @@ export default function DatePresentation({
                     date={currentDate.date}
                     onValueChange={(newDate) => {
                       setDates(
-                        dates.map((d, i) => (i === currentIndex ? { ...d, date: newDate } : d)),
+                        dates.map((d) => (d.id === currentDate.id ? { ...d, date: newDate } : d)),
                       );
                     }}
                   />
@@ -126,7 +142,7 @@ export default function DatePresentation({
                     content={currentDate.adress}
                     setContent={(newText) => {
                       setDates(
-                        dates.map((d, i) => (i === currentIndex ? { ...d, adress: newText } : d)),
+                        dates.map((d) => (d.id === currentDate.id ? { ...d, adress: newText } : d)),
                       );
                     }}
                   />
@@ -136,36 +152,38 @@ export default function DatePresentation({
                     content={currentDate.city}
                     setContent={(newText) => {
                       setDates(
-                        dates.map((d, i) => (i === currentIndex ? { ...d, city: newText } : d)),
+                        dates.map((d) => (d.id === currentDate.id ? { ...d, city: newText } : d)),
                       );
                     }}
                   />
                 </div>
               </div>
+
               <ParagraphGroup
                 as="p"
                 content={currentDate.paragraphs}
                 onChange={(newContent) => {
                   setDates(
-                    dates.map((d, i) =>
-                      i === currentIndex ? { ...d, description: newContent } : d,
+                    dates.map((d) =>
+                      d.id === currentDate.id ? { ...d, paragraphs: newContent } : d,
                     ),
                   );
                 }}
-                classNameForEachParagraph="paragraph text-left"
+                classNameForEachParagraph="paragraph text-left w-full"
               />
             </div>
           </div>
-          {isAdminDisplay && <AddDateDialog onDate={(newDate) => setDates([...dates, newDate])} />}
         </div>
-        <CalendarDialog
-          open={calendarOpen}
-          setOpen={setCalendarOpen}
-          currentDate={currentDate}
-          dates={dates}
-          setCurrentIndex={setCurrentIndex}
-        />
-      </>
-    );
-  }
+        {isAdminDisplay && <AddDateDialog onDate={(newDate) => setDates([...dates, newDate])} />}
+      </div>
+
+      <CalendarDialog
+        open={calendarOpen}
+        setOpen={setCalendarOpen}
+        currentDate={currentDate}
+        dates={dates}
+        setCurrentIndex={setCurrentIndex}
+      />
+    </>
+  );
 }
