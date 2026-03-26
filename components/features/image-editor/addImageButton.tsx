@@ -2,7 +2,6 @@ import { ReactNode, useEffect, useRef, useState } from "react";
 import ButtonPlus from "../../ui/buttonPlus";
 import { Dialog } from "../../ui/dialog";
 import ImageForm from "./imageForm";
-import { createPortal } from "react-dom";
 import { Image } from "@/prisma/generated/prisma/browser";
 
 export const CANVAS_WIDTH = 300;
@@ -11,9 +10,11 @@ export const RESIZE_HANDLE_SIZE = 20;
 export default function AddImageButton({
   children,
   onImage,
+  callbackOnClick = () => {},
 }: {
   children?: ReactNode;
   onImage: (image: Image) => void;
+  callbackOnClick?: () => void;
 }) {
   const formRef = useRef<HTMLFormElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
@@ -21,6 +22,7 @@ export default function AddImageButton({
   const [dialogOpen, setDialogOpen] = useState<boolean>(false);
 
   const loadImage = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+    callbackOnClick();
     e.preventDefault();
     e.stopPropagation();
     imageFile && setImage(null);

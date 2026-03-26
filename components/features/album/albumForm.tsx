@@ -50,7 +50,7 @@ export default function AlbumForm({ setOpen }: AlbumFormProps) {
                 <FormControl>
                   <div className="w-full flex flex-col items-center">
                     {field.value ? (
-                      <div className="h-50 w-50">
+                      <div className="h-25 w-25">
                         <Image
                           width={200}
                           height={200}
@@ -59,8 +59,12 @@ export default function AlbumForm({ setOpen }: AlbumFormProps) {
                         />
                       </div>
                     ) : (
-                      <AddImageButton onImage={(img) => field.onChange({ ...img, label: null })}>
-                        <div>Ajouter une image</div>
+                      <AddImageButton
+                        onImage={(img) => {
+                          field.onChange({ ...img, label: null });
+                        }}
+                      >
+                        <Button>Ajouter une image</Button>
                       </AddImageButton>
                     )}
                   </div>
