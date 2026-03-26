@@ -99,7 +99,7 @@ export default function DevToolsWindow({
               </Label>
             </div>
             <div className="flex items-center space-x-2">
-              <Switch id="admin" onClick={toggleAdmin} defaultChecked={isAdminDisplay} />
+              <Switch id="admin" checked={isAdminDisplay} onCheckedChange={toggleAdmin} />
               <Label htmlFor="admin" className="subtitle">
                 Admin Display
               </Label>

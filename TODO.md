@@ -1,8 +1,7 @@
-<!-- - pipeline- ci/cd -->
+- implémenter les tests
 
 - corriger les formulaires
 
-- ajouter la possibilité d'envoyer un email
 - faire une route pour les fichiers et implémenter les fichiers
 - ajouter les mentions legales, la politique de confidentialité
 

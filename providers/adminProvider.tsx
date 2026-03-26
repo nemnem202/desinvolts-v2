@@ -15,17 +15,27 @@ export default function AdminProvider({
   children: ReactNode;
   currentUser: { username: string } | null;
 }) {
-  const [isAdminDisplay, setisAdminDisplay] = useState(currentUser != null);
+  const [isAdminDisplay, setisAdminDisplay] = useState(false);
 
   useEffect(() => {
-    logger.info("Current user: ", currentUser);
-  }, []);
+    if (!currentUser) return;
+
+    const mode = localStorage.getItem("mode");
+    if (mode === "admin") setisAdminDisplay(true);
+    else setisAdminDisplay(false);
+  }, [currentUser]);
 
   useEffect(() => {
     logger.info("Admin display? ", isAdminDisplay);
   }, [isAdminDisplay]);
 
-  const toggleAdmin = () => setisAdminDisplay((value: boolean) => !value);
+  const toggleAdmin = () => {
+    setisAdminDisplay((prev) => {
+      const next = !prev;
+      localStorage.setItem("mode", next ? "admin" : "user");
+      return next;
+    });
+  };
 
   return (
     <AdminContext.Provider value={{ isAdminDisplay, toggleAdmin }}>
