@@ -1,10 +1,12 @@
 import { contactSchema } from "@/config/frontendFormSchemas";
 import { logger } from "@/lib/logger";
+import { errorToast, successToast } from "@/lib/utils";
+import onContact from "@/telefunc/contact.telefunc";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Resolver, SubmitHandler, useForm } from "react-hook-form";
 import z from "zod";
 
-type ContactFormValues = z.infer<typeof contactSchema>;
+export type ContactFormValues = z.infer<typeof contactSchema>;
 
 export default function useContactForm() {
   const form = useForm({
@@ -15,7 +17,15 @@ export default function useContactForm() {
   });
 
   const handleSubmit: SubmitHandler<ContactFormValues> = async (data: ContactFormValues) => {
-    logger.info("Message soumis");
+    const res = await onContact(data);
+    if (res.success) {
+      successToast("Email envoyé", "Nous vous répondrons aussi rapidement que possible.");
+    } else {
+      errorToast(
+        res.message ?? "Une erreur innatendue est survenue",
+        "Essayez de nous contacter via notre adresse email.",
+      );
+    }
   };
 
   return { form, handleSubmit };

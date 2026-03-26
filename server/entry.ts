@@ -5,28 +5,49 @@ import rawBody from "fastify-raw-body";
 import fastifyCookie from "@fastify/cookie";
 import { fileUploadHandler } from "./file-upload-handler";
 import { seed } from "./config/seed";
+import emailjs from "@emailjs/nodejs";
+import { logger } from "@/lib/logger";
 
 const port = process.env.PORT ? parseInt(process.env.PORT, 10) : 3000;
 
 export default (await startApp()) as unknown;
 
 async function startApp() {
-  await seed();
+  try {
+    await seed();
 
-  const app = fastify({
-    forceCloseConnections: true,
-  });
+    const { EMAILJS_PUBLIC_KEY, EMAILJS_PRIVATE_KEY } = process.env;
 
-  app.register(fastifyCookie, {
-    secret: process.env.COOKIE_SECRET,
-  });
+    if (!EMAILJS_PUBLIC_KEY || !EMAILJS_PRIVATE_KEY)
+      throw new Error(
+        `Les variables d'environnement d'emailjs sont mal définies, public key: ${!!EMAILJS_PUBLIC_KEY}, private key: ${!!EMAILJS_PRIVATE_KEY}`,
+      );
+    emailjs.init({
+      publicKey: EMAILJS_PUBLIC_KEY,
+      privateKey: EMAILJS_PRIVATE_KEY,
+      limitRate: {
+        id: "app",
+        throttle: 10000,
+      },
+    });
 
-  app.register(fileUploadHandler);
+    const app = fastify({
+      forceCloseConnections: true,
+    });
 
-  await app.register(rawBody);
+    app.register(fastifyCookie, {
+      secret: process.env.COOKIE_SECRET,
+    });
 
-  await apply(app, [telefuncHandler]);
-  return serve(app, {
-    port,
-  });
+    app.register(fileUploadHandler);
+
+    await app.register(rawBody);
+
+    await apply(app, [telefuncHandler]);
+    return serve(app, {
+      port,
+    });
+  } catch (err) {
+    logger.error("Failed to init fastify", err);
+  }
 }

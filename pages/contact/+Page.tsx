@@ -1,19 +1,14 @@
 import ClassicPageLayout from "@/components/layout/classicPageLayout";
-import { Button } from "@/components/ui/button";
-import { Checkbox } from "@/components/ui/checkbox";
 import EditableText from "@/components/common/editableText";
 import EditableTextarea from "@/components/common/editableTextarea";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
-import { Textarea } from "@/components/ui/textarea";
 import { useAdmin } from "@/providers/adminProvider";
 import { usePageState } from "@/providers/stateProvider";
 import { ContactPageContext } from "@/types/contexts";
 import { DownloadableFile, EditableTextContent } from "@/types/db";
 import { ContactPageContent } from "@/types/page-contents";
 import { CirclePlus, File } from "lucide-react";
-import { useEffect, useRef, useState } from "react";
-import ContactForm from "@/components/features/contact/contact-form";
+import { useRef } from "react";
+import ContactForm from "@/components/features/contact/contactForm";
 
 export default function Page() {
   const { isAdminDisplay } = useAdmin();

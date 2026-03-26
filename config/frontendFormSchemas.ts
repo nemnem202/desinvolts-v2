@@ -114,7 +114,7 @@ export const contactSchema = z.object({
     .string({ error: "Veuillez entrer votre nom." })
     .max(200, { error: "nom trop long, maximum 200 caractères" }),
   email: z.email({ error: "L'email fournit est invalide" }),
-  object: z
+  subject: z
     .string()
     .max(200, { error: "L'objet est trop long, maximum 200 caractères" })
     .optional(),
