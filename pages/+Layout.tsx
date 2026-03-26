@@ -13,28 +13,28 @@ import { BasePageContent } from "@/types/page-contents";
 import { useData } from "vike-react/useData";
 import { Data } from "./+data";
 import { Spinner } from "@/components/ui/spinner";
-import { contexts } from "@/types/contexts";
+import { contexts, PageKey } from "@/types/contexts";
 import DevToolsWindow from "@/components/windows/devToolsWindow";
 
 export default function Layout({ children }: { children: React.ReactNode }) {
-  const { stateKey, page, currentUser } = useData<Data>();
-  const stateContext = contexts[stateKey];
+  const { pageKey, page, currentUser } = useData<Data>();
+  const stateContext = contexts[pageKey];
 
   if (!page) return <Spinner />;
 
   return (
-    <StateProvider<BasePageContent>
+    <StateProvider
       // @ts-ignore
       context={stateContext}
       initialState={page}
-      stateKey={stateKey}
-      key={stateKey}
+      pageKey={pageKey}
+      key={pageKey}
     >
       <ScreenSizeProvider>
         <AdminProvider currentUser={currentUser}>
           <MouseProvider>
             <Toaster />
-            <Content context={stateContext}>{children}</Content>
+            <Content pageKey={pageKey}>{children}</Content>
           </MouseProvider>
         </AdminProvider>
       </ScreenSizeProvider>
@@ -42,12 +42,12 @@ export default function Layout({ children }: { children: React.ReactNode }) {
   );
 }
 
-function Content({
+function Content<K extends PageKey>({
   children,
-  context,
+  pageKey,
 }: {
   children: React.ReactNode;
-  context: Context<StateContent<any> | null>;
+  pageKey: K;
 }) {
   const { setIsDown, setPosition } = useMouse();
   const { currentUser } = useData<Data>();
@@ -59,8 +59,8 @@ function Content({
       onMouseUpCapture={() => setIsDown(false)}
       onMouseMoveCapture={(e) => setPosition(e.clientX, e.clientY)}
     >
-      {currentUser && <DevToolsWindow context={context} />}
-      <Header context={context} />
+      {currentUser && <DevToolsWindow pageKey={pageKey} />}
+      <Header pageKey={pageKey} />
       <div id="page-content" className="min-h-screen w-screen">
         {children}
       </div>

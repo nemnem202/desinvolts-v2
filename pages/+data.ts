@@ -42,59 +42,59 @@ async function getCurrentUser(pageContext: PageContextServer): Promise<{
 
 export async function data(pageContext: PageContextServer): Promise<{
   screen: ScreenSizeType;
-  stateKey: (typeof PageStateKey)[number];
+  pageKey: (typeof PageStateKey)[number];
   page: BasePageContent | undefined;
   currentUser: {
     username: string;
   } | null;
 }> {
   const screen = await getScreen(pageContext);
-  let stateKey: (typeof PageStateKey)[number];
+  let pageKey: (typeof PageStateKey)[number];
   let page: BasePageContent | undefined;
   const currentUser = await getCurrentUser(pageContext);
   switch (pageContext.urlPathname) {
     case "/":
-      stateKey = "home";
+      pageKey = "home";
       const homeContent = await PageController.getHome();
       if (homeContent) convertToDates(homeContent.posts);
       page = homeContent;
 
       break;
     case "/connexion":
-      stateKey = "connexion";
+      pageKey = "connexion";
       page = await PageController.getConnexion();
       break;
     case "/contact":
-      stateKey = "contact";
+      pageKey = "contact";
       const contactContent = await PageController.getContact();
       if (contactContent) convertToDates(contactContent.files);
       page = contactContent;
       break;
     case "/dates":
-      stateKey = "dates";
+      pageKey = "dates";
       const datesContent = await PageController.getDates();
       if (datesContent) convertToDates(datesContent.dates);
       page = datesContent;
       break;
     case "/groupe":
       // @ts-ignore
-      stateKey = "groupe";
+      pageKey = "groupe";
       page = await PageController.getGroupe();
       break;
     case "/médias":
     case "/medias":
-      stateKey = "medias";
+      pageKey = "medias";
       page = await PageController.getMedias();
       break;
     case "/nous-écouter":
     case "/son":
-      stateKey = "son";
+      pageKey = "son";
       page = await PageController.getNousEcouter();
       break;
     default:
-      stateKey = "default";
+      pageKey = "default";
       page = await PageController.getDefault();
   }
-  return { screen, stateKey, page, currentUser };
+  return { screen, pageKey, page, currentUser };
 }
 export type Data = Awaited<ReturnType<typeof data>>;

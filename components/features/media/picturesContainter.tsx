@@ -17,7 +17,7 @@ export default function PicturesContainer({
   showDots: boolean;
   children?: ReactNode;
 }) {
-  const { pageContext, update } = usePageState<MediasPageContent>(MediasPageContext);
+  const { pageContext, update } = usePageState<"medias">(MediasPageContext);
   const { state } = pageContext;
   const { isAdminDisplay } = useAdmin();
   const size = useSize();

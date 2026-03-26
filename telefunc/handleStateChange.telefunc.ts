@@ -1,34 +1,39 @@
 import { logger } from "@/lib/logger";
-import SetPageController from "@/server/controller/set-page-controller";
+import SetPageController, { ServiceResult } from "@/server/controller/set-page-controller";
 import authenticateUser from "@/server/middlewares/authenticateUser";
-import type { PageKey } from "@/types/contexts";
+import type { PageKey, PageRegistry } from "@/types/contexts";
 
-export const onHandleStateChange = async (state: any, path: PageKey) => {
+const handlers = {
+  home: SetPageController.setHome,
+  connexion: SetPageController.setConnexion,
+  contact: SetPageController.setContact,
+  dates: SetPageController.setDates,
+  groupe: SetPageController.setGroupe,
+  medias: SetPageController.setMedias,
+  son: SetPageController.setNousEcouter,
+  default: SetPageController.setDefault,
+} satisfies {
+  [K in PageKey]: (state: PageRegistry[K]) => Promise<ServiceResult>;
+};
+
+const callHandler = async <K extends PageKey>(path: K, state: PageRegistry[K]) => {
+  const handler = handlers[path] as (state: PageRegistry[K]) => Promise<ServiceResult>;
+  return handler(state);
+};
+
+export const onHandleStateChange = async <K extends PageKey>(state: PageRegistry[K], path: K) => {
   try {
     logger.info("Handle state change called", "current user: ");
 
     const { isAuthenticated } = await authenticateUser();
 
     if (!isAuthenticated) throw new Error();
-    switch (path) {
-      case "home":
-        return SetPageController.setHome(state);
-      case "connexion":
-        return SetPageController.setConnexion(state);
-      case "contact":
-        return SetPageController.setContact(state);
-      case "dates":
-        return SetPageController.setDates(state);
-      case "default":
-        return SetPageController.setDefault(state);
-      case "groupe":
-        return SetPageController.setGroupe(state);
-      case "medias":
-        return SetPageController.setMedias(state);
-      case "son":
-        return SetPageController.setNousEcouter(state);
-    }
-  } catch {
+
+    await callHandler(path, state);
+    await SetPageController.setNavlinks(state.navlinks);
+    await SetPageController.setConfig(state.config);
+  } catch (err) {
+    logger.error("Update state error", err);
     return null;
   }
 };

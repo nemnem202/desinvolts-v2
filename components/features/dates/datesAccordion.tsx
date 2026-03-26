@@ -1,6 +1,6 @@
 import EditableText from "@/components/common/editableText";
-import { usePageState } from "@/providers/stateProvider";
-import { DatesPageContext } from "@/types/contexts";
+import { StateContent, usePageState } from "@/providers/stateProvider";
+import { DatesPageContext, PageRegistry } from "@/types/contexts";
 import { DateEvent } from "@/types/db";
 import { DatesPageContent } from "@/types/page-contents";
 import { useMemo } from "react";
@@ -23,7 +23,7 @@ export function NextDates({
   setCurrentIndex: React.Dispatch<React.SetStateAction<number>>;
   setDates: (dates: DateEvent[]) => void;
 }) {
-  const { pageContext, update } = usePageState<DatesPageContent>(DatesPageContext);
+  const { pageContext, update } = usePageState<"dates">(DatesPageContext);
   const { state } = pageContext;
 
   const upcoming = useMemo(
@@ -64,7 +64,7 @@ export function PrevDates({
   setCurrentIndex: React.Dispatch<React.SetStateAction<number>>;
   setDates: (dates: DateEvent[]) => void;
 }) {
-  const { pageContext, update } = usePageState<DatesPageContent>(DatesPageContext);
+  const { pageContext, update } = usePageState<"dates">(DatesPageContext);
   const { state } = pageContext;
 
   const pastByYear = useMemo(() => {
