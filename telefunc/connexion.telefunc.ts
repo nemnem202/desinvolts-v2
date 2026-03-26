@@ -19,7 +19,7 @@ export default async function onConnexion(
     const reply = context.fastify.reply as FastifyReply;
     reply.setCookie("token", res.jwt, {
       httpOnly: true,
-      secure,
+      secure: false,
       path: "/",
       maxAge: remember ? 365 * 24 * 3600 : 3600,
       sameSite: "lax",

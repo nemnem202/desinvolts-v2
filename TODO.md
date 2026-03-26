@@ -1,4 +1,7 @@
 - implémenter les tests
+
+- mise en production !!! mettre les cookie http en secure
+
 - ajouter les mentions legales, la politique de confidentialité
 
 - permettre de réordonner albums
