@@ -3,7 +3,7 @@
 - mise en production !!! mettre les cookie http en secure
 
 - ajouter les mentions legales, la politique de confidentialité
-
+- corriger z-index de partout
 - permettre de réordonner albums
 - faire une route pour les fichiers et implémenter les fichiers
 
