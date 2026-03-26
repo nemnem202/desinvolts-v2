@@ -11,6 +11,7 @@
     "test:watch": "vitest"
   },
   "dependencies": {
+    "@emailjs/nodejs": "^5.0.2",
     "@fastify/cookie": "^11.0.2",
     "@fastify/multipart": "^9.4.0",
     "@giapspzoo/get-random-id": "^1.0.0",

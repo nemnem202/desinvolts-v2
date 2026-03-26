@@ -1,4 +1,5 @@
-- pipeline- ci/cd
+<!-- - pipeline- ci/cd -->
+
 - corriger les formulaires
 
 - ajouter la possibilité d'envoyer un email
