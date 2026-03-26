@@ -3,12 +3,14 @@ import { logger } from "@/lib/logger";
 import { errorToast, successToast } from "@/lib/utils";
 import onContact from "@/telefunc/contact.telefunc";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { useState } from "react";
 import { Resolver, SubmitHandler, useForm } from "react-hook-form";
 import z from "zod";
 
 export type ContactFormValues = z.infer<typeof contactSchema>;
 
 export default function useContactForm() {
+  const [loading, setLoading] = useState(false);
   const form = useForm({
     resolver: zodResolver(contactSchema) as Resolver<ContactFormValues>,
     defaultValues: {
@@ -17,6 +19,7 @@ export default function useContactForm() {
   });
 
   const handleSubmit: SubmitHandler<ContactFormValues> = async (data: ContactFormValues) => {
+    setLoading(true);
     const res = await onContact(data);
     if (res.success) {
       successToast("Email envoyé", "Nous vous répondrons aussi rapidement que possible.");
@@ -26,7 +29,8 @@ export default function useContactForm() {
         "Essayez de nous contacter via notre adresse email.",
       );
     }
+    setLoading(false);
   };
 
-  return { form, handleSubmit };
+  return { form, handleSubmit, loading };
 }

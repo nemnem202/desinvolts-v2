@@ -6,9 +6,10 @@ import { Checkbox } from "@/components/ui/checkbox";
 import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
 import useContactForm from "@/hooks/forms/useContactForm";
+import { Spinner } from "@/components/ui/spinner";
 
 export default function ContactForm() {
-  const { form, handleSubmit } = useContactForm();
+  const { form, handleSubmit, loading } = useContactForm();
 
   return (
     <form
@@ -144,7 +145,7 @@ export default function ContactForm() {
 
       <div className="flex justify-end">
         <Button type="submit" form="contactform">
-          Envoyer
+          {loading ? <Spinner /> : "Envoyer"}
         </Button>
       </div>
     </form>
