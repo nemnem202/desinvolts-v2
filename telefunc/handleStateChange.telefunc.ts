@@ -4,14 +4,14 @@ import authenticateUser from "@/server/middlewares/authenticateUser";
 import type { PageKey, PageRegistry } from "@/types/contexts";
 
 const handlers = {
-  home: SetPageController.setHome,
-  connexion: SetPageController.setConnexion,
-  contact: SetPageController.setContact,
-  dates: SetPageController.setDates,
-  groupe: SetPageController.setGroupe,
-  medias: SetPageController.setMedias,
-  son: SetPageController.setNousEcouter,
-  default: SetPageController.setDefault,
+  home: (state: any) => SetPageController.setHome(state),
+  connexion: (state: any) => SetPageController.setConnexion(state),
+  contact: (state: any) => SetPageController.setContact(state),
+  dates: (state: any) => SetPageController.setDates(state),
+  groupe: (state: any) => SetPageController.setGroupe(state),
+  medias: (state: any) => SetPageController.setMedias(state),
+  son: (state: any) => SetPageController.setNousEcouter(state),
+  default: (state: any) => SetPageController.setDefault(state),
 } satisfies {
   [K in PageKey]: (state: PageRegistry[K]) => Promise<ServiceResult>;
 };
@@ -32,6 +32,7 @@ export const onHandleStateChange = async <K extends PageKey>(state: PageRegistry
     await callHandler(path, state);
     await SetPageController.setNavlinks(state.navlinks);
     await SetPageController.setConfig(state.config);
+    return { succes: true };
   } catch (err) {
     logger.error("Update state error", err);
     return null;
