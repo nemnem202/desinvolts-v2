@@ -12,7 +12,7 @@ export default function Page() {
 
   return (
     <ClassicPageLayout>
-      <section className="pt-[2.5rem] min-h-0 h-min items-center max-w-[40rem]">
+      <section className="md:pt-[2.5rem] flex flex-col gap-[3rem] items-center w-full max-w-[40rem]">
         <EditableText
           as={"h1"}
           content={state.title}
