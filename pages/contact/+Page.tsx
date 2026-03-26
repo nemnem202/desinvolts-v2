@@ -13,6 +13,7 @@ import { DownloadableFile, EditableTextContent } from "@/types/db";
 import { ContactPageContent } from "@/types/page-contents";
 import { CirclePlus, File } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
+import ContactForm from "@/components/features/contact/contact-form";
 
 export default function Page() {
   const { isAdminDisplay } = useAdmin();
@@ -33,7 +34,7 @@ export default function Page() {
           setContent={(newContent) => update("paragraph", newContent)}
           className="paragraph text-center"
         />
-        <Form />
+        <ContactForm />
       </section>
       <section className="flex flex-col w-full max-w-[60rem] gap-8">
         <EditableText
@@ -60,64 +61,6 @@ export default function Page() {
   );
 }
 
-function Form() {
-  return (
-    <form className="flex flex-col gap-6 rounded-xl border p-5 justify-between" id="contactform">
-      <div className="flex gap-3">
-        <div className="flex-1">
-          <Label htmlFor="firstname" className="subtitle">
-            Prénom
-          </Label>
-          <Input id="firstname" placeholder="John" className="italic paragraph"></Input>
-        </div>
-        <div className="flex-1">
-          <Label htmlFor="lastname" className="subtitle">
-            Nom de famille
-          </Label>
-          <Input id="lastname" placeholder="Doe" className="italic paragraph"></Input>
-        </div>
-      </div>
-      <div className="flex-1">
-        <Label htmlFor="email" className="subtitle">
-          Email
-        </Label>
-        <Input
-          id="email"
-          placeholder="johndoe@gmail.com"
-          className="italic paragraph"
-          type="email"
-        ></Input>
-      </div>
-      <div className="flex-1">
-        <Label htmlFor="object" className="subtitle">
-          Objet
-        </Label>
-        <Input id="object" placeholder="Objet" className="italic paragraph"></Input>
-      </div>
-      <div>
-        <Label htmlFor="message" className="subtitle">
-          Message
-        </Label>
-        <Textarea placeholder="Votre message" className="italic paragraph"></Textarea>
-      </div>
-      <div className="flex items-top">
-        <div className="flex items-start gap-3">
-          <Checkbox id="terms-2" className="mt-1" defaultChecked />
-          <Label htmlFor="terms-2" className="text-muted-foreground text-sm paragraph">
-            J’accepte la transmission de ces informations par email au groupe Désinvolts,
-            conformément à la politique de confidentialité.
-          </Label>
-        </div>
-      </div>
-      <div className="flex justify-end">
-        <Button type="submit" form="contactform" onClick={(e) => e.preventDefault()}>
-          Envoyer
-        </Button>
-      </div>
-    </form>
-  );
-}
-
 function FileComponent({
   file,
   files,
@@ -129,12 +72,6 @@ function FileComponent({
 }) {
   const handleFileTitleChange = (newTitleText: EditableTextContent) => {
     let newFiles = files.filter((f) => f !== file);
-    // newFiles.push({
-    //   filename: newTitleText.content,
-    //   date: file.date,
-    //   downloadUrl: file.downloadUrl,
-    // });
-
     onChange(newFiles);
   };
   return (

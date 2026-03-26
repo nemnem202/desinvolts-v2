@@ -1,4 +1,4 @@
-import { z } from "zod";
+import { object, z } from "zod";
 
 export const imageSchema = z.object({
   id: z
@@ -104,4 +104,24 @@ export const dateEventSchema = z.object({
 export const videoSchema = z.object({
   description: z.string().optional(),
   url: z.url(),
+});
+
+export const contactSchema = z.object({
+  firstname: z
+    .string({ error: "Veuillez entrer votre nom." })
+    .max(200, { error: "nom trop long, maximum 200 caractères" }),
+  lastname: z
+    .string({ error: "Veuillez entrer votre nom." })
+    .max(200, { error: "nom trop long, maximum 200 caractères" }),
+  email: z.email({ error: "L'email fournit est invalide" }),
+  object: z
+    .string()
+    .max(200, { error: "L'objet est trop long, maximum 200 caractères" })
+    .optional(),
+  message: z
+    .string({ error: "Rien à nous dire ?" })
+    .max(2000, { error: "message trop long, maximum 2000 caractères" }),
+  termsAccepted: z.boolean().refine((val) => val === true, {
+    message: "Vous devez accepter les conditions générales d'utilisation.",
+  }),
 });
