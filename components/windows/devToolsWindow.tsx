@@ -14,6 +14,7 @@ import { errorToast, successToast } from "@/lib/utils";
 import { onHandleStateChange } from "@/telefunc/handleStateChange.telefunc";
 import { Bounds } from "@/types/window";
 import { ClientOnly } from "vike-react/ClientOnly";
+import { useSize } from "@/providers/screenSizeProvider";
 
 const STORAGE_KEY = "devtools-window";
 
@@ -39,8 +40,10 @@ export default function DevToolsWindow({
   const { pageContext } = usePageState(context);
   const { state, stateKey } = pageContext;
   const [loading, setLoading] = useState(false);
-
+  const screen = useSize();
   const [bounds, setBounds] = useState(loadBounds);
+
+  if (screen === "sm") return null;
 
   useEffect(() => {
     setCurrentTheme(document.documentElement.classList.contains("dark"));
