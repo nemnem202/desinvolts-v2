@@ -1,6 +1,10 @@
-- implémenter les tests
+- corriger la synchronisation des liens
 
+- debug les images sont bloquées parfois pour des raisons étranges (taille d'image)
+- implémenter les tests
+- date suivante/precedente -> dans l'ordre des dates plutot que l'ordre des ajouts
 - corriger les formulaires
+- autoriser d'autres formats d'image
 
 - faire une route pour les fichiers et implémenter les fichiers
 - ajouter les mentions legales, la politique de confidentialité

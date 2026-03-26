@@ -20,23 +20,23 @@ export default function Page() {
           className="headline w-full text-center shrink-0"
         />
       </section>
-      <section className="pt-[2.5rem] flex flex-col gap-[3rem] min-h-0 items-center md:max-w-[40rem]">
-        <div className="flex items-center gap-[2rem] flex-col md:flex-row">
-          <div className="rounded-md overflow-hidden md:w-[20rem] aspect-square">
+      <section className="pt-[2.5rem] flex flex-col gap-[3rem] min-h-0 items-center max-w-[56rem] w-full">
+        <div className="flex items-center gap-[2rem] flex-col w-full">
+          <ParagraphGroup
+            as={"p"}
+            className=""
+            classNameForEachParagraph="text-center paragraph"
+            content={state.first_section_paragraphs}
+            onChange={(newParagraphs) => update("first_section_paragraphs", newParagraphs)}
+          />
+          <div className="w-full rounded-md overflow-hidden aspect-video">
             <Image
-              width={320}
+              width={600}
               height={320}
               imageProps={{ ...state.presentation_image }}
               onChange={(newImage) => update("presentation_image", newImage)}
             />
           </div>
-          <ParagraphGroup
-            as={"p"}
-            className=""
-            classNameForEachParagraph="text-center md:text-left paragraph"
-            content={state.first_section_paragraphs}
-            onChange={(newParagraphs) => update("first_section_paragraphs", newParagraphs)}
-          />
         </div>
       </section>
       <section className="md:py-[2.5rem] min-h-0 h-min items-center  w-full max-w-[56rem]">
