@@ -1,9 +1,6 @@
 - implémenter les tests
 - ajouter les mentions legales, la politique de confidentialité
-- debug les images sont bloquées parfois pour des raisons étranges (taille d'image)
 
-- date suivante/precedente -> dans l'ordre des dates plutot que l'ordre des ajouts
-- autoriser d'autres formats d'image
 - permettre de réordonner albums
 - faire une route pour les fichiers et implémenter les fichiers
 

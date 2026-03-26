@@ -3,6 +3,7 @@ import ButtonPlus from "../../ui/buttonPlus";
 import { Dialog } from "../../ui/dialog";
 import ImageForm from "./imageForm";
 import { Image } from "@/prisma/generated/prisma/browser";
+import { errorToast } from "@/lib/utils";
 
 export const CANVAS_WIDTH = 300;
 export const RESIZE_HANDLE_SIZE = 20;
@@ -41,6 +42,21 @@ export default function AddImageButton({
   const handleImageLoad = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
     if (!file) return;
+
+    const MAX_SIZE = 10 * 1024 * 1024;
+    if (file.size > MAX_SIZE) {
+      errorToast(
+        "Fichier trop volumineux",
+        "L'image ne doit pas dépasser 10 Mo. (Actuel : " +
+          (file.size / (1024 * 1024)).toFixed(2) +
+          " Mo)",
+      );
+
+      if (inputRef.current) inputRef.current.value = "";
+      return;
+    }
+    // ----------------------------------------
+
     setImage(file);
   };
 
