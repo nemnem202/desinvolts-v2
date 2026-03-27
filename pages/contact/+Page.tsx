@@ -12,7 +12,7 @@ import ContactForm from "@/components/features/contact/contactForm";
 
 export default function Page() {
   const { isAdminDisplay } = useAdmin();
-  const { pageContext, update } = usePageState<ContactPageContent>(ContactPageContext);
+  const { pageContext, update } = usePageState<"contact">(ContactPageContext);
   const { state } = pageContext;
   return (
     <ClassicPageLayout>

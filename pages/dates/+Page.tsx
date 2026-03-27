@@ -30,7 +30,7 @@ export default function Page() {
             setCurrentIndex={setCurrentIndex}
           />
         ) : (
-          <AddDateDialog onDate={(date) => update("dates", [date])} />
+          <AddDateDialog onDate={(date) => update("dates", [...state.dates, date])} />
         )}
       </Section>
       <Section>

@@ -11,8 +11,7 @@ import {
   MediasPageContent,
   NousEcouterPageContent,
 } from "@/types/page-contents";
-import { setBackupSeed } from "../config/seed";
-type ServiceResult = { success: true } | { success: false; error: unknown };
+export type ServiceResult = { success: true } | { success: false; error: unknown };
 
 export default class SetPageController {
   private static mapText = (tl: any) => ({

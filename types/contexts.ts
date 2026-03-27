@@ -11,14 +11,14 @@ import {
 } from "./page-contents";
 import { StateContent } from "@/providers/stateProvider";
 
-export const DefaultStateContext = createContext<StateContent<any> | null>(null);
-export const HomePageContext = createContext<StateContent<HomePageContent> | null>(null);
-export const ConnexionPageContext = createContext<StateContent<ConnexionPageContent> | null>(null);
-export const ContactPageContext = createContext<StateContent<ContactPageContent> | null>(null);
-export const DatesPageContext = createContext<StateContent<DatesPageContent> | null>(null);
-export const GroupePageContext = createContext<StateContent<GroupePageContent> | null>(null);
-export const MediasPageContext = createContext<StateContent<MediasPageContent> | null>(null);
-export const SonPageContext = createContext<StateContent<NousEcouterPageContent> | null>(null);
+export const DefaultStateContext = createContext<StateContent<"default"> | null>(null);
+export const HomePageContext = createContext<StateContent<"home"> | null>(null);
+export const ConnexionPageContext = createContext<StateContent<"connexion"> | null>(null);
+export const ContactPageContext = createContext<StateContent<"contact"> | null>(null);
+export const DatesPageContext = createContext<StateContent<"dates"> | null>(null);
+export const GroupePageContext = createContext<StateContent<"groupe"> | null>(null);
+export const MediasPageContext = createContext<StateContent<"medias"> | null>(null);
+export const SonPageContext = createContext<StateContent<"son"> | null>(null);
 
 export const PageStateKey = [
   "home",
@@ -45,7 +45,7 @@ export type PageRegistry = {
 export type PageKey = keyof PageRegistry;
 
 export const contexts: {
-  [K in PageKey]: Context<StateContent<PageRegistry[K]> | null>;
+  [K in PageKey]: Context<StateContent<K> | null>;
 } = {
   home: HomePageContext,
   connexion: ConnexionPageContext,
@@ -56,7 +56,6 @@ export const contexts: {
   son: SonPageContext,
   default: DefaultStateContext,
 };
-
 export type PageContentMap = {
   [K in PageKey]: PageRegistry[K] | undefined;
 };

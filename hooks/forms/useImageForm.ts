@@ -83,7 +83,7 @@ export function useImageForm(props: ImageFormProps) {
             return;
           }
           resolve(blob);
-        }, "image/png");
+        }, "image/webp");
       };
 
       img.src = URL.createObjectURL(file);

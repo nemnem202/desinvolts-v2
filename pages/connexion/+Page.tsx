@@ -21,7 +21,7 @@ import { useConnectionForm } from "@/hooks/forms/useConnexionForm";
 
 export default function Page() {
   const { isAdminDisplay } = useAdmin();
-  const { pageContext, update } = usePageState<ConnexionPageContent>(ConnexionPageContext);
+  const { pageContext, update } = usePageState<"connexion">(ConnexionPageContext);
   const { state } = pageContext;
   return (
     <ClassicPageLayout>

@@ -69,7 +69,7 @@ export default function AddDateDialog({ onDate }: { onDate: (newDate: DateEvent)
                       <AddImageButton
                         onImage={(img) => form.setValue("image", { ...img, label: null })}
                       >
-                        <div>Ajouter une image</div>
+                        <Button>Ajouter une image</Button>
                       </AddImageButton>
                     )}
                   </FormControl>

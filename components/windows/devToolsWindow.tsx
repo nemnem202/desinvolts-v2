@@ -15,6 +15,7 @@ import { onHandleStateChange } from "@/telefunc/handleStateChange.telefunc";
 import { Bounds } from "@/types/window";
 import { ClientOnly } from "vike-react/ClientOnly";
 import { useSize } from "@/providers/screenSizeProvider";
+import { contexts, PageKey, PageRegistry } from "@/types/contexts";
 
 const STORAGE_KEY = "devtools-window";
 
@@ -28,17 +29,13 @@ function loadBounds(): Bounds {
   return DEFAULT_BOUNDS;
 }
 
-export default function DevToolsWindow({
-  context,
-}: {
-  context: Context<StateContent<any> | null>;
-}) {
+export default function DevToolsWindow<K extends PageKey>({ pageKey }: { pageKey: K }) {
   const nodeRef = useRef(null);
   const { isAdminDisplay, toggleAdmin } = useAdmin();
   const [currentTheme, setCurrentTheme] = useState<boolean>(true);
   const [borders, setBorders] = useState(false);
-  const { pageContext } = usePageState(context);
-  const { state, stateKey } = pageContext;
+  const { pageContext } = usePageState(contexts[pageKey]);
+  const { state } = pageContext;
   const [loading, setLoading] = useState(false);
   const screen = useSize();
   const [bounds, setBounds] = useState(loadBounds);
@@ -60,7 +57,7 @@ export default function DevToolsWindow({
   const syncState = async () => {
     setLoading(true);
     logger.info("State update request", state);
-    const res = await onHandleStateChange(state, stateKey);
+    const res = await onHandleStateChange(state, pageKey);
     if (!res) {
       errorToast("Echec de la synchronisation.", "Êtes vous connecté ?");
     } else {

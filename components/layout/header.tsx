@@ -3,15 +3,11 @@ import Logo from "../ui/logo";
 import Navbar, { MobileNavbar } from "./navbar";
 import { useSize } from "@/providers/screenSizeProvider";
 import { StateContent, usePageState } from "@/providers/stateProvider";
-import { BasePageContent } from "@/types/page-contents";
 import { NavLink } from "@/prisma/generated/prisma/browser";
+import { contexts, PageKey } from "@/types/contexts";
 
-export default function Header<S extends BasePageContent>({
-  context,
-}: {
-  context: Context<StateContent<any> | null>;
-}) {
-  const { pageContext, update } = usePageState<S>(context);
+export default function Header<K extends PageKey>({ pageKey }: { pageKey: K }) {
+  const { pageContext, update } = usePageState<K>(contexts[pageKey]);
   const { state } = useMemo(() => pageContext, [pageContext]);
   const size = useSize();
   return (

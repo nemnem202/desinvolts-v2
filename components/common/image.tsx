@@ -36,6 +36,17 @@ export default function Image(props: ImageProps) {
     return `/image/${encodeURIComponent(src)}${query ? `?${query}` : ""}`;
   };
 
+  const getBigUrl = (src: string): string => {
+    const params = new URLSearchParams();
+
+    if (props.width != null) params.append("width", String(2000));
+    if (props.height != null) params.append("height", String(2000));
+
+    const query = params.toString();
+
+    return `/image/${encodeURIComponent(src)}${query ? `?${query}` : ""}`;
+  };
+
   useEffect(() => {
     setLoadingState(true);
   }, [imageProps.source]);
@@ -91,13 +102,11 @@ export default function Image(props: ImageProps) {
             {loadingState && <Skeleton className="absolute inset-0 z-9" />}
           </div>
         </DialogTrigger>
-        <DialogContent className="bg-transparent border-transparent p-0 flex items-center justify-center min-w-0 min-h-0 h-min w-min">
+        <DialogContent className="bg-transparent border-none p-0 flex items-center justify-center min-w-0 min-h-0 h-min w-min">
           <DialogTitle className="hidden">Une image du groupe Desinvolts</DialogTitle>
 
           <img
-            height={props.height}
-            width={props.width}
-            src={getUrl(props.imageProps.source)}
+            src={getBigUrl(props.imageProps.source)}
             alt={imageProps.alt ?? ""}
             className="max-w-[70vw] max-h-[70vh] object-cover"
           />

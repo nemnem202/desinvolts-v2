@@ -1,34 +1,40 @@
 import { logger } from "@/lib/logger";
-import SetPageController from "@/server/controller/set-page-controller";
+import SetPageController, { ServiceResult } from "@/server/controller/set-page-controller";
 import authenticateUser from "@/server/middlewares/authenticateUser";
-import type { PageKey } from "@/types/contexts";
+import type { PageKey, PageRegistry } from "@/types/contexts";
 
-export const onHandleStateChange = async (state: any, path: PageKey) => {
+const handlers = {
+  home: (state: any) => SetPageController.setHome(state),
+  connexion: (state: any) => SetPageController.setConnexion(state),
+  contact: (state: any) => SetPageController.setContact(state),
+  dates: (state: any) => SetPageController.setDates(state),
+  groupe: (state: any) => SetPageController.setGroupe(state),
+  medias: (state: any) => SetPageController.setMedias(state),
+  son: (state: any) => SetPageController.setNousEcouter(state),
+  default: (state: any) => SetPageController.setDefault(state),
+} satisfies {
+  [K in PageKey]: (state: PageRegistry[K]) => Promise<ServiceResult>;
+};
+
+const callHandler = async <K extends PageKey>(path: K, state: PageRegistry[K]) => {
+  const handler = handlers[path] as (state: PageRegistry[K]) => Promise<ServiceResult>;
+  return handler(state);
+};
+
+export const onHandleStateChange = async <K extends PageKey>(state: PageRegistry[K], path: K) => {
   try {
     logger.info("Handle state change called", "current user: ");
 
     const { isAuthenticated } = await authenticateUser();
 
     if (!isAuthenticated) throw new Error();
-    switch (path) {
-      case "home":
-        return SetPageController.setHome(state);
-      case "connexion":
-        return SetPageController.setConnexion(state);
-      case "contact":
-        return SetPageController.setContact(state);
-      case "dates":
-        return SetPageController.setDates(state);
-      case "default":
-        return SetPageController.setDefault(state);
-      case "groupe":
-        return SetPageController.setGroupe(state);
-      case "medias":
-        return SetPageController.setMedias(state);
-      case "son":
-        return SetPageController.setNousEcouter(state);
-    }
-  } catch {
+
+    await callHandler(path, state);
+    await SetPageController.setNavlinks(state.navlinks);
+    await SetPageController.setConfig(state.config);
+    return { succes: true };
+  } catch (err) {
+    logger.error("Update state error", err);
     return null;
   }
 };

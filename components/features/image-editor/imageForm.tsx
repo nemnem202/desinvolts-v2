@@ -39,7 +39,10 @@ export default function ImageForm(props: ImageFormProps) {
       <div className="w-fit">
         <form
           id="form-rhf-image"
-          onSubmit={form.handleSubmit(handleSubmit, onError)}
+          onSubmit={(e) => {
+            e.stopPropagation();
+            form.handleSubmit(handleSubmit, onError)(e);
+          }}
           className="w-[20rem]"
         >
           <FieldGroup>

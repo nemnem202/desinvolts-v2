@@ -111,29 +111,33 @@ export default function PostForm(props: PostFormProps) {
                     <FieldLabel htmlFor="images" className="subtitle">
                       Images
                     </FieldLabel>
-                    <div className="flex gap-3">
+                    <div className="flex gap-3 items-center">
                       {field.value.map((field, index) => (
-                        <Image
-                          width={200}
-                          height={200}
-                          imageProps={field}
-                          onChange={(newImage) =>
-                            form.setValue(
-                              "images",
+                        <div className="w-20 h-20">
+                          <Image
+                            width={200}
+                            height={200}
+                            imageProps={field}
+                            onChange={(newImage) =>
+                              form.setValue(
+                                "images",
 
-                              images.map((img) =>
-                                img.id === newImage.id ? { ...img, ...newImage } : img,
-                              ),
-                            )
-                          }
-                          key={index}
-                        />
+                                images.map((img) =>
+                                  img.id === newImage.id ? { ...img, ...newImage } : img,
+                                ),
+                              )
+                            }
+                            key={index}
+                          />
+                        </div>
                       ))}
-                      <AddImageButton
-                        onImage={(newImage) =>
-                          form.setValue("images", [...images, { ...newImage, label: null }])
-                        }
-                      />
+                      <div className="h-fit">
+                        <AddImageButton
+                          onImage={(newImage) => {
+                            form.setValue("images", [...images, { ...newImage, label: null }]);
+                          }}
+                        />
+                      </div>
                     </div>
                   </div>
                 )}

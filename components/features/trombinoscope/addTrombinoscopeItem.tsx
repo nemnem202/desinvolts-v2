@@ -52,8 +52,12 @@ export default function AddTrombinoscopeItem(props: AddTrombinoscopeItemProps) {
                       />
                     </div>
                   ) : (
-                    <AddImageButton onImage={field.onChange}>
-                      <div>Ajouter une image</div>
+                    <AddImageButton
+                      onImage={(img) => {
+                        field.onChange({ ...img, label: null });
+                      }}
+                    >
+                      <Button>Ajouter une image</Button>
                     </AddImageButton>
                   )}
                 </div>
