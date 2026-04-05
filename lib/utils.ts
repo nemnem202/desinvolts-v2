@@ -1,9 +1,8 @@
+import getRandomId from "@giapspzoo/get-random-id";
 import { type ClassValue, clsx } from "clsx";
 import { toast } from "sonner";
 import { twMerge } from "tailwind-merge";
-import ApiHandler from "./apiHandler";
-import getRandomId from "@giapspzoo/get-random-id";
-import { DateEvent, EditableParagraphContent, ParagraphInGroup } from "@/types/db";
+import type { DateEvent, ParagraphInGroup } from "@/types/db";
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
@@ -18,7 +17,7 @@ export function formatDate(date: Date) {
 
 export function getNextDate(dates: DateEvent[]): DateEvent {
   const now = Date.now();
-  let nearestDate: DateEvent | undefined = undefined;
+  let nearestDate: DateEvent | undefined;
   let smallestDiff = Infinity;
 
   dates.forEach((date) => {
@@ -49,7 +48,7 @@ export function successToast(message: string, description?: string) {
 }
 
 export function convert_text_area_input_to_paragraph_array(
-  text: string | null | undefined,
+  text: string | null | undefined
 ): ParagraphInGroup[] {
   if (!text) return [];
 
@@ -61,7 +60,7 @@ export function convert_text_area_input_to_paragraph_array(
         id: getRandomId(),
         hyperlinks: [],
       },
-    }),
+    })
   );
 }
 
@@ -87,15 +86,15 @@ function extractMusicId(url: string, tag: "spotify" | "deezer" | "applemusic"): 
 
 function generateIframeUrlFromId(
   id: string,
-  tag: "spotify" | "deezer" | "applemusic",
+  tag: "spotify" | "deezer" | "applemusic"
 ): string | null {
   switch (tag) {
     case "spotify":
-      return "https://open.spotify.com/embed/album/" + id;
+      return `https://open.spotify.com/embed/album/${id}`;
     case "deezer":
-      return "https://widget.deezer.com/widget/dark/album/" + id;
+      return `https://widget.deezer.com/widget/dark/album/${id}`;
     case "applemusic":
-      return "https://embed.music.apple.com/album/" + id;
+      return `https://embed.music.apple.com/album/${id}`;
     default:
       return null;
   }
@@ -103,7 +102,7 @@ function generateIframeUrlFromId(
 
 export function convertUrlToIframeurl(
   url: string,
-  tag: "spotify" | "deezer" | "applemusic",
+  tag: "spotify" | "deezer" | "applemusic"
 ): string | null {
   const id = extractMusicId(url, tag);
   if (!id) return null;

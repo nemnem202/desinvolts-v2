@@ -1,13 +1,13 @@
-import { VideoGalleryProps } from "@/components/features/media/videoGalleryForm";
-import { videoSchema } from "@/config/frontendFormSchemas";
-import { logger } from "@/lib/logger";
-import getVideoData from "@/telefunc/getVideo.telefunc";
-import { VideoData } from "@/types/db";
 import getRandomId from "@giapspzoo/get-random-id";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useState } from "react";
-import { Resolver, useForm } from "react-hook-form";
-import z from "zod";
+import { type Resolver, useForm } from "react-hook-form";
+import type z from "zod";
+import type { VideoGalleryProps } from "@/components/features/media/videoGalleryForm";
+import { videoSchema } from "@/config/frontendFormSchemas";
+import { logger } from "@/lib/logger";
+import getVideoData from "@/telefunc/getVideo.telefunc";
+import type { VideoData } from "@/types/db";
 
 type VideoFormValues = z.infer<typeof videoSchema>;
 
@@ -24,7 +24,7 @@ export function useVideoGalleyProps({ onVideo }: VideoGalleryProps) {
     if (!videoData) return;
 
     onVideo({
-      description: "a video of " + videoData,
+      description: `a video of ${videoData}`,
       id: getRandomId(),
       url: url,
     });

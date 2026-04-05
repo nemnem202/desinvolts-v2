@@ -1,5 +1,5 @@
-import { Configuration, Image, NavLink, Video } from "@/prisma/generated/prisma/client";
-import {
+import type { Configuration, Image, NavLink, Video } from "@/prisma/generated/prisma/client";
+import type {
   Album,
   Carousel,
   DateEvent,

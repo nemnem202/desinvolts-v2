@@ -1,5 +1,5 @@
 import { TabsTrigger } from "@/components/ui/tabs";
-import { NavLink } from "@/prisma/generated/prisma/browser";
+import type { NavLink } from "@/prisma/generated/prisma/browser";
 
 export default function AlbumTabsTigger({
   index,

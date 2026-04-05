@@ -2,7 +2,6 @@ export default function NavButton({
   children,
   onClick,
   disabled,
-  reverse,
 }: {
   children: React.ReactNode;
   onClick: () => void;
@@ -11,6 +10,7 @@ export default function NavButton({
 }) {
   return (
     <button
+      type="button"
       onClick={onClick}
       disabled={disabled}
       className={`flex items-center gap-2 subtitle p-1 rounded-full ${

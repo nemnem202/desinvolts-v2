@@ -1,9 +1,9 @@
+import getRandomId from "@giapspzoo/get-random-id";
+import { createContext, type ReactNode, useCallback, useContext, useMemo } from "react";
 import ImageWindow from "@/components/windows/imageWindow";
 import VideoWindow from "@/components/windows/videoWindow";
-import WindowsManager, { WindowManagerProps } from "@/components/windows/windowsManager";
-import { WindowProps } from "@/types/db";
-import getRandomId from "@giapspzoo/get-random-id";
-import { createContext, ReactNode, useContext, useId, useMemo, useState } from "react";
+import WindowsManager, { type WindowManagerProps } from "@/components/windows/windowsManager";
+import type { WindowProps } from "@/types/db";
 
 interface WindowsContextValue {
   windows: WindowProps[];
@@ -23,10 +23,10 @@ export default function WindowsProvider({
   managerProps: WindowManagerProps;
   children?: ReactNode;
 }) {
-  const createChildrenFromEnum = (props: WindowProps): ReactNode => {
+  const createChildrenFromEnum = useCallback((props: WindowProps): ReactNode => {
     if (props.image) return <ImageWindow image={props.image} window={props} />;
     if (props.video) return <VideoWindow video={props.video} />;
-  };
+  }, []);
 
   const createSingleWindow = (window: WindowProps, newZIndex: number): WindowProps => {
     return {
@@ -37,7 +37,7 @@ export default function WindowsProvider({
     };
   };
 
-  const createMultipleWindows = (windows: WindowProps[]): WindowProps[] => {
+  const _createMultipleWindows = (windows: WindowProps[]): WindowProps[] => {
     return windows.map((window, index) => createSingleWindow(window, index));
   };
 
@@ -83,7 +83,7 @@ export default function WindowsProvider({
         zIndex: window.zIndex ?? index,
         children: createChildrenFromEnum(window),
       })),
-    [windows],
+    [windows, createChildrenFromEnum]
   );
 
   return (

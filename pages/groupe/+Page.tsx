@@ -1,8 +1,8 @@
+import EditableText from "@/components/common/editableText";
+import Image from "@/components/common/image";
 import Trombinoscope from "@/components/features/trombinoscope/trombinoscope";
 import ClassicPageLayout from "@/components/layout/classicPageLayout";
 import ParagraphGroup from "@/components/layout/paragraphGroup";
-import EditableText from "@/components/common/editableText";
-import Image from "@/components/common/image";
 import { usePageState } from "@/providers/stateProvider";
 import { GroupePageContext } from "@/types/contexts";
 

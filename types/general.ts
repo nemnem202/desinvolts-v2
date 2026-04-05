@@ -1,4 +1,4 @@
-import { EditableParagraphContent, EditableTextContent } from "./db";
+import type { EditableParagraphContent, EditableTextContent } from "./db";
 
 export type VideoData = {
   provider_url: string;

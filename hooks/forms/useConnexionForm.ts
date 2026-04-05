@@ -1,10 +1,10 @@
+import { zodResolver } from "@hookform/resolvers/zod";
+import { type Resolver, useForm } from "react-hook-form";
+import type z from "zod";
 import { connexionSchema } from "@/config/frontendFormSchemas";
 import { logger } from "@/lib/logger";
 import { errorToast, successToast } from "@/lib/utils";
 import onConnexion from "@/telefunc/connexion.telefunc";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { Resolver, useForm } from "react-hook-form";
-import z from "zod";
 
 type ConnexionFormValue = z.infer<typeof connexionSchema>;
 

@@ -1,8 +1,7 @@
 import fastifyMultipart from "@fastify/multipart";
 import type { FastifyInstance, FastifyReply, FastifyRequest } from "fastify";
-import FileController from "./controller/file-controller";
-import { logger } from "@/lib/logger";
 import { jwtVerify } from "jose";
+import FileController from "./controller/file-controller";
 
 async function requireAuth(request: FastifyRequest, reply: FastifyReply) {
   const token = request.cookies?.token;

@@ -1,21 +1,21 @@
-import { CANVAS_WIDTH } from "@/components/features/image-editor/addImageButton";
-import { ImageFormProps } from "@/components/features/image-editor/imageForm";
-import { imagePropsSchema } from "@/config/frontendFormSchemas";
-import ApiHandler from "@/lib/apiHandler";
-import { logger } from "@/lib/logger";
-import { successToast } from "@/lib/utils";
-import { UploadImageReply } from "@/types/server";
-import { Bounds } from "@/types/window";
 import getRandomId from "@giapspzoo/get-random-id";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
-import z from "zod";
+import type z from "zod";
+import { CANVAS_WIDTH } from "@/components/features/image-editor/addImageButton";
+import type { ImageFormProps } from "@/components/features/image-editor/imageForm";
+import { imagePropsSchema } from "@/config/frontendFormSchemas";
+import ApiHandler from "@/lib/apiHandler";
+import { logger } from "@/lib/logger";
+import { successToast } from "@/lib/utils";
+import type { UploadImageReply } from "@/types/server";
+import type { Bounds } from "@/types/window";
 
 type ImageFormValues = z.infer<typeof imagePropsSchema>;
 
 export function useImageForm(props: ImageFormProps) {
-  const { image, setImage, setDialogOpen, onImage, loadImage } = props;
+  const { image, setImage, setDialogOpen, onImage } = props;
   const [formLoading, setFormLoading] = useState<boolean>(false);
   const [squareArea, setSquare] = useState<Bounds>({
     width: 0,
@@ -51,14 +51,14 @@ export function useImageForm(props: ImageFormProps) {
     x: number,
     y: number,
     width: number,
-    height: number,
+    height: number
   ): Promise<Blob> => {
     return new Promise((resolve) => {
       const img = new Image();
 
       img.onload = () => {
         const scaleX = img.naturalWidth / CANVAS_WIDTH;
-        const scaleY = img.naturalHeight / (img.naturalHeight * (CANVAS_WIDTH / img.naturalWidth));
+        const _scaleY = img.naturalHeight / (img.naturalHeight * (CANVAS_WIDTH / img.naturalWidth));
 
         const realX = x * scaleX;
         const realY = y * scaleX;
@@ -92,7 +92,7 @@ export function useImageForm(props: ImageFormProps) {
 
   const submitImage = async (image: Blob, imageName: string): Promise<string> => {
     const formData = new FormData();
-    const file = new File([image], imageName + "-cropped", { type: image.type });
+    const file = new File([image], `${imageName}-cropped`, { type: image.type });
     formData.append("image", file);
     const res = await ApiHandler.post<FormData, UploadImageReply>("/image", formData);
 
@@ -118,7 +118,7 @@ export function useImageForm(props: ImageFormProps) {
       squareArea.x,
       squareArea.y,
       squareArea.width,
-      squareArea.height,
+      squareArea.height
     );
     const imageUrl = await submitImage(cropped, values.title);
     onImage({

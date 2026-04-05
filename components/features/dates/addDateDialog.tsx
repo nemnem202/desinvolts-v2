@@ -1,7 +1,10 @@
+import { useState } from "react";
+import DayPicker from "@/components/common/dayPicker";
+import HourPicker from "@/components/common/hourPicker";
+import Image from "@/components/common/image";
 import AddImageButton from "@/components/features/image-editor/addImageButton";
 import { Button } from "@/components/ui/button";
 import ButtonPlus from "@/components/ui/buttonPlus";
-import DayPicker from "@/components/common/dayPicker";
 import { Dialog, DialogContent, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 import {
   Form,
@@ -11,15 +14,12 @@ import {
   FormLabel,
   FormMessage,
 } from "@/components/ui/form";
-import HourPicker from "@/components/common/hourPicker";
-import Image from "@/components/common/image";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
-import { DateEvent } from "@/types/db";
-import { useEffect, useState } from "react";
 import useDateForm from "@/hooks/forms/useDateForm";
 import { logger } from "@/lib/logger";
+import type { DateEvent } from "@/types/db";
 
 export default function AddDateDialog({ onDate }: { onDate: (newDate: DateEvent) => void }) {
   const [open, setOpen] = useState(false);
@@ -130,8 +130,8 @@ export default function AddDateDialog({ onDate }: { onDate: (newDate: DateEvent)
                               newDate.getMonth(),
                               newDate.getDate(),
                               field.value.getHours(),
-                              field.value.getMinutes(),
-                            ),
+                              field.value.getMinutes()
+                            )
                           );
                         }}
                       />
@@ -158,8 +158,8 @@ export default function AddDateDialog({ onDate }: { onDate: (newDate: DateEvent)
                               field.value.getMonth(),
                               field.value.getDate(),
                               newDate.getHours(),
-                              newDate.getMinutes(),
-                            ),
+                              newDate.getMinutes()
+                            )
                           );
                         }}
                       />

@@ -1,10 +1,10 @@
-import { Context, useMemo } from "react";
+import { useMemo } from "react";
+import type { NavLink } from "@/prisma/generated/prisma/browser";
+import { useSize } from "@/providers/screenSizeProvider";
+import { usePageState } from "@/providers/stateProvider";
+import { contexts, type PageKey } from "@/types/contexts";
 import Logo from "../ui/logo";
 import Navbar, { MobileNavbar } from "./navbar";
-import { useSize } from "@/providers/screenSizeProvider";
-import { StateContent, usePageState } from "@/providers/stateProvider";
-import { NavLink } from "@/prisma/generated/prisma/browser";
-import { contexts, PageKey } from "@/types/contexts";
 
 export default function Header<K extends PageKey>({ pageKey }: { pageKey: K }) {
   const { pageContext, update } = usePageState<K>(contexts[pageKey]);

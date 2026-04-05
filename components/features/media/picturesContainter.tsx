@@ -1,14 +1,13 @@
-import WindowsProvider from "@/providers/windowsProvider";
-import { FocusEvent, ReactNode, useState } from "react";
-import { useAdmin } from "@/providers/adminProvider";
+import type { FocusEvent, ReactNode } from "react";
+import Image from "@/components/common/image";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import type { FloatingWindow } from "@/prisma/generated/prisma/browser";
+import { useAdmin } from "@/providers/adminProvider";
 import { useSize } from "@/providers/screenSizeProvider";
-import Image from "@/components/common/image";
 import { usePageState } from "@/providers/stateProvider";
+import WindowsProvider from "@/providers/windowsProvider";
 import { MediasPageContext } from "@/types/contexts";
-import { MediasPageContent } from "@/types/page-contents";
-import { FloatingWindow } from "@/prisma/generated/prisma/browser";
 
 export default function PicturesContainer({
   showDots,
@@ -25,7 +24,7 @@ export default function PicturesContainer({
   const updateChanges = (e: FocusEvent<HTMLInputElement, Element>) => {
     update("config", {
       ...state.config,
-      mediaImagesContainerHeight: parseInt(e.currentTarget.value),
+      mediaImagesContainerHeight: parseInt(e.currentTarget.value, 10),
     });
   };
 
@@ -50,6 +49,7 @@ export default function PicturesContainer({
                 </div>
               );
             }
+            return [];
           })}
       </div>
     );

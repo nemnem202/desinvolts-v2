@@ -1,9 +1,8 @@
-import { useAdmin } from "@/providers/adminProvider";
-import { useWindows } from "@/providers/windowsProvider";
 import { MoveDiagonal2 } from "lucide-react";
 import useWindowControls from "@/hooks/useWindowControls";
-import { WindowProps } from "@/types/db";
-import { useEffect, useMemo } from "react";
+import { useAdmin } from "@/providers/adminProvider";
+import { useWindows } from "@/providers/windowsProvider";
+import type { WindowProps } from "@/types/db";
 
 export default function Window(props: WindowProps) {
   const { isAdminDisplay } = useAdmin();

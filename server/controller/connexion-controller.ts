@@ -1,14 +1,14 @@
-import { logger } from "@/lib/logger";
-import { Controller } from "./controller";
-import { prisma } from "@/lib/prisma-client";
 import * as argon2 from "argon2";
 import { SignJWT } from "jose";
+import { logger } from "@/lib/logger";
+import { prisma } from "@/lib/prisma-client";
+import { Controller } from "./controller";
 
 export default class ConnexionController extends Controller {
   static async login(
     username: string,
     password: string,
-    remember: boolean,
+    remember: boolean
   ): Promise<{ success: true; jwt: string } | { success: false; error: string }> {
     console.log("[CONNEXION CONTOLLER CALL]");
     try {

@@ -1,6 +1,6 @@
 import { Calendar } from "@/components/ui/calendar";
 import { logger } from "@/lib/logger";
-import { DateEvent } from "@/types/db";
+import type { DateEvent } from "@/types/db";
 
 export default function CalendarComponent({
   dates,

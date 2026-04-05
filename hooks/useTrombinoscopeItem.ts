@@ -1,6 +1,6 @@
-import { TrombinoscopeItemProps } from "@/components/features/trombinoscope/trombinoscopeItem";
-import { useAdmin } from "@/providers/adminProvider";
 import { useEffect, useState } from "react";
+import type { TrombinoscopeItemProps } from "@/components/features/trombinoscope/trombinoscopeItem";
+import { useAdmin } from "@/providers/adminProvider";
 
 export default function useTrombinoscopeItem(props: TrombinoscopeItemProps) {
   const { isAdminDisplay } = useAdmin();

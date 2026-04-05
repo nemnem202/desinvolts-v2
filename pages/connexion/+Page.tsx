@@ -1,7 +1,7 @@
+import EditableText from "@/components/common/editableText";
 import ClassicPageLayout from "@/components/layout/classicPageLayout";
 import { Button } from "@/components/ui/button";
 import { Checkbox } from "@/components/ui/checkbox";
-import EditableText from "@/components/common/editableText";
 import {
   Form,
   FormControl,
@@ -11,13 +11,11 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-
+import { useConnectionForm } from "@/hooks/forms/useConnexionForm";
 import { useAdmin } from "@/providers/adminProvider";
 import { usePageState } from "@/providers/stateProvider";
 import { ConnexionPageContext } from "@/types/contexts";
-import { EditableTextContent } from "@/types/db";
-import { ConnexionPageContent } from "@/types/page-contents";
-import { useConnectionForm } from "@/hooks/forms/useConnexionForm";
+import type { EditableTextContent } from "@/types/db";
 
 export default function Page() {
   const { isAdminDisplay } = useAdmin();

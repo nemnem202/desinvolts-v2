@@ -1,18 +1,12 @@
-import { WindowManagerProps } from "@/components/windows/windowsManager";
-import { useWindows } from "@/providers/windowsProvider";
-
-import { useEffect, useRef, useState } from "react";
-import { Bounds } from "@/types/window";
+import { useCallback, useEffect, useRef, useState } from "react";
+import type { WindowManagerProps } from "@/components/windows/windowsManager";
 import { useAdmin } from "@/providers/adminProvider";
-
-type ContainerBounds = Bounds & { top: number; left: number };
+import type { Bounds } from "@/types/window";
 
 export default function useWindowManager({
   colnumber,
   rowSize = 1,
   showDots = true,
-  zIndexPriorityFactor = 0,
-  setWindows,
 }: WindowManagerProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   const [_, setColSize] = useState<number | undefined>(undefined);
@@ -23,7 +17,7 @@ export default function useWindowManager({
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const boundsRef = useRef<typeof containerBounds>(undefined);
 
-  const drawGrid = () => {
+  const drawGrid = useCallback(() => {
     const canvas = canvasRef.current;
     const container = containerRef.current;
     if (!canvas || !container || !rowSize || !colnumber) return;
@@ -62,7 +56,7 @@ export default function useWindowManager({
     }
 
     ctx.fill();
-  };
+  }, [colnumber, isAdminDisplay, rowSize, showDots]);
 
   useEffect(() => {
     boundsRef.current = containerBounds;
@@ -72,9 +66,9 @@ export default function useWindowManager({
     if (!containerRef.current) return;
 
     const resize = new ResizeObserver(([entry]) => {
-      const { width, height } = entry.contentRect;
-      const rect = containerRef.current!.getBoundingClientRect();
-
+      const { width } = entry.contentRect;
+      const rect = containerRef.current?.getBoundingClientRect();
+      if (!rect) return;
       if (colnumber) setColSize(width / colnumber);
 
       if (rect.width > 0 && rect.height > 0)
@@ -91,7 +85,7 @@ export default function useWindowManager({
     resize.observe(containerRef.current);
 
     return () => resize.disconnect();
-  }, []);
+  }, [colnumber]);
 
   useEffect(() => {
     if (!containerRef.current) return;
@@ -120,9 +114,25 @@ export default function useWindowManager({
         boundsRef.current = initial;
         setContainerBounds(initial);
       } else if (rect.top !== prev.top || rect.left !== prev.left) {
-        const next = { ...prev, top: rect.top, left: rect.left };
-        boundsRef.current = next;
-        setContainerBounds(next);
+        const next = {
+          x: rect.left,
+          y: rect.top,
+          width: prev.width,
+          height: prev.height,
+          top: rect.top,
+          left: rect.left,
+        };
+
+        // Vérifier que quelque chose a vraiment changé
+        if (
+          next.top !== prev.top ||
+          next.left !== prev.left ||
+          next.width !== prev.width ||
+          next.height !== prev.height
+        ) {
+          boundsRef.current = next;
+          setContainerBounds(next);
+        }
       }
 
       rafId = requestAnimationFrame(track);
@@ -135,7 +145,7 @@ export default function useWindowManager({
 
   useEffect(() => {
     drawGrid();
-  }, [isAdminDisplay, showDots, containerBounds]);
+  }, [drawGrid]);
 
   return { containerRef, containerBounds, canvasRef, boundsRef, drawGrid };
 }

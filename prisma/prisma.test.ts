@@ -1,5 +1,5 @@
+import { describe, expect, it } from "vitest";
 import { prisma } from "@/lib/prisma-client";
-import { describe, it, expect } from "vitest";
 
 describe("Prisma test", () => {
   it("create a new contact entity", async () => {
@@ -17,7 +17,7 @@ describe("Prisma test", () => {
   });
 
   it("remove previously created contact from the db", async () => {
-    const contactDeletion = await prisma.contactInfo.deleteMany({
+    const _contactDeletion = await prisma.contactInfo.deleteMany({
       where: {
         email: "test@gmail.com",
       },

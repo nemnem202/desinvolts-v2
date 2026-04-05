@@ -1,9 +1,9 @@
-import { ReactNode, useEffect, useRef, useState } from "react";
+import { type ReactNode, useEffect, useRef, useState } from "react";
+import { errorToast } from "@/lib/utils";
+import type { Image } from "@/prisma/generated/prisma/browser";
 import ButtonPlus from "../../ui/buttonPlus";
 import { Dialog } from "../../ui/dialog";
 import ImageForm from "./imageForm";
-import { Image } from "@/prisma/generated/prisma/browser";
-import { errorToast } from "@/lib/utils";
 
 export const CANVAS_WIDTH = 300;
 export const RESIZE_HANDLE_SIZE = 20;
@@ -17,7 +17,6 @@ export default function AddImageButton({
   onImage: (image: Image) => void;
   callbackOnClick?: () => void;
 }) {
-  const formRef = useRef<HTMLFormElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
   const [imageFile, setImage] = useState<File | null>(null);
   const [dialogOpen, setDialogOpen] = useState<boolean>(false);
@@ -49,7 +48,7 @@ export default function AddImageButton({
         "Fichier trop volumineux",
         "L'image ne doit pas dépasser 10 Mo. (Actuel : " +
           (file.size / (1024 * 1024)).toFixed(2) +
-          " Mo)",
+          " Mo)"
       );
 
       if (inputRef.current) inputRef.current.value = "";

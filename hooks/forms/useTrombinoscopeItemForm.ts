@@ -1,12 +1,12 @@
-import { AddTrombinoscopeItemProps } from "@/components/features/trombinoscope/addTrombinoscopeItem";
-import { trombinoscopeItemSchema } from "@/config/frontendFormSchemas";
-import { convert_text_area_input_to_paragraph_array } from "@/lib/utils";
-import { TrombinoscopeElement } from "@/types/db";
 import getRandomId from "@giapspzoo/get-random-id";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useRef } from "react";
-import { Resolver, useForm } from "react-hook-form";
-import z from "zod";
+import { type Resolver, useForm } from "react-hook-form";
+import type z from "zod";
+import type { AddTrombinoscopeItemProps } from "@/components/features/trombinoscope/addTrombinoscopeItem";
+import { trombinoscopeItemSchema } from "@/config/frontendFormSchemas";
+import { convert_text_area_input_to_paragraph_array } from "@/lib/utils";
+import type { TrombinoscopeElement } from "@/types/db";
 
 type AddTrombinoscopeItemFormValues = z.infer<typeof trombinoscopeItemSchema>;
 

@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from "react";
-import { Dialog, DialogTitle, DialogTrigger, DialogContent, DialogDescription } from "../ui/dialog";
+import type React from "react";
 import { ClientOnly } from "vike-react/ClientOnly";
+import { formatDate } from "@/lib/utils";
 import { useAdmin } from "@/providers/adminProvider";
 import { Calendar } from "../ui/calendar";
-import { formatDate } from "@/lib/utils";
+import { Dialog, DialogContent, DialogDescription, DialogTitle, DialogTrigger } from "../ui/dialog";
 
 export default function DatePicker({
   dayValue,
@@ -28,7 +28,7 @@ export default function DatePicker({
       <ClientOnly>
         <Dialog>
           <DialogTrigger asChild>
-            <Tag className={"hover:bg-muted rounded cursor-pointer w-fit! " + className}>
+            <Tag className={`hover:bg-muted rounded cursor-pointer w-fit! ${className}`}>
               {formatDate(dayValue)}
             </Tag>
           </DialogTrigger>

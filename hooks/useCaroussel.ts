@@ -1,7 +1,7 @@
-import { CarouselProps } from "@/components/ui/caroussel";
-import { Image } from "@/prisma/generated/prisma/browser";
-import { useAdmin } from "@/providers/adminProvider";
 import { useCallback, useEffect, useRef, useState } from "react";
+import type { CarouselProps } from "@/components/ui/caroussel";
+import type { Image } from "@/prisma/generated/prisma/browser";
+import { useAdmin } from "@/providers/adminProvider";
 
 export default function useCaroussel({ content, onChange }: CarouselProps) {
   const { isAdminDisplay } = useAdmin();
@@ -70,11 +70,11 @@ export default function useCaroussel({ content, onChange }: CarouselProps) {
           if (entry.isIntersecting) setChunks((prev) => prev + 1);
         });
       },
-      { root: null, rootMargin: "0px", threshold: 0.1 },
+      { root: null, rootMargin: "0px", threshold: 0.1 }
     );
     observer.observe(lastelementRef.current);
     return () => observer.disconnect();
-  }, [chunks]);
+  }, []);
 
   useEffect(() => {
     if (isAdminDisplay) stopScroll();
@@ -84,11 +84,11 @@ export default function useCaroussel({ content, onChange }: CarouselProps) {
   const handleImageChange = useCallback(
     (newImage: Image) => {
       const newImages = content.images.map((item) =>
-        item.image.id === newImage.id ? { ...item, image: newImage } : item,
+        item.image.id === newImage.id ? { ...item, image: newImage } : item
       );
       onChange({ ...content, images: newImages });
     },
-    [content, onChange],
+    [content, onChange]
   );
 
   return {

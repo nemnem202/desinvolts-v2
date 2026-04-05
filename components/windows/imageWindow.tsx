@@ -1,14 +1,9 @@
-import { useAdmin } from "@/providers/adminProvider";
+import type { Image as ImageDb } from "@/prisma/generated/prisma/browser";
 import { useWindows } from "@/providers/windowsProvider";
-import { ArrowDownUp, X } from "lucide-react";
+import type { WindowProps } from "@/types/db";
 import Image from "../common/image";
-import { useEffect } from "react";
-import { Window } from "@/types/window";
-import { WindowProps } from "@/types/db";
-import { Image as ImageDb } from "@/prisma/generated/prisma/browser";
 
 export default function ImageWindow({ image, window }: { image: ImageDb; window: WindowProps }) {
-  const { isAdminDisplay } = useAdmin();
   const { removeWindow, setWindows, windows } = useWindows();
 
   return (
@@ -22,7 +17,7 @@ export default function ImageWindow({ image, window }: { image: ImageDb; window:
                 window.image = newImage;
               }
               return w;
-            }),
+            })
           )
         }
         onRemove={() => removeWindow(window.id)}

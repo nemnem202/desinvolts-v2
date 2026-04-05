@@ -1,7 +1,7 @@
-import ClassicPageLayout from "@/components/layout/classicPageLayout";
+import { usePageContext } from "vike-react/usePageContext";
 import EditableText from "@/components/common/editableText";
 import EditableTextarea from "@/components/common/editableTextarea";
-import { usePageContext } from "vike-react/usePageContext";
+import ClassicPageLayout from "@/components/layout/classicPageLayout";
 
 export default function Page() {
   const { is404 } = usePageContext();

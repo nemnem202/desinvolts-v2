@@ -1,11 +1,11 @@
-import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
 import { DialogTitle } from "@radix-ui/react-dialog";
 import { ArrowDownUp, X } from "lucide-react";
+import { useEffect, useRef, useState } from "react";
+import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
+import type { Image as ImageDb } from "@/prisma/generated/prisma/browser";
+import { useAdmin } from "@/providers/adminProvider";
 import AddImageButton from "../features/image-editor/addImageButton";
 import { Skeleton } from "../ui/skeleton";
-import { useAdmin } from "@/providers/adminProvider";
-import { useEffect, useRef, useState } from "react";
-import { Image as ImageDb } from "@/prisma/generated/prisma/browser";
 
 export interface ImageProps {
   width?: number;
@@ -23,7 +23,6 @@ export default function Image(props: ImageProps) {
   const [loadingState, setLoadingState] = useState<boolean>(true);
   const imgRef = useRef<HTMLImageElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
-  const [dimensions, setDimensions] = useState<{ w: number; h: number } | null>(null);
 
   const getUrl = (src: string): string => {
     const params = new URLSearchParams();
@@ -49,7 +48,7 @@ export default function Image(props: ImageProps) {
 
   useEffect(() => {
     setLoadingState(true);
-  }, [imageProps.source]);
+  }, []);
 
   if (isAdminDisplay) {
     return (

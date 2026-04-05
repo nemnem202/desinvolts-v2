@@ -1,13 +1,13 @@
-import { PostFormProps } from "@/components/features/posts/post-form";
-import { postSchema } from "@/config/frontendFormSchemas";
-import { logger } from "@/lib/logger";
-import { convert_text_area_input_to_paragraph_array } from "@/lib/utils";
-import { PostData } from "@/types/db";
 import getRandomId from "@giapspzoo/get-random-id";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useEffect, useState } from "react";
-import { Resolver, SubmitHandler, useForm } from "react-hook-form";
-import z from "zod";
+import { type Resolver, type SubmitHandler, useForm } from "react-hook-form";
+import type z from "zod";
+import type { PostFormProps } from "@/components/features/posts/post-form";
+import { postSchema } from "@/config/frontendFormSchemas";
+import { logger } from "@/lib/logger";
+import { convert_text_area_input_to_paragraph_array } from "@/lib/utils";
+import type { PostData } from "@/types/db";
 
 type PostFormValues = z.infer<typeof postSchema>;
 
@@ -47,7 +47,7 @@ export function usePostForm({ onPost, setDialogOpen }: PostFormProps) {
     onPost(post);
     form.reset();
     setPost(null);
-  }, [post]);
+  }, [post, onPost, form.reset]);
 
   useEffect(() => {
     const subscription = form.watch((values) => {

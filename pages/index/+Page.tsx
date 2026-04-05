@@ -1,17 +1,17 @@
-import Footer from "@/components/layout/footer";
-import ButtonMinus from "@/components/ui/buttonMinus";
-import ButtonPlus from "@/components/ui/buttonPlus";
 import EditableText from "@/components/common/editableText";
 import EditableTextarea from "@/components/common/editableTextarea";
 import Image from "@/components/common/image";
+import PostsSection from "@/components/features/posts/post-section";
+import Footer from "@/components/layout/footer";
+import ButtonMinus from "@/components/ui/buttonMinus";
+import ButtonPlus from "@/components/ui/buttonPlus";
+import Caroussel from "@/components/ui/caroussel";
 import SocialLinksGroup from "@/components/ui/socialLinksGroup";
+import useBannerScroll from "@/hooks/useBannerScroll";
 import { useAdmin } from "@/providers/adminProvider";
 import { usePageState } from "@/providers/stateProvider";
-import useBannerScroll from "@/hooks/useBannerScroll";
-import { EditableTextContent } from "@/types/db";
-import Caroussel from "@/components/ui/caroussel";
 import { HomePageContext } from "@/types/contexts";
-import PostsSection from "@/components/features/posts/post-section";
+import type { EditableTextContent } from "@/types/db";
 
 export default function Page() {
   return <PageContent />;

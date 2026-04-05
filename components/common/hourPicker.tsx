@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from "react";
-import { Dialog, DialogTitle, DialogTrigger, DialogContent, DialogDescription } from "../ui/dialog";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "../ui/select";
+import type React from "react";
 import { ClientOnly } from "vike-react/ClientOnly";
-import { useAdmin } from "@/providers/adminProvider";
 import useTime from "@/hooks/useTime";
+import { useAdmin } from "@/providers/adminProvider";
+import { Dialog, DialogContent, DialogDescription, DialogTitle, DialogTrigger } from "../ui/dialog";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "../ui/select";
 
 export default function HourPicker({
   date,
@@ -25,7 +25,7 @@ export default function HourPicker({
       <ClientOnly>
         <Dialog>
           <DialogTrigger asChild>
-            <Tag className={"hover:bg-muted rounded cursor-pointer " + className}>
+            <Tag className={`hover:bg-muted rounded cursor-pointer ${className}`}>
               {String(date.getHours()).padStart(2, "0")}:
               {String(date.getMinutes()).padStart(2, "0")}
             </Tag>

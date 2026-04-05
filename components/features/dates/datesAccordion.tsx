@@ -1,16 +1,15 @@
-import EditableText from "@/components/common/editableText";
-import { StateContent, usePageState } from "@/providers/stateProvider";
-import { DatesPageContext, PageRegistry } from "@/types/contexts";
-import { DateEvent } from "@/types/db";
-import { DatesPageContent } from "@/types/page-contents";
 import { useMemo } from "react";
-import DateList from "./dateList";
+import EditableText from "@/components/common/editableText";
 import {
   Accordion,
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
+import { usePageState } from "@/providers/stateProvider";
+import { DatesPageContext } from "@/types/contexts";
+import type { DateEvent } from "@/types/db";
+import DateList from "./dateList";
 
 export function NextDates({
   dates,
@@ -31,7 +30,7 @@ export function NextDates({
       [...dates]
         .filter((d) => d.date.getTime() > Date.now())
         .sort((a, b) => a.date.getTime() - b.date.getTime()),
-    [dates],
+    [dates]
   );
 
   return (

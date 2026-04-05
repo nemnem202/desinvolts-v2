@@ -1,6 +1,5 @@
-import ImageWindow from "@/components/windows/imageWindow";
-import { WindowProps } from "@/types/db";
 import getRandomId from "@giapspzoo/get-random-id";
+import type { WindowProps } from "@/types/db";
 
 type Placeholders = {
   paragraph: string;

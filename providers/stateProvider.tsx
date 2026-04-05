@@ -1,7 +1,6 @@
-import { Context, useContext } from "react";
-import { BasePageContent } from "@/types/page-contents";
+import { type Context, useContext } from "react";
 import useStateProvider from "@/hooks/useStateProvider";
-import { PageKey, PageRegistry, PageStateKey } from "@/types/contexts";
+import type { PageKey, PageRegistry } from "@/types/contexts";
 
 export type StateContent<K extends PageKey> = {
   state: PageRegistry[K];

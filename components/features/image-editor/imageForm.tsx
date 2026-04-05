@@ -1,7 +1,11 @@
-import { Dispatch, SetStateAction } from "react";
+import type { Dispatch, SetStateAction } from "react";
+import { Controller } from "react-hook-form";
+import { useImageForm } from "@/hooks/forms/useImageForm";
+import { formatDate } from "@/lib/utils";
+import type { Image } from "@/prisma/generated/prisma/browser";
+import { Button } from "../../ui/button";
 import { DialogContent, DialogDescription, DialogTitle } from "../../ui/dialog";
 import { Field, FieldDescription, FieldError, FieldGroup, FieldLabel } from "../../ui/field";
-import { Controller } from "react-hook-form";
 import { Input } from "../../ui/input";
 import {
   InputGroup,
@@ -9,12 +13,8 @@ import {
   InputGroupText,
   InputGroupTextarea,
 } from "../../ui/input-group";
-import { formatDate } from "@/lib/utils";
-import { Button } from "../../ui/button";
 import { Spinner } from "../../ui/spinner";
-import { useImageForm } from "@/hooks/forms/useImageForm";
 import ImageCropper from "./imageCropper";
-import { Image } from "@/prisma/generated/prisma/browser";
 
 export interface ImageFormProps {
   image: File;

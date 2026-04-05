@@ -1,8 +1,7 @@
-import { DialogContent, DialogDescription, DialogTitle } from "@/components/ui/dialog";
+import { Controller } from "react-hook-form";
 import Image from "@/components/common/image";
+import AddImageButton from "@/components/features/image-editor/addImageButton";
 import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Field, FieldDescription, FieldError, FieldGroup, FieldLabel } from "@/components/ui/field";
 import {
   Card,
   CardContent,
@@ -11,17 +10,18 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { Controller } from "react-hook-form";
+import { DialogContent, DialogDescription, DialogTitle } from "@/components/ui/dialog";
+import { Field, FieldDescription, FieldError, FieldGroup, FieldLabel } from "@/components/ui/field";
+import { Input } from "@/components/ui/input";
 import {
   InputGroup,
   InputGroupAddon,
   InputGroupText,
   InputGroupTextarea,
 } from "@/components/ui/input-group";
-import AddImageButton from "@/components/features/image-editor/addImageButton";
-import { PostData } from "@/types/db";
 import { usePostForm } from "@/hooks/forms/usePostForm";
 import { logger } from "@/lib/logger";
+import type { PostData } from "@/types/db";
 
 export interface PostFormProps {
   setDialogOpen: (open: boolean) => void;
@@ -113,7 +113,7 @@ export default function PostForm(props: PostFormProps) {
                     </FieldLabel>
                     <div className="flex gap-3 items-center">
                       {field.value.map((field, index) => (
-                        <div className="w-20 h-20">
+                        <div className="w-20 h-20" key={field.id}>
                           <Image
                             width={200}
                             height={200}
@@ -123,8 +123,8 @@ export default function PostForm(props: PostFormProps) {
                                 "images",
 
                                 images.map((img) =>
-                                  img.id === newImage.id ? { ...img, ...newImage } : img,
-                                ),
+                                  img.id === newImage.id ? { ...img, ...newImage } : img
+                                )
                               )
                             }
                             key={index}

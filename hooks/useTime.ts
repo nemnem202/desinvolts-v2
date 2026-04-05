@@ -1,6 +1,6 @@
 export default function useTime(date: Date, onChange: (newTime: Date) => void) {
   const updateHour = (hours: string) => {
-    const hoursInNumber = parseInt(hours);
+    const hoursInNumber = parseInt(hours, 10);
     if (hoursInNumber < 0) return;
     const newDate = new Date(date.getTime());
     newDate.setHours(hoursInNumber);
@@ -8,7 +8,7 @@ export default function useTime(date: Date, onChange: (newTime: Date) => void) {
   };
 
   const updateMinutes = (minutes: string) => {
-    const minutesInNumber = parseInt(minutes);
+    const minutesInNumber = parseInt(minutes, 10);
     if (minutesInNumber < 0) return;
     const newDate = new Date(date.getTime());
     newDate.setMinutes(minutesInNumber);

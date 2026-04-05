@@ -31,5 +31,5 @@ export const telefuncHandler: UniversalHandler = enhance(
     path: `/_telefunc`,
     method: ["GET", "POST"],
     immutable: false,
-  },
+  }
 );

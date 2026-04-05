@@ -1,13 +1,13 @@
-import { VideoWindowFormProps } from "@/components/features/media/videoWindowForm";
-import { videoSchema } from "@/config/frontendFormSchemas";
-import PLAHECOLDERS from "@/config/placeholders";
-import { useWindows } from "@/providers/windowsProvider";
-import { VideoData } from "@/types/db";
 import getRandomId from "@giapspzoo/get-random-id";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useState } from "react";
-import { Resolver, useForm } from "react-hook-form";
-import z from "zod";
+import { type Resolver, useForm } from "react-hook-form";
+import type z from "zod";
+import type { VideoWindowFormProps } from "@/components/features/media/videoWindowForm";
+import { videoSchema } from "@/config/frontendFormSchemas";
+import PLAHECOLDERS from "@/config/placeholders";
+import { useWindows } from "@/providers/windowsProvider";
+import type { VideoData } from "@/types/db";
 
 type VideoFormValues = z.infer<typeof videoSchema>;
 
@@ -29,7 +29,7 @@ export function useVideoWindowForm(props: VideoWindowFormProps) {
     setOpen(false);
   };
 
-  const onSubmit = (value: any) => {
+  const onSubmit = (value: { url: string }) => {
     addAVideo(value.url);
   };
 

@@ -1,11 +1,11 @@
-import ClassicPageLayout from "@/components/layout/classicPageLayout";
 import EditableText from "@/components/common/editableText";
-import { usePageState } from "@/providers/stateProvider";
-import { DatesPageContext } from "@/types/contexts";
+import AddDateDialog from "@/components/features/dates/addDateDialog";
 import DatePresentation from "@/components/features/dates/datePresentation";
 import { NextDates, PrevDates } from "@/components/features/dates/datesAccordion";
+import ClassicPageLayout from "@/components/layout/classicPageLayout";
 import useDateNav from "@/hooks/useDateNav";
-import AddDateDialog from "@/components/features/dates/addDateDialog";
+import { usePageState } from "@/providers/stateProvider";
+import { DatesPageContext } from "@/types/contexts";
 
 export default function Page() {
   const { pageContext, update } = usePageState(DatesPageContext);

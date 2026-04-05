@@ -1,9 +1,6 @@
-import { prisma } from "@/lib/prisma-client";
+import { promises as fs } from "node:fs";
+import path from "node:path";
 import * as argon2 from "argon2";
-import SetPageController from "../controller/set-page-controller";
-import { promises as fs } from "fs";
-import path from "path";
-import { PageContentMap } from "@/types/contexts";
 import {
   INIT_CONFIG_STATE,
   INIT_CONNEXION_STATE,
@@ -16,7 +13,9 @@ import {
   INIT_SON_STATE,
 } from "@/config/initialPageSeeds";
 import { logger } from "@/lib/logger";
-import PageController from "../controller/get-page-controller";
+import { prisma } from "@/lib/prisma-client";
+import type { PageContentMap } from "@/types/contexts";
+import SetPageController from "../controller/set-page-controller";
 
 async function getBackupSeed(): Promise<PageContentMap> {
   try {
@@ -31,7 +30,7 @@ async function getBackupSeed(): Promise<PageContentMap> {
     logger.success("[SEED]: backup.json loaded");
 
     return data;
-  } catch (error) {
+  } catch (_error) {
     logger.warn("[SEED]: No backup.json found, using fallback seed");
 
     return {

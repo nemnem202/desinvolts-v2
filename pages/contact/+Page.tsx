@@ -1,14 +1,13 @@
-import ClassicPageLayout from "@/components/layout/classicPageLayout";
+import { CirclePlus, File } from "lucide-react";
+import { useRef } from "react";
 import EditableText from "@/components/common/editableText";
 import EditableTextarea from "@/components/common/editableTextarea";
+import ContactForm from "@/components/features/contact/contactForm";
+import ClassicPageLayout from "@/components/layout/classicPageLayout";
 import { useAdmin } from "@/providers/adminProvider";
 import { usePageState } from "@/providers/stateProvider";
 import { ContactPageContext } from "@/types/contexts";
-import { DownloadableFile, EditableTextContent } from "@/types/db";
-import { ContactPageContent } from "@/types/page-contents";
-import { CirclePlus, File } from "lucide-react";
-import { useRef } from "react";
-import ContactForm from "@/components/features/contact/contactForm";
+import type { DownloadableFile, EditableTextContent } from "@/types/db";
 
 export default function Page() {
   const { isAdminDisplay } = useAdmin();
@@ -65,8 +64,8 @@ function FileComponent({
   files: DownloadableFile[];
   onChange: (newFile: DownloadableFile[]) => void;
 }) {
-  const handleFileTitleChange = (newTitleText: EditableTextContent) => {
-    let newFiles = files.filter((f) => f !== file);
+  const handleFileTitleChange = (_newTitleText: EditableTextContent) => {
+    const newFiles = files.filter((f) => f !== file);
     onChange(newFiles);
   };
   return (

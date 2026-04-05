@@ -1,6 +1,6 @@
-import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog";
-import { DateEvent } from "@/types/db";
 import { CalendarDays } from "lucide-react";
+import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog";
+import type { DateEvent } from "@/types/db";
 import CalendarComponent from "./calendarComponent";
 
 export function CalendarDialogButton({

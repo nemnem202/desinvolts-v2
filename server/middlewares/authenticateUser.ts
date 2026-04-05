@@ -1,5 +1,5 @@
-import { logger } from "@/lib/logger";
 import { getContext } from "telefunc";
+import { logger } from "@/lib/logger";
 
 export default async function authenticateUser(): Promise<{ isAuthenticated: boolean }> {
   try {

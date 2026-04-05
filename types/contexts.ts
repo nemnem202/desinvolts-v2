@@ -1,5 +1,6 @@
-import { Context, createContext } from "react";
-import {
+import { type Context, createContext } from "react";
+import type { StateContent } from "@/providers/stateProvider";
+import type {
   BasePageContent,
   ConnexionPageContent,
   ContactPageContent,
@@ -9,7 +10,6 @@ import {
   MediasPageContent,
   NousEcouterPageContent,
 } from "./page-contents";
-import { StateContent } from "@/providers/stateProvider";
 
 export const DefaultStateContext = createContext<StateContent<"default"> | null>(null);
 export const HomePageContext = createContext<StateContent<"home"> | null>(null);

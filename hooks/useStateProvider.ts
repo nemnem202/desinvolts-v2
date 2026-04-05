@@ -1,9 +1,8 @@
-import { logger } from "@/lib/logger";
-import { StateProviderProps } from "@/providers/stateProvider";
-import { PageKey, PageRegistry } from "@/types/contexts";
-import { BasePageContent } from "@/types/page-contents";
 import { useHistoryState } from "@uidotdev/usehooks";
 import { useCallback, useEffect } from "react";
+import { logger } from "@/lib/logger";
+import type { StateProviderProps } from "@/providers/stateProvider";
+import type { PageKey, PageRegistry } from "@/types/contexts";
 
 export default function useStateProvider<K extends PageKey>(props: StateProviderProps<K>) {
   const { initialState, pageKey } = props;
@@ -28,7 +27,7 @@ export default function useStateProvider<K extends PageKey>(props: StateProvider
         redo();
       }
     },
-    [undo, redo],
+    [undo, redo]
   );
 
   useEffect(() => {
@@ -38,7 +37,7 @@ export default function useStateProvider<K extends PageKey>(props: StateProvider
 
   useEffect(() => {
     logger.info("Init state: ", props.initialState);
-  }, []);
+  }, [props.initialState]);
 
   return { state, set, undo, redo, canUndo, canRedo, pageKey };
 }

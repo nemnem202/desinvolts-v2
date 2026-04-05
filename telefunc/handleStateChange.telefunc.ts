@@ -1,17 +1,28 @@
 import { logger } from "@/lib/logger";
-import SetPageController, { ServiceResult } from "@/server/controller/set-page-controller";
+import type { Configuration, NavLink } from "@/prisma/generated/prisma/client";
+import SetPageController, { type ServiceResult } from "@/server/controller/set-page-controller";
 import authenticateUser from "@/server/middlewares/authenticateUser";
 import type { PageKey, PageRegistry } from "@/types/contexts";
+import type {
+  ConnexionPageContent,
+  ContactPageContent,
+  DatesPageContent,
+  GroupePageContent,
+  HomePageContent,
+  MediasPageContent,
+  NousEcouterPageContent,
+} from "@/types/page-contents";
 
 const handlers = {
-  home: (state: any) => SetPageController.setHome(state),
-  connexion: (state: any) => SetPageController.setConnexion(state),
-  contact: (state: any) => SetPageController.setContact(state),
-  dates: (state: any) => SetPageController.setDates(state),
-  groupe: (state: any) => SetPageController.setGroupe(state),
-  medias: (state: any) => SetPageController.setMedias(state),
-  son: (state: any) => SetPageController.setNousEcouter(state),
-  default: (state: any) => SetPageController.setDefault(state),
+  home: (state: HomePageContent) => SetPageController.setHome(state),
+  connexion: (state: ConnexionPageContent) => SetPageController.setConnexion(state),
+  contact: (state: ContactPageContent) => SetPageController.setContact(state),
+  dates: (state: DatesPageContent) => SetPageController.setDates(state),
+  groupe: (state: GroupePageContent) => SetPageController.setGroupe(state),
+  medias: (state: MediasPageContent) => SetPageController.setMedias(state),
+  son: (state: NousEcouterPageContent) => SetPageController.setNousEcouter(state),
+  default: (state: { config: Configuration; navlinks: NavLink[] }) =>
+    SetPageController.setDefault(state),
 } satisfies {
   [K in PageKey]: (state: PageRegistry[K]) => Promise<ServiceResult>;
 };

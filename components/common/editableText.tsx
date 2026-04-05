@@ -1,5 +1,5 @@
 import UseEditableText from "@/hooks/useEditableText";
-import { EditableTextProps } from "@/types/general";
+import type { EditableTextProps } from "@/types/general";
 
 export default function EditableText(props: EditableTextProps) {
   const { className = "", content, setContent, as: Tag = "span" } = props;
@@ -17,7 +17,7 @@ export default function EditableText(props: EditableTextProps) {
             hyperlinks: content.hyperlinks,
           })
         }
-        className={className + " size-min w-full text-center"}
+        className={`${className} size-min w-full text-center`}
       />
     );
   } else {

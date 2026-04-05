@@ -1,9 +1,9 @@
-import Image from "../common/image";
+import useCaroussel from "@/hooks/useCaroussel";
 
 import { useAdmin } from "@/providers/adminProvider";
+import type { Carousel } from "@/types/db";
+import Image from "../common/image";
 import AddImageButton from "../features/image-editor/addImageButton";
-import useCaroussel from "@/hooks/useCaroussel";
-import { Carousel } from "@/types/db";
 
 export interface CarouselProps {
   content: Carousel;
@@ -58,7 +58,7 @@ export default function Caroussel({ content, onChange }: CarouselProps) {
                     onChange={handleImageChange}
                   />
                 </div>
-              )),
+              ))
           )}
         </div>
       </div>
@@ -90,7 +90,7 @@ export default function Caroussel({ content, onChange }: CarouselProps) {
                     }
                   />
                 </div>
-              )),
+              ))
           )}
           <div className="my-auto">
             <AddImageButton

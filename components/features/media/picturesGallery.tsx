@@ -1,4 +1,6 @@
-import { useWindows } from "@/providers/windowsProvider";
+import { useEffect, useRef, useState } from "react";
+import { createPortal } from "react-dom";
+import EditableText from "@/components/common/editableText";
 import {
   ContextMenu,
   ContextMenuContent,
@@ -8,18 +10,16 @@ import {
   ContextMenuSubTrigger,
   ContextMenuTrigger,
 } from "@/components/ui/context-menu";
-import { Dispatch, SetStateAction, useEffect, useRef, useState } from "react";
-import { useAdmin } from "@/providers/adminProvider";
-import EditableText from "@/components/common/editableText";
-import { usePageState } from "@/providers/stateProvider";
+import { Dialog } from "@/components/ui/dialog";
 import PLAHECOLDERS from "@/config/placeholders";
+import type { Image } from "@/prisma/generated/prisma/browser";
+import { useAdmin } from "@/providers/adminProvider";
+import { usePageState } from "@/providers/stateProvider";
+import { useWindows } from "@/providers/windowsProvider";
 import { MediasPageContext } from "@/types/contexts";
+import ImageForm from "../image-editor/imageForm";
 import PicturesContainer from "./picturesContainter";
 import VideoWindowForm from "./videoWindowForm";
-import { Dialog } from "@/components/ui/dialog";
-import ImageForm from "../image-editor/imageForm";
-import { createPortal } from "react-dom";
-import { Image } from "@/prisma/generated/prisma/browser";
 
 export default function PicturesGallery() {
   const { pageContext, update } = usePageState(MediasPageContext);
@@ -84,7 +84,7 @@ function AddImageDialog({ triggerRef }: { triggerRef: React.RefObject<() => void
         inputRef.current.click();
       }
     };
-  }, []);
+  }, [triggerRef]);
 
   useEffect(() => {
     if (imageFile) {
@@ -141,7 +141,7 @@ function AddImageDialog({ triggerRef }: { triggerRef: React.RefObject<() => void
             />
           )}
         </Dialog>,
-        document.body,
+        document.body
       )}
     </>
   );

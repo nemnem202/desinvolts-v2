@@ -1,11 +1,11 @@
-import { PageContextServer } from "vike/types";
 import { UAParser } from "ua-parser-js";
-import { ScreenSizeType } from "@/providers/screenSizeProvider";
-import { BasePageContent } from "@/types/page-contents";
+import type { PageContextServer } from "vike/types";
 import { logger } from "@/lib/logger";
-import { PageStateKey } from "@/types/contexts";
+import type { ScreenSizeType } from "@/providers/screenSizeProvider";
 import PageController from "@/server/controller/get-page-controller";
 import getCurrentUserFromCookie from "@/server/middlewares/getCurrentUser";
+import type { PageStateKey } from "@/types/contexts";
+import type { BasePageContent } from "@/types/page-contents";
 
 async function getScreen(pageContext: PageContextServer): Promise<ScreenSizeType> {
   const ua = pageContext.headers ? (pageContext.headers["user-agent"] ?? "") : "";
@@ -34,7 +34,7 @@ async function getCurrentUser(pageContext: PageContextServer): Promise<{
   const cookie = pageContext.headers ? pageContext.headers.cookie : null;
   let currentUser: { username: string } | null = null;
   if (cookie) {
-    logger.info("Page context cookie: ", cookie.slice(0, 15) + "...");
+    logger.info("Page context cookie: ", `${cookie.slice(0, 15)}...`);
     currentUser = await getCurrentUserFromCookie(cookie);
   }
   return currentUser;
@@ -53,31 +53,34 @@ export async function data(pageContext: PageContextServer): Promise<{
   let page: BasePageContent | undefined;
   const currentUser = await getCurrentUser(pageContext);
   switch (pageContext.urlPathname) {
-    case "/":
+    case "/": {
       pageKey = "home";
       const homeContent = await PageController.getHome();
       if (homeContent) convertToDates(homeContent.posts);
       page = homeContent;
 
       break;
+    }
     case "/connexion":
       pageKey = "connexion";
       page = await PageController.getConnexion();
       break;
-    case "/contact":
+    case "/contact": {
       pageKey = "contact";
       const contactContent = await PageController.getContact();
       if (contactContent) convertToDates(contactContent.files);
       page = contactContent;
       break;
-    case "/dates":
+    }
+    case "/dates": {
       pageKey = "dates";
       const datesContent = await PageController.getDates();
       if (datesContent) convertToDates(datesContent.dates);
       page = datesContent;
       break;
+    }
     case "/groupe":
-      // @ts-ignore
+      // @ts-expect-error
       pageKey = "groupe";
       page = await PageController.getGroupe();
       break;

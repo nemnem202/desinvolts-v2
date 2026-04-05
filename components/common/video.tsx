@@ -1,7 +1,7 @@
 import { Play, X } from "lucide-react";
 import { Dialog, DialogContent, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
-import { Spinner } from "../ui/spinner";
 import useVideo from "@/hooks/useVideo";
+import { Spinner } from "../ui/spinner";
 
 export interface VideoProps {
   url?: string;
@@ -9,10 +9,7 @@ export interface VideoProps {
 }
 
 export default function Video(props: VideoProps) {
-  const {
-    url = "https://www.youtube.com/watch?v=xvFZjo5PgG0&list=RDxvFZjo5PgG0&start_radio=1",
-    onClose = () => {},
-  } = props;
+  const { onClose = () => {} } = props;
 
   const { getVideoThumbnail, isAdminDisplay, loadingState, videoId, setLoadingState, imgRef } =
     useVideo(props);
@@ -28,6 +25,7 @@ export default function Video(props: VideoProps) {
               </div>
             )}
             <img
+              alt="Une vidéo du groupe Desinovlts"
               src={getVideoThumbnail(videoId)}
               className="w-full h-full object-cover pointer-events-none"
               ref={imgRef}
@@ -52,6 +50,7 @@ export default function Video(props: VideoProps) {
           <div className="absolute inset-0 flex items-center justify-center">
             <DialogTrigger asChild>
               <button
+                type="button"
                 className="cursor-pointer opacity-50 hover:opacity-100"
                 aria-label="Ouvrir le player youtube de la vidéo"
                 onMouseDown={(e) => e.stopPropagation()}

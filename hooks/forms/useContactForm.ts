@@ -1,11 +1,10 @@
-import { contactSchema } from "@/config/frontendFormSchemas";
-import { logger } from "@/lib/logger";
-import { errorToast, successToast } from "@/lib/utils";
-import onContact from "@/telefunc/contact.telefunc";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useState } from "react";
-import { Resolver, SubmitHandler, useForm } from "react-hook-form";
-import z from "zod";
+import { type Resolver, type SubmitHandler, useForm } from "react-hook-form";
+import type z from "zod";
+import { contactSchema } from "@/config/frontendFormSchemas";
+import { errorToast, successToast } from "@/lib/utils";
+import onContact from "@/telefunc/contact.telefunc";
 
 export type ContactFormValues = z.infer<typeof contactSchema>;
 
@@ -26,7 +25,7 @@ export default function useContactForm() {
     } else {
       errorToast(
         res.message ?? "Une erreur innatendue est survenue",
-        "Essayez de nous contacter via notre adresse email.",
+        "Essayez de nous contacter via notre adresse email."
       );
     }
     setLoading(false);

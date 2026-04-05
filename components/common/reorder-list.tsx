@@ -1,8 +1,8 @@
 "use client";
-import React, { useState, useEffect } from "react";
 
 import { Grip } from "lucide-react";
 import { Reorder, useDragControls, useMotionValue } from "motion/react";
+import React, { useEffect, useState } from "react";
 
 import { cn } from "@/lib/utils";
 
@@ -15,15 +15,15 @@ const ReorderList: React.FC<ReorderListProps> = ({
 }) => {
   const [items, setItems] = useState<React.ReactElement[]>(
     React.Children.toArray(props.children).filter((child) =>
-      React.isValidElement(child),
-    ) as React.ReactElement[],
+      React.isValidElement(child)
+    ) as React.ReactElement[]
   );
-  const [isDragging, setIsDragging] = useState(false);
+  const [_isDragging, setIsDragging] = useState(false);
   const [pendingOrder, setPendingOrder] = useState<React.ReactElement[] | null>(null);
 
   useEffect(() => {
     const newItems = React.Children.toArray(props.children).filter((child) =>
-      React.isValidElement(child),
+      React.isValidElement(child)
     ) as React.ReactElement[];
     setItems(newItems);
   }, [props.children]);

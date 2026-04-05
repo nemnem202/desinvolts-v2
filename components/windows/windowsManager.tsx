@@ -1,9 +1,9 @@
-import { useWindows } from "@/providers/windowsProvider";
-import Window from "./window";
 import { createContext, useContext } from "react";
 import useWindowManager from "@/hooks/useWindowManager";
-import { WindowProps } from "@/types/db";
-import { Bounds } from "@/types/window";
+import { useWindows } from "@/providers/windowsProvider";
+import type { WindowProps } from "@/types/db";
+import type { Bounds } from "@/types/window";
+import Window from "./window";
 
 export type WindowManagerProps = {
   setWindows: (windows: WindowProps[]) => void;

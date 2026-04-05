@@ -1,8 +1,8 @@
 // core/OpenStackSDK.ts
 
+import fs from "node:fs";
 import type { storage } from "pkgcloud";
 import pkgcloud from "pkgcloud";
-import fs from "fs";
 import openStack from "../config/openStack";
 
 const SDK = pkgcloud.storage.createClient({
@@ -24,8 +24,8 @@ const SDK = pkgcloud.storage.createClient({
   deleteFile: (params: { container: string; fileName: string }) => Promise<void>;
 };
 
-SDK.uploadFile = async function ({ container, filePath, fileName }) {
-  return new Promise((resolve, reject) => {
+SDK.uploadFile = async ({ container, filePath, fileName }) =>
+  new Promise((resolve, reject) => {
     const readStream = fs.createReadStream(filePath);
     const writeStream = SDK.upload({
       container,
@@ -37,15 +37,13 @@ SDK.uploadFile = async function ({ container, filePath, fileName }) {
 
     readStream.pipe(writeStream);
   });
-};
 
-SDK.deleteFile = async function ({ container, fileName }) {
-  return new Promise((resolve, reject) => {
+SDK.deleteFile = async ({ container, fileName }) =>
+  new Promise((resolve, reject) => {
     SDK.removeFile(container, fileName, (err) => {
       if (err) reject(err);
       resolve();
     });
   });
-};
 
 export default SDK;

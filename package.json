@@ -16,6 +16,7 @@
     "check:ci": "biome ci ."
   },
   "dependencies": {
+    "@biomejs/biome": "2.4.10",
     "@emailjs/nodejs": "^5.0.2",
     "@fastify/cookie": "^11.0.2",
     "@fastify/multipart": "^9.4.0",

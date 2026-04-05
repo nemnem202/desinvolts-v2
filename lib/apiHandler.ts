@@ -1,6 +1,6 @@
-import { ApiResponse, ApiRoute } from "@/types/server";
-import { errorToast, successToast } from "./utils";
+import type { ApiResponse } from "@/types/server";
 import { logger } from "./logger";
+import { errorToast, successToast } from "./utils";
 
 type JsonObject = Record<string, unknown>;
 
@@ -9,7 +9,7 @@ type Query = Record<string, string | number | boolean>;
 export default class ApiHandler {
   static async post<Body extends JsonObject | FormData, Response>(
     path: string,
-    body: Body,
+    body: Body
   ): Promise<ApiResponse<Response>> {
     try {
       const isFormData = body instanceof FormData;
@@ -27,7 +27,7 @@ export default class ApiHandler {
       let data: ApiResponse<Response>;
       try {
         data = JSON.parse(text) as ApiResponse<Response>;
-      } catch (err) {
+      } catch (_err) {
         throw new Error("Invalid JSON response");
       }
 
@@ -45,7 +45,7 @@ export default class ApiHandler {
   static async get<Response>(path: string, query?: Query): Promise<ApiResponse<Response>> {
     try {
       const params = query ? new URLSearchParams(query as Record<string, string>).toString() : "";
-      const fetchurl = path + "?" + params;
+      const fetchurl = `${path}?${params}`;
       const res = await fetch(fetchurl, { method: "GET" });
 
       if (!res.ok) {
@@ -57,7 +57,7 @@ export default class ApiHandler {
       let data: ApiResponse<Response>;
       try {
         data = JSON.parse(text) as ApiResponse<Response>;
-      } catch (err) {
+      } catch (_err) {
         throw new Error("Invalid JSON response");
       }
 

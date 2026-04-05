@@ -23,7 +23,7 @@ export default function VideoGallery() {
               onClose={() =>
                 update(
                   "videos",
-                  state.videos.filter((v) => v.id !== video.id),
+                  state.videos.filter((v) => v.id !== video.id)
                 )
               }
             />

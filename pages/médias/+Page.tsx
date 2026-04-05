@@ -1,9 +1,9 @@
-import ClassicPageLayout from "@/components/layout/classicPageLayout";
 import EditableText from "@/components/common/editableText";
+import PicturesGallery from "@/components/features/media/picturesGallery";
+import VideoGallery from "@/components/features/media/videoGallery";
+import ClassicPageLayout from "@/components/layout/classicPageLayout";
 import { usePageState } from "@/providers/stateProvider";
 import { MediasPageContext } from "@/types/contexts";
-import VideoGallery from "@/components/features/media/videoGallery";
-import PicturesGallery from "@/components/features/media/picturesGallery";
 
 export default function Page() {
   const { pageContext, update } = usePageState(MediasPageContext);

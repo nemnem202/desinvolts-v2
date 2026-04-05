@@ -1,5 +1,6 @@
-import { createContext, ReactNode, useContext, useEffect, useState } from "react";
+import { createContext, type ReactNode, useCallback, useContext, useEffect, useState } from "react";
 import { useData } from "vike-react/useData";
+
 const BREAKPOINTS = {
   sm: 640,
   md: 768,
@@ -15,14 +16,14 @@ export default function ScreenSizeProvider({ children }: { children: ReactNode }
   const data = useData<{ screen: ScreenSizeType }>();
   const { screen } = data;
 
-  function getCurrentScreenSize(): ScreenSizeType {
+  const getCurrentScreenSize = useCallback((): ScreenSizeType => {
     const width = window.innerWidth;
 
     if (width >= BREAKPOINTS.xl) return "xl";
     if (width >= BREAKPOINTS.lg) return "lg";
     if (width >= BREAKPOINTS.md) return "md";
     return "sm";
-  }
+  }, []);
 
   const [size, setSize] = useState<ScreenSizeType>(() => {
     if (typeof window === "undefined") return screen;
@@ -36,7 +37,7 @@ export default function ScreenSizeProvider({ children }: { children: ReactNode }
 
     window.addEventListener("resize", handler);
     return () => window.removeEventListener("resize", handler);
-  }, []);
+  }, [getCurrentScreenSize]);
 
   return <ScreenSizeContext.Provider value={size}>{children}</ScreenSizeContext.Provider>;
 }

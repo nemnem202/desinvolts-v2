@@ -1,12 +1,10 @@
-import { useEffect, useState } from "react";
-import EditableTextarea from "../common/editableTextarea";
-import { useAdmin } from "@/providers/adminProvider";
-import PLAHECOLDERS from "@/config/placeholders";
-import ButtonPlus from "../ui/buttonPlus";
-import ButtonMinus from "../ui/buttonMinus";
-import { ReorderList } from "../common/reorder-list";
 import useParagraphGroup from "@/hooks/useParagraphGroup";
-import { EditableParagraphContent, ParagraphInGroup } from "@/types/db";
+import { useAdmin } from "@/providers/adminProvider";
+import type { ParagraphInGroup } from "@/types/db";
+import EditableTextarea from "../common/editableTextarea";
+import { ReorderList } from "../common/reorder-list";
+import ButtonMinus from "../ui/buttonMinus";
+import ButtonPlus from "../ui/buttonPlus";
 
 export interface ParagraphGroupProps {
   className?: string;

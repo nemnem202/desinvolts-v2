@@ -1,10 +1,9 @@
+import { DialogTitle } from "@radix-ui/react-dialog";
+import { Play, X } from "lucide-react";
+import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
+import type { Video } from "@/prisma/generated/prisma/browser";
 import { useAdmin } from "@/providers/adminProvider";
 import { useWindows } from "@/providers/windowsProvider";
-import { Play, X } from "lucide-react";
-import { useMemo } from "react";
-import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
-import { DialogTitle } from "@radix-ui/react-dialog";
-import { Video } from "@/prisma/generated/prisma/browser";
 
 export default function VideoWindow({ video }: { video: Video }) {
   const { isAdminDisplay } = useAdmin();
@@ -21,7 +20,7 @@ export default function VideoWindow({ video }: { video: Video }) {
     return `https://img.youtube.com/vi/${videoId}/hqdefault.jpg`;
   };
 
-  const videoId = useMemo(() => getVideoID(video.url), [video.url]);
+  const videoId = getVideoID(video.url);
 
   const handleClose = () => {
     setWindows(windows.filter((window) => window.id !== video.id));
@@ -32,6 +31,7 @@ export default function VideoWindow({ video }: { video: Video }) {
       <Dialog>
         <div className="w-full h-full">
           <img
+            alt="Une vidéo du groupe Desinvolts"
             src={getVideoThumbnail(videoId)}
             className="w-full h-full object-cover pointer-events-none"
           />
@@ -53,6 +53,7 @@ export default function VideoWindow({ video }: { video: Video }) {
           <div className="absolute inset-0 flex items-center justify-center">
             <DialogTrigger asChild>
               <button
+                type="button"
                 className="cursor-pointer opacity-50 hover:opacity-100"
                 onMouseDown={(e) => e.stopPropagation()}
               >

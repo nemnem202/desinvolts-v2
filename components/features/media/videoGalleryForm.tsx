@@ -1,12 +1,18 @@
-import { useAdmin } from "@/providers/adminProvider";
-import { Input } from "@/components/ui/input";
-import { FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
-import { Form } from "@/components/ui/form";
 import { Button } from "@/components/ui/button";
 import ButtonPlus from "@/components/ui/buttonPlus";
 import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
+import {
+  Form,
+  FormControl,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+} from "@/components/ui/form";
+import { Input } from "@/components/ui/input";
 import { useVideoGalleyProps } from "@/hooks/forms/useVideoGalleryForm";
-import { Video as VideoDb } from "@/prisma/generated/prisma/browser";
+import type { Video as VideoDb } from "@/prisma/generated/prisma/browser";
+import { useAdmin } from "@/providers/adminProvider";
 
 export interface VideoGalleryProps {
   onVideo: (newVideo: VideoDb) => void;

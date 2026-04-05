@@ -3,7 +3,7 @@ import EditableText from "@/components/common/editableText";
 import Image from "@/components/common/image";
 import ParagraphGroup from "@/components/layout/paragraphGroup";
 import { useAdmin } from "@/providers/adminProvider";
-import { PostData } from "@/types/db";
+import type { PostData } from "@/types/db";
 import AddImageButton from "../image-editor/addImageButton";
 
 export default function Post({

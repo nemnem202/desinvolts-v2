@@ -1,5 +1,5 @@
-import { logger } from "@/lib/logger";
 import { jwtVerify } from "jose";
+import { logger } from "@/lib/logger";
 
 function parseCookie(str: string): Record<string, string> {
   return Object.fromEntries(
@@ -9,18 +9,18 @@ function parseCookie(str: string): Record<string, string> {
         decodeURIComponent(p.slice(0, idx).trim()),
         decodeURIComponent(p.slice(idx + 1).trim()),
       ];
-    }),
+    })
   );
 }
 
 export default async function getCurrentUserFromCookie(
-  cookie: string,
+  cookie: string
 ): Promise<{ username: string } | null> {
-  const token = parseCookie(cookie)["token"];
+  const token = parseCookie(cookie).token;
 
   let currentUser: { username: string } | null = null;
 
-  logger.info("User token: ", token ? token.slice(0, 5) + "..." : "absent");
+  logger.info("User token: ", token ? `${token.slice(0, 5)}...` : "absent");
 
   if (token) {
     try {

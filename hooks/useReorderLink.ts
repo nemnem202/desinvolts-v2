@@ -1,4 +1,4 @@
-import { NavlinkProps } from "@/components/layout/navbar";
+import type { NavlinkProps } from "@/components/layout/navbar";
 
 export default function useReorderLink(props: NavlinkProps) {
   const { link, links, setLinks } = props;

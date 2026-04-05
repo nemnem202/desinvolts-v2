@@ -1,6 +1,6 @@
-import { ParagraphGroupProps } from "@/components/layout/paragraphGroup";
+import type { ParagraphGroupProps } from "@/components/layout/paragraphGroup";
 import PLAHECOLDERS from "@/config/placeholders";
-import { EditableParagraphContent, ParagraphInGroup } from "@/types/db";
+import type { EditableParagraphContent } from "@/types/db";
 
 export default function useParagraphGroup(props: ParagraphGroupProps) {
   const { content, onChange } = props;

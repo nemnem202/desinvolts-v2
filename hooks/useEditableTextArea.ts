@@ -1,7 +1,7 @@
-import { Hyperlink } from "@/prisma/generated/prisma/browser";
+import { useCallback, useMemo } from "react";
+import type { Hyperlink } from "@/prisma/generated/prisma/browser";
 import { useAdmin } from "@/providers/adminProvider";
-import { EditableTextAreaProps } from "@/types/general";
-import { useMemo } from "react";
+import type { EditableTextAreaProps } from "@/types/general";
 
 export default function useEditableTextArea(props: EditableTextAreaProps) {
   const { content } = props;
@@ -10,39 +10,42 @@ export default function useEditableTextArea(props: EditableTextAreaProps) {
   const isHyperlink = (val: string | Hyperlink): val is Hyperlink =>
     typeof val === "object" && val !== null && "text" in val && "link" in val;
 
-  const extractHyperLink = (text: string): Array<string | Hyperlink> => {
-    let result: Array<string | Hyperlink> = [text];
+  const extractHyperLink = useCallback(
+    (text: string): Array<string | Hyperlink> => {
+      let result: Array<string | Hyperlink> = [text];
 
-    if (!content.hyperlinks || !Array.isArray(content.hyperlinks)) return result;
+      if (!content.hyperlinks || !Array.isArray(content.hyperlinks)) return result;
 
-    content.hyperlinks.forEach((h) => {
-      const newResult: Array<string | Hyperlink> = [];
+      content.hyperlinks.forEach((h) => {
+        const newResult: Array<string | Hyperlink> = [];
 
-      result.forEach((part) => {
-        if (typeof part !== "string") {
-          newResult.push(part);
-          return;
-        }
+        result.forEach((part) => {
+          if (typeof part !== "string") {
+            newResult.push(part);
+            return;
+          }
 
-        const pieces = part.split(h.text);
-        pieces.forEach((piece, idx) => {
-          if (piece) newResult.push(piece);
-          if (idx < pieces.length - 1) newResult.push(h);
+          const pieces = part.split(h.text);
+          pieces.forEach((piece, idx) => {
+            if (piece) newResult.push(piece);
+            if (idx < pieces.length - 1) newResult.push(h);
+          });
         });
+
+        result = newResult;
       });
 
-      result = newResult;
-    });
-
-    return result;
-  };
+      return result;
+    },
+    [content.hyperlinks]
+  );
 
   const convertToString = (array: Array<string | Hyperlink>) =>
     array.map((e) => (isHyperlink(e) ? e.text : e)).join("");
 
   const parsed = useMemo(
     () => extractHyperLink(content.content),
-    [content.content, content.hyperlinks],
+    [content.content, extractHyperLink]
   );
 
   return { isAdminDisplay, isHyperlink, convertToString, parsed };

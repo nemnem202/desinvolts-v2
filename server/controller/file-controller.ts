@@ -1,9 +1,9 @@
-import { FastifyReply, FastifyRequest, RouteGenericInterface } from "fastify";
-import File from "../cloud/file";
-import { ApiResponse, ImageReply, UploadImageReply } from "@/types/server";
-import { Controller } from "./controller";
-import openStack from "../config/openStack";
+import type { FastifyReply, FastifyRequest, RouteGenericInterface } from "fastify";
 import { logger } from "@/lib/logger";
+import type { ApiResponse, ImageReply, UploadImageReply } from "@/types/server";
+import File from "../cloud/file";
+import openStack from "../config/openStack";
+import { Controller } from "./controller";
 
 interface UploadImageRoute extends RouteGenericInterface {
   Reply: ApiResponse<UploadImageReply>;

@@ -1,8 +1,7 @@
-import { Hyperlink } from "@/prisma/generated/prisma/browser";
+import { useCallback, useMemo } from "react";
+import type { Hyperlink } from "@/prisma/generated/prisma/browser";
 import { useAdmin } from "@/providers/adminProvider";
-
-import { EditableTextProps } from "@/types/general";
-import { useMemo } from "react";
+import type { EditableTextProps } from "@/types/general";
 
 export default function UseEditableText(props: EditableTextProps) {
   const { content } = props;
@@ -11,29 +10,32 @@ export default function UseEditableText(props: EditableTextProps) {
     return typeof val === "object" && val !== null && "text" in val && "link" in val;
   };
 
-  const extractHyperLink = (text: string): Array<string | Hyperlink> => {
-    let result: Array<string | Hyperlink> = [text];
+  const extractHyperLink = useCallback(
+    (text: string): Array<string | Hyperlink> => {
+      let result: Array<string | Hyperlink> = [text];
 
-    content.hyperlinks?.forEach((h) => {
-      const newResult: Array<string | Hyperlink> = [];
+      content.hyperlinks?.forEach((h) => {
+        const newResult: Array<string | Hyperlink> = [];
 
-      result.forEach((part) => {
-        if (typeof part !== "string") {
-          newResult.push(part);
-          return;
-        }
+        result.forEach((part) => {
+          if (typeof part !== "string") {
+            newResult.push(part);
+            return;
+          }
 
-        const pieces = part.split(h.text);
-        pieces.forEach((piece, idx) => {
-          if (piece) newResult.push(piece);
-          if (idx < pieces.length - 1) newResult.push(h);
+          const pieces = part.split(h.text);
+          pieces.forEach((piece, idx) => {
+            if (piece) newResult.push(piece);
+            if (idx < pieces.length - 1) newResult.push(h);
+          });
         });
-      });
 
-      result = newResult;
-    });
-    return result;
-  };
+        result = newResult;
+      });
+      return result;
+    },
+    [content.hyperlinks]
+  );
 
   const convertToString = (array: Array<string | Hyperlink>): string => {
     const text = array
@@ -47,7 +49,7 @@ export default function UseEditableText(props: EditableTextProps) {
 
   const parsed = useMemo(
     () => extractHyperLink(content.content),
-    [content.content, content.hyperlinks],
+    [content.content, extractHyperLink]
   );
 
   return { parsed, convertToString, isAdminDisplay, isHyperlink };

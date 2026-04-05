@@ -1,13 +1,8 @@
+import type { Dispatch, SetStateAction } from "react";
+import Image from "@/components/common/image";
 import AddImageButton from "@/components/features/image-editor/addImageButton";
 import { Button } from "@/components/ui/button";
 import { DialogContent, DialogDescription, DialogTitle } from "@/components/ui/dialog";
-import { Field, FieldError, FieldGroup, FieldLabel } from "@/components/ui/field";
-import Image from "@/components/common/image";
-import { Input } from "@/components/ui/input";
-import { InputGroup, InputGroupTextarea } from "@/components/ui/input-group";
-import { useAlbumForm } from "@/hooks/forms/useAlbumForm";
-import { Dispatch, SetStateAction } from "react";
-import { Controller } from "react-hook-form";
 import {
   Form,
   FormControl,
@@ -16,7 +11,9 @@ import {
   FormLabel,
   FormMessage,
 } from "@/components/ui/form";
+import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
+import { useAlbumForm } from "@/hooks/forms/useAlbumForm";
 
 export interface AlbumFormProps {
   setOpen: Dispatch<SetStateAction<boolean>>;

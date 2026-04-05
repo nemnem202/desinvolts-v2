@@ -1,21 +1,21 @@
+import { useEffect, useRef, useState } from "react";
+import { Rnd } from "react-rnd";
+import { ClientOnly } from "vike-react/ClientOnly";
 import { showBorders, toggleTheme } from "@/lib/devTools";
+import { logger } from "@/lib/logger";
+import { errorToast, successToast } from "@/lib/utils";
 import { useAdmin } from "@/providers/adminProvider";
-import { Switch } from "../ui/switch";
-import { Label } from "../ui/label";
-import { Context, useEffect, useRef, useState } from "react";
+import { useSize } from "@/providers/screenSizeProvider";
+import { usePageState } from "@/providers/stateProvider";
+import { onHandleStateChange } from "@/telefunc/handleStateChange.telefunc";
+import { contexts, type PageKey } from "@/types/contexts";
+import type { Bounds } from "@/types/window";
 import DownloadStateButton from "../features/backup/download-state-button";
 import UploadStateButton from "../features/backup/upload-state-button";
-import { Rnd } from "react-rnd";
-import { StateContent, usePageState } from "@/providers/stateProvider";
-import { logger } from "@/lib/logger";
 import { Button } from "../ui/button";
+import { Label } from "../ui/label";
 import { Spinner } from "../ui/spinner";
-import { errorToast, successToast } from "@/lib/utils";
-import { onHandleStateChange } from "@/telefunc/handleStateChange.telefunc";
-import { Bounds } from "@/types/window";
-import { ClientOnly } from "vike-react/ClientOnly";
-import { useSize } from "@/providers/screenSizeProvider";
-import { contexts, PageKey, PageRegistry } from "@/types/contexts";
+import { Switch } from "../ui/switch";
 
 const STORAGE_KEY = "devtools-window";
 
@@ -30,21 +30,21 @@ function loadBounds(): Bounds {
 }
 
 export default function DevToolsWindow<K extends PageKey>({ pageKey }: { pageKey: K }) {
-  const nodeRef = useRef(null);
+  const _nodeRef = useRef(null);
   const { isAdminDisplay, toggleAdmin } = useAdmin();
   const [currentTheme, setCurrentTheme] = useState<boolean>(true);
-  const [borders, setBorders] = useState(false);
+  const [_borders, setBorders] = useState(false);
   const { pageContext } = usePageState(contexts[pageKey]);
   const { state } = pageContext;
   const [loading, setLoading] = useState(false);
   const screen = useSize();
   const [bounds, setBounds] = useState(loadBounds);
 
-  if (screen === "sm") return null;
-
   useEffect(() => {
     setCurrentTheme(document.documentElement.classList.contains("dark"));
   }, []);
+
+  if (screen === "sm") return null;
 
   const saveBounds = (updates: Partial<typeof DEFAULT_BOUNDS>) => {
     setBounds((prev) => {
@@ -74,8 +74,8 @@ export default function DevToolsWindow<K extends PageKey>({ pageKey }: { pageKey
         onDragStop={(_, d) => saveBounds({ x: d.x, y: d.y })}
         onResizeStop={(_, __, ref, ___, position) =>
           saveBounds({
-            width: parseInt(ref.style.width),
-            height: parseInt(ref.style.height),
+            width: parseInt(ref.style.width, 10),
+            height: parseInt(ref.style.height, 10),
             x: position.x,
             y: position.y,
           })

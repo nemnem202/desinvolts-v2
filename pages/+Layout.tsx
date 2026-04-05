@@ -3,18 +3,17 @@ import "../styleSheets/Layout.css";
 import "../styleSheets/tailwind.css";
 import "../styleSheets/typography.css";
 
-import Header from "@/components/layout/header";
-import MouseProvider, { useMouse } from "@/providers/mouseProvider";
-import React, { Context } from "react";
-import ScreenSizeProvider from "@/providers/screenSizeProvider";
-import StateProvider, { StateContent } from "@/providers/stateProvider";
-import { Toaster } from "@/components/ui/sonner";
-import { BasePageContent } from "@/types/page-contents";
+import type React from "react";
 import { useData } from "vike-react/useData";
-import { Data } from "./+data";
+import Header from "@/components/layout/header";
+import { Toaster } from "@/components/ui/sonner";
 import { Spinner } from "@/components/ui/spinner";
-import { contexts, PageKey } from "@/types/contexts";
 import DevToolsWindow from "@/components/windows/devToolsWindow";
+import MouseProvider, { useMouse } from "@/providers/mouseProvider";
+import ScreenSizeProvider from "@/providers/screenSizeProvider";
+import StateProvider from "@/providers/stateProvider";
+import { contexts, type PageKey } from "@/types/contexts";
+import type { Data } from "./+data";
 
 export default function Layout({ children }: { children: React.ReactNode }) {
   const { pageKey, page, currentUser } = useData<Data>();
@@ -24,7 +23,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
 
   return (
     <StateProvider
-      // @ts-ignore
+      // @ts-expect-error
       context={stateContext}
       initialState={page}
       pageKey={pageKey}

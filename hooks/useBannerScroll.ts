@@ -1,16 +1,16 @@
-import { useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 
 export default function useBannerScroll() {
   const [scroll, setScroll] = useState<number>(0);
   const bannerTextRef = useRef<HTMLDivElement>(null);
   const bannerImageRef = useRef<HTMLDivElement>(null);
 
-  const updateScroll = () => {
+  const updateScroll = useCallback(() => {
     const pageContent = document.getElementById("page-content");
     if (!pageContent) return;
 
     setScroll(pageContent.scrollTop);
-  };
+  }, []);
 
   useEffect(() => {
     const pageContent = document.getElementById("page-content");
@@ -21,7 +21,7 @@ export default function useBannerScroll() {
     return () => {
       pageContent.removeEventListener("scroll", updateScroll);
     };
-  }, []);
+  }, [updateScroll]);
 
   useEffect(() => {
     if (!bannerTextRef.current || !bannerImageRef.current) return;

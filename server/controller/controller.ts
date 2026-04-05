@@ -1,6 +1,6 @@
+import type { FastifyReply, RouteGenericInterface } from "fastify";
 import { logger } from "@/lib/logger";
-import { ApiResponse } from "@/types/server";
-import { FastifyReply, RouteGenericInterface } from "fastify";
+import type { ApiResponse } from "@/types/server";
 
 interface DefaultResponseRoute extends RouteGenericInterface {
   Reply: ApiResponse<any>;
@@ -9,7 +9,7 @@ interface DefaultResponseRoute extends RouteGenericInterface {
 export abstract class Controller {
   static sendError = (
     rep: FastifyReply<DefaultResponseRoute>,
-    options?: { message?: string; description?: string; status?: number },
+    options?: { message?: string; description?: string; status?: number }
   ) => {
     logger.error("An error occured", options);
     return rep.status(options?.status ?? 500).send({

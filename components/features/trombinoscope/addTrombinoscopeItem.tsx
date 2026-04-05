@@ -1,15 +1,15 @@
+import type { Dispatch, SetStateAction } from "react";
+import { HexColorPicker } from "react-colorful";
+import { Controller } from "react-hook-form";
+import Image from "@/components/common/image";
 import AddImageButton from "@/components/features/image-editor/addImageButton";
 import { Button } from "@/components/ui/button";
 import { DialogContent, DialogDescription, DialogTitle } from "@/components/ui/dialog";
-import { Dispatch, SetStateAction, useRef } from "react";
-import { Controller, Resolver, useForm } from "react-hook-form";
-import { HexColorPicker } from "react-colorful";
-import { TrombinoscopeElement } from "@/types/db";
-import { useTrombinoscopeItemForm } from "@/hooks/forms/useTrombinoscopeItemForm";
 import { Field, FieldError, FieldGroup, FieldLabel } from "@/components/ui/field";
-import Image from "@/components/common/image";
 import { Input } from "@/components/ui/input";
 import { InputGroup, InputGroupTextarea } from "@/components/ui/input-group";
+import { useTrombinoscopeItemForm } from "@/hooks/forms/useTrombinoscopeItemForm";
+import type { TrombinoscopeElement } from "@/types/db";
 
 export interface AddTrombinoscopeItemProps {
   setOpen: Dispatch<SetStateAction<boolean>>;

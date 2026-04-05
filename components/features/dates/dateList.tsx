@@ -1,5 +1,5 @@
 import EditableText from "@/components/common/editableText";
-import { DateEvent } from "@/types/db";
+import type { DateEvent } from "@/types/db";
 
 export default function DateList({
   dates,
@@ -38,7 +38,7 @@ export default function DateList({
               }}
             />
             <div className="paragraph italic text-muted-foreground text-xs truncate text-left">
-              {date.paragraphs.map((d) => d.paragraph.content + " ")}
+              {date.paragraphs.map((d) => `${d.paragraph.content} `)}
             </div>
           </div>
         </div>

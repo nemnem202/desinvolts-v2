@@ -1,8 +1,6 @@
-import useEditableTextArea from "@/hooks/useEditableTextArea";
-import { useAdmin } from "@/providers/adminProvider";
-import { EditableTextAreaProps } from "@/types/general";
-import { useEffect, useMemo, useRef } from "react";
 import TextareaAutosize from "react-textarea-autosize";
+import useEditableTextArea from "@/hooks/useEditableTextArea";
+import type { EditableTextAreaProps } from "@/types/general";
 
 export default function EditableTextarea(props: EditableTextAreaProps) {
   const { className = "", content, setContent, as: Tag = "span" } = props;
@@ -18,7 +16,7 @@ export default function EditableTextarea(props: EditableTextAreaProps) {
             content: e.target.value,
           });
         }}
-        className={className + " size-min w-full text-center resize-none"}
+        className={`${className} size-min w-full text-center resize-none`}
       />
     );
   }
@@ -32,7 +30,7 @@ export default function EditableTextarea(props: EditableTextAreaProps) {
           </a>
         ) : (
           <span key={i}>{String(part)}</span>
-        ),
+        )
       )}
     </Tag>
   );

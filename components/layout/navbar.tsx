@@ -1,15 +1,15 @@
-import { useAdmin } from "@/providers/adminProvider";
-import { ChevronLeft, ChevronRight, Menu, X } from "lucide-react";
-import { Dispatch, FormEvent, SetStateAction, useEffect, useState } from "react";
+import getRandomId from "@giapspzoo/get-random-id";
+import { ChevronLeft, ChevronRight, X } from "lucide-react";
+import { type FormEvent, useState } from "react";
 import { usePageContext } from "vike-react/usePageContext";
+import useReorderLink from "@/hooks/useReorderLink";
+import type { NavLink as NavlinkDb } from "@/prisma/generated/prisma/browser";
+import { useAdmin } from "@/providers/adminProvider";
+import { Button } from "../ui/button";
 import ButtonPlus from "../ui/buttonPlus";
 import { Dialog, DialogContent, DialogDescription, DialogTrigger } from "../ui/dialog";
-import { Label } from "../ui/label";
 import { Input } from "../ui/input";
-import { Button } from "../ui/button";
-import type { NavLink as NavlinkDb } from "@/prisma/generated/prisma/browser";
-import useReorderLink from "@/hooks/useReorderLink";
-import getRandomId from "@giapspzoo/get-random-id";
+import { Label } from "../ui/label";
 
 export default function Navbar({
   links,
@@ -113,7 +113,7 @@ function NavLink(props: NavlinkProps) {
   const { link, anotherLinkIsHover, setHover, className = "", onClick = () => {} } = props;
   const { isAdminDisplay } = useAdmin();
   const pageContext = usePageContext();
-  const isSelected = pageContext.urlPathname === "/" + link.link;
+  const isSelected = pageContext.urlPathname === `/${link.link}`;
   const { reorderItem, removeItem } = useReorderLink(props);
 
   return (
@@ -132,7 +132,7 @@ function NavLink(props: NavlinkProps) {
         </button>
       )}
       <a
-        href={"/" + link.link}
+        href={`/${link.link}`}
         className={`${className} ${isSelected && !anotherLinkIsHover ? "selected" : ""} `}
         onClick={onClick}
       >
@@ -232,7 +232,7 @@ interface MobileNavlinkProps {
 function MobileNavLink(props: MobileNavlinkProps) {
   const { link, anotherLinkIsHover, setHover, className = "", onClick = () => {} } = props;
   const pageContext = usePageContext();
-  const isSelected = pageContext.urlPathname === "/" + link.link;
+  const isSelected = pageContext.urlPathname === `/${link.link}`;
 
   return (
     <div
@@ -241,7 +241,7 @@ function MobileNavLink(props: MobileNavlinkProps) {
       onMouseLeave={() => setHover(false)}
     >
       <a
-        href={"/" + link.link}
+        href={`/${link.link}`}
         className={`${className} ${isSelected && !anotherLinkIsHover ? "selected" : ""} `}
         onClick={onClick}
       >

@@ -1,7 +1,7 @@
 import { logger } from "@/lib/logger";
 import SetPageController from "@/server/controller/set-page-controller";
 import authenticateUser from "@/server/middlewares/authenticateUser";
-import { PageContentMap } from "@/types/contexts";
+import type { PageContentMap } from "@/types/contexts";
 
 export const setAllPages = async (data: PageContentMap): Promise<{ success: boolean }> => {
   try {

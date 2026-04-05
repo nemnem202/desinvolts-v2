@@ -1,3 +1,4 @@
+/** biome-ignore-all lint/correctness/useExhaustiveDependencies: Intentional*/
 import { useWindowMangagerContext } from "@/components/windows/windowsManager";
 import { MIN_WINDOW_SIZE } from "@/config/constants";
 import { useAdmin } from "@/providers/adminProvider";
@@ -31,7 +32,7 @@ export default function useWindowControls(props: WindowProps) {
       left: 0,
       right: containerBounds.width,
     }),
-    [containerBounds],
+    [containerBounds]
   );
 
   const limitsTranslation = (newBounds: Bounds): Bounds => {
@@ -126,7 +127,7 @@ export default function useWindowControls(props: WindowProps) {
           ...prev,
           x: newX,
           y: newY,
-        }) as Bounds,
+        }) as Bounds
     );
   };
 
@@ -141,12 +142,12 @@ export default function useWindowControls(props: WindowProps) {
 
     const rawWidthPx = Math.max(
       roundToInterval(posBaseX - originXpx + 20, columnSize),
-      MIN_WINDOW_SIZE,
+      MIN_WINDOW_SIZE
     );
 
     const rawHeightPx = Math.max(
       roundToInterval(posBaseY - originYpx + 20, rowSize),
-      MIN_WINDOW_SIZE,
+      MIN_WINDOW_SIZE
     );
 
     const maxWidthPx = limits.right - originXpx;
@@ -164,7 +165,7 @@ export default function useWindowControls(props: WindowProps) {
           ...prev,
           width: newWidth,
           height: newHeight,
-        }) as Bounds,
+        }) as Bounds
     );
   };
 
@@ -197,7 +198,7 @@ export default function useWindowControls(props: WindowProps) {
             return { ...w, ...localBounds };
           }
           return w;
-        }),
+        })
       );
     }
   }, [isDown]);
@@ -212,12 +213,12 @@ export default function useWindowControls(props: WindowProps) {
               y: y,
               width: width,
               height: height,
-            }),
+            })
           );
           return { ...w, ...localBounds };
         }
         return w;
-      }),
+      })
     );
   }, [columnSize, rowSize]);
 

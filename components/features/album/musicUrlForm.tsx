@@ -1,11 +1,11 @@
+import type { Dispatch, SetStateAction } from "react";
+import { Controller } from "react-hook-form";
 import { Button } from "@/components/ui/button";
 import { DialogDescription, DialogTitle } from "@/components/ui/dialog";
 import { Field, FieldError, FieldLabel } from "@/components/ui/field";
 import { Input } from "@/components/ui/input";
 import { useAlbumUrlForm } from "@/hooks/forms/useAlbumUrlForm";
-import { Album } from "@/types/db";
-import { Dispatch, SetStateAction } from "react";
-import { Controller } from "react-hook-form";
+import type { Album } from "@/types/db";
 
 export interface MusicUrlForm {
   currentTag: "spotify" | "deezer" | "applemusic";
@@ -47,6 +47,7 @@ export default function MusicUrlForm(props: MusicUrlForm) {
 
               {formValue && (
                 <iframe
+                  title="Album"
                   src={formValue}
                   width="100%"
                   height="500"

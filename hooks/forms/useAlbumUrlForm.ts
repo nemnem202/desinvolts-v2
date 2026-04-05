@@ -1,10 +1,10 @@
-import { MusicUrlForm } from "@/components/features/album/musicUrlForm";
-import { albumUrlSchema } from "@/config/frontendFormSchemas";
-import { convertUrlToIframeurl } from "@/lib/utils";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useState } from "react";
-import { Resolver, useForm } from "react-hook-form";
-import z from "zod";
+import { type Resolver, useForm } from "react-hook-form";
+import type z from "zod";
+import type { MusicUrlForm } from "@/components/features/album/musicUrlForm";
+import { albumUrlSchema } from "@/config/frontendFormSchemas";
+import { convertUrlToIframeurl } from "@/lib/utils";
 
 type UrlFormValue = z.infer<typeof albumUrlSchema>;
 
@@ -19,7 +19,7 @@ export function useAlbumUrlForm({ currentTag, album, updateAlbum, setDialogOpen 
 
     const iframe = convertUrlToIframeurl(value.url, currentTag);
 
-    let newUrl: string | null = iframe ?? value.url;
+    const newUrl: string | null = iframe ?? value.url;
 
     if (newUrl) {
       const urlUpdates = {

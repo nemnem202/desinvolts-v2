@@ -130,14 +130,14 @@ export const PostDataSchema = z.object({
       z.object({
         position: z.number().int(),
         image: ImageSchema,
-      }),
+      })
     )
     .max(MAX_ARRAY_SIZE, { message: "Ça fait beaucoup d'images pour un seul post, non ?" }),
   videos: z
     .array(
       z.object({
         video: VideoSchema,
-      }),
+      })
     )
     .max(MAX_ARRAY_SIZE, { message: MSG_TROP_D_ELEMENTS }),
   paragraphs: z.array(ParagraphInGroupSchema).max(MAX_ARRAY_SIZE, { message: MSG_TROP_D_ELEMENTS }),
@@ -149,7 +149,7 @@ export const CarouselSchema = z.object({
       z.object({
         position: z.number().int(),
         image: ImageSchema,
-      }),
+      })
     )
     .max(MAX_ARRAY_SIZE, {
       message: "Le carrousel va finir par avoir le vertige avec autant d'images !",
@@ -159,7 +159,7 @@ export const CarouselSchema = z.object({
       z.object({
         position: z.number().int(),
         video: VideoSchema,
-      }),
+      })
     )
     .max(MAX_ARRAY_SIZE, { message: MSG_TROP_D_ELEMENTS }),
 });

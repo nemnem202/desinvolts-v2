@@ -1,13 +1,13 @@
+import { useState } from "react";
 import ButtonMinus from "@/components/ui/buttonMinus";
 import ButtonPlus from "@/components/ui/buttonPlus";
 import { Dialog } from "@/components/ui/dialog";
-import { useState } from "react";
 import { useAdmin } from "@/providers/adminProvider";
 import { usePageState } from "@/providers/stateProvider";
-import { PostData } from "@/types/db";
 import { HomePageContext } from "@/types/contexts";
-import PostForm from "./post-form";
+import type { PostData } from "@/types/db";
 import Post from "./post";
+import PostForm from "./post-form";
 
 export default function PostsSection() {
   const { pageContext, update } = usePageState(HomePageContext);

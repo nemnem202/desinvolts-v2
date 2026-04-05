@@ -1,12 +1,12 @@
+import fs from "node:fs";
+import path from "node:path";
 import type { FastifyRequest } from "fastify";
 import type { storage } from "pkgcloud";
-import OpenStackSDK from "./OpenStackSdk";
 import sharp from "sharp";
-import path from "path";
-import fs from "fs";
+import OpenStackSDK from "./OpenStackSdk";
 import "@fastify/multipart";
-import streamToBuffer from "./streamToBuffer";
 import openStack from "../config/openStack";
+import streamToBuffer from "./streamToBuffer";
 
 interface FileOptions {
   width?: number;
@@ -41,7 +41,7 @@ class File {
         (err: unknown, container: storage.Container) => {
           if (err) reject(err);
           else resolve(container);
-        },
+        }
       );
     });
   }
@@ -126,7 +126,7 @@ class File {
   async uploadImage(
     containerName: string,
     options: FileUploadOptions = {},
-    fieldName = "image",
+    fieldName = "image"
   ): Promise<[string, string]> {
     const randomName = File.generateRandomFileName(20);
     const finalExtension = "webp";

@@ -1,12 +1,12 @@
-import { telefuncHandler } from "./telefunc-handler";
+import emailjs from "@emailjs/nodejs";
+import fastifyCookie from "@fastify/cookie";
 import { apply, serve } from "@photonjs/fastify";
 import fastify from "fastify";
 import rawBody from "fastify-raw-body";
-import fastifyCookie from "@fastify/cookie";
-import { fileUploadHandler } from "./file-upload-handler";
-import { seed } from "./config/seed";
-import emailjs from "@emailjs/nodejs";
 import { logger } from "@/lib/logger";
+import { seed } from "./config/seed";
+import { fileUploadHandler } from "./file-upload-handler";
+import { telefuncHandler } from "./telefunc-handler";
 
 const port = process.env.PORT ? parseInt(process.env.PORT, 10) : 3000;
 
@@ -20,7 +20,7 @@ async function startApp() {
 
     if (!EMAILJS_PUBLIC_KEY || !EMAILJS_PRIVATE_KEY)
       throw new Error(
-        `Les variables d'environnement d'emailjs sont mal définies, public key: ${!!EMAILJS_PUBLIC_KEY}, private key: ${!!EMAILJS_PRIVATE_KEY}`,
+        `Les variables d'environnement d'emailjs sont mal définies, public key: ${!!EMAILJS_PUBLIC_KEY}, private key: ${!!EMAILJS_PRIVATE_KEY}`
       );
     emailjs.init({
       publicKey: EMAILJS_PUBLIC_KEY,

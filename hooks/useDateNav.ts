@@ -1,6 +1,6 @@
-import { getNextDate } from "@/lib/utils";
-import { DatesPageContent } from "@/types/page-contents";
 import { useEffect, useState } from "react";
+import { getNextDate } from "@/lib/utils";
+import type { DatesPageContent } from "@/types/page-contents";
 
 export default function useDateNav(state: DatesPageContent) {
   const [currentIndex, setCurrentIndex] = useState<number>(() => {
