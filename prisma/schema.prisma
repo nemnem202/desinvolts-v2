@@ -30,48 +30,48 @@ model AdminAccount {
 }
 
 model Configuration {
-  id                 Int      @id @default(autoincrement())
-  showActualityPanel Boolean?
+  id                         Int      @id @default(autoincrement())
+  showActualityPanel         Boolean?
   mediaImagesContainerHeight Int
 
   @@map("configuration")
 }
 
 model Paragraph {
-  id      Int     @id @default(autoincrement())
-  content String  @db.VarChar(8000)
+  id      Int    @id @default(autoincrement())
+  content String @db.VarChar(8000)
 
-  hyperlinks             Hyperlink[]
-  groupedParagraphs      GroupedParagraph[]
-  homePages              HomePage[]
-  contactPages           ContactPage[]
+  hyperlinks        Hyperlink[]
+  groupedParagraphs GroupedParagraph[]
+  homePages         HomePage[]
+  contactPages      ContactPage[]
 }
 
 model TextLine {
-  id      Int     @id @default(autoincrement())
-  content String  @db.VarChar(5000)
+  id      Int    @id @default(autoincrement())
+  content String @db.VarChar(5000)
 
-  hyperlinks                   Hyperlink[]
-  trombinoscopeItems           TrombinoscopeItem[]
-  posts                        Post[]
-  albums                       Album[]
-  homePageActualityTitles      HomePage[]           @relation("HomeActualityTitle")
-  homePageSubtitles            HomePage[]           @relation("HomeSubtitle")
-  homePageTitles               HomePage[]           @relation("HomeTitle")
-  connexionPageTitles          ConnexionPage[]
-  mediasPagePicturesTitles     MediasPage[]         @relation("MediasPicturesTitle")
-  mediasPageVideoTitles        MediasPage[]         @relation("MediasVideoTitle")
-  mediasPageTitles             MediasPage[]         @relation("MediasTitle")
-  sonPageTitles                SonPage[]
-  contactPageSubtitles         ContactPage[]        @relation("ContactSubtitle")
-  contactPageTitles            ContactPage[]        @relation("ContactTitle")
-  datesPageNextTitles          DatesPage[]          @relation("DatesNextTitle")
-  datesPagePrevTitles          DatesPage[]          @relation("DatesPrevTitle")
-  datesPageTitles              DatesPage[]          @relation("DatesTitle")
-  groupPageTitles              GroupPage[]
-  dateTitle                    DateEvent[]          @relation("title")  
-  dateCity                     DateEvent[]          @relation("city")  
-  dateAdress                   DateEvent[]          @relation("adress")  
+  hyperlinks               Hyperlink[]
+  trombinoscopeItems       TrombinoscopeItem[]
+  posts                    Post[]
+  albums                   Album[]
+  homePageActualityTitles  HomePage[]          @relation("HomeActualityTitle")
+  homePageSubtitles        HomePage[]          @relation("HomeSubtitle")
+  homePageTitles           HomePage[]          @relation("HomeTitle")
+  connexionPageTitles      ConnexionPage[]
+  mediasPagePicturesTitles MediasPage[]        @relation("MediasPicturesTitle")
+  mediasPageVideoTitles    MediasPage[]        @relation("MediasVideoTitle")
+  mediasPageTitles         MediasPage[]        @relation("MediasTitle")
+  sonPageTitles            SonPage[]
+  contactPageSubtitles     ContactPage[]       @relation("ContactSubtitle")
+  contactPageTitles        ContactPage[]       @relation("ContactTitle")
+  datesPageNextTitles      DatesPage[]         @relation("DatesNextTitle")
+  datesPagePrevTitles      DatesPage[]         @relation("DatesPrevTitle")
+  datesPageTitles          DatesPage[]         @relation("DatesTitle")
+  groupPageTitles          GroupPage[]
+  dateTitle                DateEvent[]         @relation("title")
+  dateCity                 DateEvent[]         @relation("city")
+  dateAdress               DateEvent[]         @relation("adress")
 
   @@map("text_line")
 }
@@ -81,32 +81,32 @@ model Image {
   alt    String? @db.VarChar(5000)
   source String  @unique @db.VarChar(5000)
 
-  presentationImage   HomePage[]                    @relation("PresentationImage")
+  presentationImage  HomePage[]          @relation("PresentationImage")
   dates              DateEvent[]
-  windows             FloatingWindow[]
-  carousels CarouselImage[]
-  trombinoscopeItems  TrombinoscopeItem[]
-  albums              Album[]
-  homePageBanners     HomePage[]
-  groupPages          GroupPage[]
-  posts               PostImage[]         
+  windows            FloatingWindow[]
+  carousels          CarouselImage[]
+  trombinoscopeItems TrombinoscopeItem[]
+  albums             Album[]
+  homePageBanners    HomePage[]
+  groupPages         GroupPage[]
+  posts              PostImage[]
 }
 
 model Video {
   id          Int     @id @default(autoincrement())
-  url         String?  @db.VarChar(5000)
+  url         String? @db.VarChar(5000)
   description String? @db.VarChar(5000)
 
-  windows        FloatingWindow[]
-  carousels     CarouselVideo[]
-  mediaPage     MediasPage[]
-  postVideos     PostVideo[]
+  windows    FloatingWindow[]
+  carousels  CarouselVideo[]
+  mediaPage  MediasPage[]
+  postVideos PostVideo[]
 }
 
 model File {
-  id          Int    @id @default(autoincrement())
-  downloadUrl String  @db.VarChar(500)
-  filename    String @db.VarChar(50)
+  id          Int      @id @default(autoincrement())
+  downloadUrl String   @db.VarChar(500)
+  filename    String   @db.VarChar(50)
   date        DateTime
 
   contactPage ContactPage[]
@@ -115,47 +115,47 @@ model File {
 }
 
 model DateEvent {
-  id            Int       @id @default(autoincrement())
-  date          DateTime  @map("_date")
-  cityId        Int       @map("city_id")
-  addressId     Int       @map("adress_id")
-  imageId       Int       @map("image_id")
-  titleId       Int       @map("title_id")
-  datePageId    Int       @map("date_page_id")
+  id         Int      @id @default(autoincrement())
+  date       DateTime @map("_date")
+  cityId     Int      @map("city_id")
+  addressId  Int      @map("adress_id")
+  imageId    Int      @map("image_id")
+  titleId    Int      @map("title_id")
+  datePageId Int      @map("date_page_id")
 
-  title         TextLine           @relation("title", fields: [titleId], references: [id], onDelete: Cascade)
-  image         Image              @relation(fields: [imageId], references: [id], onDelete: Cascade)
-  datepageId    DatesPage          @relation(fields: [datePageId], references: [id], onDelete: Cascade)
-  city          TextLine           @relation("city", fields: [cityId], references: [id], onDelete: Cascade)
-  adress        TextLine           @relation("adress", fields: [addressId], references: [id], onDelete: Cascade)
-  paragraphs    GroupedParagraph[]  
+  title      TextLine           @relation("title", fields: [titleId], references: [id], onDelete: Cascade)
+  image      Image              @relation(fields: [imageId], references: [id], onDelete: Cascade)
+  datepageId DatesPage          @relation(fields: [datePageId], references: [id], onDelete: Cascade)
+  city       TextLine           @relation("city", fields: [cityId], references: [id], onDelete: Cascade)
+  adress     TextLine           @relation("adress", fields: [addressId], references: [id], onDelete: Cascade)
+  paragraphs GroupedParagraph[]
 }
 
 model FloatingWindow {
-  id                    Int @id @default(autoincrement())
-  zIndex                Int @map("z_index")
-  zIndexPriorityFactor  Int @map("facteur_de_priorité_du_z_index")
-  x                     Int
-  y                     Int
-  width                 Int
-  height                Int
+  id                   Int @id @default(autoincrement())
+  zIndex               Int @map("z_index")
+  zIndexPriorityFactor Int @map("facteur_de_priorité_du_z_index")
+  x                    Int
+  y                    Int
+  width                Int
+  height               Int
 
-  imageId       Int?      
-  videoId       Int?
+  imageId Int?
+  videoId Int?
 
-  video Video? @relation(fields: [videoId], references: [id], onDelete: Cascade)
-  image Image? @relation(fields: [imageId], references: [id], onDelete: Cascade)
+  video      Video?       @relation(fields: [videoId], references: [id], onDelete: Cascade)
+  image      Image?       @relation(fields: [imageId], references: [id], onDelete: Cascade)
   mediasPage MediasPage[]
 
   @@map("floating_window")
 }
 
 model Carousel {
-  id    Int     @id @default(autoincrement())
+  id Int @id @default(autoincrement())
 
-  images     CarouselImage[]
-  videos     CarouselVideo[]
-  homePages  HomePage[]
+  images    CarouselImage[]
+  videos    CarouselVideo[]
+  homePages HomePage[]
 
   @@map("caroussel")
 }
@@ -166,13 +166,10 @@ model NavLink {
   link     String @db.VarChar(5000)
   position Int    @map("position_")
 
-
-
   @@map("navlink")
 }
 
 model AlbumLink {
-
   id       Int    @id @default(autoincrement())
   text     String @db.VarChar(5000)
   link     String @db.VarChar(5000)
@@ -184,108 +181,109 @@ model AlbumLink {
 }
 
 model TrombinoscopeItem {
-  id            Int @id @default(autoincrement())
-  position      Int
-  titleId       Int @map("text_line_id")
-  imageId       Int @map("image_id")
-  color         String? @db.VarChar(50)
-  groupPageId Int? @map("group_page_id")
+  id          Int     @id @default(autoincrement())
+  position    Int
+  titleId     Int     @map("text_line_id")
+  imageId     Int     @map("image_id")
+  color       String? @db.VarChar(50)
+  groupPageId Int?    @map("group_page_id")
 
-  title   TextLine                 @relation(fields: [titleId], references: [id], onDelete: Cascade)
-  image      Image                 @relation(fields: [imageId], references: [id], onDelete: Cascade)
+  title      TextLine           @relation(fields: [titleId], references: [id], onDelete: Cascade)
+  image      Image              @relation(fields: [imageId], references: [id], onDelete: Cascade)
   paragraphs GroupedParagraph[]
-  groupPage  GroupPage?         @relation(fields: [groupPageId], references: [id], onDelete: Cascade)       
+  groupPage  GroupPage?         @relation(fields: [groupPageId], references: [id], onDelete: Cascade)
 
   @@map("trombinoscope_item")
 }
 
 model Theme {
-  id                       Int     @id @default(autoincrement()) @map("theme_id")
-  backgroundColor          String  @db.VarChar(50)
-  foregroundColor          String  @db.VarChar(50)
-  surfaceColor             String  @db.VarChar(50)
-  borderColor              String  @db.VarChar(50)
-  ringColor                String  @db.VarChar(50)
-  primaryColor             String  @db.VarChar(50)
-  secondaryColor           String  @db.VarChar(50)
-  primaryForegroundColor   String  @db.VarChar(50)
-  secondaryForegroundColor String  @db.VarChar(50)
-  accentColor              String  @db.VarChar(50)
-  successColor             String  @db.VarChar(50)
-  errorColor               String  @db.VarChar(50)
-  warnColor                String  @db.VarChar(50)
-  mutedColor               String  @db.VarChar(50)
-  mutedForegroundColor     String  @db.VarChar(50)
-  mutedSecondColor         String  @db.VarChar(50)
-  chart1Color              String  @db.VarChar(50)
-  chart2Color              String  @db.VarChar(50)
-  chart3Color              String  @db.VarChar(50)
-  chart4Color              String  @db.VarChar(50)
-  chart5Color              String  @db.VarChar(50)
+  id                       Int    @id @default(autoincrement()) @map("theme_id")
+  backgroundColor          String @db.VarChar(50)
+  foregroundColor          String @db.VarChar(50)
+  surfaceColor             String @db.VarChar(50)
+  borderColor              String @db.VarChar(50)
+  ringColor                String @db.VarChar(50)
+  primaryColor             String @db.VarChar(50)
+  secondaryColor           String @db.VarChar(50)
+  primaryForegroundColor   String @db.VarChar(50)
+  secondaryForegroundColor String @db.VarChar(50)
+  accentColor              String @db.VarChar(50)
+  successColor             String @db.VarChar(50)
+  errorColor               String @db.VarChar(50)
+  warnColor                String @db.VarChar(50)
+  mutedColor               String @db.VarChar(50)
+  mutedForegroundColor     String @db.VarChar(50)
+  mutedSecondColor         String @db.VarChar(50)
+  chart1Color              String @db.VarChar(50)
+  chart2Color              String @db.VarChar(50)
+  chart3Color              String @db.VarChar(50)
+  chart4Color              String @db.VarChar(50)
+  chart5Color              String @db.VarChar(50)
 }
 
 model Hyperlink {
-  id          Int     @id @default(autoincrement())
-  text        String  @db.VarChar(5000)
-  link        String  @db.VarChar(5000)
-  textLineId  Int?    @map("text_line_id")
-  paragraphId Int?    @map("paragraph_id")
+  id          Int    @id @default(autoincrement())
+  text        String @db.VarChar(5000)
+  link        String @db.VarChar(5000)
+  textLineId  Int?   @map("text_line_id")
+  paragraphId Int?   @map("paragraph_id")
 
   textLine  TextLine?  @relation(fields: [textLineId], references: [id], onDelete: Cascade)
   paragraph Paragraph? @relation(fields: [paragraphId], references: [id], onDelete: Cascade)
 }
 
 model Album {
-  id            Int     @id @default(autoincrement())
-  spotifyId     Int?     @map("id_spotify")
-  deezerId      Int?    @map("id_deezer")
-  appleMusicId  Int?     @map("id_applemusic")
-  titleId       Int     @map("id_title")
-  coverId       Int     @map("id_cover")
-  sonPageId     Int?     @map("on_page_id")
+  id           Int  @id @default(autoincrement())
+  spotifyId    Int? @map("id_spotify")
+  deezerId     Int? @map("id_deezer")
+  appleMusicId Int? @map("id_applemusic")
+  titleId      Int  @map("id_title")
+  coverId      Int  @map("id_cover")
+  sonPageId    Int? @map("on_page_id")
+  position     Int
 
   paragraphs GroupedParagraph[]
-  title      TextLine       @relation(fields: [titleId], references: [id], onDelete: Cascade)
-  cover      Image          @relation(fields: [coverId], references: [id], onDelete: Cascade)
-  
-  spotifyUrl    AlbumLink?  @relation("AlbumSpotify", fields: [spotifyId], references: [id], onDelete: Cascade)
-  deezerUrl     AlbumLink?  @relation("AlbumDeezer", fields: [deezerId], references: [id], onDelete: Cascade)
-  appleMusicUrl AlbumLink?  @relation("AlbumApple", fields: [appleMusicId], references: [id], onDelete: Cascade)
+  title      TextLine           @relation(fields: [titleId], references: [id], onDelete: Cascade)
+  cover      Image              @relation(fields: [coverId], references: [id], onDelete: Cascade)
 
-  sonPage   SonPage?     @relation(fields: [sonPageId], references: [id], onDelete: Cascade)
+  spotifyUrl    AlbumLink? @relation("AlbumSpotify", fields: [spotifyId], references: [id], onDelete: Cascade)
+  deezerUrl     AlbumLink? @relation("AlbumDeezer", fields: [deezerId], references: [id], onDelete: Cascade)
+  appleMusicUrl AlbumLink? @relation("AlbumApple", fields: [appleMusicId], references: [id], onDelete: Cascade)
+
+  sonPage SonPage? @relation(fields: [sonPageId], references: [id], onDelete: Cascade)
 }
 
 model Post {
-  id               Int      @id @default(autoincrement())
-  date             DateTime @map("_date")
-  titleId          Int      @map("title")
+  id      Int      @id @default(autoincrement())
+  date    DateTime @map("_date")
+  titleId Int      @map("title")
 
-  title          TextLine       @relation(fields: [titleId], references: [id], onDelete: Cascade)
-  paragraphs  GroupedParagraph[]
-  images         PostImage[]
-  videos         PostVideo[]
-  homepages        HomePage[]
+  title      TextLine           @relation(fields: [titleId], references: [id], onDelete: Cascade)
+  paragraphs GroupedParagraph[]
+  images     PostImage[]
+  videos     PostVideo[]
+  homepages  HomePage[]
 }
 
 // ─── Pages ────────────────────────────────────────────────────────────────────
 
 model HomePage {
-  id              Int @id
-  carouselId      Int @map("id_caroussel")
-  actualityTitleId Int @map("id_actuality_title")
-  paragraphId     Int @map("id_paragraph")
-  bannerId        Int @map("id_banner")
-  subtitleId      Int @map("id_subtitle")
-  titleId         Int @map("id_title")
+  id                  Int @id
+  carouselId          Int @map("id_caroussel")
+  actualityTitleId    Int @map("id_actuality_title")
+  paragraphId         Int @map("id_paragraph")
+  bannerId            Int @map("id_banner")
+  subtitleId          Int @map("id_subtitle")
+  titleId             Int @map("id_title")
   presentationImageId Int @map("id_pres_img")
 
-  carousel       Carousel       @relation(fields: [carouselId], references: [id], onDelete: Cascade)
-  actualityTitle TextLine       @relation("HomeActualityTitle", fields: [actualityTitleId], references: [id], onDelete: Cascade)
-  paragraph      Paragraph      @relation(fields: [paragraphId], references: [id], onDelete: Cascade)
-  banner         Image          @relation(fields: [bannerId], references: [id], onDelete: Cascade)
-  pres_image     Image          @relation("PresentationImage", fields: [presentationImageId], references: [id], onDelete: Cascade)
-  subtitle       TextLine       @relation("HomeSubtitle", fields: [subtitleId], references: [id], onDelete: Cascade)
-  title          TextLine       @relation("HomeTitle", fields: [titleId], references: [id], onDelete: Cascade)
+  carousel       Carousel  @relation(fields: [carouselId], references: [id], onDelete: Cascade)
+  actualityTitle TextLine  @relation("HomeActualityTitle", fields: [actualityTitleId], references: [id], onDelete: Cascade)
+  paragraph      Paragraph @relation(fields: [paragraphId], references: [id], onDelete: Cascade)
+  banner         Image     @relation(fields: [bannerId], references: [id], onDelete: Cascade)
+  pres_image     Image     @relation("PresentationImage", fields: [presentationImageId], references: [id], onDelete: Cascade)
+  subtitle       TextLine  @relation("HomeSubtitle", fields: [subtitleId], references: [id], onDelete: Cascade)
+  title          TextLine  @relation("HomeTitle", fields: [titleId], references: [id], onDelete: Cascade)
   posts          Post[]
 
   @@map("home_page")
@@ -306,9 +304,9 @@ model MediasPage {
   videoTitleId    Int @map("id_video_title")
   titleId         Int @map("id_title")
 
-  picturesTitle TextLine           @relation("MediasPicturesTitle", fields: [picturesTitleId], references: [id], onDelete: Cascade)
-  videoTitle    TextLine           @relation("MediasVideoTitle", fields: [videoTitleId], references: [id], onDelete: Cascade)
-  title         TextLine           @relation("MediasTitle", fields: [titleId], references: [id], onDelete: Cascade)
+  picturesTitle TextLine         @relation("MediasPicturesTitle", fields: [picturesTitleId], references: [id], onDelete: Cascade)
+  videoTitle    TextLine         @relation("MediasVideoTitle", fields: [videoTitleId], references: [id], onDelete: Cascade)
+  title         TextLine         @relation("MediasTitle", fields: [titleId], references: [id], onDelete: Cascade)
   videos        Video[]
   windows       FloatingWindow[]
 
@@ -319,21 +317,21 @@ model SonPage {
   id      Int @id
   titleId Int @map("id_title")
 
-  title  TextLine       @relation(fields: [titleId], references: [id], onDelete: Cascade)
+  title  TextLine @relation(fields: [titleId], references: [id], onDelete: Cascade)
   albums Album[]
 
   @@map("son_page")
 }
 
 model ContactPage {
-  id         Int @id
-  subtitleId Int @map("id_subtitle")
+  id          Int @id
+  subtitleId  Int @map("id_subtitle")
   paragraphId Int @map("id_paragraph")
-  titleId    Int @map("id_title")
+  titleId     Int @map("id_title")
 
-  subtitle  TextLine          @relation("ContactSubtitle", fields: [subtitleId], references: [id], onDelete: Cascade)
-  paragraph Paragraph         @relation(fields: [paragraphId], references: [id], onDelete: Cascade)
-  title     TextLine          @relation("ContactTitle", fields: [titleId], references: [id], onDelete: Cascade)
+  subtitle  TextLine  @relation("ContactSubtitle", fields: [subtitleId], references: [id], onDelete: Cascade)
+  paragraph Paragraph @relation(fields: [paragraphId], references: [id], onDelete: Cascade)
+  title     TextLine  @relation("ContactTitle", fields: [titleId], references: [id], onDelete: Cascade)
   files     File[]
 
   @@map("contact_page")
@@ -345,24 +343,24 @@ model DatesPage {
   prevTitleId Int @map("id_prev_title")
   titleId     Int @map("id_title")
 
-  nextTitle TextLine         @relation("DatesNextTitle", fields: [nextTitleId], references: [id], onDelete: Cascade)
-  prevTitle TextLine         @relation("DatesPrevTitle", fields: [prevTitleId], references: [id], onDelete: Cascade)
-  title     TextLine         @relation("DatesTitle", fields: [titleId], references: [id], onDelete: Cascade)
+  nextTitle TextLine    @relation("DatesNextTitle", fields: [nextTitleId], references: [id], onDelete: Cascade)
+  prevTitle TextLine    @relation("DatesPrevTitle", fields: [prevTitleId], references: [id], onDelete: Cascade)
+  title     TextLine    @relation("DatesTitle", fields: [titleId], references: [id], onDelete: Cascade)
   dates     DateEvent[]
 
   @@map("dates_page")
 }
 
 model GroupPage {
-  id              Int @id
-  imageId         Int @map("id_image")
-  titleId         Int @map("id_title")
+  id      Int @id
+  imageId Int @map("id_image")
+  titleId Int @map("id_title")
 
-  image              Image          @relation(fields: [imageId], references: [id], onDelete: Cascade)
-  title              TextLine       @relation(fields: [titleId], references: [id], onDelete: Cascade)
+  image Image    @relation(fields: [imageId], references: [id], onDelete: Cascade)
+  title TextLine @relation(fields: [titleId], references: [id], onDelete: Cascade)
 
-  firstSectionParagraphs  GroupedParagraph[] @relation("FirstSection")
-  secondSectionParagraphs GroupedParagraph[] @relation("SecondSection")
+  firstSectionParagraphs  GroupedParagraph[]  @relation("FirstSection")
+  secondSectionParagraphs GroupedParagraph[]  @relation("SecondSection")
   trombinoscropeItems     TrombinoscopeItem[]
 
   @@map("group_page")
@@ -371,8 +369,8 @@ model GroupPage {
 // ─── Tables de jointure ───────────────────────────────────────────────────────
 
 model PostImage {
-  imageId Int @map("image_id")
-  postId  Int @map("post_id")
+  imageId  Int @map("image_id")
+  postId   Int @map("post_id")
   position Int @map("index")
 
   image Image @relation(fields: [imageId], references: [id], onDelete: Cascade)
@@ -397,25 +395,25 @@ model GroupedParagraph {
   paragraphId Int @map("id_paragraph")
   position    Int @map("position_")
 
-  eventId            Int? @map("event_id")
-  albumId            Int? @map("album_id")
-  postId             Int? @map("post_id")
+  eventId             Int? @map("event_id")
+  albumId             Int? @map("album_id")
+  postId              Int? @map("post_id")
   trombinoscopeItemId Int? @map("trombinoscope_item_id")
-  
-  groupPageFirstId   Int? @map("group_page_first_id")
-  groupPageSecondId  Int? @map("group_page_second_id")
+
+  groupPageFirstId  Int? @map("group_page_first_id")
+  groupPageSecondId Int? @map("group_page_second_id")
 
   dateId Int? @map("date_id")
 
-  paragraph          Paragraph          @relation(fields: [paragraphId], references: [id], onDelete: Cascade)
-  album              Album?             @relation(fields: [albumId], references: [id], onDelete: Cascade)
-  post               Post?              @relation(fields: [postId], references: [id], onDelete: Cascade)
-  trombinoscopeItem  TrombinoscopeItem? @relation(fields: [trombinoscopeItemId], references: [id], onDelete: Cascade)
-  groupPageFirst     GroupPage?         @relation("FirstSection", fields: [groupPageFirstId], references: [id], onDelete: Cascade)
-  groupPageSecond    GroupPage?         @relation("SecondSection", fields: [groupPageSecondId], references: [id], onDelete: Cascade)
-  dateEvent          DateEvent?         @relation(fields: [dateId], references: [id], onDelete: Cascade)
+  paragraph         Paragraph          @relation(fields: [paragraphId], references: [id], onDelete: Cascade)
+  album             Album?             @relation(fields: [albumId], references: [id], onDelete: Cascade)
+  post              Post?              @relation(fields: [postId], references: [id], onDelete: Cascade)
+  trombinoscopeItem TrombinoscopeItem? @relation(fields: [trombinoscopeItemId], references: [id], onDelete: Cascade)
+  groupPageFirst    GroupPage?         @relation("FirstSection", fields: [groupPageFirstId], references: [id], onDelete: Cascade)
+  groupPageSecond   GroupPage?         @relation("SecondSection", fields: [groupPageSecondId], references: [id], onDelete: Cascade)
+  dateEvent         DateEvent?         @relation(fields: [dateId], references: [id], onDelete: Cascade)
 
-  @@id([paragraphId, position]) 
+  @@id([paragraphId, position])
   @@map("group_includes_paragraph")
 }
 
@@ -424,8 +422,8 @@ model CarouselImage {
   imageId    Int @map("image_id")
   position   Int
 
-  carousel   Carousel @relation(fields: [carouselId], references: [id], onDelete: Cascade)
-  image      Image    @relation(fields: [imageId], references: [id], onDelete: Cascade)
+  carousel Carousel @relation(fields: [carouselId], references: [id], onDelete: Cascade)
+  image    Image    @relation(fields: [imageId], references: [id], onDelete: Cascade)
 
   @@id([carouselId, imageId])
   @@map("caroussel_includes_image")
@@ -436,8 +434,8 @@ model CarouselVideo {
   videoId    Int @map("video_id")
   position   Int
 
-  carousel   Carousel @relation(fields: [carouselId], references: [id], onDelete: Cascade)
-  video      Video    @relation(fields: [videoId], references: [id], onDelete: Cascade)
+  carousel Carousel @relation(fields: [carouselId], references: [id], onDelete: Cascade)
+  video    Video    @relation(fields: [videoId], references: [id], onDelete: Cascade)
 
   @@id([carouselId, videoId])
   @@map("caroussel_includes_video")
