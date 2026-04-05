@@ -10,36 +10,39 @@ import AlbumSection from "@/components/features/album/albumSection";
 import AlbumForm from "@/components/features/album/albumForm";
 
 export default function Page() {
-  const { pageContext, update } = usePageState(SonPageContext);
-  const { state } = pageContext;
-  const [dialogOpen, setOpen] = useState<boolean>(false);
-  const { isAdminDisplay } = useAdmin();
-  return (
-    <>
-      <ClassicPageLayout>
-        <section className="md:py-[2.5rem] flex flex-col gap-[3rem] flex-1 min-h-0 items-center max-w-[40rem] w-full">
-          <EditableText
-            as={"h1"}
-            content={state.title}
-            setContent={(newContent) => update("title", newContent)}
-            className="headline w-full text-center shrink-0"
-          />
-        </section>
-        {state.albums.map((album) => (
-          <AlbumSection
-            album={album}
-            albums={state.albums}
-            setAlbums={(newAlbums) => update("albums", newAlbums)}
-          />
-        ))}
+	const { pageContext, update } = usePageState(SonPageContext);
+	const { state } = pageContext;
+	const [dialogOpen, setOpen] = useState<boolean>(false);
+	const { isAdminDisplay } = useAdmin();
+	return (
+		<>
+			<ClassicPageLayout>
+				<section className="md:py-[2.5rem] flex flex-col gap-[3rem] flex-1 min-h-0 items-center max-w-[40rem] w-full">
+					<EditableText
+						as={"h1"}
+						content={state.title}
+						setContent={(newContent) => update("title", newContent)}
+						className="headline w-full text-center shrink-0"
+					/>
+				</section>
+				{[...state.albums]
+					.sort((a, b) => a.position - b.position)
+					.map((album) => (
+						<AlbumSection
+							key={album.id}
+							album={album}
+							albums={state.albums}
+							setAlbums={(newAlbums) => update("albums", newAlbums)}
+						/>
+					))}
 
-        {isAdminDisplay && <ButtonPlus onClick={() => setOpen(true)} />}
-      </ClassicPageLayout>
-      {isAdminDisplay && (
-        <Dialog open={dialogOpen} onOpenChange={setOpen}>
-          <AlbumForm setOpen={setOpen} />
-        </Dialog>
-      )}
-    </>
-  );
+				{isAdminDisplay && <ButtonPlus onClick={() => setOpen(true)} />}
+			</ClassicPageLayout>
+			{isAdminDisplay && (
+				<Dialog open={dialogOpen} onOpenChange={setOpen}>
+					<AlbumForm setOpen={setOpen} />
+				</Dialog>
+			)}
+		</>
+	);
 }
