@@ -6,11 +6,9 @@ import type z from "zod";
 import { CANVAS_WIDTH } from "@/components/features/image-editor/addImageButton";
 import type { ImageFormProps } from "@/components/features/image-editor/imageForm";
 import { imagePropsSchema } from "@/config/frontendFormSchemas";
-import ApiHandler from "@/lib/apiHandler";
 import { logger } from "@/lib/logger";
-import { successToast } from "@/lib/utils";
-import type { UploadImageReply } from "@/types/server";
 import type { Bounds } from "@/types/window";
+import onImageUpload from "@/telefunc/uploadimage.telefunc";
 
 type ImageFormValues = z.infer<typeof imagePropsSchema>;
 
@@ -91,19 +89,13 @@ export function useImageForm(props: ImageFormProps) {
   };
 
   const submitImage = async (image: Blob, imageName: string): Promise<string> => {
-    const formData = new FormData();
-    const file = new File([image], `${imageName}-cropped`, { type: image.type });
-    formData.append("image", file);
-    const res = await ApiHandler.post<FormData, UploadImageReply>("/image", formData);
+    const file = new File([image], imageName, { type: image.type });
 
-    if (res.success) {
-      successToast("L'image a bien été enregistrée !");
-      logger.success("Image enregistrée comme :", res.body.fileName);
-      return res.body.fileName;
-    } else {
-      logger.error("Echec de l'enregistrement de l'image. Erreur: ", res.message, res.description);
-      return "assets/img-placeholder.webp";
-    }
+    const res = await onImageUpload(file);
+
+    logger.info("response", res);
+
+    return "ieie";
   };
 
   const handleSubmit = async (values: ImageFormValues, e?: React.BaseSyntheticEvent) => {

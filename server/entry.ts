@@ -2,11 +2,10 @@ import emailjs from "@emailjs/nodejs";
 import fastifyCookie from "@fastify/cookie";
 import { apply, serve } from "@photonjs/fastify";
 import fastify from "fastify";
-import rawBody from "fastify-raw-body";
 import { logger } from "@/lib/logger";
 import { seed } from "./config/seed";
-import { fileUploadHandler } from "./file-upload-handler";
 import { telefuncHandler } from "./telefunc-handler";
+import fastifyMultipart from "@fastify/multipart";
 
 const port = process.env.PORT ? parseInt(process.env.PORT, 10) : 3000;
 
@@ -39,11 +38,15 @@ async function startApp() {
       secret: process.env.COOKIE_SECRET,
     });
 
-    app.register(fileUploadHandler);
-
-    await app.register(rawBody);
+    app.register(fastifyMultipart, {
+      limits: {
+        fileSize: 1024 * 1024 * 10,
+      },
+    });
 
     await apply(app, [telefuncHandler]);
+
+    // await app.register(rawBody);
     return serve(app, {
       port,
     });
