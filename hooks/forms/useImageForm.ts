@@ -9,6 +9,7 @@ import { imagePropsSchema } from "@/config/frontendFormSchemas";
 import { logger } from "@/lib/logger";
 import type { Bounds } from "@/types/window";
 import onImageUpload from "@/telefunc/uploadimage.telefunc";
+import { errorToast, successToast } from "@/lib/utils";
 
 type ImageFormValues = z.infer<typeof imagePropsSchema>;
 
@@ -95,7 +96,13 @@ export function useImageForm(props: ImageFormProps) {
 
     logger.info("response", res);
 
-    return "ieie";
+    if (res.success) {
+      successToast("Image uploaded !");
+      return res.publicUrl;
+    } else {
+      errorToast("Image failed to be upload");
+      return "";
+    }
   };
 
   const handleSubmit = async (values: ImageFormValues, e?: React.BaseSyntheticEvent) => {
