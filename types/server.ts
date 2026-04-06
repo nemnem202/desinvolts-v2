@@ -33,6 +33,10 @@ export type UploadImageReply = {
   fileName: string;
 };
 
+export type UploadFileReply = {
+  fileName: string;
+};
+
 export type ImageReply = {
   image: Buffer<ArrayBufferLike>;
 };

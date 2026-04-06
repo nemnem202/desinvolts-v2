@@ -26,6 +26,8 @@ export const fileUploadHandler = async (app: FastifyInstance) => {
       fileSize: 1024 * 1024 * 10,
     },
   });
-  app.post("/image", { preHandler: requireAuth }, FileController.upload);
-  app.get("/image/:filePath", FileController.get);
+  app.post("/image", { preHandler: requireAuth }, FileController.uploadImage);
+  app.get("/image/:filePath", FileController.getImage);
+  app.post("/file", { preHandler: requireAuth }, FileController.uploadFile);
+  app.get("/file/:filePath", FileController.getFile);
 };

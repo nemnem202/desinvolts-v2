@@ -8,6 +8,9 @@ import { useAdmin } from "@/providers/adminProvider";
 import { usePageState } from "@/providers/stateProvider";
 import { ContactPageContext } from "@/types/contexts";
 import type { DownloadableFile, EditableTextContent } from "@/types/db";
+import ApiHandler from "@/lib/apiHandler";
+import type { UploadFileReply } from "@/types/server";
+import { successToast } from "@/lib/utils";
 
 export default function Page() {
   const { isAdminDisplay } = useAdmin();
@@ -69,27 +72,61 @@ function FileComponent({
     onChange(newFiles);
   };
   return (
-    <button
-      className="flex flex-col items-center justify-top w-[6rem] cursor-pointer hover:bg-[var(--muted-second)] p-2 rounded"
-      type="button"
+    <a
+      href={file.downloadUrl}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="flex flex-col items-center justify-center w-[8rem] cursor-pointer hover:bg-[var(--muted-second)] p-2 rounded group transition-colors"
     >
-      <File className="w-[2.5rem] h-[2.5rem]" />
-      <EditableText
-        as={"p"}
-        className="paragraph text-center w-full"
-        content={{ content: file.filename, hyperlinks: [], id: file.id }}
-        setContent={(newContent) => handleFileTitleChange(newContent)}
-      ></EditableText>
-    </button>
+      <div className="w-full flex justify-center">
+        <File className="w-[2.5rem] h-[2.5rem] shrink-0" />
+      </div>
+
+      <div className="w-full mt-2">
+        <EditableText
+          as={"p"}
+          className="paragraph text-center w-full block"
+          content={{ content: file.filename, hyperlinks: [], id: file.id }}
+          setContent={(newContent) => handleFileTitleChange(newContent)}
+        />
+      </div>
+    </a>
   );
 }
 
 function MoreFileComponent() {
+  const { pageContext, update } = usePageState<"contact">(ContactPageContext);
   const inputRef = useRef<HTMLInputElement>(null);
+
   const handleButtonClick = () => {
-    if (!inputRef.current) return;
-    inputRef.current.click();
+    inputRef.current?.click();
   };
+
+  const handleFileChange = async (event: React.ChangeEvent<HTMLInputElement>) => {
+    const file = event.target.files?.[0];
+    if (!file) return;
+
+    const formData = new FormData();
+    formData.append("file", file);
+
+    const result = await ApiHandler.post<FormData, UploadFileReply>("/file", formData);
+
+    if (result.success) {
+      const newFile: DownloadableFile = {
+        id: Math.floor(Math.random() * 1000000),
+        filename: file.name,
+        downloadUrl: `/file/${result.body.fileName}`,
+        date: new Date(),
+      };
+
+      update("files", [...pageContext.state.files, newFile]);
+
+      successToast("Fichier ajouté !", `Le document ${file.name} est disponible.`);
+    }
+
+    if (inputRef.current) inputRef.current.value = "";
+  };
+
   return (
     <>
       <button
@@ -99,7 +136,13 @@ function MoreFileComponent() {
       >
         <CirclePlus className="w-[2.5rem] h-[2.5rem]" />
       </button>
-      <input type="file" className="hidden" ref={inputRef}></input>
+      <input
+        type="file"
+        className="hidden"
+        ref={inputRef}
+        onChange={handleFileChange}
+        accept=".pdf, .doc, .docx, .txt, .odt, .csv, .xlsx, .pptx, .md"
+      />
     </>
   );
 }
