@@ -1,4 +1,5 @@
 import { logger } from "@/lib/logger";
+import FileController from "@/server/controller/file-controller";
 import authenticateUser from "@/server/middlewares/authenticateUser";
 
 export default async function onImageUpload(
@@ -11,10 +12,7 @@ export default async function onImageUpload(
 
     if (!isAuthenticated) throw new Error();
 
-    return {
-      success: true,
-      publicUrl: "sdfsdf",
-    };
+    return new FileController().uploadFileAsImage(image);
   } catch {
     return { success: false };
   }
