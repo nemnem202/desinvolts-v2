@@ -56,10 +56,17 @@ export default function DevToolsWindow<K extends PageKey>({ pageKey }: { pageKey
 
   const syncState = async () => {
     setLoading(true);
-    logger.info("State update request", state);
-    const res = await onHandleStateChange(state, pageKey);
+
+    const stateString = JSON.stringify(state);
+    const stateBlob = new Blob([stateString], { type: "application/json" });
+    const stateFile = new File([stateBlob], "state.json");
+
+    logger.info("Sending state as file...");
+
+    const res = await onHandleStateChange(stateFile, pageKey);
+
     if (!res) {
-      errorToast("Echec de la synchronisation.", "Êtes vous connecté ?");
+      errorToast("Echec de la synchronisation.");
     } else {
       successToast("Page synchronisée !");
     }

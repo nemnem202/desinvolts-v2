@@ -6,7 +6,6 @@ import { logger } from "@/lib/logger";
 import { seed } from "./config/seed";
 import { env } from "@/lib/env";
 import { telefuncHandler } from "./telefunc-handler";
-import rawBody from "fastify-raw-body";
 import fastifyMultipart from "@fastify/multipart";
 const port = env.PORT;
 
@@ -33,6 +32,7 @@ async function startApp() {
 
     const app = fastify({
       forceCloseConnections: true,
+      bodyLimit: 1024 * 1024 * 20,
     });
 
     app.register(fastifyCookie, {
@@ -41,7 +41,7 @@ async function startApp() {
 
     app.register(fastifyMultipart, {
       limits: {
-        fileSize: 1024 * 1024 * 10,
+        fileSize: 1024 * 1024 * 20,
       },
     });
 

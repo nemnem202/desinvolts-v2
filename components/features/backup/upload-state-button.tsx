@@ -2,7 +2,7 @@ import { useRef } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { logger } from "@/lib/logger";
-import type { PageContentMap } from "@/types/contexts";
+import { setAllPages } from "@/telefunc/setAllPageContent.telefunc";
 
 export default function UploadStateButton() {
   const fileInputRef = useRef<HTMLInputElement>(null);
@@ -17,8 +17,12 @@ export default function UploadStateButton() {
 
     try {
       const text = await file.text();
-      const json = JSON.parse(text) as PageContentMap;
-      logger.info("Upload: ", json);
+      const stateString = JSON.stringify(text);
+      const stateBlob = new Blob([stateString], { type: "application/json" });
+      const stateFile = new File([stateBlob], "state.json");
+      logger.info("Upload: ", stateFile);
+
+      await setAllPages(stateFile);
 
       window.location.reload();
     } catch (err) {
