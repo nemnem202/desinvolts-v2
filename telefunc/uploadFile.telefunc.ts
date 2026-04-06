@@ -1,4 +1,5 @@
 import { logger } from "@/lib/logger";
+import FileController from "@/server/controller/file-controller";
 import authenticateUser from "@/server/middlewares/authenticateUser";
 
 export default async function onFileUpload(
@@ -10,10 +11,8 @@ export default async function onFileUpload(
     const { isAuthenticated } = await authenticateUser();
 
     if (!isAuthenticated) throw new Error();
-    return {
-      success: true,
-      publicUrl: "sdfsdf",
-    };
+
+    return new FileController().uploadFile(file);
   } catch {
     return { success: false };
   }

@@ -17,6 +17,7 @@ const {
   CLOUD_API_KEY,
   CLOUD_API_SECRET,
   CLOUD_IMAGE_FOLDER_NAME,
+  CLOUD_FILE_FOLDER_NAME,
   CLOUD_NAME,
 } = process.env;
 
@@ -37,7 +38,8 @@ if (
   !CLOUD_NAME ||
   !CLOUD_API_KEY ||
   !CLOUD_API_SECRET ||
-  !CLOUD_IMAGE_FOLDER_NAME
+  !CLOUD_IMAGE_FOLDER_NAME ||
+  !CLOUD_FILE_FOLDER_NAME
 ) {
   if (!POSTGRES_USER) logger.error("Missing environment variable: POSTGRES_USER");
   if (!POSTGRES_PASSWORD) logger.error("Missing environment variable: POSTGRES_PASSWORD");
@@ -55,6 +57,7 @@ if (
   if (!CLOUD_API_SECRET) logger.error("Missing environment variable: CLOUD_API_SECRET");
   if (!CLOUD_IMAGE_FOLDER_NAME)
     logger.error("Missing environment variable: CLOUD_IMAGE_FOLDER_NAME");
+  if (!CLOUD_FILE_FOLDER_NAME) logger.error("Missing environment variable: CLOUD_FILE_FOLDER_NAME");
   process.exit(1);
 } else {
   logger.success("All environement variables are set");
@@ -77,5 +80,6 @@ export const env = {
   CLOUD_API_KEY,
   CLOUD_API_SECRET,
   CLOUD_IMAGE_FOLDER_NAME,
+  CLOUD_FILE_FOLDER_NAME,
   CLOUD_NAME,
 };

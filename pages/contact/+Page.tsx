@@ -9,7 +9,8 @@ import { usePageState } from "@/providers/stateProvider";
 import { ContactPageContext } from "@/types/contexts";
 import type { DownloadableFile, EditableTextContent } from "@/types/db";
 import onFileUpload from "@/telefunc/uploadFile.telefunc";
-import { logger } from "@/lib/logger";
+import { errorToast, successToast } from "@/lib/utils";
+import getRandomId from "@giapspzoo/get-random-id";
 
 export default function Page() {
   const { isAdminDisplay } = useAdmin();
@@ -73,6 +74,7 @@ function FileComponent({
   return (
     <a
       href={file.downloadUrl}
+      download={file.filename}
       target="_blank"
       rel="noopener noreferrer"
       className="flex flex-col items-center justify-center w-[8rem] cursor-pointer hover:bg-[var(--muted-second)] p-2 rounded group transition-colors"
@@ -107,7 +109,20 @@ function MoreFileComponent() {
 
     const res = await onFileUpload(file);
 
-    logger.info("Response", res);
+    if (res.success) {
+      successToast("File uploaded !");
+      update("files", [
+        ...pageContext.state.files,
+        {
+          date: new Date(Date.now()),
+          downloadUrl: res.publicUrl,
+          filename: "New file",
+          id: getRandomId(),
+        },
+      ]);
+    } else {
+      errorToast("An error occured");
+    }
 
     if (inputRef.current) inputRef.current.value = "";
   };
