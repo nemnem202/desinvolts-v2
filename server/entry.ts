@@ -4,10 +4,10 @@ import { apply, serve } from "@photonjs/fastify";
 import fastify from "fastify";
 import { logger } from "@/lib/logger";
 import { seed } from "./config/seed";
-import { telefuncHandler } from "./telefunc-handler";
-import fastifyMultipart from "@fastify/multipart";
 import { env } from "@/lib/env";
-
+import { telefuncHandler } from "./telefunc-handler";
+import rawBody from "fastify-raw-body";
+import fastifyMultipart from "@fastify/multipart";
 const port = env.PORT;
 
 export default (await startApp()) as unknown;
@@ -45,9 +45,9 @@ async function startApp() {
       },
     });
 
+    // await app.register(rawBody);
     await apply(app, [telefuncHandler]);
 
-    // await app.register(rawBody);
     return serve(app, {
       port,
     });
