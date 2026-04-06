@@ -6,8 +6,9 @@ import { logger } from "@/lib/logger";
 import { seed } from "./config/seed";
 import { telefuncHandler } from "./telefunc-handler";
 import fastifyMultipart from "@fastify/multipart";
+import { env } from "@/lib/env";
 
-const port = process.env.PORT ? parseInt(process.env.PORT, 10) : 3000;
+const port = env.PORT;
 
 export default (await startApp()) as unknown;
 
@@ -15,7 +16,7 @@ async function startApp() {
   try {
     await seed();
 
-    const { EMAILJS_PUBLIC_KEY, EMAILJS_PRIVATE_KEY } = process.env;
+    const { EMAILJS_PUBLIC_KEY, EMAILJS_PRIVATE_KEY } = env;
 
     if (!EMAILJS_PUBLIC_KEY || !EMAILJS_PRIVATE_KEY)
       throw new Error(
@@ -35,7 +36,7 @@ async function startApp() {
     });
 
     app.register(fastifyCookie, {
-      secret: process.env.COOKIE_SECRET,
+      secret: env.COOKIE_SECRET,
     });
 
     app.register(fastifyMultipart, {

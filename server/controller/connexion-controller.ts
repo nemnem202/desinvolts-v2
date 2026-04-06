@@ -3,6 +3,7 @@ import { SignJWT } from "jose";
 import { logger } from "@/lib/logger";
 import { prisma } from "@/lib/prisma-client";
 import { Controller } from "./controller";
+import { env } from "@/lib/env";
 
 export default class ConnexionController extends Controller {
   static async login(
@@ -29,7 +30,7 @@ export default class ConnexionController extends Controller {
       if (!passwordIsValid)
         return { success: false, error: "Mot de passe ou nom d'utilisateur incorrect." };
 
-      const secret = new TextEncoder().encode(process.env.SECRET_KEY);
+      const secret = new TextEncoder().encode(env.TOKEN_SECRET_KEY);
 
       const jwt = await new SignJWT({ username: admin.username })
         .setProtectedHeader({ alg: "HS256" })
