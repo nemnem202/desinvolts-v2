@@ -8,9 +8,8 @@ import { useAdmin } from "@/providers/adminProvider";
 import { usePageState } from "@/providers/stateProvider";
 import { ContactPageContext } from "@/types/contexts";
 import type { DownloadableFile, EditableTextContent } from "@/types/db";
-import ApiHandler from "@/lib/apiHandler";
-import type { UploadFileReply } from "@/types/server";
-import { successToast } from "@/lib/utils";
+import onFileUpload from "@/telefunc/uploadFile.telefunc";
+import { logger } from "@/lib/logger";
 
 export default function Page() {
   const { isAdminDisplay } = useAdmin();
@@ -106,23 +105,9 @@ function MoreFileComponent() {
     const file = event.target.files?.[0];
     if (!file) return;
 
-    const formData = new FormData();
-    formData.append("file", file);
+    const res = await onFileUpload(file);
 
-    const result = await ApiHandler.post<FormData, UploadFileReply>("/file", formData);
-
-    if (result.success) {
-      const newFile: DownloadableFile = {
-        id: Math.floor(Math.random() * 1000000),
-        filename: file.name,
-        downloadUrl: `/file/${result.body.fileName}`,
-        date: new Date(),
-      };
-
-      update("files", [...pageContext.state.files, newFile]);
-
-      successToast("Fichier ajouté !", `Le document ${file.name} est disponible.`);
-    }
+    logger.info("Response", res);
 
     if (inputRef.current) inputRef.current.value = "";
   };
