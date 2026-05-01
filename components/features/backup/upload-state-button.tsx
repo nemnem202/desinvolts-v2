@@ -24,7 +24,7 @@ export default function UploadStateButton() {
 
       await setAllPages(stateFile);
 
-      window.location.reload();
+      // window.location.reload();
     } catch (err) {
       logger.error("Erreur lecture JSON :", err);
     }

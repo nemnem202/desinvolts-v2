@@ -23,7 +23,8 @@ export const setAllPages = async (dataFile: File): Promise<{ success: boolean }>
     logger.info("All pages requested");
 
     return { success: promises.some((promise) => promise.success === false) };
-  } catch {
+  } catch (error) {
+    logger.error("Une erreur est survenue lors de l'importation d'une sauvegares", error);
     return { success: false };
   }
 };
