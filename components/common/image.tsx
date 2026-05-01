@@ -24,28 +24,6 @@ export default function Image(props: ImageProps) {
   const imgRef = useRef<HTMLImageElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
 
-  // const getUrl = (src: string): string => {
-  //   const params = new URLSearchParams();
-
-  //   if (props.width != null) params.append("width", String(props.width));
-  //   if (props.height != null) params.append("height", String(props.height));
-
-  //   const query = params.toString();
-
-  //   return `/image/${encodeURIComponent(src)}${query ? `?${query}` : ""}`;
-  // };
-
-  // const getBigUrl = (src: string): string => {
-  //   const params = new URLSearchParams();
-
-  //   if (props.width != null) params.append("width", String(2000));
-  //   if (props.height != null) params.append("height", String(2000));
-
-  //   const query = params.toString();
-
-  //   return `/image/${encodeURIComponent(src)}${query ? `?${query}` : ""}`;
-  // };
-
   useEffect(() => {
     setLoadingState(true);
   }, []);

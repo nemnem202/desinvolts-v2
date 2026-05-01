@@ -54,4 +54,21 @@ export default class FileController {
       return { success: false };
     }
   }
+
+  async getAllImages(): Promise<{ publicUrl: string }[]> {
+    try {
+      const result = await cloudinary.api.resources({
+        type: "upload",
+        prefix: `${this.image_folder}/`,
+        resource_type: "image",
+      });
+
+      return result.resources.map((resource: any) => ({
+        publicUrl: resource.secure_url,
+      }));
+    } catch (error) {
+      logger.error("Error fetching images from Cloudinary", error);
+      return [];
+    }
+  }
 }

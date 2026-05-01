@@ -1,13 +1,11 @@
 import emailjs from "@emailjs/nodejs";
-import fastifyCookie from "@fastify/cookie";
-import { apply, serve } from "@photonjs/fastify";
-import fastify from "fastify";
 import { logger } from "@/lib/logger";
 import { seed } from "./config/seed";
 import { env } from "@/lib/env";
 import { telefuncHandler } from "./telefunc-handler";
-import fastifyMultipart from "@fastify/multipart";
-import rawBody from "fastify-raw-body";
+import { apply, serve } from "@photonjs/express";
+import cookieParser from "cookie-parser";
+import express from "express";
 const port = env.PORT;
 
 export default (await startApp()) as unknown;
@@ -31,23 +29,11 @@ async function startApp() {
       },
     });
 
-    const app = fastify({
-      forceCloseConnections: true,
-      bodyLimit: 1024 * 1024 * 20,
-    });
+    const app = express();
 
-    app.register(fastifyCookie, {
-      secret: env.COOKIE_SECRET,
-    });
+    app.use(cookieParser());
 
-    app.register(fastifyMultipart, {
-      limits: {
-        fileSize: 1024 * 1024 * 20,
-      },
-    });
-
-    await app.register(rawBody);
-    await apply(app, [telefuncHandler]);
+    apply(app, [telefuncHandler]);
 
     return serve(app, {
       port,
