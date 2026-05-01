@@ -11,7 +11,7 @@ export default {
   photon: {
     server: "../server/entry.ts",
   },
-
+  reactStrictMode: false,
   redirects: {
     "/accueil": "/",
   },

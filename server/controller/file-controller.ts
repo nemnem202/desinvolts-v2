@@ -71,4 +71,28 @@ export default class FileController {
       return [];
     }
   }
+
+  async deleteFile(publicUrl: string): Promise<{ success: boolean }> {
+    try {
+      // 1. On sépare l'URL par "/"
+      const parts = publicUrl.split("/");
+
+      const uploadIndex = parts.indexOf("upload");
+      if (uploadIndex === -1) throw new Error("Invalid Cloudinary URL");
+
+      const pathParts = parts.slice(uploadIndex + 2);
+      const lastPart = pathParts.pop()?.split(".")[0];
+
+      if (!lastPart) throw new Error("Could not extract filename");
+      const publicId = pathParts.length > 0 ? `${pathParts.join("/")}/${lastPart}` : lastPart;
+
+      const result = await cloudinary.uploader.destroy(publicId);
+
+      logger.info("Image deletion attempt", { result, publicId });
+      return { success: result.result === "ok" };
+    } catch (error) {
+      logger.error("Cloudinary delete error", error);
+      return { success: false };
+    }
+  }
 }

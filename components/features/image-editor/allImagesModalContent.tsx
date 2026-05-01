@@ -1,15 +1,20 @@
 import { Button } from "@/components/ui/button";
 import { Spinner } from "@/components/ui/spinner";
-import { Import, Check, X } from "lucide-react";
-import { useRef, useState } from "react";
+import { Import, Check, X, Trash2 } from "lucide-react";
+import { useEffect, useRef, useState } from "react";
 import ReactCrop, { type Crop, centerCrop, makeAspectCrop } from "react-image-crop";
 import "react-image-crop/dist/ReactCrop.css";
 import imageCompression from "browser-image-compression";
-import onImageUpload from "@/telefunc/uploadimage.telefunc";
+import onImageUpload, { onDeleteImage } from "@/telefunc/uploadimage.telefunc";
+import { logger } from "@/lib/logger";
+import { onGetAllImages } from "@/telefunc/getAllImages.telefunc";
+import { Field, FieldLabel } from "@/components/ui/field";
+import { Input } from "@/components/ui/input";
+import { errorToast, successToast } from "@/lib/utils";
 
 export default function AllImagesModalContent() {
   const inputRef = useRef<HTMLInputElement>(null);
-  const imgRef = useRef<HTMLImageElement>(null); // Pour récupérer les dimensions réelles de l'image
+  const imgRef = useRef<HTMLImageElement>(null);
 
   const [allImages, setAllImages] = useState<{ publicUrl: string }[]>([]);
   const [imageSrc, setImageSrc] = useState<string>(""); // URL locale pour l'affichage
@@ -43,54 +48,69 @@ export default function AllImagesModalContent() {
     setLoading(true);
 
     try {
-      const canvas = document.createElement("canvas");
       const image = imgRef.current;
-      const ctx = canvas.getContext("2d");
-
       const scaleX = image.naturalWidth / image.width;
       const scaleY = image.naturalHeight / image.height;
 
-      canvas.width = crop.width * scaleX;
-      canvas.height = crop.height * scaleY;
+      const pixelCrop = {
+        x: (crop.unit === "%" ? (crop.x / 100) * image.width : crop.x) * scaleX,
+        y: (crop.unit === "%" ? (crop.y / 100) * image.height : crop.y) * scaleY,
+        width: (crop.unit === "%" ? (crop.width / 100) * image.width : crop.width) * scaleX,
+        height: (crop.unit === "%" ? (crop.height / 100) * image.height : crop.height) * scaleY,
+      };
 
-      ctx?.drawImage(
+      const canvas = document.createElement("canvas");
+      canvas.width = pixelCrop.width;
+      canvas.height = pixelCrop.height;
+
+      const ctx = canvas.getContext("2d");
+      if (!ctx) throw new Error("No canvas context");
+
+      ctx.drawImage(
         image,
-        crop.x * scaleX,
-        crop.y * scaleY,
-        crop.width * scaleX,
-        crop.height * scaleY,
+        pixelCrop.x,
+        pixelCrop.y,
+        pixelCrop.width,
+        pixelCrop.height,
         0,
         0,
-        crop.width * scaleX,
-        crop.height * scaleY
+        pixelCrop.width,
+        pixelCrop.height
       );
 
-      canvas.toBlob(async (blob) => {
-        if (!blob) return;
+      const blob = await new Promise<Blob | null>((resolve) =>
+        canvas.toBlob((b) => resolve(b), "image/webp")
+      );
+      if (!blob) throw new Error("Canvas is empty");
 
-        const options = {
-          maxSizeMB: 1,
-          maxWidthOrHeight: 1920,
-          useWebWorker: true,
-          fileType: "image/webp",
-        };
+      const compressedFile = await imageCompression(blob as File, {
+        maxSizeMB: 1,
+        maxWidthOrHeight: 1920,
+        useWebWorker: true,
+        fileType: "image/webp",
+      });
 
-        const compressedFile = await imageCompression(blob as File, options);
-        const result = await onImageUpload(compressedFile);
-        if (result.success) {
-          setAllImages((prev) => [result, ...prev]);
-          setDisplayType("all");
-        }
-      }, "image/webp");
+      const result = await onImageUpload(compressedFile);
+      if (result.success) {
+        setAllImages((prev) => [result, ...prev]);
+        setDisplayType("all");
+      }
     } catch (error) {
-      console.error(error);
+      logger.error("Erreur upload", error);
     } finally {
       setLoading(false);
     }
   };
+  useEffect(() => {
+    onGetAllImages().then((response) => {
+      setAllImages((prev) => [...prev, ...response]);
+    });
+  }, []);
+
   if (displayType === "all") {
     return (
       <div className="flex flex-col gap-5">
+        <p className="title">Choisissez une image</p>
         <Button variant={"outline"} className="w-fit" onClick={() => inputRef.current?.click()}>
           {loading ? (
             <Spinner />
@@ -101,9 +121,9 @@ export default function AllImagesModalContent() {
           )}
         </Button>
 
-        <div className="flex flex-wrap gap-2">
+        <div className="flex flex-wrap gap-2 max-h-100 overflow-auto">
           {allImages.map((image, index) => (
-            <img
+            <SelectableImage
               key={index}
               className="w-20 h-20 object-cover rounded"
               src={image.publicUrl}
@@ -119,6 +139,14 @@ export default function AllImagesModalContent() {
           onChange={handleImageLoad}
           accept="image/*"
         />
+        <Field>
+          <FieldLabel htmlFor="form-rhf-image-title" className="subtitle">
+            Description de l'image
+          </FieldLabel>
+          <Input id="form-rhf-image-title" autoComplete="off" className="paragraph" />
+        </Field>
+
+        <Button>Soumettre</Button>
       </div>
     );
   }
@@ -151,6 +179,47 @@ export default function AllImagesModalContent() {
           )}
         </Button>
       </div>
+    </div>
+  );
+}
+
+interface SelectableImageProps extends React.ImgHTMLAttributes<HTMLImageElement> {}
+
+export function SelectableImage({ ...props }: SelectableImageProps) {
+  const handleDelete = async (e: React.MouseEvent) => {
+    if (!props.src) return;
+    e.preventDefault();
+    e.stopPropagation();
+
+    if (confirm("Supprimer cette image définitivement ?")) {
+      const response = await onDeleteImage(props.src);
+
+      if (response.success) {
+        successToast("L'image a bien été supprimée.");
+      } else {
+        errorToast("Une erreur innatendue est survenue lors de la suppression de l'image");
+      }
+    }
+  };
+
+  return (
+    <div className="relative group w-20 h-20 bg-card rounded overflow-hidden border cursor-pointer flex items-center justify-center">
+      <img
+        {...props}
+        src={props.src}
+        className="object-contain h-full"
+        alt={props.alt || "Cloud image"}
+      />
+      <button
+        type="button"
+        onClick={handleDelete}
+        className="absolute top-1 right-1 p-1 bg-red-500 text-white rounded shadow-md 
+                   opacity-0 group-hover:opacity-100 transition-opacity duration-200
+                   hover:bg-red-600 active:scale-95 cursor-pointer"
+        title="Supprimer l'image"
+      >
+        <Trash2 size={14} />
+      </button>
     </div>
   );
 }

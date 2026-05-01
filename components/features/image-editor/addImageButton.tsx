@@ -18,21 +18,19 @@ export default function AddImageButton({
   callbackOnClick?: () => void;
 }) {
   return (
-    <>
-      <Dialog>
-        <DialogTrigger asChild>
-          {children ? (
-            <button className="cursor-pointer" type="button">
-              {children}
-            </button>
-          ) : (
-            <ButtonPlus />
-          )}
-        </DialogTrigger>
-        <DialogContent className="w-[50dvw] max-h-[70dvw]">
-          <AllImagesModalContent />
-        </DialogContent>
-      </Dialog>
-    </>
+    <Dialog>
+      <DialogTrigger asChild>
+        {children ? (
+          <button className="cursor-pointer" type="button">
+            {children}
+          </button>
+        ) : (
+          <ButtonPlus />
+        )}
+      </DialogTrigger>
+      <DialogContent className="w-[50dvw] max-h-[70dvw]">
+        <AllImagesModalContent />
+      </DialogContent>
+    </Dialog>
   );
 }

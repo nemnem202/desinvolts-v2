@@ -17,3 +17,17 @@ export default async function onImageUpload(
     return { success: false };
   }
 }
+
+export async function onDeleteImage(
+  publicUrl: string
+): Promise<{ success: true } | { success: false }> {
+  try {
+    const { isAuthenticated } = await authenticateUser();
+
+    if (!isAuthenticated) throw new Error();
+
+    return new FileController().deleteFile(publicUrl);
+  } catch {
+    return { success: false };
+  }
+}
