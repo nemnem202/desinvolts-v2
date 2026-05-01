@@ -7,6 +7,7 @@ import { seed } from "./config/seed";
 import { env } from "@/lib/env";
 import { telefuncHandler } from "./telefunc-handler";
 import fastifyMultipart from "@fastify/multipart";
+import rawBody from "fastify-raw-body";
 const port = env.PORT;
 
 export default (await startApp()) as unknown;
@@ -45,7 +46,7 @@ async function startApp() {
       },
     });
 
-    // await app.register(rawBody);
+    await app.register(rawBody);
     await apply(app, [telefuncHandler]);
 
     return serve(app, {
