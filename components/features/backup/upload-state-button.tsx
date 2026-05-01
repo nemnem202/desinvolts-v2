@@ -16,17 +16,13 @@ export default function UploadStateButton() {
     if (!file) return;
 
     try {
-      const text = await file.text();
-      const stateString = JSON.stringify(text);
-      const stateBlob = new Blob([stateString], { type: "application/json" });
-      const stateFile = new File([stateBlob], "state.json");
-      logger.info("Upload: ", stateFile);
+      // Pas besoin de lire le texte et de refaire un Blob/File
+      // Envoyez directement le fichier sélectionné par l'utilisateur
+      await setAllPages(file);
 
-      await setAllPages(stateFile);
-
-      // window.location.reload();
+      window.location.reload(); // Recharger pour voir les changements
     } catch (err) {
-      logger.error("Erreur lecture JSON :", err);
+      logger.error("Erreur upload :", err);
     }
   };
   return (

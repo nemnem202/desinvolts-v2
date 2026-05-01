@@ -20,11 +20,12 @@ export const setAllPages = async (dataFile: File): Promise<{ success: boolean }>
       SetPageController.setMedias(data.medias),
       SetPageController.setNousEcouter(data.son),
     ]);
-    logger.info("All pages requested");
 
-    return { success: promises.some((promise) => promise.success === false) };
+    // Correction : success est vrai seulement si TOUS ont réussi
+    const allSuccessful = promises.every((p) => p.success === true);
+    return { success: allSuccessful };
   } catch (error) {
-    logger.error("Une erreur est survenue lors de l'importation d'une sauvegares", error);
+    logger.error("Erreur import backup", error);
     return { success: false };
   }
 };
