@@ -1,19 +1,16 @@
 import emailjs from "@emailjs/nodejs";
 import { logger } from "@/lib/logger";
-import { seed } from "./config/seed";
 import { env } from "@/lib/env";
 import { telefuncHandler } from "./telefunc-handler";
 import { apply, serve } from "@photonjs/express";
 import cookieParser from "cookie-parser";
 import express from "express";
-const port = env.PORT;
+const port = 3000;
 
 export default (await startApp()) as unknown;
 
 async function startApp() {
   try {
-    await seed();
-
     const { EMAILJS_PUBLIC_KEY, EMAILJS_PRIVATE_KEY } = env;
 
     if (!EMAILJS_PUBLIC_KEY || !EMAILJS_PRIVATE_KEY)

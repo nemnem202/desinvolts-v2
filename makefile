@@ -13,3 +13,9 @@ free-space:
 update-prod:
 	docker build -t ghcr.io/nemnem202/desinvolt:prod -f dockerfile.prod .
 	docker push ghcr.io/nemnem202/desinvolt:prod
+
+seed-dev:
+	docker exec -it desinvolt-app-dev pnpm dlx tsx server/config/triggerSeed.ts
+
+seed-prod:
+	docker exec -it desinvolt-app-prod node dist/server/config/triggerSeed.mjs
