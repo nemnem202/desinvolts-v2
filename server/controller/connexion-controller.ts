@@ -4,12 +4,14 @@ import { logger } from "@/lib/logger";
 import { prisma } from "@/lib/prisma-client";
 import { Controller } from "./controller";
 import { env } from "@/lib/env";
+import { Telefunc } from "telefunc";
 
 export default class ConnexionController extends Controller {
   static async login(
     username: string,
     password: string,
-    remember: boolean
+    remember: boolean,
+    context: Telefunc.Context
   ): Promise<{ success: true; jwt: string } | { success: false; error: string }> {
     console.log("[CONNEXION CONTOLLER CALL]");
     try {
@@ -38,10 +40,20 @@ export default class ConnexionController extends Controller {
         .setExpirationTime(remember ? "3w" : "1h")
         .sign(secret);
 
+      context.setCookie("token", jwt, ConnexionController.getCookieOptions(remember));
+
       return { success: true, jwt };
     } catch (err) {
       logger.error("Connexion attempt failed", err);
       return { success: false, error: "Une erreur innatendue est survenue :/" };
     }
   }
+
+  private static getCookieOptions = (remember: boolean) => ({
+    httpOnly: true,
+    secure: false,
+    path: "/",
+    maxAge: remember ? 365 * 24 * 3600 : 3600, // En secondes
+    sameSite: "lax" as const,
+  });
 }

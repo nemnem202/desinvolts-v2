@@ -14,7 +14,6 @@ export const telefuncHandler: UniversalHandler = enhance(
         ...context,
         ...runtime,
         currentUser,
-        request,
         setCookie: (name: string, value: string, options: Record<string, unknown>) => {
           const parts = [`${name}=${value}`];
           if (options.httpOnly) parts.push("HttpOnly");
