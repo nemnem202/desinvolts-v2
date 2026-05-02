@@ -57,9 +57,11 @@ const getCroppedCanvas = (image: HTMLImageElement, crop: Crop): HTMLCanvasElemen
 export default function AllImagesModalContent({
   onImage,
   closeDialog,
+  imageId,
 }: {
   onImage: (image: Image) => void;
   closeDialog: () => void;
+  imageId?: number;
 }) {
   const inputRef = useRef<HTMLInputElement>(null);
   const imgRef = useRef<HTMLImageElement>(null);
@@ -134,7 +136,7 @@ export default function AllImagesModalContent({
 
   const handleSubmit = (data: AllImagesFormValues) => {
     logger.info("Soumission de l'imae", data);
-    onImage({ source: data.source, alt: data.alt ?? null, id: getRandomId() });
+    onImage({ source: data.source, alt: data.alt ?? null, id: imageId ?? getRandomId() });
     closeDialog();
   };
 

@@ -36,12 +36,14 @@ export default function Page() {
         <ContactForm />
       </section>
       <section className="flex flex-col w-full max-w-[60rem] gap-8">
-        <EditableText
-          as={"h2"}
-          content={state.subtitle}
-          setContent={(newContent: EditableTextContent) => update("subtitle", newContent)}
-          className="title w-full shrink-0 text-left"
-        />
+        {state.files.length > 0 && (
+          <EditableText
+            as={"h2"}
+            content={state.subtitle}
+            setContent={(newContent: EditableTextContent) => update("subtitle", newContent)}
+            className="title w-full shrink-0 text-left"
+          />
+        )}
         <div className="flex flex-wrap w-full gap-10">
           {state.files
             .sort((a, b) => a.date.getTime() - b.date.getTime())

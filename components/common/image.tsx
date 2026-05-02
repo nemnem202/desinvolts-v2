@@ -34,7 +34,7 @@ export default function Image(props: ImageProps) {
         <div
           className={`absolute left-2 pointer-events-auto ${changeButtonSideY === "top" ? "top-2" : "bottom-2"}`}
         >
-          <AddImageButton onImage={onChange}>
+          <AddImageButton onImage={onChange} imageId={imageProps.id}>
             <ArrowDownUp className="hover:stroke-primary" />
           </AddImageButton>
         </div>

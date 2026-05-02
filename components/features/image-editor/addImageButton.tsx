@@ -12,10 +12,12 @@ export default function AddImageButton({
   children,
   onImage,
   callbackOnClick = () => {},
+  imageId,
 }: {
   children?: ReactNode;
   onImage: (image: Image) => void;
   callbackOnClick?: () => void;
+  imageId?: number;
 }) {
   const [open, setOpen] = useState(false);
   return (
@@ -29,7 +31,7 @@ export default function AddImageButton({
           <ButtonPlus />
         )}
       </DialogTrigger>
-      <AddImageDialogContent onImage={onImage} setOpen={setOpen} />
+      <AddImageDialogContent onImage={onImage} setOpen={setOpen} imageId={imageId} />
     </Dialog>
   );
 }
@@ -37,13 +39,16 @@ export default function AddImageButton({
 export function AddImageDialogContent({
   onImage,
   setOpen,
+  imageId,
 }: {
   onImage: (image: Image) => void;
   setOpen: (value: boolean) => void;
+  imageId?: number;
 }) {
   return (
     <DialogContent className="w-[50dvw] max-h-[70dvw]">
       <AllImagesModalContent
+        imageId={imageId}
         onImage={onImage}
         closeDialog={() => {
           setOpen(false);

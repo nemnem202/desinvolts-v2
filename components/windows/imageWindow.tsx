@@ -13,8 +13,8 @@ export default function ImageWindow({ image, window }: { image: ImageDb; window:
         onChange={(newImage) =>
           setWindows(
             windows.map((w) => {
-              if (w.id === window.id && window.image) {
-                window.image = newImage;
+              if (w.id === window.id) {
+                w.image = newImage;
               }
               return w;
             })
