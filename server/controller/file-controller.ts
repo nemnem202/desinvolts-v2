@@ -63,13 +63,23 @@ export default class FileController {
   }
   async getAllImages(): Promise<{ publicUrl: string }[]> {
     try {
-      const result = await cloudinary.api.resources({
-        type: "upload",
-        prefix: `${this.image_folder}/`,
-        resource_type: "image",
-      });
+      const allResources: any[] = [];
+      let nextCursor: string | undefined = undefined;
 
-      return result.resources.map((resource: any) => ({
+      do {
+        const result = await cloudinary.api.resources({
+          type: "upload",
+          prefix: `${this.image_folder}/`,
+          resource_type: "image",
+          max_results: 500,
+          ...(nextCursor ? { next_cursor: nextCursor } : {}),
+        });
+
+        allResources.push(...result.resources);
+        nextCursor = result.next_cursor;
+      } while (nextCursor);
+
+      return allResources.map((resource: any) => ({
         publicUrl: resource.secure_url,
       }));
     } catch (error) {
@@ -77,7 +87,6 @@ export default class FileController {
       return [];
     }
   }
-
   async deleteFile(publicUrl: string): Promise<{ success: boolean }> {
     try {
       // 1. On sépare l'URL par "/"
