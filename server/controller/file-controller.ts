@@ -40,21 +40,27 @@ export default class FileController {
 
   async uploadFile(file: File): Promise<{ success: true; publicUrl: string } | { success: false }> {
     try {
+      const buffer = await file.arrayBuffer(); // résout le LazyBlob avant tout
+
       const result = await new Promise<UploadApiResponse>((resolve, reject) => {
         const uploadStream = cloudinary.uploader.upload_stream(
           { folder: this.file_folder, resource_type: "auto" },
           (error, res) => (error ? reject(error) : resolve(res!))
         );
-        Readable.fromWeb(file.stream() as any).pipe(uploadStream);
+
+        const readable = Readable.from(Buffer.from(buffer));
+        readable.on("error", reject); // capture les erreurs stream
+        uploadStream.on("error", reject); // capture les erreurs cloudinary stream
+        readable.pipe(uploadStream);
       });
+
+      logger.info("File uploaded successfully at", result.secure_url);
       return { success: true, publicUrl: this.getDownloadUrl(result.secure_url) };
-      // ↑ secure_url, pas public_id
     } catch (error) {
       logger.error("File upload error", error);
       return { success: false };
     }
   }
-
   async getAllImages(): Promise<{ publicUrl: string }[]> {
     try {
       const result = await cloudinary.api.resources({
