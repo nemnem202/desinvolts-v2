@@ -1,7 +1,10 @@
 import { logger } from "@/lib/logger";
 import FileController from "@/server/controller/file-controller";
 import authenticateUser from "@/server/middlewares/authenticateUser";
+import { shield } from "telefunc";
+const type = shield.type;
 
+shield(onImageUpload, [type.any]);
 export default async function onImageUpload(
   image: File
 ): Promise<{ success: true; publicUrl: string } | { success: false }> {
