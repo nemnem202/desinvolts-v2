@@ -29,14 +29,26 @@ export default function AddImageButton({
           <ButtonPlus />
         )}
       </DialogTrigger>
-      <DialogContent className="w-[50dvw] max-h-[70dvw]">
-        <AllImagesModalContent
-          onImage={onImage}
-          closeDialog={() => {
-            setOpen(false);
-          }}
-        />
-      </DialogContent>
+      <AddImageDialogContent onImage={onImage} setOpen={setOpen} />
     </Dialog>
+  );
+}
+
+export function AddImageDialogContent({
+  onImage,
+  setOpen,
+}: {
+  onImage: (image: Image) => void;
+  setOpen: (value: boolean) => void;
+}) {
+  return (
+    <DialogContent className="w-[50dvw] max-h-[70dvw]">
+      <AllImagesModalContent
+        onImage={onImage}
+        closeDialog={() => {
+          setOpen(false);
+        }}
+      />
+    </DialogContent>
   );
 }

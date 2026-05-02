@@ -51,7 +51,7 @@ export default function Image(props: ImageProps) {
             width={props.width}
             ref={imgRef}
             src={props.imageProps.source}
-            alt={imageProps.alt ?? ""}
+            alt={imageProps.alt ?? undefined}
             className="w-full h-full object-cover pointer-events-none"
             onLoad={() => setLoadingState(false)}
           />
