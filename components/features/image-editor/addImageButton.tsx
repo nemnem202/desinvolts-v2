@@ -1,4 +1,4 @@
-import { type ReactNode } from "react";
+import { useState, type ReactNode } from "react";
 import type { Image } from "@/prisma/generated/prisma/browser";
 import ButtonPlus from "../../ui/buttonPlus";
 import { Dialog, DialogContent, DialogTrigger } from "../../ui/dialog";
@@ -17,8 +17,9 @@ export default function AddImageButton({
   onImage: (image: Image) => void;
   callbackOnClick?: () => void;
 }) {
+  const [open, setOpen] = useState(false);
   return (
-    <Dialog>
+    <Dialog open={open} onOpenChange={setOpen}>
       <DialogTrigger asChild>
         {children ? (
           <button className="cursor-pointer" type="button">
@@ -29,7 +30,12 @@ export default function AddImageButton({
         )}
       </DialogTrigger>
       <DialogContent className="w-[50dvw] max-h-[70dvw]">
-        <AllImagesModalContent />
+        <AllImagesModalContent
+          onImage={onImage}
+          closeDialog={() => {
+            setOpen(false);
+          }}
+        />
       </DialogContent>
     </Dialog>
   );
