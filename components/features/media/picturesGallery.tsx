@@ -17,9 +17,9 @@ import { useAdmin } from "@/providers/adminProvider";
 import { usePageState } from "@/providers/stateProvider";
 import { useWindows } from "@/providers/windowsProvider";
 import { MediasPageContext } from "@/types/contexts";
-import ImageForm from "../image-editor/imageForm";
 import PicturesContainer from "./picturesContainter";
 import VideoWindowForm from "./videoWindowForm";
+import { AddImageDialogContent } from "../image-editor/addImageButton";
 
 export default function PicturesGallery() {
   const { pageContext, update } = usePageState(MediasPageContext);
@@ -73,24 +73,13 @@ export default function PicturesGallery() {
 
 function AddImageDialog({ triggerRef }: { triggerRef: React.RefObject<() => void> }) {
   const [dialogOpen, setDialogOpen] = useState(false);
-  const inputRef = useRef<HTMLInputElement>(null);
-  const [imageFile, setImage] = useState<File | null>(null);
   const { addWindow } = useWindows();
 
   useEffect(() => {
     triggerRef.current = () => {
-      if (inputRef.current) {
-        inputRef.current.value = "";
-        inputRef.current.click();
-      }
+      setDialogOpen(true);
     };
   }, [triggerRef]);
-
-  useEffect(() => {
-    if (imageFile) {
-      setDialogOpen(true);
-    }
-  }, [imageFile]);
 
   const onImage = (image: Image) => {
     addWindow({
@@ -98,48 +87,11 @@ function AddImageDialog({ triggerRef }: { triggerRef: React.RefObject<() => void
       image,
     });
   };
-
-  const loadImage = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
-    e.preventDefault();
-    e.stopPropagation();
-    imageFile && setImage(null);
-    if (inputRef.current) {
-      inputRef.current.value = "";
-      inputRef.current.click();
-    }
-  };
-
-  useEffect(() => {
-    if (imageFile) {
-      setDialogOpen(true);
-    }
-  }, [imageFile]);
-
-  const handleImageLoad = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const file = e.target.files?.[0];
-    if (!file) return;
-    setImage(file);
-  };
   return (
     <>
-      <input
-        type="file"
-        className="hidden"
-        ref={inputRef}
-        onChange={handleImageLoad}
-        accept="image/*"
-      />
       {createPortal(
         <Dialog open={dialogOpen} onOpenChange={setDialogOpen}>
-          {imageFile && (
-            <ImageForm
-              image={imageFile}
-              onImage={onImage}
-              loadImage={loadImage}
-              setImage={setImage}
-              setDialogOpen={setDialogOpen}
-            />
-          )}
+          <AddImageDialogContent onImage={onImage} setOpen={setDialogOpen} />
         </Dialog>,
         document.body
       )}

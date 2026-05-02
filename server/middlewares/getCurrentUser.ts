@@ -1,5 +1,6 @@
 import { jwtVerify } from "jose";
 import { logger } from "@/lib/logger";
+import { env } from "@/lib/env";
 
 function parseCookie(str: string): Record<string, string> {
   return Object.fromEntries(
@@ -24,7 +25,7 @@ export default async function getCurrentUserFromCookie(
 
   if (token) {
     try {
-      const secret = new TextEncoder().encode(process.env.SECRET_KEY);
+      const secret = new TextEncoder().encode(env.TOKEN_SECRET_KEY);
       const { payload, protectedHeader } = await jwtVerify(token, secret);
       if (!payload.username) throw new Error("No username in payload");
       currentUser = { username: payload.username as string };

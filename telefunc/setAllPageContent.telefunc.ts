@@ -1,15 +1,14 @@
 import { logger } from "@/lib/logger";
 import SetPageController from "@/server/controller/set-page-controller";
 import authenticateUser from "@/server/middlewares/authenticateUser";
-import type { PageContentMap } from "@/types/contexts";
 
-export const setAllPages = async (data: PageContentMap): Promise<{ success: boolean }> => {
+export const setAllPages = async (dataFile: File): Promise<{ success: boolean }> => {
   try {
-    logger.info("Handle state change called", "current user: ");
-
     const { isAuthenticated } = await authenticateUser();
-
     if (!isAuthenticated) throw new Error();
+
+    const text = await dataFile.text();
+    const data = JSON.parse(text);
 
     const promises = await Promise.all([
       SetPageController.setHome(data.home),
@@ -21,10 +20,12 @@ export const setAllPages = async (data: PageContentMap): Promise<{ success: bool
       SetPageController.setMedias(data.medias),
       SetPageController.setNousEcouter(data.son),
     ]);
-    logger.info("All pages requested");
 
-    return { success: promises.some((promise) => promise.success === false) };
-  } catch {
+    // Correction : success est vrai seulement si TOUS ont réussi
+    const allSuccessful = promises.every((p) => p.success === true);
+    return { success: allSuccessful };
+  } catch (error) {
+    logger.error("Erreur import backup", error);
     return { success: false };
   }
 };

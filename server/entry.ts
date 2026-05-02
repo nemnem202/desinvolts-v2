@@ -1,22 +1,17 @@
 import emailjs from "@emailjs/nodejs";
-import fastifyCookie from "@fastify/cookie";
-import { apply, serve } from "@photonjs/fastify";
-import fastify from "fastify";
-import rawBody from "fastify-raw-body";
 import { logger } from "@/lib/logger";
-import { seed } from "./config/seed";
-import { fileUploadHandler } from "./file-upload-handler";
+import { env } from "@/lib/env";
 import { telefuncHandler } from "./telefunc-handler";
-
-const port = process.env.PORT ? parseInt(process.env.PORT, 10) : 3000;
+import { apply, serve } from "@photonjs/express";
+import cookieParser from "cookie-parser";
+import express from "express";
+const port = 3000;
 
 export default (await startApp()) as unknown;
 
 async function startApp() {
   try {
-    await seed();
-
-    const { EMAILJS_PUBLIC_KEY, EMAILJS_PRIVATE_KEY } = process.env;
+    const { EMAILJS_PUBLIC_KEY, EMAILJS_PRIVATE_KEY } = env;
 
     if (!EMAILJS_PUBLIC_KEY || !EMAILJS_PRIVATE_KEY)
       throw new Error(
@@ -31,19 +26,12 @@ async function startApp() {
       },
     });
 
-    const app = fastify({
-      forceCloseConnections: true,
-    });
+    const app = express();
 
-    app.register(fastifyCookie, {
-      secret: process.env.COOKIE_SECRET,
-    });
+    app.use(cookieParser());
 
-    app.register(fileUploadHandler);
+    apply(app, [telefuncHandler]);
 
-    await app.register(rawBody);
-
-    await apply(app, [telefuncHandler]);
     return serve(app, {
       port,
     });

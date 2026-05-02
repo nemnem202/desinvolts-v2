@@ -2,10 +2,11 @@ import emailjs from "@emailjs/nodejs";
 import type { ContactFormValues } from "@/hooks/forms/useContactForm";
 import { logger } from "@/lib/logger";
 import type { ApiResponse } from "@/types/server";
+import { env } from "@/lib/env";
 
 export default async function onContact(data: ContactFormValues): Promise<ApiResponse<null>> {
   try {
-    const { EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID } = process.env;
+    const { EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID } = env;
     if (!EMAILJS_SERVICE_ID || !EMAILJS_TEMPLATE_ID)
       throw new Error(
         `Les variables d'environnement d'emailjs sont mal définies, service id: ${EMAILJS_SERVICE_ID}, template id: ${EMAILJS_TEMPLATE_ID}`

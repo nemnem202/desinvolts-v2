@@ -16,6 +16,7 @@ import { logger } from "@/lib/logger";
 import { prisma } from "@/lib/prisma-client";
 import type { PageContentMap } from "@/types/contexts";
 import SetPageController from "../controller/set-page-controller";
+import { env } from "@/lib/env";
 
 async function getBackupSeed(): Promise<PageContentMap> {
   try {
@@ -49,8 +50,8 @@ async function getBackupSeed(): Promise<PageContentMap> {
 export async function seed() {
   const adminAccountNumber = await prisma.adminAccount.count();
   if (adminAccountNumber === 0) {
-    const username = process.env.ADMIN_USERNAME || "admin";
-    const password = process.env.ADMIN_PASSWORD || "password";
+    const username = env.ADMIN_USERNAME || "admin";
+    const password = env.ADMIN_PASSWORD || "password";
     const hash = await argon2.hash(password);
     await prisma.adminAccount.create({ data: { username, passwordHash: hash } });
     console.log("[SEED]: Admin account created");

@@ -32,18 +32,20 @@ const callHandler = async <K extends PageKey>(path: K, state: PageRegistry[K]) =
   return handler(state);
 };
 
-export const onHandleStateChange = async <K extends PageKey>(state: PageRegistry[K], path: K) => {
+export const onHandleStateChange = async (stateFile: File, path: PageKey) => {
   try {
-    logger.info("Handle state change called", "current user: ");
-
     const { isAuthenticated } = await authenticateUser();
+    if (!isAuthenticated) throw new Error("Not authenticated");
 
-    if (!isAuthenticated) throw new Error();
+    const stateText = await stateFile.text();
+    const state = JSON.parse(stateText);
 
     await callHandler(path, state);
+
     await SetPageController.setNavlinks(state.navlinks);
     await SetPageController.setConfig(state.config);
-    return { succes: true };
+
+    return { success: true };
   } catch (err) {
     logger.error("Update state error", err);
     return null;

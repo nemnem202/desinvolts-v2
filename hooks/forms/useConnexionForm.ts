@@ -5,6 +5,7 @@ import { connexionSchema } from "@/config/frontendFormSchemas";
 import { logger } from "@/lib/logger";
 import { errorToast, successToast } from "@/lib/utils";
 import onConnexion from "@/telefunc/connexion.telefunc";
+import { navigate } from "vike/client/router";
 
 type ConnexionFormValue = z.infer<typeof connexionSchema>;
 
@@ -23,7 +24,7 @@ export function useConnectionForm() {
       errorToast(data.error);
     } else {
       logger.success("Connecté");
-      successToast("Bienvenue !");
+      navigate("/").then(() => successToast("Bienvenue !"));
     }
   };
 

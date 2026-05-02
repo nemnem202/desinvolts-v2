@@ -4,7 +4,7 @@ export default function ButtonPlus({
   onClick,
   size = "3rem",
 }: {
-  onClick: (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
+  onClick?: (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
   size?: string;
 }) {
   return (

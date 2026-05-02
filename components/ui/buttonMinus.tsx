@@ -1,6 +1,7 @@
 import { CircleMinus } from "lucide-react";
+import { MouseEvent } from "react";
 
-export default function ButtonMinus({ onClick }: { onClick: () => void }) {
+export default function ButtonMinus({ onClick }: { onClick: (e: MouseEvent) => void }) {
   return (
     <button
       type="button"

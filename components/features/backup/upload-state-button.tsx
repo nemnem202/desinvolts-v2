@@ -2,7 +2,7 @@ import { useRef } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { logger } from "@/lib/logger";
-import type { PageContentMap } from "@/types/contexts";
+import { setAllPages } from "@/telefunc/setAllPageContent.telefunc";
 
 export default function UploadStateButton() {
   const fileInputRef = useRef<HTMLInputElement>(null);
@@ -16,13 +16,13 @@ export default function UploadStateButton() {
     if (!file) return;
 
     try {
-      const text = await file.text();
-      const json = JSON.parse(text) as PageContentMap;
-      logger.info("Upload: ", json);
+      // Pas besoin de lire le texte et de refaire un Blob/File
+      // Envoyez directement le fichier sélectionné par l'utilisateur
+      await setAllPages(file);
 
-      window.location.reload();
+      window.location.reload(); // Recharger pour voir les changements
     } catch (err) {
-      logger.error("Erreur lecture JSON :", err);
+      logger.error("Erreur upload :", err);
     }
   };
   return (

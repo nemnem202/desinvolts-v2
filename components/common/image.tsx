@@ -24,28 +24,6 @@ export default function Image(props: ImageProps) {
   const imgRef = useRef<HTMLImageElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
 
-  const getUrl = (src: string): string => {
-    const params = new URLSearchParams();
-
-    if (props.width != null) params.append("width", String(props.width));
-    if (props.height != null) params.append("height", String(props.height));
-
-    const query = params.toString();
-
-    return `/image/${encodeURIComponent(src)}${query ? `?${query}` : ""}`;
-  };
-
-  const getBigUrl = (src: string): string => {
-    const params = new URLSearchParams();
-
-    if (props.width != null) params.append("width", String(2000));
-    if (props.height != null) params.append("height", String(2000));
-
-    const query = params.toString();
-
-    return `/image/${encodeURIComponent(src)}${query ? `?${query}` : ""}`;
-  };
-
   useEffect(() => {
     setLoadingState(true);
   }, []);
@@ -56,7 +34,7 @@ export default function Image(props: ImageProps) {
         <div
           className={`absolute left-2 pointer-events-auto ${changeButtonSideY === "top" ? "top-2" : "bottom-2"}`}
         >
-          <AddImageButton onImage={onChange}>
+          <AddImageButton onImage={onChange} imageId={imageProps.id}>
             <ArrowDownUp className="hover:stroke-primary" />
           </AddImageButton>
         </div>
@@ -72,8 +50,8 @@ export default function Image(props: ImageProps) {
             height={props.height}
             width={props.width}
             ref={imgRef}
-            src={getUrl(props.imageProps.source)}
-            alt={imageProps.alt ?? ""}
+            src={props.imageProps.source}
+            alt={imageProps.alt ?? undefined}
             className="w-full h-full object-cover pointer-events-none"
             onLoad={() => setLoadingState(false)}
           />
@@ -92,7 +70,7 @@ export default function Image(props: ImageProps) {
               height={props.height}
               width={props.width}
               ref={imgRef}
-              src={getUrl(props.imageProps.source)}
+              src={props.imageProps.source}
               alt={imageProps.alt ?? ""}
               className="w-full h-full object-cover pointer-events-none"
               onLoad={() => setLoadingState(false)}
@@ -105,7 +83,7 @@ export default function Image(props: ImageProps) {
           <DialogTitle className="hidden">Une image du groupe Desinvolts</DialogTitle>
 
           <img
-            src={getBigUrl(props.imageProps.source)}
+            src={props.imageProps.source}
             alt={imageProps.alt ?? ""}
             className="max-w-[70vw] max-h-[70vh] object-cover"
           />

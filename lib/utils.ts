@@ -37,6 +37,7 @@ export function errorToast(message: string, description?: string) {
   toast.error(message, {
     position: "top-center",
     description: description,
+    richColors: true,
   });
 }
 
@@ -44,6 +45,7 @@ export function successToast(message: string, description?: string) {
   toast.success(message, {
     position: "top-center",
     description: description,
+    richColors: true,
   });
 }
 
