@@ -2,201 +2,265 @@
   "home": {
     "navlinks": [
       {
-        "id": 139,
+        "id": 373,
         "text": "accueil",
         "link": "",
         "position": 1
       },
       {
-        "id": 140,
-        "text": "contact",
-        "link": "contact",
+        "id": 374,
+        "text": "dates",
+        "link": "dates",
         "position": 3
       },
       {
-        "id": 141,
-        "text": "dates",
-        "link": "dates",
+        "id": 375,
+        "text": "groupe",
+        "link": "groupe",
         "position": 4
       },
       {
-        "id": 142,
-        "text": "groupe",
-        "link": "groupe",
+        "id": 376,
+        "text": "médias",
+        "link": "médias",
         "position": 5
       },
       {
-        "id": 143,
-        "text": "médias",
-        "link": "médias",
+        "id": 377,
+        "text": "nous-écouter",
+        "link": "nous-écouter",
         "position": 6
       },
       {
-        "id": 144,
-        "text": "nous-écouter",
-        "link": "nous-écouter",
+        "id": 378,
+        "text": "contact",
+        "link": "contact",
         "position": 7
       }
     ],
     "config": {
       "id": 1,
       "showActualityPanel": true,
-      "mediaImagesContainerHeight": 50
+      "mediaImagesContainerHeight": 70
     },
     "id": 1,
-    "carouselId": 14,
-    "actualityTitleId": 122,
-    "paragraphId": 159,
-    "bannerId": 28,
-    "subtitleId": 123,
-    "titleId": 124,
-    "presentationImageId": 43,
+    "carouselId": 24,
+    "actualityTitleId": 277,
+    "paragraphId": 459,
+    "bannerId": 61,
+    "subtitleId": 278,
+    "titleId": 279,
+    "presentationImageId": 63,
     "title": {
-      "id": 124,
+      "id": 279,
       "content": "Desinvolts",
       "hyperlinks": []
     },
     "subtitle": {
-      "id": 123,
+      "id": 278,
       "content": "Groupe de rock français",
       "hyperlinks": []
     },
     "actualityTitle": {
-      "id": 122,
-      "content": "Actualité",
+      "id": 277,
+      "content": "ActualitéS",
       "hyperlinks": []
     },
     "paragraph": {
-      "id": 159,
-      "content": "Desinvolts est un cocktail de rock, de dynamisme et de joie. Plus qu'un groupe, c'est une bande d'amis qui se donnent sur scène et qui impliquent le public.",
+      "id": 459,
+      "content": "Desinvolts est un cocktail de rock, de dynamisme et de bonne humeur contagieuse. Plus qu'un groupe, c'est une bande d'amis qui se donnent sur scène et embarque le public au travers de leurs compositions originales et de classiques du rock revisités à la sauce Desinvolts.",
       "hyperlinks": []
     },
     "banner": {
-      "id": 28,
+      "id": 61,
       "alt": "",
-      "source": "https://res.cloudinary.com/dhr2i6xyp/image/upload/v1777720732/Desinvolts_Prod/ngk9qmqjollhkoupgbk9.webp"
+      "source": "https://res.cloudinary.com/dhr2i6xyp/image/upload/v1777728526/Desinvolts_Prod/ahojhcfwhbfcnrqfuchb.webp"
     },
     "pres_image": {
-      "id": 43,
+      "id": 63,
       "alt": "",
-      "source": "https://res.cloudinary.com/dhr2i6xyp/image/upload/v1777720760/Desinvolts_Prod/uhpnfehfqj30lcbnezmf.webp"
+      "source": "https://res.cloudinary.com/dhr2i6xyp/image/upload/v1777728937/Desinvolts_Prod/wi6oxervxylgvj6k0jvw.webp"
     },
     "posts": [
       {
-        "id": 13,
-        "date": "2026-03-24T14:06:13.671Z",
-        "titleId": 125,
+        "id": 23,
+        "date": "2026-04-30T22:00:00.000Z",
+        "titleId": 280,
         "title": {
-          "id": 125,
-          "content": "Sortie de l'album Volt Face"
+          "id": 280,
+          "content": "Un site tout beau tout neuf"
         },
         "images": [
           {
-            "imageId": 44,
-            "postId": 13,
-            "position": 0,
+            "imageId": 64,
+            "postId": 23,
+            "position": 1,
             "image": {
-              "id": 44,
+              "id": 64,
               "alt": "",
-              "source": "https://res.cloudinary.com/dhr2i6xyp/image/upload/v1777720812/Desinvolts_Prod/z3n64eoc6sqqvmk860cs.webp"
+              "source": "https://res.cloudinary.com/dhr2i6xyp/image/upload/v1777729359/Desinvolts_Prod/j6golwlq2yu7aif7kqsz.webp"
             }
           }
         ],
         "videos": [],
         "paragraphs": [
           {
-            "paragraphId": 160,
+            "paragraphId": 460,
+            "position": 9,
+            "eventId": null,
+            "albumId": null,
+            "postId": 23,
+            "trombinoscopeItemId": null,
+            "groupPageFirstId": null,
+            "groupPageSecondId": null,
+            "dateId": null,
+            "paragraph": {
+              "id": 460,
+              "content": "On vous fait plein de bisouilles et on vous dit à très vite sur scène !",
+              "hyperlinks": []
+            }
+          },
+          {
+            "paragraphId": 461,
+            "position": 8,
+            "eventId": null,
+            "albumId": null,
+            "postId": 23,
+            "trombinoscopeItemId": null,
+            "groupPageFirstId": null,
+            "groupPageSecondId": null,
+            "dateId": null,
+            "paragraph": {
+              "id": 461,
+              "content": "",
+              "hyperlinks": []
+            }
+          },
+          {
+            "paragraphId": 462,
+            "position": 7,
+            "eventId": null,
+            "albumId": null,
+            "postId": 23,
+            "trombinoscopeItemId": null,
+            "groupPageFirstId": null,
+            "groupPageSecondId": null,
+            "dateId": null,
+            "paragraph": {
+              "id": 462,
+              "content": "Mettez vous à l'aise, sortez vos plus belles charentaises et installez vous confortablement dans votre fauteuil car de nombreuses surprises et actus ne tarderont pas à arriver.",
+              "hyperlinks": []
+            }
+          },
+          {
+            "paragraphId": 463,
+            "position": 6,
+            "eventId": null,
+            "albumId": null,
+            "postId": 23,
+            "trombinoscopeItemId": null,
+            "groupPageFirstId": null,
+            "groupPageSecondId": null,
+            "dateId": null,
+            "paragraph": {
+              "id": 463,
+              "content": "",
+              "hyperlinks": []
+            }
+          },
+          {
+            "paragraphId": 464,
             "position": 5,
             "eventId": null,
             "albumId": null,
-            "postId": 13,
+            "postId": 23,
             "trombinoscopeItemId": null,
             "groupPageFirstId": null,
             "groupPageSecondId": null,
             "dateId": null,
             "paragraph": {
-              "id": 160,
-              "content": "Soyez nombreux, chousssss !",
+              "id": 464,
+              "content": "Prenez le temps de visiter, faites comme chez vous et n'hésitez pas à nous partager vos retours, nous dire les axes d'améliorations ou ce que vous souhaiteriez voir davantage ou non sur le site.",
               "hyperlinks": []
             }
           },
           {
-            "paragraphId": 161,
+            "paragraphId": 465,
             "position": 4,
             "eventId": null,
             "albumId": null,
-            "postId": 13,
+            "postId": 23,
             "trombinoscopeItemId": null,
             "groupPageFirstId": null,
             "groupPageSecondId": null,
             "dateId": null,
             "paragraph": {
-              "id": 161,
+              "id": 465,
               "content": "",
               "hyperlinks": []
             }
           },
           {
-            "paragraphId": 162,
+            "paragraphId": 466,
             "position": 3,
             "eventId": null,
             "albumId": null,
-            "postId": 13,
+            "postId": 23,
             "trombinoscopeItemId": null,
             "groupPageFirstId": null,
             "groupPageSecondId": null,
             "dateId": null,
             "paragraph": {
-              "id": 162,
-              "content": "On organise une release party samedi à 20h à l'Ampérage. ",
+              "id": 466,
+              "content": "Ici vous pourrez retrouver toutes les infos utiles et les contenus multimédias de votre groupe de rockeurs préféré.",
               "hyperlinks": []
             }
           },
           {
-            "paragraphId": 163,
+            "paragraphId": 467,
             "position": 2,
             "eventId": null,
             "albumId": null,
-            "postId": 13,
+            "postId": 23,
             "trombinoscopeItemId": null,
             "groupPageFirstId": null,
             "groupPageSecondId": null,
             "dateId": null,
             "paragraph": {
-              "id": 163,
+              "id": 467,
               "content": "",
               "hyperlinks": []
             }
           },
           {
-            "paragraphId": 164,
+            "paragraphId": 468,
             "position": 1,
             "eventId": null,
             "albumId": null,
-            "postId": 13,
+            "postId": 23,
             "trombinoscopeItemId": null,
             "groupPageFirstId": null,
             "groupPageSecondId": null,
             "dateId": null,
             "paragraph": {
-              "id": 164,
-              "content": "Avec l'équipe, on est super heureux de vous annoncer la sortie de notre nouvel album Volt Face, disponible sur toutes les plateformes. ",
+              "id": 468,
+              "content": "Bienvenue everybody sur la nouvelle version du site Desinvolts.",
               "hyperlinks": []
             }
           },
           {
-            "paragraphId": 165,
+            "paragraphId": 469,
             "position": 0,
             "eventId": null,
             "albumId": null,
-            "postId": 13,
+            "postId": 23,
             "trombinoscopeItemId": null,
             "groupPageFirstId": null,
             "groupPageSecondId": null,
             "dateId": null,
             "paragraph": {
-              "id": 165,
-              "content": "Yo ! ",
+              "id": 469,
+              "content": "Salut, Welcome, Ola, Halo !",
               "hyperlinks": []
             }
           }
@@ -204,10 +268,10 @@
       }
     ],
     "carousel": {
-      "id": 14,
+      "id": 24,
       "images": [
         {
-          "carouselId": 14,
+          "carouselId": 24,
           "imageId": 48,
           "position": 5,
           "image": {
@@ -217,117 +281,117 @@
           }
         },
         {
-          "carouselId": 14,
-          "imageId": 28,
+          "carouselId": 24,
+          "imageId": 65,
           "position": 4,
           "image": {
-            "id": 28,
+            "id": 65,
             "alt": "",
-            "source": "https://res.cloudinary.com/dhr2i6xyp/image/upload/v1777720732/Desinvolts_Prod/ngk9qmqjollhkoupgbk9.webp"
+            "source": "https://res.cloudinary.com/dhr2i6xyp/image/upload/v1777731367/Desinvolts_Prod/rtl8ovcpnhk2etu0wihb.webp"
           }
         },
         {
-          "carouselId": 14,
-          "imageId": 47,
+          "carouselId": 24,
+          "imageId": 66,
           "position": 3,
           "image": {
-            "id": 47,
+            "id": 66,
             "alt": "",
-            "source": "https://res.cloudinary.com/dhr2i6xyp/image/upload/v1777720891/Desinvolts_Prod/msw2zoq7sjvtnfk9wizf.webp"
+            "source": "https://res.cloudinary.com/dhr2i6xyp/image/upload/v1777731163/Desinvolts_Prod/yrudfeflbgsjipsbmuie.webp"
           }
         },
         {
-          "carouselId": 14,
-          "imageId": 46,
+          "carouselId": 24,
+          "imageId": 67,
           "position": 2,
           "image": {
-            "id": 46,
+            "id": 67,
             "alt": "",
-            "source": "https://res.cloudinary.com/dhr2i6xyp/image/upload/v1777720863/Desinvolts_Prod/wrh4t6mfrolzdq198kdp.webp"
+            "source": "https://res.cloudinary.com/dhr2i6xyp/image/upload/v1777730942/Desinvolts_Prod/zw9f9s3n0dewp9gpeb0y.webp"
           }
         },
         {
-          "carouselId": 14,
-          "imageId": 44,
+          "carouselId": 24,
+          "imageId": 68,
           "position": 1,
           "image": {
-            "id": 44,
+            "id": 68,
             "alt": "",
-            "source": "https://res.cloudinary.com/dhr2i6xyp/image/upload/v1777720812/Desinvolts_Prod/z3n64eoc6sqqvmk860cs.webp"
+            "source": "https://res.cloudinary.com/dhr2i6xyp/image/upload/v1777730260/Desinvolts_Prod/jrw84yb1hqa1srfu7wb8.webp"
           }
         },
         {
-          "carouselId": 14,
-          "imageId": 45,
+          "carouselId": 24,
+          "imageId": 69,
           "position": 0,
           "image": {
-            "id": 45,
+            "id": 69,
             "alt": "",
-            "source": "https://res.cloudinary.com/dhr2i6xyp/image/upload/v1777720876/Desinvolts_Prod/kvla4kpw9ell2yucycxz.webp"
+            "source": "https://res.cloudinary.com/dhr2i6xyp/image/upload/v1777730039/Desinvolts_Prod/s5dfii3l8zcqdftipu2h.webp"
           }
         }
       ],
       "videos": []
     },
     "presentationParagraph": {
-      "id": 159,
-      "content": "Desinvolts est un cocktail de rock, de dynamisme et de joie. Plus qu'un groupe, c'est une bande d'amis qui se donnent sur scène et qui impliquent le public.",
+      "id": 459,
+      "content": "Desinvolts est un cocktail de rock, de dynamisme et de bonne humeur contagieuse. Plus qu'un groupe, c'est une bande d'amis qui se donnent sur scène et embarque le public au travers de leurs compositions originales et de classiques du rock revisités à la sauce Desinvolts.",
       "hyperlinks": []
     },
     "presentationImage": {
-      "id": 43,
+      "id": 63,
       "alt": "",
-      "source": "https://res.cloudinary.com/dhr2i6xyp/image/upload/v1777720760/Desinvolts_Prod/uhpnfehfqj30lcbnezmf.webp"
+      "source": "https://res.cloudinary.com/dhr2i6xyp/image/upload/v1777728937/Desinvolts_Prod/wi6oxervxylgvj6k0jvw.webp"
     }
   },
   "connexion": {
     "config": {
       "id": 1,
       "showActualityPanel": true,
-      "mediaImagesContainerHeight": 50
+      "mediaImagesContainerHeight": 70
     },
     "navlinks": [
       {
-        "id": 139,
+        "id": 373,
         "text": "accueil",
         "link": "",
         "position": 1
       },
       {
-        "id": 140,
-        "text": "contact",
-        "link": "contact",
+        "id": 374,
+        "text": "dates",
+        "link": "dates",
         "position": 3
       },
       {
-        "id": 141,
-        "text": "dates",
-        "link": "dates",
+        "id": 375,
+        "text": "groupe",
+        "link": "groupe",
         "position": 4
       },
       {
-        "id": 142,
-        "text": "groupe",
-        "link": "groupe",
+        "id": 376,
+        "text": "médias",
+        "link": "médias",
         "position": 5
       },
       {
-        "id": 143,
-        "text": "médias",
-        "link": "médias",
+        "id": 377,
+        "text": "nous-écouter",
+        "link": "nous-écouter",
         "position": 6
       },
       {
-        "id": 144,
-        "text": "nous-écouter",
-        "link": "nous-écouter",
+        "id": 378,
+        "text": "contact",
+        "link": "contact",
         "position": 7
       }
     ],
     "id": 1,
-    "titleId": 74,
+    "titleId": 220,
     "title": {
-      "id": 74,
+      "id": 220,
       "content": "Connexion",
       "hyperlinks": []
     }
@@ -336,70 +400,70 @@
     "config": {
       "id": 1,
       "showActualityPanel": true,
-      "mediaImagesContainerHeight": 50
+      "mediaImagesContainerHeight": 70
     },
     "navlinks": [
       {
-        "id": 139,
+        "id": 373,
         "text": "accueil",
         "link": "",
         "position": 1
       },
       {
-        "id": 140,
-        "text": "contact",
-        "link": "contact",
+        "id": 374,
+        "text": "dates",
+        "link": "dates",
         "position": 3
       },
       {
-        "id": 141,
-        "text": "dates",
-        "link": "dates",
+        "id": 375,
+        "text": "groupe",
+        "link": "groupe",
         "position": 4
       },
       {
-        "id": 142,
-        "text": "groupe",
-        "link": "groupe",
+        "id": 376,
+        "text": "médias",
+        "link": "médias",
         "position": 5
       },
       {
-        "id": 143,
-        "text": "médias",
-        "link": "médias",
+        "id": 377,
+        "text": "nous-écouter",
+        "link": "nous-écouter",
         "position": 6
       },
       {
-        "id": 144,
-        "text": "nous-écouter",
-        "link": "nous-écouter",
+        "id": 378,
+        "text": "contact",
+        "link": "contact",
         "position": 7
       }
     ],
     "id": 1,
-    "subtitleId": 126,
-    "paragraphId": 166,
-    "titleId": 127,
+    "subtitleId": 229,
+    "paragraphId": 349,
+    "titleId": 230,
     "paragraph": {
-      "id": 166,
+      "id": 349,
       "content": "Vous pouvez directement nous joindre par mail à groupe.desinvolts@gmail.com ou alors remplir ce formulaire qui nous sera directement adressé.",
       "hyperlinks": [
         {
-          "id": 4,
+          "id": 6,
           "text": "groupe.desinvolts@gmail.com",
           "link": "mailto:groupe.desinvolts@gmail.com",
           "textLineId": null,
-          "paragraphId": 166
+          "paragraphId": 349
         }
       ]
     },
     "subtitle": {
-      "id": 126,
+      "id": 229,
       "content": "Informations complémentaires",
       "hyperlinks": []
     },
     "title": {
-      "id": 127,
+      "id": 230,
       "content": "Des questions ?",
       "hyperlinks": []
     },
@@ -409,73 +473,73 @@
     "config": {
       "id": 1,
       "showActualityPanel": true,
-      "mediaImagesContainerHeight": 50
+      "mediaImagesContainerHeight": 70
     },
     "navlinks": [
       {
-        "id": 139,
+        "id": 373,
         "text": "accueil",
         "link": "",
         "position": 1
       },
       {
-        "id": 140,
-        "text": "contact",
-        "link": "contact",
+        "id": 374,
+        "text": "dates",
+        "link": "dates",
         "position": 3
       },
       {
-        "id": 141,
-        "text": "dates",
-        "link": "dates",
+        "id": 375,
+        "text": "groupe",
+        "link": "groupe",
         "position": 4
       },
       {
-        "id": 142,
-        "text": "groupe",
-        "link": "groupe",
+        "id": 376,
+        "text": "médias",
+        "link": "médias",
         "position": 5
       },
       {
-        "id": 143,
-        "text": "médias",
-        "link": "médias",
+        "id": 377,
+        "text": "nous-écouter",
+        "link": "nous-écouter",
         "position": 6
       },
       {
-        "id": 144,
-        "text": "nous-écouter",
-        "link": "nous-écouter",
+        "id": 378,
+        "text": "contact",
+        "link": "contact",
         "position": 7
       }
     ],
     "dates": [
       {
-        "id": 10,
-        "date": "2024-01-10T19:00:00.000Z",
+        "id": 17,
+        "date": "2026-01-17T19:00:00.000Z",
         "adress": {
-          "id": 142,
-          "content": "128 rue du drac",
+          "id": 368,
+          "content": "23 Rue de Saint-Gobain",
           "hyperlinks": []
         },
         "city": {
-          "id": 141,
-          "content": "Paris",
+          "id": 367,
+          "content": "Saint-Pierre-des-Corps",
           "hyperlinks": []
         },
         "image": {
-          "id": 49,
+          "id": 98,
           "alt": "",
-          "source": "https://res.cloudinary.com/dhr2i6xyp/image/upload/v1777713189/Desinvolts_Prod/npq7eytzo8tiueyblbhw.webp"
+          "source": "https://res.cloudinary.com/dhr2i6xyp/image/upload/v1777755072/Desinvolts_Prod/zvqpaaja0s6s1tszkdv3.webp"
         },
         "title": {
-          "id": 140,
-          "content": "Concert à l'olympia",
+          "id": 366,
+          "content": "Desinvolts en concert au Hoopoe Brewpub",
           "hyperlinks": []
         },
         "paragraphs": [
           {
-            "paragraphId": 169,
+            "paragraphId": 672,
             "position": 0,
             "eventId": null,
             "albumId": null,
@@ -483,41 +547,41 @@
             "trombinoscopeItemId": null,
             "groupPageFirstId": null,
             "groupPageSecondId": null,
-            "dateId": 10,
+            "dateId": 17,
             "paragraph": {
-              "id": 169,
-              "content": "On organise une petite soirée à l'olympia dimanche",
+              "id": 672,
+              "content": "Salut à toi amateur de bon son et de houblon !\nTu veux la recette d'une bonne soirée ? La voici juste pour toi :\n- Un lieu aussi incroyable qu'atypique mêlant brasserie, tatouage et forge\n- Une grosse poignée de rock\n- Une pincée de dynamisme\n- Assaisonnez avec de la bonne humeur à gogo\nC'est ce que l'on te propose pour ton samedi 17 janvier 2026 pour entamer la nouvelle année sous les meilleures auspices !\nAlors bouge ton petit derrière et rejoins nous pour cette soirée qui s'annonce déjà comme la meilleure de l'année ! (Oui rien que ça !) 😉\n📸 @Alain Denis photographies",
               "hyperlinks": []
             }
           }
         ]
       },
       {
-        "id": 11,
-        "date": "2026-03-28T19:00:00.000Z",
+        "id": 18,
+        "date": "2026-04-25T18:00:00.000Z",
         "adress": {
-          "id": 145,
-          "content": "153 cours berriat",
+          "id": 371,
+          "content": "5 rue Louis Breguet ",
           "hyperlinks": []
         },
         "city": {
-          "id": 144,
-          "content": "Grenoble",
+          "id": 370,
+          "content": "Chambray les Tours",
           "hyperlinks": []
         },
         "image": {
-          "id": 47,
+          "id": 99,
           "alt": "",
-          "source": "https://res.cloudinary.com/dhr2i6xyp/image/upload/v1777720891/Desinvolts_Prod/msw2zoq7sjvtnfk9wizf.webp"
+          "source": "https://res.cloudinary.com/dhr2i6xyp/image/upload/v1777754109/Desinvolts_Prod/yrckwbylxcaf8euoscdg.webp"
         },
         "title": {
-          "id": 143,
-          "content": "Release party",
+          "id": 369,
+          "content": "DESINVOLTS EN CONCERT A LA PLAYA",
           "hyperlinks": []
         },
         "paragraphs": [
           {
-            "paragraphId": 170,
+            "paragraphId": 673,
             "position": 0,
             "eventId": null,
             "albumId": null,
@@ -525,10 +589,10 @@
             "trombinoscopeItemId": null,
             "groupPageFirstId": null,
             "groupPageSecondId": null,
-            "dateId": 11,
+            "dateId": 18,
             "paragraph": {
-              "id": 170,
-              "content": "On organise la release party de note album Volte face samedi à 20h, on éspère que ça vous plaira. ",
+              "id": 673,
+              "content": "Salut à tous !\nHey mais ça commence à faire un petit bout de temps que l'on n'a pas vu vos bouilles vous !?\nVous nous manquez mais notre absence n'est pas anodine, nous vous préparons des surprises pour la fin d'année mais ce chut ce n'est pas encore l'heure pour ça !\nEn attendant de découvrir ces mystères, Cédric et Virginie de La Playa nous font le plaisir de nous accueillir à nouveau pour une bulle d'oxygène à grands coups de riffs de guitares et de cocktails les pieds dans l'eau !\nAlors si comme nous vous voulez siroter un bon cocktail en écoutant une playlist made in Desinvolts ça se passe le samedi 25 avril à Chambray les Tours (sur plage).\nPensez à réserver au 02 47 52 70 69\nDébut de concert 20h30.\nRestauration sur place, entrée gratuite\nCrédit photo : Alain Denis",
               "hyperlinks": []
             }
           }
@@ -536,17 +600,17 @@
       }
     ],
     "title": {
-      "id": 139,
+      "id": 365,
       "content": "C'est quand déja ?",
       "hyperlinks": []
     },
     "nextTitle": {
-      "id": 137,
+      "id": 363,
       "content": "Prochaines dates",
       "hyperlinks": []
     },
     "prevTitle": {
-      "id": 138,
+      "id": 364,
       "content": "Dates passées",
       "hyperlinks": []
     }
@@ -555,43 +619,43 @@
     "config": {
       "id": 1,
       "showActualityPanel": true,
-      "mediaImagesContainerHeight": 50
+      "mediaImagesContainerHeight": 70
     },
     "navlinks": [
       {
-        "id": 139,
+        "id": 373,
         "text": "accueil",
         "link": "",
         "position": 1
       },
       {
-        "id": 140,
-        "text": "contact",
-        "link": "contact",
+        "id": 374,
+        "text": "dates",
+        "link": "dates",
         "position": 3
       },
       {
-        "id": 141,
-        "text": "dates",
-        "link": "dates",
+        "id": 375,
+        "text": "groupe",
+        "link": "groupe",
         "position": 4
       },
       {
-        "id": 142,
-        "text": "groupe",
-        "link": "groupe",
+        "id": 376,
+        "text": "médias",
+        "link": "médias",
         "position": 5
       },
       {
-        "id": 143,
-        "text": "médias",
-        "link": "médias",
+        "id": 377,
+        "text": "nous-écouter",
+        "link": "nous-écouter",
         "position": 6
       },
       {
-        "id": 144,
-        "text": "nous-écouter",
-        "link": "nous-écouter",
+        "id": 378,
+        "text": "contact",
+        "link": "contact",
         "position": 7
       }
     ]
@@ -600,49 +664,49 @@
     "config": {
       "id": 1,
       "showActualityPanel": true,
-      "mediaImagesContainerHeight": 50
+      "mediaImagesContainerHeight": 70
     },
     "navlinks": [
       {
-        "id": 139,
+        "id": 373,
         "text": "accueil",
         "link": "",
         "position": 1
       },
       {
-        "id": 140,
-        "text": "contact",
-        "link": "contact",
+        "id": 374,
+        "text": "dates",
+        "link": "dates",
         "position": 3
       },
       {
-        "id": 141,
-        "text": "dates",
-        "link": "dates",
+        "id": 375,
+        "text": "groupe",
+        "link": "groupe",
         "position": 4
       },
       {
-        "id": 142,
-        "text": "groupe",
-        "link": "groupe",
+        "id": 376,
+        "text": "médias",
+        "link": "médias",
         "position": 5
       },
       {
-        "id": 143,
-        "text": "médias",
-        "link": "médias",
+        "id": 377,
+        "text": "nous-écouter",
+        "link": "nous-écouter",
         "position": 6
       },
       {
-        "id": 144,
-        "text": "nous-écouter",
-        "link": "nous-écouter",
+        "id": 378,
+        "text": "contact",
+        "link": "contact",
         "position": 7
       }
     ],
     "first_section_paragraphs": [
       {
-        "paragraphId": 301,
+        "paragraphId": 728,
         "position": 1,
         "eventId": null,
         "albumId": null,
@@ -652,13 +716,13 @@
         "groupPageSecondId": null,
         "dateId": null,
         "paragraph": {
-          "id": 301,
+          "id": 728,
           "content": "Enfin... Presque...",
           "hyperlinks": []
         }
       },
       {
-        "paragraphId": 302,
+        "paragraphId": 729,
         "position": 0,
         "eventId": null,
         "albumId": null,
@@ -668,7 +732,7 @@
         "groupPageSecondId": null,
         "dateId": null,
         "paragraph": {
-          "id": 302,
+          "id": 729,
           "content": "Desinvolts est un groupe de rock dynamique, d'origine tourangelle, ayant vu le jour en 2020.",
           "hyperlinks": []
         }
@@ -676,7 +740,23 @@
     ],
     "second_section_paragraphs": [
       {
-        "paragraphId": 294,
+        "paragraphId": 720,
+        "position": 7,
+        "eventId": null,
+        "albumId": null,
+        "postId": null,
+        "trombinoscopeItemId": null,
+        "groupPageFirstId": null,
+        "groupPageSecondId": 1,
+        "dateId": null,
+        "paragraph": {
+          "id": 720,
+          "content": "A l'été 2025, les 5 comparses décident de partir à la recherche de leur 6ème membre, un.e claviériste. Après quelques temps de recherches, ils tombent enfin sur une claviériste qui sonne comme une évidence pour tous. C'est alors que Juliette intègre l'aventure Desinvolts.",
+          "hyperlinks": []
+        }
+      },
+      {
+        "paragraphId": 721,
         "position": 6,
         "eventId": null,
         "albumId": null,
@@ -686,13 +766,13 @@
         "groupPageSecondId": 1,
         "dateId": null,
         "paragraph": {
-          "id": 294,
+          "id": 721,
           "content": "En mars 2021, l’album “Volt-Face” sort sur toutes les plateformes musicales avec 11 de leurs titres originaux.",
           "hyperlinks": []
         }
       },
       {
-        "paragraphId": 295,
+        "paragraphId": 722,
         "position": 5,
         "eventId": null,
         "albumId": null,
@@ -702,13 +782,13 @@
         "groupPageSecondId": 1,
         "dateId": null,
         "paragraph": {
-          "id": 295,
+          "id": 722,
           "content": "En 2020, les amis annoncent leur nouveau nom : Desinvolts. Ce nom reprend un code plus français, une attitude rock présente dans leurs chansons.",
           "hyperlinks": []
         }
       },
       {
-        "paragraphId": 296,
+        "paragraphId": 723,
         "position": 4,
         "eventId": null,
         "albumId": null,
@@ -718,13 +798,13 @@
         "groupPageSecondId": 1,
         "dateId": null,
         "paragraph": {
-          "id": 296,
+          "id": 723,
           "content": "En 2019, le groupe décide de faire un album de leurs compositions en français. L’enregistrement met plus de temps que prévu avec les événements de 2020.",
           "hyperlinks": []
         }
       },
       {
-        "paragraphId": 297,
+        "paragraphId": 724,
         "position": 3,
         "eventId": null,
         "albumId": null,
@@ -734,13 +814,13 @@
         "groupPageSecondId": 1,
         "dateId": null,
         "paragraph": {
-          "id": 297,
+          "id": 724,
           "content": "Brice et Franck veulent écrire exclusivement des textes en français. Au fil des années, le groupe étoffe son repertoire dans un style rock dynamique.",
           "hyperlinks": []
         }
       },
       {
-        "paragraphId": 298,
+        "paragraphId": 725,
         "position": 2,
         "eventId": null,
         "albumId": null,
@@ -750,13 +830,13 @@
         "groupPageSecondId": 1,
         "dateId": null,
         "paragraph": {
-          "id": 298,
+          "id": 725,
           "content": "En 2015, un EP de 5 titres, “Switch on” sert à la promotion du groupe.",
           "hyperlinks": []
         }
       },
       {
-        "paragraphId": 299,
+        "paragraphId": 726,
         "position": 1,
         "eventId": null,
         "albumId": null,
@@ -766,13 +846,13 @@
         "groupPageSecondId": 1,
         "dateId": null,
         "paragraph": {
-          "id": 299,
+          "id": 726,
           "content": "En avril 2014, Brice rejoint le groupe au chant. Les 5 membres sillonnent la région tourangelle pour mettre l’ambiance dans les bars et sur les scènes de villages.",
           "hyperlinks": []
         }
       },
       {
-        "paragraphId": 300,
+        "paragraphId": 727,
         "position": 0,
         "eventId": null,
         "albumId": null,
@@ -782,81 +862,97 @@
         "groupPageSecondId": 1,
         "dateId": null,
         "paragraph": {
-          "id": 300,
+          "id": 727,
           "content": "L’histoire se passe à Tours (37). Le groupe se forme en février 2012 sous l’impulsion de Franck, batteur. Eric à la basse, Laurent et Rui aux guitares répondent à l’appel.",
           "hyperlinks": []
         }
       }
     ],
     "presentation_image": {
-      "id": 50,
+      "id": 69,
       "alt": "",
-      "source": "https://res.cloudinary.com/dhr2i6xyp/image/upload/v1777721367/Desinvolts_Prod/dxz2cwkfyk8ajevvnxns.webp"
+      "source": "https://res.cloudinary.com/dhr2i6xyp/image/upload/v1777730039/Desinvolts_Prod/s5dfii3l8zcqdftipu2h.webp"
     },
     "title": {
-      "id": 176,
+      "id": 397,
       "content": "Il était une fois...",
       "hyperlinks": []
     },
     "trombinoscope": [
       {
-        "id": 41,
-        "position": 4,
-        "titleId": 177,
-        "imageId": 54,
-        "color": "#fdaf13",
+        "id": 112,
+        "position": 8,
+        "titleId": 398,
+        "imageId": 102,
+        "color": "#6a07c2",
         "groupPageId": 1,
         "image": {
-          "id": 54,
+          "id": 102,
           "alt": "",
-          "source": "https://res.cloudinary.com/dhr2i6xyp/image/upload/v1777721104/Desinvolts_Prod/lqwm61fqf0uevqzukp3t.webp"
+          "source": "https://res.cloudinary.com/dhr2i6xyp/image/upload/v1777760066/Desinvolts_Prod/wmxdxrm2bcdknp1mubzo.webp"
         },
         "paragraphs": [
           {
-            "paragraphId": 281,
-            "position": 1,
+            "paragraphId": 702,
+            "position": 2,
             "eventId": null,
             "albumId": null,
             "postId": null,
-            "trombinoscopeItemId": 41,
+            "trombinoscopeItemId": 112,
             "groupPageFirstId": null,
             "groupPageSecondId": null,
             "dateId": null,
             "paragraph": {
-              "id": 281,
-              "content": "Brice est la pile électrique du groupe ! Homme kangourou monté sur ressort.",
+              "id": 702,
+              "content": "Artistes préférés : Radiohead, Queen, Gojira, Messhuggah",
               "hyperlinks": []
             }
           },
           {
-            "paragraphId": 282,
-            "position": 0,
+            "paragraphId": 703,
+            "position": 1,
             "eventId": null,
             "albumId": null,
             "postId": null,
-            "trombinoscopeItemId": 41,
+            "trombinoscopeItemId": 112,
             "groupPageFirstId": null,
             "groupPageSecondId": null,
             "dateId": null,
             "paragraph": {
-              "id": 282,
-              "content": "Chanteur / Auteur",
+              "id": 703,
+              "content": "D'une technicité irréprochable et impeccable, Juliette est d'une finesse à tout épreuve. C'est la touche féminine du groupe. Bon peut être sauf quand elle fait ses fameux \"bisous prout\"...",
+              "hyperlinks": []
+            }
+          },
+          {
+            "paragraphId": 704,
+            "position": 0,
+            "eventId": null,
+            "albumId": null,
+            "postId": null,
+            "trombinoscopeItemId": 112,
+            "groupPageFirstId": null,
+            "groupPageSecondId": null,
+            "dateId": null,
+            "paragraph": {
+              "id": 704,
+              "content": "Clavieriste / Choriste / Compositrice",
               "hyperlinks": []
             }
           }
         ],
         "title": {
-          "id": 177,
-          "content": "Brice",
+          "id": 398,
+          "content": "JULIETTE",
           "hyperlinks": []
         }
       },
       {
-        "id": 42,
-        "position": 3,
-        "titleId": 178,
+        "id": 113,
+        "position": 7,
+        "titleId": 399,
         "imageId": 53,
-        "color": "#d62f0d",
+        "color": "#04d100",
         "groupPageId": 1,
         "image": {
           "id": 53,
@@ -865,184 +961,268 @@
         },
         "paragraphs": [
           {
-            "paragraphId": 283,
-            "position": 1,
-            "eventId": null,
-            "albumId": null,
-            "postId": null,
-            "trombinoscopeItemId": 42,
-            "groupPageFirstId": null,
-            "groupPageSecondId": null,
-            "dateId": null,
-            "paragraph": {
-              "id": 283,
-              "content": "Le couteau suisse du groupe. Fin technicien, il retape ses propres guitares.",
-              "hyperlinks": []
-            }
-          },
-          {
-            "paragraphId": 284,
-            "position": 0,
-            "eventId": null,
-            "albumId": null,
-            "postId": null,
-            "trombinoscopeItemId": 42,
-            "groupPageFirstId": null,
-            "groupPageSecondId": null,
-            "dateId": null,
-            "paragraph": {
-              "id": 284,
-              "content": "Guitariste Rythmique / Choriste",
-              "hyperlinks": []
-            }
-          }
-        ],
-        "title": {
-          "id": 178,
-          "content": "Laurent",
-          "hyperlinks": []
-        }
-      },
-      {
-        "id": 43,
-        "position": 2,
-        "titleId": 179,
-        "imageId": 52,
-        "color": "#cc31b0",
-        "groupPageId": 1,
-        "image": {
-          "id": 52,
-          "alt": "",
-          "source": "https://res.cloudinary.com/dhr2i6xyp/image/upload/v1777721175/Desinvolts_Prod/sqkgjt7oyup1clv8h3ny.webp"
-        },
-        "paragraphs": [
-          {
-            "paragraphId": 285,
+            "paragraphId": 705,
             "position": 2,
             "eventId": null,
             "albumId": null,
             "postId": null,
-            "trombinoscopeItemId": 43,
+            "trombinoscopeItemId": 113,
             "groupPageFirstId": null,
             "groupPageSecondId": null,
             "dateId": null,
             "paragraph": {
-              "id": 285,
-              "content": "Artistes préférés : Slash, Guns N'Roses, Metallica, Nirvana",
-              "hyperlinks": []
-            }
-          },
-          {
-            "paragraphId": 286,
-            "position": 1,
-            "eventId": null,
-            "albumId": null,
-            "postId": null,
-            "trombinoscopeItemId": 43,
-            "groupPageFirstId": null,
-            "groupPageSecondId": null,
-            "dateId": null,
-            "paragraph": {
-              "id": 286,
-              "content": "Son prénom se prononce 'Rouille'. Fan du FC Porto, il espère voir son équipe en finale.",
-              "hyperlinks": []
-            }
-          },
-          {
-            "paragraphId": 287,
-            "position": 0,
-            "eventId": null,
-            "albumId": null,
-            "postId": null,
-            "trombinoscopeItemId": 43,
-            "groupPageFirstId": null,
-            "groupPageSecondId": null,
-            "dateId": null,
-            "paragraph": {
-              "id": 287,
-              "content": "Guitariste Soliste / Compositeur",
-              "hyperlinks": []
-            }
-          }
-        ],
-        "title": {
-          "id": 179,
-          "content": "Rui",
-          "hyperlinks": []
-        }
-      },
-      {
-        "id": 44,
-        "position": 1,
-        "titleId": 180,
-        "imageId": 51,
-        "color": "#057cc9",
-        "groupPageId": 1,
-        "image": {
-          "id": 51,
-          "alt": "",
-          "source": "https://res.cloudinary.com/dhr2i6xyp/image/upload/v1777721229/Desinvolts_Prod/ax3douvnjuxij0ih1rui.webp"
-        },
-        "paragraphs": [
-          {
-            "paragraphId": 288,
-            "position": 2,
-            "eventId": null,
-            "albumId": null,
-            "postId": null,
-            "trombinoscopeItemId": 44,
-            "groupPageFirstId": null,
-            "groupPageSecondId": null,
-            "dateId": null,
-            "paragraph": {
-              "id": 288,
+              "id": 705,
               "content": "Artistes préférés : AC/DC, Téléphone, Rolling Stones",
               "hyperlinks": []
             }
           },
           {
-            "paragraphId": 289,
+            "paragraphId": 706,
             "position": 1,
             "eventId": null,
             "albumId": null,
             "postId": null,
-            "trombinoscopeItemId": 44,
+            "trombinoscopeItemId": 113,
             "groupPageFirstId": null,
             "groupPageSecondId": null,
             "dateId": null,
             "paragraph": {
-              "id": 289,
-              "content": "Eric est le festivalier du groupe, il a assisté à pas moins de 12635 concerts !",
+              "id": 706,
+              "content": "Eric est le festivalier du groupe, il a assisté à pas moins de 12635 concerts de 8642 groupes différents ! Il a plus d’enfants que de cordes sur sa basse. Il est tombé dans la marmite du rock depuis tout petit.",
               "hyperlinks": []
             }
           },
           {
-            "paragraphId": 290,
+            "paragraphId": 707,
             "position": 0,
             "eventId": null,
             "albumId": null,
             "postId": null,
-            "trombinoscopeItemId": 44,
+            "trombinoscopeItemId": 113,
             "groupPageFirstId": null,
             "groupPageSecondId": null,
             "dateId": null,
             "paragraph": {
-              "id": 290,
+              "id": 707,
               "content": "Bassiste / Compositeur",
               "hyperlinks": []
             }
           }
         ],
         "title": {
-          "id": 180,
-          "content": "Eric",
+          "id": 399,
+          "content": "ERIC",
           "hyperlinks": []
         }
       },
       {
-        "id": 45,
+        "id": 114,
+        "position": 6,
+        "titleId": 400,
+        "imageId": 103,
+        "color": "#f70000",
+        "groupPageId": 1,
+        "image": {
+          "id": 103,
+          "alt": "",
+          "source": "https://res.cloudinary.com/dhr2i6xyp/image/upload/v1777759972/Desinvolts_Prod/vknuhporxwk7syqeadyu.webp"
+        },
+        "paragraphs": [
+          {
+            "paragraphId": 708,
+            "position": 2,
+            "eventId": null,
+            "albumId": null,
+            "postId": null,
+            "trombinoscopeItemId": 114,
+            "groupPageFirstId": null,
+            "groupPageSecondId": null,
+            "dateId": null,
+            "paragraph": {
+              "id": 708,
+              "content": "Artistes préférés : Nickelback, Shaka Ponk, Skillet, Ben Harper",
+              "hyperlinks": []
+            }
+          },
+          {
+            "paragraphId": 709,
+            "position": 1,
+            "eventId": null,
+            "albumId": null,
+            "postId": null,
+            "trombinoscopeItemId": 114,
+            "groupPageFirstId": null,
+            "groupPageSecondId": null,
+            "dateId": null,
+            "paragraph": {
+              "id": 709,
+              "content": "Brice est la pile électrique du groupe ! Homme kangourou, monté sur ressort, c’est aussi un touche à tout : sport, musique, jeux, associations… sauf les légumes, ça il n’y touche pas trop… ",
+              "hyperlinks": []
+            }
+          },
+          {
+            "paragraphId": 710,
+            "position": 0,
+            "eventId": null,
+            "albumId": null,
+            "postId": null,
+            "trombinoscopeItemId": 114,
+            "groupPageFirstId": null,
+            "groupPageSecondId": null,
+            "dateId": null,
+            "paragraph": {
+              "id": 710,
+              "content": "Chanteur / Auteur",
+              "hyperlinks": []
+            }
+          }
+        ],
+        "title": {
+          "id": 400,
+          "content": "BRICE",
+          "hyperlinks": []
+        }
+      },
+      {
+        "id": 115,
+        "position": 5,
+        "titleId": 401,
+        "imageId": 70,
+        "color": "#146bff",
+        "groupPageId": 1,
+        "image": {
+          "id": 70,
+          "alt": "",
+          "source": "https://res.cloudinary.com/dhr2i6xyp/image/upload/v1777721121/Desinvolts_Prod/x0hnwpbzcdgbpk7c4mf8.webp"
+        },
+        "paragraphs": [
+          {
+            "paragraphId": 711,
+            "position": 2,
+            "eventId": null,
+            "albumId": null,
+            "postId": null,
+            "trombinoscopeItemId": 115,
+            "groupPageFirstId": null,
+            "groupPageSecondId": null,
+            "dateId": null,
+            "paragraph": {
+              "id": 711,
+              "content": "Artistes préférés : Elvis, Stray cats, Berruriers noirs, La ruda salska",
+              "hyperlinks": []
+            }
+          },
+          {
+            "paragraphId": 712,
+            "position": 1,
+            "eventId": null,
+            "albumId": null,
+            "postId": null,
+            "trombinoscopeItemId": 115,
+            "groupPageFirstId": null,
+            "groupPageSecondId": null,
+            "dateId": null,
+            "paragraph": {
+              "id": 712,
+              "content": "Le couteau suisse du groupe. Fin technicien, la légende raconte qu’il se serait fait arrêter par la police du son pour recel et trafic de guitares, qu’il retape.",
+              "hyperlinks": []
+            }
+          },
+          {
+            "paragraphId": 713,
+            "position": 0,
+            "eventId": null,
+            "albumId": null,
+            "postId": null,
+            "trombinoscopeItemId": 115,
+            "groupPageFirstId": null,
+            "groupPageSecondId": null,
+            "dateId": null,
+            "paragraph": {
+              "id": 713,
+              "content": "Guitariste / Choriste / Compositeur",
+              "hyperlinks": []
+            }
+          }
+        ],
+        "title": {
+          "id": 401,
+          "content": "LAURENT",
+          "hyperlinks": []
+        }
+      },
+      {
+        "id": 116,
+        "position": 2,
+        "titleId": 402,
+        "imageId": 71,
+        "color": "#cc31b0",
+        "groupPageId": 1,
+        "image": {
+          "id": 71,
+          "alt": "",
+          "source": "https://res.cloudinary.com/dhr2i6xyp/image/upload/v1777731787/Desinvolts_Prod/st4xjo11kx4oqy7sasgi.webp"
+        },
+        "paragraphs": [
+          {
+            "paragraphId": 714,
+            "position": 2,
+            "eventId": null,
+            "albumId": null,
+            "postId": null,
+            "trombinoscopeItemId": 116,
+            "groupPageFirstId": null,
+            "groupPageSecondId": null,
+            "dateId": null,
+            "paragraph": {
+              "id": 714,
+              "content": "Artistes préférés : Slash, Guns N'Roses, Metallica, Nirvana",
+              "hyperlinks": []
+            }
+          },
+          {
+            "paragraphId": 715,
+            "position": 1,
+            "eventId": null,
+            "albumId": null,
+            "postId": null,
+            "trombinoscopeItemId": 116,
+            "groupPageFirstId": null,
+            "groupPageSecondId": null,
+            "dateId": null,
+            "paragraph": {
+              "id": 715,
+              "content": "Son prénom se prononce « Rouille ». Fan du FC Porto, il espère un jour voir son équipe favorite passer les 1/4 de finale de la LDC… Il a un grand frère caché dans ses artistes préférés… Devinez lequel !",
+              "hyperlinks": []
+            }
+          },
+          {
+            "paragraphId": 716,
+            "position": 0,
+            "eventId": null,
+            "albumId": null,
+            "postId": null,
+            "trombinoscopeItemId": 116,
+            "groupPageFirstId": null,
+            "groupPageSecondId": null,
+            "dateId": null,
+            "paragraph": {
+              "id": 716,
+              "content": "Guitariste Soliste / Compositeur",
+              "hyperlinks": []
+            }
+          }
+        ],
+        "title": {
+          "id": 402,
+          "content": "Rui",
+          "hyperlinks": []
+        }
+      },
+      {
+        "id": 117,
         "position": 0,
-        "titleId": 181,
+        "titleId": 403,
         "imageId": 48,
         "color": "#df6310",
         "groupPageId": 1,
@@ -1053,56 +1233,56 @@
         },
         "paragraphs": [
           {
-            "paragraphId": 291,
+            "paragraphId": 717,
             "position": 2,
             "eventId": null,
             "albumId": null,
             "postId": null,
-            "trombinoscopeItemId": 45,
+            "trombinoscopeItemId": 117,
             "groupPageFirstId": null,
             "groupPageSecondId": null,
             "dateId": null,
             "paragraph": {
-              "id": 291,
+              "id": 717,
               "content": "Artistes préférés : Ankor, Calogero, Linkin Park, Noir désir, Iron Maiden",
               "hyperlinks": []
             }
           },
           {
-            "paragraphId": 292,
+            "paragraphId": 718,
             "position": 1,
             "eventId": null,
             "albumId": null,
             "postId": null,
-            "trombinoscopeItemId": 45,
+            "trombinoscopeItemId": 117,
             "groupPageFirstId": null,
             "groupPageSecondId": null,
             "dateId": null,
             "paragraph": {
-              "id": 292,
-              "content": "Franck est un passionné : jardinage, cuisine, sport, écriture... Il est joueur !",
+              "id": 718,
+              "content": "Franck est un est  joueur ! Joueur de jeux vidéos, de rôles,  de stratégie, de société. Ah oui ! Et il joue de la batterie aussi quand il lui reste du temps…",
               "hyperlinks": []
             }
           },
           {
-            "paragraphId": 293,
+            "paragraphId": 719,
             "position": 0,
             "eventId": null,
             "albumId": null,
             "postId": null,
-            "trombinoscopeItemId": 45,
+            "trombinoscopeItemId": 117,
             "groupPageFirstId": null,
             "groupPageSecondId": null,
             "dateId": null,
             "paragraph": {
-              "id": 293,
+              "id": 719,
               "content": "Batteur / Compositeur / Auteur",
               "hyperlinks": []
             }
           }
         ],
         "title": {
-          "id": 181,
+          "id": 403,
           "content": "Franck",
           "hyperlinks": []
         }
@@ -1113,241 +1293,547 @@
     "config": {
       "id": 1,
       "showActualityPanel": true,
-      "mediaImagesContainerHeight": 50
+      "mediaImagesContainerHeight": 70
     },
     "navlinks": [
       {
-        "id": 139,
+        "id": 373,
         "text": "accueil",
         "link": "",
         "position": 1
       },
       {
-        "id": 140,
-        "text": "contact",
-        "link": "contact",
+        "id": 374,
+        "text": "dates",
+        "link": "dates",
         "position": 3
       },
       {
-        "id": 141,
-        "text": "dates",
-        "link": "dates",
+        "id": 375,
+        "text": "groupe",
+        "link": "groupe",
         "position": 4
       },
       {
-        "id": 142,
-        "text": "groupe",
-        "link": "groupe",
+        "id": 376,
+        "text": "médias",
+        "link": "médias",
         "position": 5
       },
       {
-        "id": 143,
-        "text": "médias",
-        "link": "médias",
+        "id": 377,
+        "text": "nous-écouter",
+        "link": "nous-écouter",
         "position": 6
       },
       {
-        "id": 144,
-        "text": "nous-écouter",
-        "link": "nous-écouter",
+        "id": 378,
+        "text": "contact",
+        "link": "contact",
         "position": 7
       }
     ],
     "title": {
-      "id": 69,
+      "id": 406,
       "content": "Ça tourne !",
       "hyperlinks": []
     },
     "pictures_section_title": {
-      "id": 66,
+      "id": 405,
       "content": "Photos",
       "hyperlinks": []
     },
     "video_section_title": {
-      "id": 64,
+      "id": 404,
       "content": "Vidéos",
       "hyperlinks": []
     },
     "windows": [
       {
-        "id": 20,
+        "id": 417,
+        "zIndex": 27,
+        "zIndexPriorityFactor": 0,
+        "x": 35,
+        "y": 19,
+        "width": 20,
+        "height": 10,
+        "imageId": 82,
+        "videoId": null,
+        "image": {
+          "id": 82,
+          "alt": "",
+          "source": "https://res.cloudinary.com/dhr2i6xyp/image/upload/v1777730316/Desinvolts_Prod/ga4stqmcrkmih4ak7ofo.webp"
+        },
+        "video": null
+      },
+      {
+        "id": 418,
+        "zIndex": 26,
+        "zIndexPriorityFactor": 0,
+        "x": 66,
+        "y": 19,
+        "width": 33,
+        "height": 11,
+        "imageId": 75,
+        "videoId": null,
+        "image": {
+          "id": 75,
+          "alt": "",
+          "source": "https://res.cloudinary.com/dhr2i6xyp/image/upload/v1777730568/Desinvolts_Prod/jir4efoxcfljk7xjbxzf.webp"
+        },
+        "video": null
+      },
+      {
+        "id": 419,
+        "zIndex": 25,
+        "zIndexPriorityFactor": 0,
+        "x": 84,
+        "y": 30,
+        "width": 16,
+        "height": 10,
+        "imageId": 90,
+        "videoId": null,
+        "image": {
+          "id": 90,
+          "alt": "",
+          "source": "https://res.cloudinary.com/dhr2i6xyp/image/upload/v1777730375/Desinvolts_Prod/xrd7ooxa5d55pg0h1hjr.webp"
+        },
+        "video": null
+      },
+      {
+        "id": 420,
+        "zIndex": 24,
+        "zIndexPriorityFactor": 0,
+        "x": 66,
+        "y": 30,
+        "width": 18,
+        "height": 10,
+        "imageId": 91,
+        "videoId": null,
+        "image": {
+          "id": 91,
+          "alt": "",
+          "source": "https://res.cloudinary.com/dhr2i6xyp/image/upload/v1777731085/Desinvolts_Prod/nrubnm96qc5zlrzfkkoe.webp"
+        },
+        "video": null
+      },
+      {
+        "id": 421,
+        "zIndex": 23,
+        "zIndexPriorityFactor": 0,
+        "x": 55,
+        "y": 19,
+        "width": 11,
+        "height": 21,
+        "imageId": 72,
+        "videoId": null,
+        "image": {
+          "id": 72,
+          "alt": "",
+          "source": "https://res.cloudinary.com/dhr2i6xyp/image/upload/v1777730608/Desinvolts_Prod/efuzjd0kwwdxhqzqm3ry.webp"
+        },
+        "video": null
+      },
+      {
+        "id": 422,
+        "zIndex": 22,
+        "zIndexPriorityFactor": 0,
+        "x": 39,
+        "y": 29,
+        "width": 16,
+        "height": 11,
+        "imageId": 46,
+        "videoId": null,
+        "image": {
+          "id": 46,
+          "alt": "",
+          "source": "https://res.cloudinary.com/dhr2i6xyp/image/upload/v1777720863/Desinvolts_Prod/wrh4t6mfrolzdq198kdp.webp"
+        },
+        "video": null
+      },
+      {
+        "id": 423,
+        "zIndex": 21,
+        "zIndexPriorityFactor": 0,
+        "x": 23,
+        "y": 29,
+        "width": 16,
+        "height": 11,
+        "imageId": 80,
+        "videoId": null,
+        "image": {
+          "id": 80,
+          "alt": "",
+          "source": "https://res.cloudinary.com/dhr2i6xyp/image/upload/v1777731122/Desinvolts_Prod/blpv7lhbjo5agzkqe81b.webp"
+        },
+        "video": null
+      },
+      {
+        "id": 424,
+        "zIndex": 20,
+        "zIndexPriorityFactor": 0,
+        "x": 0,
+        "y": 29,
+        "width": 23,
+        "height": 11,
+        "imageId": 85,
+        "videoId": null,
+        "image": {
+          "id": 85,
+          "alt": "",
+          "source": "https://res.cloudinary.com/dhr2i6xyp/image/upload/v1777731297/Desinvolts_Prod/isa8g7njdbmjboac476w.webp"
+        },
+        "video": null
+      },
+      {
+        "id": 425,
+        "zIndex": 19,
+        "zIndexPriorityFactor": 0,
+        "x": 0,
+        "y": 40,
+        "width": 18,
+        "height": 16,
+        "imageId": 73,
+        "videoId": null,
+        "image": {
+          "id": 73,
+          "alt": "",
+          "source": "https://res.cloudinary.com/dhr2i6xyp/image/upload/v1777730475/Desinvolts_Prod/zplxsjlksdmypj8dmymj.webp"
+        },
+        "video": null
+      },
+      {
+        "id": 426,
+        "zIndex": 18,
+        "zIndexPriorityFactor": 0,
+        "x": 18,
+        "y": 48,
+        "width": 18,
+        "height": 8,
+        "imageId": 68,
+        "videoId": null,
+        "image": {
+          "id": 68,
+          "alt": "",
+          "source": "https://res.cloudinary.com/dhr2i6xyp/image/upload/v1777730260/Desinvolts_Prod/jrw84yb1hqa1srfu7wb8.webp"
+        },
+        "video": null
+      },
+      {
+        "id": 427,
+        "zIndex": 17,
+        "zIndexPriorityFactor": 0,
+        "x": 18,
+        "y": 40,
+        "width": 23,
+        "height": 8,
+        "imageId": 101,
+        "videoId": null,
+        "image": {
+          "id": 101,
+          "alt": "",
+          "source": "https://res.cloudinary.com/dhr2i6xyp/image/upload/v1777729822/Desinvolts_Prod/gnfi6uiciyxgj7ggzurc.webp"
+        },
+        "video": null
+      },
+      {
+        "id": 428,
+        "zIndex": 16,
+        "zIndexPriorityFactor": 0,
+        "x": 41,
+        "y": 40,
+        "width": 25,
+        "height": 8,
+        "imageId": 93,
+        "videoId": null,
+        "image": {
+          "id": 93,
+          "alt": "",
+          "source": "https://res.cloudinary.com/dhr2i6xyp/image/upload/v1777730904/Desinvolts_Prod/aajdqxbhsac8xlhdbla6.webp"
+        },
+        "video": null
+      },
+      {
+        "id": 429,
+        "zIndex": 15,
+        "zIndexPriorityFactor": 0,
+        "x": 36,
+        "y": 48,
+        "width": 18,
+        "height": 8,
+        "imageId": 92,
+        "videoId": null,
+        "image": {
+          "id": 92,
+          "alt": "",
+          "source": "https://res.cloudinary.com/dhr2i6xyp/image/upload/v1777729986/Desinvolts_Prod/jqzhomzzp1vpre7x9xbo.webp"
+        },
+        "video": null
+      },
+      {
+        "id": 430,
+        "zIndex": 14,
+        "zIndexPriorityFactor": 0,
+        "x": 85,
+        "y": 40,
+        "width": 15,
+        "height": 16,
+        "imageId": 96,
+        "videoId": null,
+        "image": {
+          "id": 96,
+          "alt": "",
+          "source": "https://res.cloudinary.com/dhr2i6xyp/image/upload/v1777730212/Desinvolts_Prod/cx5syfsyqjxz9zy8yenc.webp"
+        },
+        "video": null
+      },
+      {
+        "id": 431,
+        "zIndex": 13,
+        "zIndexPriorityFactor": 0,
+        "x": 66,
+        "y": 40,
+        "width": 19,
+        "height": 8,
+        "imageId": 94,
+        "videoId": null,
+        "image": {
+          "id": 94,
+          "alt": "",
+          "source": "https://res.cloudinary.com/dhr2i6xyp/image/upload/v1777731245/Desinvolts_Prod/qieznsmq2kxw9bqb65jm.webp"
+        },
+        "video": null
+      },
+      {
+        "id": 432,
+        "zIndex": 12,
+        "zIndexPriorityFactor": 0,
+        "x": 65,
+        "y": 48,
+        "width": 20,
+        "height": 8,
+        "imageId": 83,
+        "videoId": null,
+        "image": {
+          "id": 83,
+          "alt": "",
+          "source": "https://res.cloudinary.com/dhr2i6xyp/image/upload/v1777729952/Desinvolts_Prod/i9j2qsrbofpwwhugnk7w.webp"
+        },
+        "video": null
+      },
+      {
+        "id": 433,
+        "zIndex": 11,
+        "zIndexPriorityFactor": 0,
+        "x": 54,
+        "y": 48,
+        "width": 11,
+        "height": 8,
+        "imageId": 100,
+        "videoId": null,
+        "image": {
+          "id": 100,
+          "alt": "",
+          "source": "https://res.cloudinary.com/dhr2i6xyp/image/upload/v1777755057/Desinvolts_Prod/qb3ymhairajzyjv9r1ak.webp"
+        },
+        "video": null
+      },
+      {
+        "id": 434,
+        "zIndex": 10,
+        "zIndexPriorityFactor": 0,
+        "x": 0,
+        "y": 19,
+        "width": 19,
+        "height": 10,
+        "imageId": 78,
+        "videoId": null,
+        "image": {
+          "id": 78,
+          "alt": "",
+          "source": "https://res.cloudinary.com/dhr2i6xyp/image/upload/v1777729805/Desinvolts_Prod/c7bskrrgp3e7g0tcr9kr.webp"
+        },
+        "video": null
+      },
+      {
+        "id": 435,
         "zIndex": 9,
+        "zIndexPriorityFactor": 0,
+        "x": 19,
+        "y": 9,
+        "width": 16,
+        "height": 20,
+        "imageId": 74,
+        "videoId": null,
+        "image": {
+          "id": 74,
+          "alt": "",
+          "source": "https://res.cloudinary.com/dhr2i6xyp/image/upload/v1777730679/Desinvolts_Prod/ppbjx5vdinivbvuuk5zk.webp"
+        },
+        "video": null
+      },
+      {
+        "id": 436,
+        "zIndex": 8,
+        "zIndexPriorityFactor": 0,
+        "x": 35,
+        "y": 0,
+        "width": 29,
+        "height": 19,
+        "imageId": 81,
+        "videoId": null,
+        "image": {
+          "id": 81,
+          "alt": "",
+          "source": "https://res.cloudinary.com/dhr2i6xyp/image/upload/v1777730054/Desinvolts_Prod/obc6mxgglelm2gmnynjo.webp"
+        },
+        "video": null
+      },
+      {
+        "id": 437,
+        "zIndex": 7,
+        "zIndexPriorityFactor": 0,
+        "x": 64,
+        "y": 0,
+        "width": 18,
+        "height": 8,
+        "imageId": 79,
+        "videoId": null,
+        "image": {
+          "id": 79,
+          "alt": "",
+          "source": "https://res.cloudinary.com/dhr2i6xyp/image/upload/v1777731026/Desinvolts_Prod/aqj0ex4vfyb9lmfjza3k.webp"
+        },
+        "video": null
+      },
+      {
+        "id": 438,
+        "zIndex": 6,
+        "zIndexPriorityFactor": 0,
+        "x": 64,
+        "y": 8,
+        "width": 18,
+        "height": 11,
+        "imageId": 87,
+        "videoId": null,
+        "image": {
+          "id": 87,
+          "alt": "",
+          "source": "https://res.cloudinary.com/dhr2i6xyp/image/upload/v1777731101/Desinvolts_Prod/iv9jtorzmokyikpyeqs8.webp"
+        },
+        "video": null
+      },
+      {
+        "id": 439,
+        "zIndex": 5,
+        "zIndexPriorityFactor": 0,
+        "x": 82,
+        "y": 13,
+        "width": 17,
+        "height": 6,
+        "imageId": 84,
+        "videoId": null,
+        "image": {
+          "id": 84,
+          "alt": "",
+          "source": "https://res.cloudinary.com/dhr2i6xyp/image/upload/v1777730791/Desinvolts_Prod/hro5cufvcam8kfvlrcvx.webp"
+        },
+        "video": null
+      },
+      {
+        "id": 440,
+        "zIndex": 4,
+        "zIndexPriorityFactor": 0,
+        "x": 82,
+        "y": 6,
+        "width": 17,
+        "height": 7,
+        "imageId": 76,
+        "videoId": null,
+        "image": {
+          "id": 76,
+          "alt": "",
+          "source": "https://res.cloudinary.com/dhr2i6xyp/image/upload/v1777730822/Desinvolts_Prod/ghehsqf3lrwmxqawvdsz.webp"
+        },
+        "video": null
+      },
+      {
+        "id": 441,
+        "zIndex": 3,
+        "zIndexPriorityFactor": 0,
+        "x": 82,
+        "y": 0,
+        "width": 17,
+        "height": 6,
+        "imageId": 95,
+        "videoId": null,
+        "image": {
+          "id": 95,
+          "alt": "",
+          "source": "https://res.cloudinary.com/dhr2i6xyp/image/upload/v1777730976/Desinvolts_Prod/vy52zx4gtenrrzxvkvjy.webp"
+        },
+        "video": null
+      },
+      {
+        "id": 442,
+        "zIndex": 2,
+        "zIndexPriorityFactor": 0,
+        "x": 19,
+        "y": 0,
+        "width": 16,
+        "height": 9,
+        "imageId": 88,
+        "videoId": null,
+        "image": {
+          "id": 88,
+          "alt": "",
+          "source": "https://res.cloudinary.com/dhr2i6xyp/image/upload/v1777731212/Desinvolts_Prod/uv8c3yalmqlwybjoms8o.webp"
+        },
+        "video": null
+      },
+      {
+        "id": 443,
+        "zIndex": 1,
+        "zIndexPriorityFactor": 0,
+        "x": 0,
+        "y": 9,
+        "width": 19,
+        "height": 10,
+        "imageId": 89,
+        "videoId": null,
+        "image": {
+          "id": 89,
+          "alt": "",
+          "source": "https://res.cloudinary.com/dhr2i6xyp/image/upload/v1777730768/Desinvolts_Prod/ur3kfgucboyr4nfsbtce.webp"
+        },
+        "video": null
+      },
+      {
+        "id": 444,
+        "zIndex": 0,
         "zIndexPriorityFactor": 0,
         "x": 0,
         "y": 0,
-        "width": 34,
-        "height": 16,
-        "imageId": 11,
-        "videoId": null,
-        "image": {
-          "id": 11,
-          "alt": "La photo du groupe Désinvolts",
-          "source": "QH8JbsFxcxwnFcTizcTr.webp"
-        },
-        "video": null
-      },
-      {
-        "id": 21,
-        "zIndex": 8,
-        "zIndexPriorityFactor": 0,
-        "x": 25,
-        "y": 7,
-        "width": 45,
-        "height": 22,
-        "imageId": 13,
-        "videoId": null,
-        "image": {
-          "id": 13,
-          "alt": "La photo du groupe Désinvolts",
-          "source": "3DvyNpvueFitcG4FAm7e.webp"
-        },
-        "video": null
-      },
-      {
-        "id": 22,
-        "zIndex": 7,
-        "zIndexPriorityFactor": 0,
-        "x": 35,
-        "y": 1,
-        "width": 15,
-        "height": 10,
-        "imageId": 16,
-        "videoId": null,
-        "image": {
-          "id": 16,
-          "alt": "La photo du groupe Désinvolts",
-          "source": "IomxQxE2p8Q4HXZp9RTM.webp"
-        },
-        "video": null
-      },
-      {
-        "id": 23,
-        "zIndex": 6,
-        "zIndexPriorityFactor": 0,
-        "x": 71,
-        "y": 22,
-        "width": 28,
-        "height": 18,
-        "imageId": 17,
-        "videoId": null,
-        "image": {
-          "id": 17,
-          "alt": "La photo du groupe Désinvolts",
-          "source": "HGxfbb9ErmBn1z51Li0D.webp"
-        },
-        "video": null
-      },
-      {
-        "id": 24,
-        "zIndex": 5,
-        "zIndexPriorityFactor": 0,
-        "x": 70,
-        "y": 0,
-        "width": 26,
-        "height": 16,
-        "imageId": 19,
-        "videoId": null,
-        "image": {
-          "id": 19,
-          "alt": "La photo du groupe Désinvolts",
-          "source": "ztlpNhDvAWxBtXOUmibp.webp"
-        },
-        "video": null
-      },
-      {
-        "id": 25,
-        "zIndex": 4,
-        "zIndexPriorityFactor": 0,
-        "x": 77,
-        "y": 14,
-        "width": 16,
-        "height": 10,
-        "imageId": 20,
-        "videoId": null,
-        "image": {
-          "id": 20,
-          "alt": "La photo du groupe Désinvolts",
-          "source": "0cHeShHncL7zF71lMQV7.webp"
-        },
-        "video": null
-      },
-      {
-        "id": 26,
-        "zIndex": 3,
-        "zIndexPriorityFactor": 0,
-        "x": 53,
-        "y": 28,
-        "width": 21,
-        "height": 10,
-        "imageId": 21,
-        "videoId": null,
-        "image": {
-          "id": 21,
-          "alt": "La photo du groupe Désinvolts",
-          "source": "iauBIbNA7NKf7tTjdCZq.webp"
-        },
-        "video": null
-      },
-      {
-        "id": 27,
-        "zIndex": 2,
-        "zIndexPriorityFactor": 0,
-        "x": 3,
-        "y": 28,
-        "width": 46,
-        "height": 12,
-        "imageId": 24,
-        "videoId": null,
-        "image": {
-          "id": 24,
-          "alt": "La photo du groupe Désinvolts",
-          "source": "mvnyMPMkJMHwC3oQjYov.webp"
-        },
-        "video": null
-      },
-      {
-        "id": 28,
-        "zIndex": 1,
-        "zIndexPriorityFactor": 0,
-        "x": 3,
-        "y": 18,
-        "width": 28,
-        "height": 16,
-        "imageId": 26,
-        "videoId": null,
-        "image": {
-          "id": 26,
-          "alt": "La photo du groupe Désinvolts",
-          "source": "SxyF0SCpC3vL6HLAEQ2Y.webp"
-        },
-        "video": null
-      },
-      {
-        "id": 29,
-        "zIndex": 0,
-        "zIndexPriorityFactor": 0,
-        "x": 51,
-        "y": 4,
-        "width": 18,
+        "width": 19,
         "height": 9,
-        "imageId": 27,
+        "imageId": 66,
         "videoId": null,
         "image": {
-          "id": 27,
-          "alt": "La photo du groupe Désinvolts",
-          "source": "MhSSu8WciRzqPhSEmYhc.webp"
+          "id": 66,
+          "alt": "",
+          "source": "https://res.cloudinary.com/dhr2i6xyp/image/upload/v1777731163/Desinvolts_Prod/yrudfeflbgsjipsbmuie.webp"
         },
         "video": null
       }
     ],
     "videos": [
       {
-        "id": 6,
+        "id": 45,
         "url": "https://www.youtube.com/watch?v=AUIYbPbNVcA",
         "description": "Clip 1"
       },
       {
-        "id": 7,
+        "id": 46,
         "url": "https://www.youtube.com/watch?v=pbWrM1iblLI",
         "description": "Clip 2"
       }
@@ -1357,75 +1843,75 @@
     "config": {
       "id": 1,
       "showActualityPanel": true,
-      "mediaImagesContainerHeight": 50
+      "mediaImagesContainerHeight": 70
     },
     "navlinks": [
       {
-        "id": 139,
+        "id": 373,
         "text": "accueil",
         "link": "",
         "position": 1
       },
       {
-        "id": 140,
-        "text": "contact",
-        "link": "contact",
+        "id": 374,
+        "text": "dates",
+        "link": "dates",
         "position": 3
       },
       {
-        "id": 141,
-        "text": "dates",
-        "link": "dates",
+        "id": 375,
+        "text": "groupe",
+        "link": "groupe",
         "position": 4
       },
       {
-        "id": 142,
-        "text": "groupe",
-        "link": "groupe",
+        "id": 376,
+        "text": "médias",
+        "link": "médias",
         "position": 5
       },
       {
-        "id": 143,
-        "text": "médias",
-        "link": "médias",
+        "id": 377,
+        "text": "nous-écouter",
+        "link": "nous-écouter",
         "position": 6
       },
       {
-        "id": 144,
-        "text": "nous-écouter",
-        "link": "nous-écouter",
+        "id": 378,
+        "text": "contact",
+        "link": "contact",
         "position": 7
       }
     ],
     "title": {
-      "id": 182,
+      "id": 225,
       "content": "Et ça donne quoi niveau son ?",
       "hyperlinks": []
     },
     "albums": [
       {
-        "id": 5,
-        "spotifyId": 15,
-        "deezerId": 14,
-        "appleMusicId": 13,
-        "titleId": 183,
+        "id": 8,
+        "spotifyId": 24,
+        "deezerId": 23,
+        "appleMusicId": 22,
+        "titleId": 231,
         "coverId": 44,
         "sonPageId": 1,
         "position": 0,
         "appleMusicUrl": {
-          "id": 13,
+          "id": 22,
           "text": "applemusic",
           "link": "https://embed.music.apple.com/fr/album/volt-face/1555591254",
           "position": 0
         },
         "deezerUrl": {
-          "id": 14,
+          "id": 23,
           "text": "deezer",
           "link": "https://widget.deezer.com/widget/auto/album/210456352",
           "position": 1
         },
         "spotifyUrl": {
-          "id": 15,
+          "id": 24,
           "text": "spotify",
           "link": "https://open.spotify.com/embed/album/77vvnt1Ocjndfs647cdJgT",
           "position": 2
@@ -1437,40 +1923,40 @@
         },
         "paragraphs": [
           {
-            "paragraphId": 303,
-            "position": 1,
+            "paragraphId": 351,
+            "position": 0,
             "eventId": null,
-            "albumId": 5,
+            "albumId": 8,
             "postId": null,
             "trombinoscopeItemId": null,
             "groupPageFirstId": null,
             "groupPageSecondId": null,
             "dateId": null,
             "paragraph": {
-              "id": 303,
-              "content": "Ce 1er album est composé de 11 créations originales en français. De Avoir mal aux Vendeurs de rêves, l’album montre le dynamisme du groupe.",
+              "id": 351,
+              "content": "L’album Volt-Face est disponible dès le 12 mars 2021 sur toutes les plateformes de téléchargement et de streaming.",
               "hyperlinks": []
             }
           },
           {
-            "paragraphId": 304,
-            "position": 0,
+            "paragraphId": 355,
+            "position": 1,
             "eventId": null,
-            "albumId": 5,
+            "albumId": 8,
             "postId": null,
             "trombinoscopeItemId": null,
             "groupPageFirstId": null,
             "groupPageSecondId": null,
             "dateId": null,
             "paragraph": {
-              "id": 304,
-              "content": "L’album Volt-Face est disponible dès le 12 mars 2021 sur toutes les plateformes de téléchargement et de streaming.",
+              "id": 355,
+              "content": "Ce 1er album est composé de 11 créations originales en français. De Avoir mal aux Vendeurs de rêves, l’album montre le dynamisme du groupe.",
               "hyperlinks": []
             }
           }
         ],
         "title": {
-          "id": 183,
+          "id": 231,
           "content": "Volt face",
           "hyperlinks": []
         }

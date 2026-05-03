@@ -21,7 +21,7 @@ export default function Window(props: WindowProps) {
     <div
       className={`absolute ${
         isAdminDisplay && "cursor-move"
-      } bg-background pointer-events-auto rounded-md overflow-hidden`}
+      } bg-background pointer-events-auto overflow-hidden`}
       onMouseDown={handleMouseDownForDrag}
       ref={windowRef}
       style={{
