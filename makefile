@@ -1,7 +1,7 @@
 dev:
 	docker compose --env-file .env.dev -f docker-compose.dev.yml up --build
 prod:
-	docker compose --env-file .env.prod -f docker-compose.prod.yml up --build
+	docker compose -f docker-compose.prod.yml up --pull always
 clear-dev:
 	docker compose -f docker-compose.dev.yml down -v
 clear-prod:

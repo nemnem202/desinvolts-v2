@@ -13,10 +13,9 @@ services:
       retries: 5
 
   app:
-    build:
-      context: .
-      dockerfile: dockerfile.prod
-    image: desinvolt-app-prod
+    environment:
+      - NODE_OPTIONS=--max-old-space-size=4096
+    image: ghcr.io/nemnem202/desinvolt:prod
     container_name: desinvolt-app-prod
     depends_on:
       db:
