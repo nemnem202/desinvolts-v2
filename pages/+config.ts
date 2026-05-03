@@ -16,22 +16,22 @@ export default {
     "/accueil": "/",
   },
 
-  headHtmlBegin: `
-  <script>
-    (function() {
-      try {
-        const savedTheme = localStorage.getItem('colortheme');
-        const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
-        const theme = savedTheme || (prefersDark ? 'dark' : 'light');
+  // headHtmlBegin: `
+  // <script>
+  //   (function() {
+  //     try {
+  //       const savedTheme = localStorage.getItem('colortheme');
+  //       const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+  //       const theme = savedTheme || (prefersDark ? 'dark' : 'light');
 
-        if (theme === 'dark') document.documentElement.classList.add('dark');
-        else document.documentElement.classList.remove('dark');
-      } catch(e) {
-        document.documentElement.classList.remove('dark');
-      }
-    })();
-  </script>
-  `,
+  //       if (theme === 'dark') document.documentElement.classList.add('dark');
+  //       else document.documentElement.classList.remove('dark');
+  //     } catch(e) {
+  //       document.documentElement.classList.remove('dark');
+  //     }
+  //   })();
+  // </script>
+  // `,
 
   bodyHtmlBegin: `<svg width="0" height="0" style={{ position: "absolute" }}>
         <filter id="grainy">

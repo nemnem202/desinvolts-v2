@@ -106,7 +106,7 @@
   --chart-5: var(--color-chart-5);
 }
 
-.dark {
+:root {
   --color-background: #041527;
   --color-foreground: #f7f4f0;
   --color-surface: #172c43;
